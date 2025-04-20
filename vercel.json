@@ -11,7 +11,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://yourprojectdomain.com",
+        "APP_URL": "https://1-construction.vercel.app/",
         "APP_KEY": "base64:GkCkj5Pl2HLQQArZza2VMGGmtLcQVhtf/yHJZKz9Y7c=",
 
         "APP_CONFIG_CACHE": "/tmp/config.php",
