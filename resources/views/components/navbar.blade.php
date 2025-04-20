@@ -12,9 +12,14 @@
                 </div>
             </a>
 
-            <!-- Main Navigation -->
-            <div class="d-flex align-items-center">
-                <nav class="d-none d-lg-flex">
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler d-lg-none" type="button" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Main Navigation - Desktop -->
+            <div class="d-none d-lg-flex align-items-center">
+                <nav>
                     <ul class="d-flex list-unstyled mb-0 me-4">
                         <li class="nav-item">
                             <a href="/product" class="nav-link">Product</a>
@@ -28,13 +33,37 @@
                     </ul>
                 </nav>
 
-                <!-- Right Side Navigation -->
+                <!-- Right Side Navigation - Desktop -->
                 <div class="d-flex align-items-center">
                     <a href="/contact" class="get-started-btn">
                         Get Started
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div class="mobile-dropdown">
+        <div class="container">
+            <nav>
+                <ul class="list-unstyled mb-3">
+                    <li class="mobile-nav-item">
+                        <a href="/product" class="mobile-nav-link">Product</a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="/solutions" class="mobile-nav-link">Solutions</a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="/resources" class="mobile-nav-link">Resources</a>
+                    </li>
+                </ul>
+                <div class="text-center pb-2">
+                    <a href="/contact" class="get-started-btn">
+                        Get Started
+                    </a>
+                </div>
+            </nav>
         </div>
     </div>
 </div>
@@ -75,20 +104,5 @@ body > .header {
     margin-bottom: 0;
 }
 </style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    window.addEventListener('scroll', function() {
-        var scroll = window.scrollY || document.documentElement.scrollTop;
-        var header = document.querySelector('.header');
-        
-        if (scroll >= 60) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-});
-</script>
 
 
