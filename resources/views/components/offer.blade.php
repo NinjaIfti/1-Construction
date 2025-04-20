@@ -189,6 +189,6 @@
             <div style="flex: 1; background-color: #0A2240;"></div>
             <div style="flex: 1; background-color: #E31B23;"></div>
             <div style="flex: 1; background-color: #0A2240;"></div>
-        </div>
     </div>
+</div>
 </section>
