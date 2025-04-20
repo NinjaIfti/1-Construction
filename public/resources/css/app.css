@@ -11,6 +11,14 @@ body {
     font-family: 'Arial', sans-serif;
     color: var(--text-dark);
     line-height: 1.6;
+    padding-top: 80px;
+    margin: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -47,45 +55,80 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
-/* Header */
+/* Header/Navbar */
 .header {
     background-color: var(--primary-navy);
     color: white;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    margin: 0;
+    box-shadow: none;
 }
 
-.stickyheader {
+.header.scrolled {
     background-color: white !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.stickyheader .nav-link,
-.stickyheader .submenulink {
+.header.scrolled .nav-link {
     color: var(--primary-navy) !important;
 }
 
-.stickyheader .logo-text {
+.header.scrolled .logo-text {
     color: var(--primary-navy) !important;
 }
 
-.color-white {
-    color: white !important;
+.logo-number {
+    color: var(--primary-red) !important;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-right: 5px;
 }
 
-/* Navigation */
+.logo-text {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.navbar-logo {
+    text-decoration: none;
+}
+
+body > .header {
+    margin-bottom: 0;
+}
+
+.nav-item {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+}
+
 .nav-link {
     color: white !important;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.get-started-btn {
+    background-color: var(--primary-red);
+    color: white;
     font-weight: 600;
-    transition: color 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.nav-link:hover {
-    color: var(--primary-red) !important;
-}
-
-.submenulink {
-    color: white !important;
-    transition: color 0.3s ease;
+.get-started-btn:hover {
+    background-color: #c01820;
 }
 
 /* Hero Section */
