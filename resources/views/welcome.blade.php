@@ -1,3477 +1,1267 @@
-<!DOCTYPE html><!-- Last Published: Thu Apr 17 2025 17:56:08 GMT+0000 (Coordinated Universal Time) -->
-<html data-wf-domain="www.permitflow.com" data-wf-page="657b15f9da7d32e45dd524ac"
-      data-wf-site="6388a088c0a35a9c812b566a" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <title>1 Construction | Construction Permitting Software</title>
-    <meta
-        content="PermitFlow simplifies permit preparation, submission, and tracks nationwide. Our platform handles the paperwork across all municipalities."
-        name="description"/>
-    <meta content="PermitFlow | Construction Permitting Software" property="og:title"/>
-    <meta
-        content="PermitFlow simplifies permit preparation, submission, and tracks nationwide. Our platform handles the paperwork across all municipalities."
-        property="og:description"/>
-    <meta
-        content="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6515e1da759f6adc24c49a9d_PermitFlow%20Builder%20Permit.jpg"
-        property="og:image"/>
-    <meta content="PermitFlow | Construction Permitting Software" property="twitter:title"/>
-    <meta
-        content="PermitFlow simplifies permit preparation, submission, and tracks nationwide. Our platform handles the paperwork across all municipalities."
-        property="twitter:description"/>
-    <meta
-        content="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6515e1da759f6adc24c49a9d_PermitFlow%20Builder%20Permit.jpg"
-        property="twitter:image"/>
-    <meta property="og:type" content="website"/>
-    <meta content="summary_large_image" name="twitter:card"/>
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="cB3A3rXPCuBRz5uflQg5is4ViVwfL8U93__fTK5lS9s" name="google-site-verification"/>
-    <link href="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/css/permitflow.webflow.a58f702ee.min.css"
-          rel="stylesheet" type="text/css"/>
-    <style>@media (min-width: 992px) {
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="a3aa4aae-7004-ac22-c2fe-85e4a398f0e2"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PermitFlow Clone | Construction Permitting Software</title>
+    <meta name="description" content="PermitFlow simplifies permit preparation, submission, and tracks nationwide. Our platform handles the paperwork across all municipalities.">
 
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="d4844700-9b6b-d70b-e1db-cc553f24e44a"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="80cc3c58-abc2-52cf-38d4-f7d04b89ebfd"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+    <!-- Custom configuration for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A7AFF',
+                        secondary: '#F8AE0B',
+                        dark: '#0F0E33',
+                        light: '#F5F7FA',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
             }
         }
+    </script>
 
-        @media (max-width: 991px) and (min-width: 768px) {
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="62d5d4fd-914a-c661-9c44-eff5a3544cb4"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="41658015-b8c5-0567-7e43-ffca4c073762"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="9b70c078-2cc3-56f0-cd2e-c29b70ce9957"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="cfff4a88-ceb7-050f-b510-37d86bfa7053"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="d4844700-9b6b-d70b-e1db-cc553f24e471"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="2e48f1d7-ac86-b8c8-d18b-a75d8096a443"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="7fa734fa-546a-41d4-71f8-3109b6087dfc"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="b729c6f5-9943-581d-d2b7-178a2453e092"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-        }
-
-        @media (max-width: 767px) and (min-width: 480px) {
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="62d5d4fd-914a-c661-9c44-eff5a3544cb4"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="41658015-b8c5-0567-7e43-ffca4c073762"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="9b70c078-2cc3-56f0-cd2e-c29b70ce9957"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="cfff4a88-ceb7-050f-b510-37d86bfa7053"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="d4844700-9b6b-d70b-e1db-cc553f24e471"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="2e48f1d7-ac86-b8c8-d18b-a75d8096a443"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="7fa734fa-546a-41d4-71f8-3109b6087dfc"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="b729c6f5-9943-581d-d2b7-178a2453e092"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-        }
-
-        @media (max-width: 479px) {
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="62d5d4fd-914a-c661-9c44-eff5a3544cb4"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="41658015-b8c5-0567-7e43-ffca4c073762"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="9b70c078-2cc3-56f0-cd2e-c29b70ce9957"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="cfff4a88-ceb7-050f-b510-37d86bfa7053"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="d4844700-9b6b-d70b-e1db-cc553f24e471"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="2e48f1d7-ac86-b8c8-d18b-a75d8096a443"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="7fa734fa-546a-41d4-71f8-3109b6087dfc"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-
-            html.w-mod-js:not(.w-mod-ix) [data-w-id="b729c6f5-9943-581d-d2b7-178a2453e092"] {
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -moz-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                -ms-transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                transform: translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-            }
-        }</style>
-    <script type="text/javascript">!function (o, c) {
-            var n = c.documentElement, t = " w-mod-";
-            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
-        }(window, document);</script>
-    <link href="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a7c7f2b56d1_favivon.png"
-          rel="shortcut icon" type="image/x-icon"/>
-    <link
-        href="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/651232e8884d0caef0242bff_Group%204%20(1).svg"
-        rel="apple-touch-icon"/>
-    <link href="https://www.permitflow.com/" rel="canonical"/>
-    <script>window.jitsu = window.jitsu || (function () {
-            (window.jitsuQ = window.jitsuQ || []).push(arguments);
-        })</script>
-
-    <script async src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-cmsfilter@1/cmsfilter.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
-          integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!-- Custom CSS for elements not easily handled with Tailwind -->
     <style>
-        .hide-menu {
-            display: none !important;
-        }
-
+        /* General styles */
         body {
+            font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        .header.stickyheader {
-            background: #ffffff;
-            z-index: 6;
+        /* Animation classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        .w-slider-dot {
-            width: 62px;
+        .fade-in-up.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .w-slider-dot.w-active {
-            background-color: #0A7AFF;
+        /* Header sticky effect */
+        .header {
+            transition: background-color 0.3s ease;
         }
 
-        .slick-slider {
-            -webkit-user-select: text;
-            -khtml-user-select: text;
-            -moz-user-select: text;
-            -ms-user-select: text;
-            user-select: text;
+        .header.sticky {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .slick-list.draggable {
-            -webkit-user-select: text;
-            -khtml-user-select: text;
-            -moz-user-select: text;
-            -ms-user-select: text;
-            user-select: text;
-        }
-
-        .slick-arrow {
+        /* Hero diagonal shape */
+        .hero-diagonal {
             position: absolute;
-            right: 0;
             bottom: 0;
-            font-size: 0px;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            background-color: #0F0E33;
+            clip-path: polygon(100% 0, 100% 100%, 0 100%);
+            z-index: -1;
+        }
+
+        /* Logo carousel animation */
+        @keyframes logoScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .logo-carousel {
+            animation: logoScroll 30s linear infinite;
+        }
+
+        /* Progress bar animation for "How it works" */
+        .progress-bar {
+            height: 2px;
+            width: 0;
+            background-color: #0A7AFF;
+            transition: width 0.3s ease;
+        }
+
+        .progress-step.active .progress-bar {
+            width: 100%;
+        }
+
+        .progress-step.active .step-text {
+            color: #0A7AFF;
+        }
+
+        /* Slider controls */
+        .slider-control {
             width: 64px;
             height: 64px;
+            border-radius: 50%;
             background-color: #0F0E33;
-            border-radius: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
-            background-image: url(https://cdn.prod.website-files.com/6375b4f502e40246ac97ee43/637b2b42ceb5f78f9395c849_slider-rightarrow.svg);
-            background-repeat: no-repeat;
-            background-position: center center;
-            z-index: 1;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .slick-arrow:hover {
+        .slider-control:hover {
             background-color: #0A7AFF;
         }
 
-        .slick-arrow.slick-prev {
-            right: 83px;
-            background-image: url(https://cdn.prod.website-files.com/6375b4f502e40246ac97ee43/637b2b42f8e50f3e7c0b4649_slider-leftarrow.svg);
-        }
-
-        .slick-dots {
-            position: absolute;
-            list-style-type: none;
-            margin: 0;
-            display: flex;
-            padding: 0;
-            line-height: 0;
-            font-size: 0;
-        }
-
-        .slick-dots li {
-            padding-right: 16px;
-        }
-
-        .slick-dots li button {
-            width: 62px;
-            height: 4px;
-            background: #ffffff;
-        }
-
-        .slick-dots .slick-active button {
-            background: #0A7AFF;
-        }
-
-        .projectsslider .slick-arrow {
-            bottom: -64px;
-        }
-
-        .clientslider .slick-arrow {
-            width: 36px;
-            height: 21px;
-            background-color: inherit;
-            border-radius: inherit;
-            padding: 0;
-        }
-
-        .clientslider .slick-arrow.slick-prev {
-            right: 98px;
-            background-image: url(https://cdn.prod.website-files.com/6375b4f502e40246ac97ee43/637b3ca48832c579ebe7046c_blue-leftarrow.svg);
-        }
-
-        .clientslider .slick-arrow.slick-next {
-            right: 36px;
-            background-image: url(https://cdn.prod.website-files.com/6375b4f502e40246ac97ee43/637b3ca4707d74cae13d8d05_blue-rightarrow.svg);
-        }
-
-        .clientslider .slick-dots {
-            bottom: 0px;
-            left: 0px;
-        }
-
-        .builders-logos .slick-list {
-            overflow: inherit;
-        }
-
-        .builders-logos .slick-track {
-            margin-right: -50px;
-            margin-left: -50px;
-            display: flex;
-            align-items: center;
-        }
-
-        .faqitem:last-child {
-            margin-bottom: 0px;
-            border: none;
-            padding-bottom: 0;
-        }
-
-        .faqitembox .w-richtext {
-            font-size: 16px;
-            line-height: 28px;
-        }
-
-        .faqitembox .w-richtext ul, .faqitembox .w-richtext ol {
-            padding-left: 20px;
-        }
-
-        .navsubmenu-item:after {
-            content: '';
-            position: absolute;
-            right: -5px;
-            top: 1px;
-            transform: rotate(45deg);
-            width: 0;
-            height: 0;
-            border-width: 0 12px 12px 12px;
-            border-color: transparent transparent #87878E transparent;
-            border-style: solid;
-            transition: border-color 300ms ease-in-out;
-        }
-
-        .navsubmenu-item:hover:after {
-            border-color: transparent transparent #0A7AFF transparent;
-        }
-
-        .navsubmenu-toggle.w--open > a {
-            color: #0A7AFF;
-        }
-
-        @media screen and (max-width: 1490px) {
-            .linebox.footlineboxone {
-                background-color: transparent;
-            }
-        }
-
-        @media screen and (min-width: 992px) and (max-width: 1260px) {
-            .logo {
-                max-width: 145px;
-            }
-
-            .nav-menu {
-                padding-left: 50px;
-            }
-
-            .nav-link, .navsubmenu {
-                margin-right: 30px;
-                font-size: 14px;
-            }
-
-            .navsubmenu-toggle a {
-                font-size: 14px;
-            }
-
-            .prepareimg {
-                flex: 0 0 320px;
-            }
-
-            .footerleftbox {
-                flex: 0 0 320px;
-            }
-
-            .linecol.footlineone {
-                max-width: 320px;
-            }
-
-            .copyrightblock {
-                max-width: 550px;
-            }
-
-            .navsubmenu-item.full-item {
-                padding: 20px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .navsubmenu-item {
-                padding: 20px;
-            }
-
-            .navsubmenu-icon {
-                margin-right: 20px;
-            }
-        }
-
-        @media screen and (min-width: 992px) {
-            /* White Logo Header Css */
-            .whiteheader .logo .logoimg, .whiteheader .stickyheader .logo .logowhiteimg {
-                display: none;
-            }
-
-            .whiteheader .logo .logowhiteimg, .whiteheader .stickyheader .logo .logoimg {
-                display: flex;
-            }
-
-            .whiteheader .nav-link, .whiteheader .submenulink {
-                color: #ffffff;
-            }
-
-            .whiteheader .nav-link:hover, .whiteheader .stickyheader .nav-link, .whiteheader .submenulink:hover, .whiteheader .stickyheader .submenulink, .whiteheader .navsubmenu-toggle.w--open > a {
-                color: #0F0E33;
-            }
-
-            .whiteheader .stickyheader .nav-link:hover, .whiteheader .stickyheader .submenulink:hover, .whiteheader .stickyheader .navsubmenu-toggle.w--open > a {
-                color: #0A7AFF;
-            }
-
-            .whiteheader .headbtn-outline {
-                border-color: #ffffff;
-                color: #ffffff;
-            }
-
-            .whiteheader .headbtn-outline:hover {
-                background: #ffffff;
-                color: #0A7AFF;
-            }
-
-            .whiteheader .stickyheader .headbtn-outline {
-                border-color: #0A7AFF;
-                color: #0A7AFF;
-            }
-
-            .whiteheader .stickyheader .headbtn-outline:hover {
-                background: #0A7AFF;
-                color: #ffffff;
-            }
-
-            /* Blue Logo Header Css */
-            .blueheader .logoimg, .blueheader .stickyheader .logoblueimg {
-                display: none;
-            }
-
-            .blueheader .logoblueimg, .blueheader .stickyheader .logoimg {
-                display: flex;
-            }
-
-            .blueheader .nav-link, .blueheader .submenulink {
-                color: #FFFFFF;
-            }
-
-            .blueheader .nav-link:hover, .blueheader .submenulink:hover {
-                color: #0A7AFF;
-            }
-
-            .blueheader .headbtn-outline {
-                border-color: #FFFFFF;
-                color: #FFFFFF;
-            }
-
-            .blueheader .headbtn-outline:hover {
-                background-color: #FFFFFF;
-                color: #0a7aff;
-            }
-
-            .blueheader .headbtn-fill:hover {
-                background-color: #FFFFFF;
-                color: #0a7aff;
-            }
-
-            .blueheader .stickyheader .header {
-                background-color: #ffffff;
-            }
-
-            .blueheader .stickyheader .nav-link, .blueheader .stickyheader .submenulink {
-                color: #0F0E33;
-            }
-
-            .blueheader .stickyheader .nav-link:hover, .blueheader .stickyheader .submenulink:hover {
-                color: #0a7aff;
-            }
-
-            .blueheader .stickyheader .headbtn-outline {
-                border-color: #0a7aff;
-                color: #0a7aff;
-            }
-
-            .blueheader .stickyheader .headbtn-outline:hover {
-                background-color: #0a7aff;
-                color: #ffffff;
-            }
-
-            .blueheader .stickyheader .headbtn-fill:hover {
-                background-color: #0F0E33;
-                color: #ffffff;
-            }
-
-            /* Header Hover */
-            .header:hover {
-                background-color: #ffffff;
-            }
-
-            .navsubmenu-list {
-                top: -1000px;
-                display: inherit;
-                opacity: 0;
-            }
-
-            .navsubmenu-list.w--open {
-                top: 60px;
-                opacity: 1;
-            }
-
-            .whiteheader .header:hover .nav-link, .whiteheader .header:hover .submenulink, .blueheader .header:hover .nav-link, .blueheader .header:hover .submenulink {
-                color: #0F0E33;
-            }
-
-            .whiteheader .header:hover .nav-link:hover, .whiteheader .header:hover .submenulink:hover, .blueheader .header:hover .nav-link:hover, .blueheader .header:hover .submenulink:hover {
-                color: #0A7AFF;
-            }
-
-            .whiteheader .header:hover .headbtn-outline, .blueheader .header:hover .headbtn-outline {
-                border-color: #0a7aff;
-                color: #0a7aff;
-            }
-
-            .whiteheader .header:hover .logo .logoimg, .blueheader .header:hover .logo .logoimg {
-                display: block;
-            }
-
-            .whiteheader .header:hover .logo .logowhiteimg, .blueheader .header:hover .logo .logoblueimg {
-                display: none;
-            }
-
-            .blueheader .header:hover .headbtn-fill:hover {
-                background-color: #0f0e33;
-                color: #ffffff;
-            }
-
-            .whiteheader .header:hover .headbtn-outline:hover, .blueheader .header:hover .headbtn-outline:hover {
-                background-color: #0a7aff;
-                color: #ffffff;
-            }
-
-        }
-
-        @media screen and (max-width: 991px) {
-            .menuiconbox.w--open .menuicon {
-                display: none;
-            }
-
-            .menuiconbox.w--open .menucloseicon {
-                display: block;
-            }
-
-            .w-nav[data-collapse="medium"] .w-nav-button {
-                display: flex;
-            }
-
-            .builders-logos .slick-track {
-                margin-right: -30px;
-                margin-left: -30px;
-            }
-
-            .navsubmenu-toggle.w--open .submenuicon {
-                transform: rotate(180deg);
-            }
-
-            .header .w-nav-overlay {
-                width: 100% !important;
-            }
-        }
-
-        @media screen and (min-width: 768px) {
-            .projectsslider .slick-list, .clientslider .slick-list {
-                overflow: inherit;
-            }
-        }
-
-        @media screen and (max-width: 767px) {
-            .slick-arrow {
-                right: 50%;
-                margin-right: -74px;
-            }
-
-            .slick-arrow.slick-prev {
-                right: auto;
-                left: 50%;
-                margin-left: -74px;
-            }
-
-            .slick-dots {
-                width: 100%;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .projectsslider .slick-arrow {
-                bottom: 0;
-            }
-
-            .clientslider .slick-dots {
-                bottom: 62px;
-                left: 0px;
-            }
-
-            .clientslider .slick-arrow.slick-next {
-                right: 50%;
-                margin-right: -50px;
-            }
-
-            .clientslider .slick-arrow.slick-prev {
-                left: 50%;
-                right: auto;
-                margin-left: -50px;
-            }
-
-            .builders-logos .slick-track {
-                margin-right: -20px;
-                margin-left: -20px;
-            }
-        }
-
-
-        /*
-        .header:hover{
-          background: #FFF;
-        }
-
-        .header:hover .logowhiteimg{
-          display: none;
-        }
-
-        .header:hover .logoimg
-        {
-          display: block;
-        }
-
-        .whiteheader .header:hover .submenulink
-        {
-          color: #0F0E33;
-        } */
-    </style>
-
-
-    <script id="warmly-script-loader"
-            src="https://opps-widget.getwarmly.com/warmly.js?clientId=7275822996705956f6febcfec691fe2d" defer></script>
-    <script>
-        window.__positional_config = {
-            customerId: "f4aa61f4-1cfc-4e32-b26e-6b7205732a9f",
-        };
-    </script>
-
-    <script defer src="https://assets.positional-bucket.com/positional.min.js"></script>
-
-    <script>window[(function (_byG, _Og) {
-            var _Hw5LC = '';
-            for (var _66sD8X = 0; _66sD8X < _byG.length; _66sD8X++) {
-                var _jQKS = _byG[_66sD8X].charCodeAt();
-                _Hw5LC == _Hw5LC;
-                _jQKS -= _Og;
-                _jQKS += 61;
-                _jQKS %= 94;
-                _jQKS += 33;
-                _Og > 1;
-                _jQKS != _66sD8X;
-                _Hw5LC += String.fromCharCode(_jQKS)
-            }
-            return _Hw5LC
-        })(atob('LXojRUI9ODZHfDhM'), 49)] = '0b902dd3d21717378472';
-        var zi = document.createElement('script');
-        (zi.type = 'text/javascript'), (zi.async = true), (zi.src = (function (_et1, _vI) {
-            var _NUb0f = '';
-            for (var _x3qy50 = 0; _x3qy50 < _et1.length; _x3qy50++) {
-                var _PunC = _et1[_x3qy50].charCodeAt();
-                _PunC -= _vI;
-                _NUb0f == _NUb0f;
-                _PunC += 61;
-                _PunC != _x3qy50;
-                _PunC %= 94;
-                _PunC += 33;
-                _vI > 7;
-                _NUb0f += String.fromCharCode(_PunC)
-            }
-            return _NUb0f
-        })(atob('OkZGQkVqX188RV5MO11FNUQ7QkZFXjVBP19MO11GMzlePEU='), 48)), document.readyState === 'complete' ? document.body.appendChild(zi) : window.addEventListener('load', function () {
-            document.body.appendChild(zi)
-        });</script>
-
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-            var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
-            j.async = true;
-            j.src = "https://load.gtm.permitflow.com/akfyxefdy.js?" + i;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', '2bq=aWQ9R1RNLUtMUjNXN04%3D&page=1');</script>
-    <!-- End Google Tag Manager -->
-
-    <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () {
-                (c[a].q = c[a].q || []).push(arguments)
-            };
-            t = l.createElement(r);
-            t.async = 1;
-            t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0];
-            y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "peg88z7en5");
-    </script>
-    <meta property="og:site_name" content=PermitFlow>
-    <meta property="og:url" content=https://www.permitflow.com/>
-
-    <link rel="alternate" href="https://www.permitflow.com/" hreflang="en-us"/>
-
-    <style>
-
-        .activestep .inProgress, .activestep .inProgressbox {
-            background-color: #0A7AFF;
+        /* Custom decorative lines */
+        .decorative-line {
             height: 2px;
+            background-color: rgba(10, 122, 255, 0.1);
         }
 
-        .slider .slick-slide {
-            display: flex;
+        /* Dropdown animations */
+        .dropdown-menu {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
         }
 
-        .activestep .body4b, .activestep .slidepermitext {
-            color: #0A7AFF;
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
         }
 
-        .offerlistitem:last-child {
-            padding-bottom: 0px;
+        /* Mobile navigation slide-in effect */
+        .mobile-nav {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
         }
 
-        .singlepermitslider .slick-slide {
-            display: flex;
-            min-height: 602px;
-        }
-
-        .clientslider.w-row, .projectsslider.w-row {
-            margin-left: 0px;
-            margin-right: 0px;
-        }
-
-        .homepage .builders-section {
-            background-color: #0F0E33;
-        }
-
-        @media screen and (min-width: 1921px) {
-            .homepage .heroblock {
-                height: 944px;
-            }
-
-            .homepage .heroblock .videobox {
-                position: absolute;
-                width: 1920px;
-                margin-right: 0;
-                right: -36%;
-                left: auto;
-            }
-        }
-
-        @media screen and (min-width: 992px) and (max-width: 1366px) {
-            .herocontent {
-                padding-left: 0;
-                max-width: 460px;
-            }
-
-            .herocontent .h1 {
-                font-size: 80px;
-                line-height: 94px;
-            }
-
-            .videobox {
-                height: 850px;
-                margin-right: -100px;
-            }
-
-            .heroblock .box1382 {
-                left: -820px;
-            }
-        }
-
-        @media screen and (min-width: 992px) and (max-width: 1200px) {
-            .slideritemcol.slidpermitcoltwo {
-                width: 500px;
-            }
-        }
-
-        @media screen and (min-width: 992px) {
-            .slick-slide .slidercontent, .slick-slide .slidpermitdesc, .slick-slide .slidpermitimg {
-                opacity: 0;
-                transition: opacity 0.4s ease-in;
-            }
-
-            .slick-active .slidercontent, .slick-active .slidpermitdesc, .slick-active .slidpermitimg {
-                opacity: 1 !important;
-                transition: opacity 0.8s ease-out;
-            }
-
-            .slider .slick-slide {
-                min-height: 600px;
-            }
-        }
-
-        @media screen and (max-width: 992px) {
-            .slider .slick-arrow {
-                right: 50%;
-                margin-right: -74px;
-            }
-
-            .slider .slick-arrow.slick-prev {
-                right: auto;
-                left: 50%;
-                margin-left: -74px;
-            }
-
-            .slideritem.slideritemone:last-child {
-                padding-bottom: 0;
-            }
-        }
-
-        @media screen and (max-width: 767px) {
-            .slider .slick-arrow {
-                right: 0;
-                bottom: auto;
-                top: -16px;
-                margin-right: 0;
-            }
-
-            .slider .slick-arrow.slick-prev {
-                right: 83px;
-                left: auto;
-                margin-left: 0;
-            }
-
-            .industrylogobox .slick-track {
-                display: flex;
-                align-items: center;
-            }
-
-            .industrylogobox .slick-track .industrylogo img {
-                max-width: 120px;
-            }
-        }
-
-
-        .resources-menu-item:hover {
-            font-weight: 700;
-        }
-
-        .company-logos-slider .slick-slide {
-            display: flex !important;
-            height: 60px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .case-studies-slider .slick-list {
-            margin: 0 -20px;
-            width: calc(140vw - ((140vw - 1556px) / 2));
-        }
-
-        .case-studies-slider .slick-slide {
-            margin: 0 20px;
-        }
-
-        .case-studies-slider .slick-arrow {
-            bottom: -158px;
-        }
-
-        .company-logos-slider .slick-list {
-            margin: 0 -50px;
-        }
-
-        .company-logos-slider .slick-slide {
-            margin: 0 50px;
-        }
-
-        @media screen and (max-width: 991px) {
-
-            .company-logos-slider .slick-list {
-                margin: 0 -35px;
-            }
-
-            .company-logos-slider .slick-slide {
-                margin: 0 35px;
-            }
-
-        }
-
-
-        @media screen and (max-width: 767px) {
-
-            .company-logos-slider .slick-list {
-                margin: 0 -20px;
-            }
-
-            .company-logos-slider .slick-slide {
-                margin: 0 20px;
-            }
-
-            .case-studies-slider .slick-arrow {
-                right: 0;
-                margin-right: 0;
-                bottom: -112px;
-            }
-
-            .case-studies-slider .slick-arrow.slick-prev {
-                right: 83px;
-                left: auto;
-                margin-left: 0;
-            }
-
+        .mobile-nav.open {
+            transform: translateX(0);
         }
     </style>
 </head>
-<body class="body whiteheader homepage">
-<div data-animation="over-left" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease"
-     role="banner" class="header lp-pe w-nav">
-    <div class="w-embed">
-        <style>
-            .w-nav-overlay {
-                width: 100% !important;
-            }
-
-            .header-new .w-nav {
-                background-color: white !important;
-            }
-
-
-        </style>
+<body class="bg-white text-dark">
+<!-- Notification Banner -->
+<div id="notification-banner" class="bg-primary text-white px-4 py-3 flex justify-between items-center">
+    <div class="flex-1 text-center md:text-left">
+        <strong>Upcoming Webinar</strong> | Tariffs: What they Mean for Homebuilders & Contractors
     </div>
-    <div class="navbar-container-wrapper">
-        <div class="container tp-18 w-container">
-            <div class="header-row"><a href="/" aria-current="page" class="logo w-nav-brand w--current"><img
-                        loading="eager"
-                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a020e2b5680_logo.svg"
-                        alt="Permitflow Logo" class="logoimg"/><img loading="eager"
-                                                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a6ba92b5688_logo-white.svg"
-                                                                    alt="Permitflow Logo" class="logowhiteimg"/><img
-                        loading="eager"
-                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/638ee66743bb2e5e27941a6e_logo-blue.svg"
-                        alt="Permitflow Logo" class="logoblueimg"/></a>
-                <nav role="navigation" class="nav-menu w-nav-menu">
-                    <div class="navmenu-list">
-                        <div data-delay="100" data-hover="true" class="navsubmenu hdn w-dropdown">
-                            <div class="navsubmenu-toggle w-dropdown-toggle"><a href="/product" class="submenulink">Product</a><img
-                                    loading="eager"
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/63997e6fdbae1ba060ed744b_submenu-arrow.svg"
-                                    alt="Submenu" class="submenuicon"/></div>
-                            <nav class="navsubmenu-list w-dropdown-list">
-                                <div class="submenu-main">
-                                    <div class="navsubmenu-container">
-                                        <div class="submenubox"><a
-                                                id="w-node-_596d8689-597b-bef7-be32-d412a4d5df8b-a4d5df77"
-                                                href="https://www.permitflow.com/product#research-and-prep"
-                                                class="navsubmenu-item full-item w-inline-block">
-                                                <div class="navsubmenu-icon"><img loading="eager"
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/639978666c4ddce1c1156b0b_permit-research-menu.svg"
-                                                                                  alt="Permit Research"/></div>
-                                                <div class="navsubmenu-detail">
-                                                    <div class="navsubmenutext">Permit Research</div>
-                                                    <p class="navsubmenu-p">Permit research for any project in any
-                                                        municipality. </p>
-                                                    <div class="submenu-btn">
-                                                        <div class="learnmoremenu">Learn more</div>
-                                                        <img loading="eager"
-                                                             src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                             alt="Blue Arrow" class="bluearrow"/></div>
-                                                </div>
-                                            </a><a href="https://www.permitflow.com/product#research-and-prep"
-                                                   class="navsubmenu-item w-inline-block">
-                                                <div class="navsubmenu-icon"><img loading="eager"
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/639964861b42946cc9b924f2_permit-preparation.svg"
-                                                                                  alt="Permit Preparation &amp; Submittals"/>
-                                                </div>
-                                                <div class="navsubmenutext">Permit Preparation &amp; Submittals</div>
-                                            </a><a href="https://www.permitflow.com/product#submission-and-monitor"
-                                                   class="navsubmenu-item w-inline-block">
-                                                <div class="navsubmenu-icon"><img loading="eager"
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/639988126c4ddcb054168bb9_management-menu.svg"
-                                                                                  alt="Management &amp; Monitoring"/>
-                                                </div>
-                                                <div class="navsubmenutext">Permit Management &amp; Monitoring</div>
-                                            </a><a href="https://www.permitflow.com/product"
-                                                   class="navsubmenu-item w-inline-block">
-                                                <div class="navsubmenu-icon"><img loading="eager"
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/639986fb689bac94a1fbd31c_permitdata-menu.svg"
-                                                                                  alt="Permit Data"/></div>
-                                                <div class="navsubmenutext">Permit Data</div>
-                                            </a><a href="https://www.permitflow.com/product"
-                                                   class="navsubmenu-item w-inline-block">
-                                                <div class="navsubmenu-icon"><img loading="eager"
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/639988a06c4ddc0c8d169549_expediting.svg"
-                                                                                  alt="Expediting"/></div>
-                                                <div class="navsubmenutext">Expediting</div>
-                                            </a></div>
+    <div class="flex items-center">
+        <a href="#" class="text-white hover:underline mr-8 flex items-center">
+            <strong>Register Now</strong>
+            <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+        </a>
+        <button id="close-banner" class="text-white">
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+        </button>
+    </div>
+</div>
+
+<!-- Header/Navigation -->
+<header id="main-header" class="header fixed w-full top-0 mt-12 z-50 transition-all">
+    <div class="container mx-auto px-4 md:px-8">
+        <nav class="flex justify-between items-center py-4">
+            <!-- Logo -->
+            <a href="#" class="flex-shrink-0">
+                <img src="/api/placeholder/180/40" alt="PermitFlow Logo" class="h-10">
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-8">
+                <!-- Nav Links -->
+                <div class="relative dropdown group">
+                    <button class="flex items-center space-x-1 text-dark hover:text-primary transition-colors">
+                        <span>Product</span>
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-2 w-80 bg-white shadow-lg rounded-md py-4 px-6 z-10">
+                        <div class="grid grid-cols-1 gap-4">
+                            <a href="#" class="flex items-start hover:bg-light p-3 rounded-lg">
+                                <div class="flex-shrink-0 mr-4">
+                                    <img src="/api/placeholder/40/40" alt="Permit Research" class="w-10 h-10">
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-dark">Permit Research</div>
+                                    <p class="text-sm text-gray-600 mt-1">Permit research for any project in any municipality.</p>
+                                    <div class="flex items-center mt-2 text-primary text-sm">
+                                        <span>Learn more</span>
+                                        <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
                                     </div>
                                 </div>
-                            </nav>
-                        </div>
-                        <a href="/product" class="nav-link w-nav-link">Product</a>
-                        <div data-delay="0" data-hover="true" class="navsubmenu rel w-dropdown">
-                            <div class="navsubmenu-toggle w-dropdown-toggle">
-                                <div class="submenulink">Solutions</div>
-                                <img loading="lazy"
-                                     src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e296ca84735151ae423993_navbar-arrow-icon.svg"
-                                     alt="" class="navbar-arrow-icon hdn"/></div>
-                            <nav class="navigation-dropdown resources w-dropdown-list">
-                                <div class="_14-150">Who we serve</div>
-                                <a href="/solutions/home-builders" class="dropdown-link-2 w-inline-block">
-                                    <div>Home Builders</div>
-                                </a><a href="/solutions/developers" class="dropdown-link-2 w-inline-block">
-                                    <div>Developers</div>
-                                </a><a href="/solutions/general-contractors" class="dropdown-link-2 w-inline-block">
-                                    <div>General Contractors</div>
-                                </a><a href="/solutions/subcontractors" class="dropdown-link-2 w-inline-block">
-                                    <div>Subcontractors</div>
-                                </a><a href="/solutions/solar-ev" class="dropdown-link-2 w-inline-block">
-                                    <div>Solar &amp; EV</div>
-                                </a><a href="/solutions/architects" class="dropdown-link-2 w-inline-block">
-                                    <div>Architects</div>
-                                </a></nav>
-                        </div>
-                        <div data-delay="100" data-hover="true" class="navsubmenu hdn w-dropdown">
-                            <div class="navsubmenu-toggle w-dropdown-toggle"><a
-                                    href="https:///www.permitflow.com/customer" class="submenulink">Solutions</a><img
-                                    loading="eager"
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/63997e6fdbae1ba060ed744b_submenu-arrow.svg"
-                                    alt="Submenu" class="submenuicon"/></div>
-                            <nav class="navsubmenu-list tp-0 solutions w-dropdown-list">
-                                <div class="submenu-main solutions">
-                                    <div class="navsubmenu-container solutions">
-                                        <div class="submenubox solutions"><a href="#"
-                                                                             class="navsubmenu-item w-inline-block">
-                                                <div class="navsubmenu-icon"><img loading="eager"
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6396bda4027db009752140e3_commercial.svg"
-                                                                                  alt="Commercial"/></div>
-                                                <div class="navsubmenutext">Home Builders</div>
-                                            </a><a href="/solutions/solar-ev" class="navsubmenu-item w-inline-block">
-                                                <div class="navsubmenu-icon"><img loading="eager"
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/655782c58653785537f634ca_icon_tasks.svg"
-                                                                                  alt=""/></div>
-                                                <div class="navsubmenutext">Solar &amp; EV</div>
-                                            </a><a href="#" class="navsubmenu-item w-inline-block">
-                                                <div class="navsubmenu-icon"><img loading="eager"
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6396bda4027db073ba2140f9_residential-alterations.svg"
-                                                                                  alt="Residential"/></div>
-                                                <div class="navsubmenutext">General Contractors</div>
-                                            </a><a href="#" class="navsubmenu-item w-inline-block">
-                                                <div class="navsubmenu-icon"><img loading="eager"
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/639988126c4ddcb054168bb9_management-menu.svg"
-                                                                                  alt="Management &amp; Monitoring"/>
-                                                </div>
-                                                <div class="navsubmenutext">Subcontractors</div>
-                                            </a><a href="#" class="navsubmenu-item w-inline-block">
-                                                <div class="navsubmenu-icon"><img loading="eager"
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/655782c5ad39a46b7362642f_icon_municipalities.svg"
-                                                                                  alt=""/></div>
-                                                <div class="navsubmenutext">Developers</div>
-                                            </a><a href="#" class="navsubmenu-item w-inline-block">
-                                                <div class="navsubmenu-icon"><img loading="eager"
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6396bda4fd907e8be97d4fd5_permit-data.svg"
-                                                                                  alt="Permit Data"/></div>
-                                                <div class="navsubmenutext">Architects</div>
-                                            </a></div>
-                                    </div>
-                                </div>
-                                <a href="#" class="w-dropdown-link">Link</a><a href="#" class="w-dropdown-link">Link
-                                    2</a><a href="/product" class="nav-link w-nav-link">Product</a><a href="/product"
-                                                                                                      class="nav-link w-nav-link">Product</a><a
-                                    href="/product" class="nav-link w-nav-link">Product</a></nav>
-                        </div>
-                        <div data-delay="100" data-hover="true" class="navsubmenu w-dropdown">
-                            <div class="navsubmenu-toggle w-dropdown-toggle"><a href="/resources" class="submenulink">Resources</a><img
-                                    loading="eager"
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/63997e6fdbae1ba060ed744b_submenu-arrow.svg"
-                                    alt="Submenu" class="submenuicon hide"/></div>
-                            <nav class="navsubmenu-list w-dropdown-list">
-                                <div class="submenu-main nav-top-border">
-                                    <div class="navsubmenu-container">
-                                        <div class="resources-menu-wrapper">
-                                            <div class="resources-menu-first">
-                                                <div class="resources-menu-title">Resource Center</div>
-                                                <div class="resources-menu-items">
-                                                    <div class="resources-menu-item local-permitting">
-                                                        <div class="resources-menu-item-bar"></div>
-                                                        <img loading="eager"
-                                                             src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/653384ab6047abfdf828725d_municipalities-icon.svg"
-                                                             alt="Municipal Guides"
-                                                             class="resources-menu-item-mobile-icon"/>
-                                                        <div class="resources-menu-item-text">Municipal Guides</div>
-                                                        <div class="resources-menu-item-trigger"><img loading="lazy"
-                                                                                                      src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/65339d8c32e997a1c53c5c53_ph_plus-bold.svg"
-                                                                                                      alt="Plus Icon Bold"
-                                                                                                      class="resources-menu-item-plus-icon"/><img
-                                                                loading="lazy"
-                                                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6533a1225661f381b6279abd_ph_minus-bold.svg"
-                                                                alt="Minus Bold"
-                                                                class="resources-menu-item-minus-icon"/></div>
-                                                        <img loading="lazy"
-                                                             src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                             alt="Blue Arrow" class="resources-menu-item-arrow"/>
-                                                        <div class="mobile-cards"></div>
-                                                        <a href="https://www.permitflow.com/category/municipal-guides"
-                                                           class="resources-menu-item-mobile-button w-inline-block">
-                                                            <div class="button-text">See all stories</div>
-                                                            <img loading="lazy"
-                                                                 src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                                 alt="Blue Arrow"/></a></div>
-                                                    <div class="resources-menu-item permit-basics">
-                                                        <div class="resources-menu-item-bar"></div>
-                                                        <img loading="eager"
-                                                             src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/653384aa5661f381b60b4691_permits-icon.svg"
-                                                             alt="Latest Permit Basics"
-                                                             class="resources-menu-item-mobile-icon"/>
-                                                        <div class="resources-menu-item-text">Permit Basics</div>
-                                                        <div class="resources-menu-item-trigger"><img loading="lazy"
-                                                                                                      src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/65339d8c32e997a1c53c5c53_ph_plus-bold.svg"
-                                                                                                      alt="Plus Icon Bold"
-                                                                                                      class="resources-menu-item-plus-icon"/><img
-                                                                loading="lazy"
-                                                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6533a1225661f381b6279abd_ph_minus-bold.svg"
-                                                                alt="Minus Bold"
-                                                                class="resources-menu-item-minus-icon"/></div>
-                                                        <img loading="lazy"
-                                                             src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                             alt="Blue Arrow" class="resources-menu-item-arrow"/>
-                                                        <div class="mobile-cards"></div>
-                                                        <a href="/category/permit-basics"
-                                                           class="resources-menu-item-mobile-button w-inline-block">
-                                                            <div class="button-text">See all stories</div>
-                                                            <img loading="lazy"
-                                                                 src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                                 alt="Blue Arrow"/></a></div>
-                                                    <div class="resources-menu-item news">
-                                                        <div class="resources-menu-item-bar"></div>
-                                                        <img loading="eager"
-                                                             src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/653384aa694c7dea02b51c47_news-icon.svg"
-                                                             alt="Latest Permit News"
-                                                             class="resources-menu-item-mobile-icon"/>
-                                                        <div class="resources-menu-item-text">News</div>
-                                                        <div class="resources-menu-item-trigger"><img loading="lazy"
-                                                                                                      src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/65339d8c32e997a1c53c5c53_ph_plus-bold.svg"
-                                                                                                      alt="Plus Icon Bold"
-                                                                                                      class="resources-menu-item-plus-icon"/><img
-                                                                loading="lazy"
-                                                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6533a1225661f381b6279abd_ph_minus-bold.svg"
-                                                                alt="Minus Bold"
-                                                                class="resources-menu-item-minus-icon"/></div>
-                                                        <img loading="lazy"
-                                                             src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                             alt="Blue Arrow" class="resources-menu-item-arrow"/>
-                                                        <div class="mobile-cards"></div>
-                                                        <a href="/category/news"
-                                                           class="resources-menu-item-mobile-button w-inline-block">
-                                                            <div class="button-text">See all stories</div>
-                                                            <img loading="lazy"
-                                                                 src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                                 alt="Blue Arrow"/></a></div>
-                                                    <div class="resources-menu-item news">
-                                                        <div class="resources-menu-item-bar"></div>
-                                                        <a href="https://construction.autodesk.com/workflows/construction-software-integrations/permitflow/?_ga=2.21112760.2025641461.1702568311-119143743.1695945952"
-                                                           class="link-block w-inline-block"><img width="Auto"
-                                                                                                  loading="lazy"
-                                                                                                  alt="Autodesk Logo"
-                                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6581a833fcf8ca3e38286fdf_Autodesk%20logo.svg.webp"
-                                                                                                  class="image-3"/><img
-                                                                loading="lazy"
-                                                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                                alt="Blue Arrow" class="resources-menu-item-arrow"/></a>
-                                                    </div>
-                                                    <div class="resources-menu-item news">
-                                                        <div class="resources-menu-item-bar"></div>
-                                                        <a href="https://support.procore.com/integrations/permitflow"
-                                                           class="link-block-2 w-inline-block"><img loading="lazy"
-                                                                                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6581a83311dd62f1f64b77bf_Procore%20logo.webp"
-                                                                                                    alt="Procore Logo"
-                                                                                                    class="image-3"/><img
-                                                                loading="lazy"
-                                                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                                alt="Blue Arrow" class="resources-menu-item-arrow"/></a>
-                                                    </div>
-                                                    <div class="resources-menu-separator"></div>
-                                                    <div class="resources-menu-topics-mobile">
-                                                        <div data-delay="0" data-hover="false"
-                                                             class="menu-accordion w-dropdown">
-                                                            <div class="dropdown-toggle w-dropdown-toggle">
-                                                                <div class="resources-menu-topics-mobile-header">
-                                                                    <div>Popular Topics</div>
-                                                                    <img loading="lazy"
-                                                                         src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6533a8bfc0e36a70448e10e6_ph_plus-circle-fill.svg"
-                                                                         alt="Plus-Circle Icon Fill"
-                                                                         class="resources-menu-topics-mobile-plus-icon"/><img
-                                                                        loading="lazy"
-                                                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6533a8c0cf6e222fd91d33fc_ph_minus-circle-fill.svg"
-                                                                        alt="Minus-Circle Icon Fill"
-                                                                        class="resources-menu-topics-mobile-minus-icon"/>
-                                                                </div>
-                                                            </div>
-                                                            <nav class="menu-dropdown-list w-dropdown-list">
-                                                                <div
-                                                                    class="resources-menu-topics-mobile-list-wrapper w-dyn-list">
-                                                                    <div role="list"
-                                                                         class="resources-menu-topics-mobile-list w-dyn-items">
-                                                                        <div role="listitem"
-                                                                             class="resources-menu-topics-mobile-list-item w-dyn-item">
-                                                                            <a href="/topic/paving"
-                                                                               class="resources-menu-topics-mobile-list-item-link">Paving</a>
-                                                                        </div>
-                                                                        <div role="listitem"
-                                                                             class="resources-menu-topics-mobile-list-item w-dyn-item">
-                                                                            <a href="/topic/pools"
-                                                                               class="resources-menu-topics-mobile-list-item-link">Pools</a>
-                                                                        </div>
-                                                                        <div role="listitem"
-                                                                             class="resources-menu-topics-mobile-list-item w-dyn-item">
-                                                                            <a href="/topic/roofing"
-                                                                               class="resources-menu-topics-mobile-list-item-link">Roofing</a>
-                                                                        </div>
-                                                                        <div role="listitem"
-                                                                             class="resources-menu-topics-mobile-list-item w-dyn-item">
-                                                                            <a href="/topic/expedity"
-                                                                               class="resources-menu-topics-mobile-list-item-link">Expediting</a>
-                                                                        </div>
-                                                                        <div role="listitem"
-                                                                             class="resources-menu-topics-mobile-list-item w-dyn-item">
-                                                                            <a href="/topic/safety"
-                                                                               class="resources-menu-topics-mobile-list-item-link">Safety</a>
-                                                                        </div>
-                                                                        <div role="listitem"
-                                                                             class="resources-menu-topics-mobile-list-item w-dyn-item">
-                                                                            <a href="/topic/codes"
-                                                                               class="resources-menu-topics-mobile-list-item-link">Codes</a>
-                                                                        </div>
-                                                                        <div role="listitem"
-                                                                             class="resources-menu-topics-mobile-list-item w-dyn-item">
-                                                                            <a href="/topic/fees"
-                                                                               class="resources-menu-topics-mobile-list-item-link">Fees</a>
-                                                                        </div>
-                                                                        <div role="listitem"
-                                                                             class="resources-menu-topics-mobile-list-item w-dyn-item">
-                                                                            <a href="/topic/residential"
-                                                                               class="resources-menu-topics-mobile-list-item-link">Residential</a>
-                                                                        </div>
-                                                                        <div role="listitem"
-                                                                             class="resources-menu-topics-mobile-list-item w-dyn-item">
-                                                                            <a href="/topic/commercial"
-                                                                               class="resources-menu-topics-mobile-list-item-link">Commercial</a>
-                                                                        </div>
-                                                                        <div role="listitem"
-                                                                             class="resources-menu-topics-mobile-list-item w-dyn-item">
-                                                                            <a href="/topic/violations"
-                                                                               class="resources-menu-topics-mobile-list-item-link">Violations</a>
-                                                                        </div>
-                                                                        <div role="listitem"
-                                                                             class="resources-menu-topics-mobile-list-item w-dyn-item">
-                                                                            <a href="/topic/zoning"
-                                                                               class="resources-menu-topics-mobile-list-item-link">Zoning</a>
-                                                                        </div>
-                                                                        <div role="listitem"
-                                                                             class="resources-menu-topics-mobile-list-item w-dyn-item">
-                                                                            <a href="/topic/inspections"
-                                                                               class="resources-menu-topics-mobile-list-item-link">Inspections</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </nav>
-                                                        </div>
-                                                    </div>
-                                                    <div class="resources-menu-separator mobile"></div>
-                                                    <div data-delay="0" data-hover="false"
-                                                         class="resources-menu-dropdown w-dropdown">
-                                                        <div class="resources-menu-dropdown-toggle w-dropdown-toggle">
-                                                            <div
-                                                                class="resources-menu-dropdown-arrow w-icon-dropdown-toggle"></div>
-                                                            <div>View Resources by State</div>
-                                                        </div>
-                                                        <nav class="dropdown-list w-dropdown-list">
-                                                            <div class="w-dyn-list">
-                                                                <div role="list"
-                                                                     class="resources-menu-dropdown-list w-dyn-items">
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/alabama"
-                                                                            class="resources-menu-dropdown-link">Alabama</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/alaska"
-                                                                            class="resources-menu-dropdown-link">Alaska</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/arizona"
-                                                                            class="resources-menu-dropdown-link">Arizona</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/arkansas"
-                                                                            class="resources-menu-dropdown-link">Arkansas</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/california"
-                                                                            class="resources-menu-dropdown-link">California</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/colorado"
-                                                                            class="resources-menu-dropdown-link">Colorado</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/connecticut"
-                                                                            class="resources-menu-dropdown-link">Connecticut</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/delaware"
-                                                                            class="resources-menu-dropdown-link">Delaware</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/district-of-columbia"
-                                                                            class="resources-menu-dropdown-link">District
-                                                                            of Columbia</a></div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/florida"
-                                                                            class="resources-menu-dropdown-link">Florida</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/georgia"
-                                                                            class="resources-menu-dropdown-link">Georgia</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/hawaii"
-                                                                            class="resources-menu-dropdown-link">Hawaii</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/idaho"
-                                                                            class="resources-menu-dropdown-link">Idaho</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/illinois"
-                                                                            class="resources-menu-dropdown-link">Illinois</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/indiana"
-                                                                            class="resources-menu-dropdown-link">Indiana</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/iowa"
-                                                                            class="resources-menu-dropdown-link">Iowa</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/kansas"
-                                                                            class="resources-menu-dropdown-link">Kansas</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/kentucky"
-                                                                            class="resources-menu-dropdown-link">Kentucky</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/louisiana"
-                                                                            class="resources-menu-dropdown-link">Louisiana</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/maine"
-                                                                            class="resources-menu-dropdown-link">Maine</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/maryland"
-                                                                            class="resources-menu-dropdown-link">Maryland</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/massachusetts"
-                                                                            class="resources-menu-dropdown-link">Massachusetts</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/michigan"
-                                                                            class="resources-menu-dropdown-link">Michigan</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/minnesota"
-                                                                            class="resources-menu-dropdown-link">Minnesota</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/mississippi"
-                                                                            class="resources-menu-dropdown-link">Mississippi</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/missouri"
-                                                                            class="resources-menu-dropdown-link">Missouri</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/montana"
-                                                                            class="resources-menu-dropdown-link">Montana</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/nebraska"
-                                                                            class="resources-menu-dropdown-link">Nebraska</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/nevada"
-                                                                            class="resources-menu-dropdown-link">Nevada</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/new-hampshire"
-                                                                            class="resources-menu-dropdown-link">New
-                                                                            Hampshire</a></div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/new-jersey"
-                                                                            class="resources-menu-dropdown-link">New
-                                                                            Jersey</a></div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/new-mexico"
-                                                                            class="resources-menu-dropdown-link">New
-                                                                            Mexico</a></div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/new-york"
-                                                                            class="resources-menu-dropdown-link">New
-                                                                            York</a></div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/north-carolina"
-                                                                            class="resources-menu-dropdown-link">North
-                                                                            Carolina</a></div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/north-dakota"
-                                                                            class="resources-menu-dropdown-link">North
-                                                                            Dakota</a></div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/ohio"
-                                                                            class="resources-menu-dropdown-link">Ohio</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/oklahoma"
-                                                                            class="resources-menu-dropdown-link">Oklahoma</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/oregon"
-                                                                            class="resources-menu-dropdown-link">Oregon</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/pennsylvania"
-                                                                            class="resources-menu-dropdown-link">Pennsylvania</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/rhode-island"
-                                                                            class="resources-menu-dropdown-link">Rhode
-                                                                            Island</a></div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/south-carolina"
-                                                                            class="resources-menu-dropdown-link">South
-                                                                            Carolina</a></div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/south-dakota"
-                                                                            class="resources-menu-dropdown-link">South
-                                                                            Dakota</a></div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/tennessee"
-                                                                            class="resources-menu-dropdown-link">Tennessee</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/texas"
-                                                                            class="resources-menu-dropdown-link">Texas</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/utah"
-                                                                            class="resources-menu-dropdown-link">Utah</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/vermont"
-                                                                            class="resources-menu-dropdown-link">Vermont</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/virginia"
-                                                                            class="resources-menu-dropdown-link">Virginia</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/washington"
-                                                                            class="resources-menu-dropdown-link">Washington</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/west-virginia"
-                                                                            class="resources-menu-dropdown-link">West
-                                                                            Virginia</a></div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/wisconsin"
-                                                                            class="resources-menu-dropdown-link">Wisconsin</a>
-                                                                    </div>
-                                                                    <div role="listitem" class="w-dyn-item"><a
-                                                                            href="/state/wyoming"
-                                                                            class="resources-menu-dropdown-link">Wyoming</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </nav>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div id="w-node-_596d8689-597b-bef7-be32-d412a4d5e05c-a4d5df77"
-                                                 class="resources-menu-second">
-                                                <div class="resources-menu-second-block builder-stories">
-                                                    <div class="resources-menu-second-header"><img width="56"
-                                                                                                   height="56"
-                                                                                                   alt="Helmet Icon"
-                                                                                                   src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/653385d665a382945f360f7d_helmet-icon.svg"
-                                                                                                   loading="eager"
-                                                                                                   id="w-node-_596d8689-597b-bef7-be32-d412a4d5e05f-a4d5df77"/>
-                                                        <div class="resources-menu-title">Municipal Guides</div>
-                                                        <a href="https://www.permitflow.com/category/municipal-guides"
-                                                           class="resources-menu-see-all-link w-inline-block">
-                                                            <div>See all guides</div>
-                                                            <img loading="lazy"
-                                                                 src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                                 alt="Blue Arrow"/></a></div>
-                                                    <div class="resources-menu-second-content">
-                                                        <div class="collection-list-wrapper-2 w-dyn-list">
-                                                            <div role="list"
-                                                                 class="resources-menu-card-list w-dyn-items">
-                                                                <div role="listitem" class="w-dyn-item"><a
-                                                                        href="/blog/el-paso-building-permit"
-                                                                        class="resources-menu-card w-inline-block"><img
-                                                                            alt="El Paso building permit" loading="lazy"
-                                                                            src="" class="resources-menu-card-image"/>
-                                                                        <div class="resources-menu-card-label">Post
-                                                                        </div>
-                                                                        <h3 class="resources-menu-card-title">
-                                                                            Heading</h3>
-                                                                        <div class="resources-menu-card-author">
-                                                                            <div
-                                                                                class="resources-menu-card-author-photo">
-                                                                                <img alt="Britain Jacobson"
-                                                                                     loading="lazy" src=""/></div>
-                                                                            <div
-                                                                                class="resources-menu-card-author-name">
-                                                                                This is some text inside of a div block.
-                                                                            </div>
-                                                                        </div>
-                                                                    </a></div>
-                                                                <div role="listitem" class="w-dyn-item"><a
-                                                                        href="/blog/fort-worth-building-permit"
-                                                                        class="resources-menu-card w-inline-block"><img
-                                                                            alt="Fort Worth building permit"
-                                                                            loading="lazy" src=""
-                                                                            class="resources-menu-card-image"/>
-                                                                        <div class="resources-menu-card-label">Post
-                                                                        </div>
-                                                                        <h3 class="resources-menu-card-title">
-                                                                            Heading</h3>
-                                                                        <div class="resources-menu-card-author">
-                                                                            <div
-                                                                                class="resources-menu-card-author-photo">
-                                                                                <img alt="Francis Thumpasery"
-                                                                                     loading="lazy" src=""/></div>
-                                                                            <div
-                                                                                class="resources-menu-card-author-name">
-                                                                                This is some text inside of a div block.
-                                                                            </div>
-                                                                        </div>
-                                                                    </a></div>
-                                                                <div role="listitem" class="w-dyn-item"><a
-                                                                        href="/blog/idaho-building-permit"
-                                                                        class="resources-menu-card w-inline-block"><img
-                                                                            alt="Idaho Building Permit Guidelines"
-                                                                            loading="lazy" src=""
-                                                                            class="resources-menu-card-image"/>
-                                                                        <div class="resources-menu-card-label">Post
-                                                                        </div>
-                                                                        <h3 class="resources-menu-card-title">
-                                                                            Heading</h3>
-                                                                        <div class="resources-menu-card-author">
-                                                                            <div
-                                                                                class="resources-menu-card-author-photo">
-                                                                                <img alt="Britain Jacobson"
-                                                                                     loading="lazy" src=""/></div>
-                                                                            <div
-                                                                                class="resources-menu-card-author-name">
-                                                                                This is some text inside of a div block.
-                                                                            </div>
-                                                                        </div>
-                                                                    </a></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="resources-menu-second-block how-to-guides">
-                                                    <div class="resources-menu-second-header"><img width="56"
-                                                                                                   id="w-node-_596d8689-597b-bef7-be32-d412a4d5e07a-a4d5df77"
-                                                                                                   alt="Tasks Icon"
-                                                                                                   src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/653384aae7a6dfe0f17af464_tasks-icon.svg"
-                                                                                                   loading="eager"/>
-                                                        <div class="resources-menu-title">Latest How-To-Guides</div>
-                                                        <a href="https://www.permitflow.com/category/news"
-                                                           class="resources-menu-see-all-link w-inline-block">
-                                                            <div>See all stories</div>
-                                                            <img loading="lazy"
-                                                                 src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                                 alt="Blue Arrow"/></a></div>
-                                                    <div class="resources-menu-second-content"></div>
-                                                </div>
-                                                <div class="resources-menu-second-block local-permitting">
-                                                    <div class="resources-menu-second-header"><img width="56"
-                                                                                                   id="w-node-_596d8689-597b-bef7-be32-d412a4d5e084-a4d5df77"
-                                                                                                   alt="Municipal Guides"
-                                                                                                   src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/653384ab6047abfdf828725d_municipalities-icon.svg"
-                                                                                                   loading="eager"/>
-                                                        <div class="resources-menu-title">Municipal Guides</div>
-                                                        <a href="https://www.permitflow.com/category/municipal-guides"
-                                                           class="resources-menu-see-all-link w-inline-block">
-                                                            <div>See all guides</div>
-                                                            <img loading="lazy"
-                                                                 src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                                 alt="Blue Arrow"/></a></div>
-                                                    <div class="resources-menu-second-content"></div>
-                                                </div>
-                                                <div class="resources-menu-second-block permit-basics">
-                                                    <div class="resources-menu-second-header"><img width="56"
-                                                                                                   id="w-node-_596d8689-597b-bef7-be32-d412a4d5e08e-a4d5df77"
-                                                                                                   alt="Latest Permit Basics"
-                                                                                                   src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/653384aa5661f381b60b4691_permits-icon.svg"
-                                                                                                   loading="eager"/>
-                                                        <div class="resources-menu-title">Latest Permit Basics</div>
-                                                        <a href="/category/permit-basics"
-                                                           class="resources-menu-see-all-link w-inline-block">
-                                                            <div>See all posts</div>
-                                                            <img loading="lazy"
-                                                                 src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                                 alt="Blue Arrow"/></a></div>
-                                                    <div class="resources-menu-second-content"></div>
-                                                </div>
-                                                <div class="resources-menu-second-block news">
-                                                    <div class="resources-menu-second-header"><img width="56"
-                                                                                                   id="w-node-_596d8689-597b-bef7-be32-d412a4d5e098-a4d5df77"
-                                                                                                   alt="Latest Permit News"
-                                                                                                   src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/653384aa694c7dea02b51c47_news-icon.svg"
-                                                                                                   loading="eager"/>
-                                                        <div class="resources-menu-title">Latest News</div>
-                                                        <a href="/category/news"
-                                                           class="resources-menu-see-all-link w-inline-block">
-                                                            <div>See all stories</div>
-                                                            <img loading="lazy"
-                                                                 src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                                                 alt="Blue Arrow"/></a></div>
-                                                    <div class="resources-menu-second-content"></div>
-                                                </div>
-                                                <div class="html-embed-6 w-embed w-script">
-                                                    <style type="text/css">
-
-                                                        .resources-menu-item:hover * {
-                                                            font-weight: 700;
-                                                        }
-
-                                                        .resources-menu-item:hover .resources-menu-item-bar {
-                                                            width: 2px;
-                                                        }
-
-                                                        .resources-menu-item:hover .resources-menu-item-arrow {
-                                                            transform: translateX(4px);
-                                                        }
-
-
-                                                        .resources-menu-dropdown-toggle.w--open {
-                                                            border-width: 2px 2px 0 2px;
-                                                        }
-
-                                                        @media screen and (max-width: 991px) {
-
-                                                            .resources-menu-item {
-                                                                max-height: 35px;
-                                                            }
-
-                                                            .resources-menu-item.active {
-                                                                max-height: none;
-                                                            }
-
-                                                            .resources-menu-item .resources-menu-item-plus-icon {
-                                                                display: block;
-                                                            }
-
-                                                            .resources-menu-item .resources-menu-item-minus-icon {
-                                                                display: none;
-                                                            }
-
-                                                            .resources-menu-item.active .resources-menu-item-plus-icon {
-                                                                display: none;
-                                                            }
-
-                                                            .resources-menu-item.active .resources-menu-item-minus-icon {
-                                                                display: block;
-                                                            }
-
-                                                        }
-
-
-                                                    </style>
-
-
-                                                    <script>
-
-                                                        const resourcesMenuItems = Array.from(document.querySelectorAll('.resources-menu-item'));
-
-                                                        if (window.matchMedia("(min-width: 992px)").matches) {
-                                                            console.log('desktop');
-                                                            const resourcesMenuSecondBlocks = Array.from(document.querySelectorAll('.resources-menu-second-block'));
-
-                                                            resourcesMenuItems.forEach((item) => {
-
-                                                                const itemOrder = resourcesMenuItems.indexOf(item);
-
-                                                                item.addEventListener('click', () => {
-
-                                                                    resourcesMenuItems.forEach((item) => {
-                                                                        item.classList.remove('active');
-                                                                    });
-
-                                                                    resourcesMenuItems[itemOrder].classList.add('active');
-
-                                                                    resourcesMenuSecondBlocks.forEach((menuCard) => {
-                                                                        menuCard.classList.remove('visible');
-                                                                    });
-
-                                                                    resourcesMenuSecondBlocks[itemOrder].classList.add('visible');
-
-                                                                });
-
-                                                            });
-
-                                                        } else {
-                                                            console.log('mobile');
-
-                                                            resourcesMenuItems.forEach((item) => {
-                                                                item.addEventListener('click', () => {
-                                                                    item.classList.toggle('active');
-                                                                });
-
-                                                            });
-                                                        }
-
-
-                                                    </script>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="resources-menu-topics-bar">
-                                        <div class="resources-menu-topics-label">
-                                            <div class="resources-menu-topics-label-bg">
-                                                <div class="resources-menu-topics-label-text">Popular Topics</div>
-                                            </div>
-                                        </div>
-                                        <div class="resources-menu-topics-list-wrapper w-dyn-list">
-                                            <div role="list" class="resources-menu-topics-list w-dyn-items">
-                                                <div role="listitem" class="resources-menu-topics-item w-dyn-item"><a
-                                                        href="/topic/paving" class="resources-menu-topics-item-link">Paving</a>
-                                                </div>
-                                                <div role="listitem" class="resources-menu-topics-item w-dyn-item"><a
-                                                        href="/topic/pools" class="resources-menu-topics-item-link">Pools</a>
-                                                </div>
-                                                <div role="listitem" class="resources-menu-topics-item w-dyn-item"><a
-                                                        href="/topic/roofing" class="resources-menu-topics-item-link">Roofing</a>
-                                                </div>
-                                                <div role="listitem" class="resources-menu-topics-item w-dyn-item"><a
-                                                        href="/topic/expedity" class="resources-menu-topics-item-link">Expediting</a>
-                                                </div>
-                                                <div role="listitem" class="resources-menu-topics-item w-dyn-item"><a
-                                                        href="/topic/safety" class="resources-menu-topics-item-link">Safety</a>
-                                                </div>
-                                                <div role="listitem" class="resources-menu-topics-item w-dyn-item"><a
-                                                        href="/topic/codes" class="resources-menu-topics-item-link">Codes</a>
-                                                </div>
-                                                <div role="listitem" class="resources-menu-topics-item w-dyn-item"><a
-                                                        href="/topic/fees"
-                                                        class="resources-menu-topics-item-link">Fees</a></div>
-                                                <div role="listitem" class="resources-menu-topics-item w-dyn-item"><a
-                                                        href="/topic/residential"
-                                                        class="resources-menu-topics-item-link">Residential</a></div>
-                                                <div role="listitem" class="resources-menu-topics-item w-dyn-item"><a
-                                                        href="/topic/commercial"
-                                                        class="resources-menu-topics-item-link">Commercial</a></div>
-                                                <div role="listitem" class="resources-menu-topics-item w-dyn-item"><a
-                                                        href="/topic/violations"
-                                                        class="resources-menu-topics-item-link">Violations</a></div>
-                                                <div role="listitem" class="resources-menu-topics-item w-dyn-item"><a
-                                                        href="/topic/zoning" class="resources-menu-topics-item-link">Zoning</a>
-                                                </div>
-                                                <div role="listitem" class="resources-menu-topics-item w-dyn-item"><a
-                                                        href="/topic/inspections"
-                                                        class="resources-menu-topics-item-link">Inspections</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </nav>
+                            </a>
+                            <!-- More menu items would go here -->
                         </div>
                     </div>
-                    <div class="headerrightbox"><a href="https://app.permitflow.com" class="headbtn-outline w-button">Sign
-                            In</a><a href="https://www.permitflow.com/contact-us"
-                                     class="headbtn-fill ml20 lp-pe w-button">Talk to an Expert</a></div>
-                </nav>
-                <div class="menuiconbox w-nav-button"><img loading="eager"
-                                                           src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3ac02b567c_navmobileicon.svg"
-                                                           alt="Mobile Icon" class="menuicon"/><img loading="eager"
-                                                                                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a2eb82b56c5_closeicon.svg"
-                                                                                                    alt="Close"
-                                                                                                    class="menucloseicon"/>
+                </div>
+
+                <div class="relative dropdown group">
+                    <button class="flex items-center space-x-1 text-dark hover:text-primary transition-colors">
+                        <span>Solutions</span>
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-2 w-60 bg-white shadow-lg rounded-md py-4 px-6 z-10">
+                        <div class="space-y-3">
+                            <div class="text-sm font-medium text-gray-500">Who we serve</div>
+                            <a href="#" class="block text-dark hover:text-primary">Home Builders</a>
+                            <a href="#" class="block text-dark hover:text-primary">Developers</a>
+                            <a href="#" class="block text-dark hover:text-primary">General Contractors</a>
+                            <a href="#" class="block text-dark hover:text-primary">Subcontractors</a>
+                            <a href="#" class="block text-dark hover:text-primary">Solar & EV</a>
+                            <a href="#" class="block text-dark hover:text-primary">Architects</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative dropdown group">
+                    <button class="flex items-center space-x-1 text-dark hover:text-primary transition-colors">
+                        <span>Resources</span>
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-2 w-80 bg-white shadow-lg rounded-md py-4 px-6 z-10">
+                        <!-- Resource menu content -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="#" class="px-5 py-2 border border-primary text-primary rounded-md hover:bg-primary hover:text-white transition-colors">
+                    Sign In
+                </a>
+                <a href="#" class="px-5 py-2 bg-primary text-white rounded-md hover:bg-dark transition-colors">
+                    Talk to an Expert
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Mobile Navigation (Hidden by default) -->
+    <div id="mobile-nav" class="mobile-nav fixed inset-0 bg-white z-50 lg:hidden pt-20 px-4 overflow-y-auto">
+        <div class="space-y-6 pb-8">
+            <div class="border-b pb-4">
+                <button class="flex items-center justify-between w-full text-left py-2">
+                    <span class="font-medium">Product</span>
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div class="hidden pl-4 pt-2 pb-1 space-y-2">
+                    <!-- Mobile submenu items -->
+                </div>
+            </div>
+
+            <!-- More mobile menu items -->
+
+            <div class="pt-4 space-y-4">
+                <a href="#" class="block w-full px-5 py-3 text-center border border-primary text-primary rounded-md hover:bg-primary hover:text-white transition-colors">
+                    Sign In
+                </a>
+                <a href="#" class="block w-full px-5 py-3 text-center bg-primary text-white rounded-md hover:bg-dark transition-colors">
+                    Talk to an Expert
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Close Button -->
+        <button id="close-mobile-menu" class="absolute top-4 right-4">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="bg-dark text-white pt-32 pb-20 md:pt-40 md:pb-36 relative overflow-hidden">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="max-w-xl">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">Fast, Easy Permitting</h1>
+                <p class="text-lg md:text-xl mb-8 opacity-90 fade-in-up">
+                    Permit software for developers, builders, contractors, and more. PermitFlow handles the permit preparation, submission, and tracking nationwide — across all municipalities you're building in.
+                </p>
+                <a href="#" class="inline-flex items-center px-8 py-4 bg-secondary text-dark rounded-md font-semibold hover:bg-white transition-colors fade-in-up">
+                    <span>Talk to an Expert</span>
+                    <svg class="ml-2 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+            <div class="relative hidden lg:block">
+                <!-- Placeholder for video/image -->
+                <div class="bg-primary bg-opacity-20 rounded-lg h-96 w-full"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Decorative elements -->
+    <div class="hero-diagonal"></div>
+</section>
+
+<!-- Client Logos Section -->
+<section class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4 md:px-8">
+        <h3 class="text-center text-lg font-medium mb-10">Trusted by the nation's leading construction teams</h3>
+
+        <!-- Logo Carousel -->
+        <div class="overflow-hidden relative">
+            <div class="flex logo-carousel py-4">
+                <!-- Duplicate these for continuous scroll effect -->
+                <div class="flex items-center space-x-16 mx-8">
+                    <img src="/api/placeholder/150/50" alt="Client logo" class="h-10 w-auto">
+                    <img src="/api/placeholder/150/50" alt="Client logo" class="h-8 w-auto">
+                    <img src="/api/placeholder/150/50" alt="Client logo" class="h-10 w-auto">
+                    <img src="/api/placeholder/150/50" alt="Client logo" class="h-7 w-auto">
+                    <img src="/api/placeholder/150/50" alt="Client logo" class="h-9 w-auto">
+                    <img src="/api/placeholder/150/50" alt="Client logo" class="h-8 w-auto">
+                </div>
+                <div class="flex items-center space-x-16 mx-8">
+                    <img src="/api/placeholder/150/50" alt="Client logo" class="h-10 w-auto">
+                    <img src="/api/placeholder/150/50" alt="Client logo" class="h-8 w-auto">
+                    <img src="/api/placeholder/150/50" alt="Client logo" class="h-10 w-auto">
+                    <img src="/api/placeholder/150/50" alt="Client logo" class="h-7 w-auto">
+                    <img src="/api/placeholder/150/50" alt="Client logo" class="h-9 w-auto">
+                    <img src="/api/placeholder/150/50" alt="Client logo" class="h-8 w-auto">
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="hero-section">
-    <div class="container tabpadding w-container">
-        <div class="heroblock">
-            <div
-                data-poster-url="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/63899897444706ebf780c30b_permit-poster-00001.jpg"
-                data-video-urls="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/63899897444706ebf780c30b_permit-transcode.mp4,https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/63899897444706ebf780c30b_permit-transcode.webm"
-                data-autoplay="true" data-loop="true" data-wf-ignore="true"
-                class="videobox w-background-video w-background-video-atom">
-                <video id="3c78b28d-b22b-1c22-42cc-d16d91253e70-video" autoplay="" loop=""
-                       style="background-image:url(&quot;https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/63899897444706ebf780c30b_permit-poster-00001.jpg&quot;)"
-                       muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
-                    <source
-                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/63899897444706ebf780c30b_permit-transcode.mp4"
-                        data-wf-ignore="true"/>
-                    <source
-                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/63899897444706ebf780c30b_permit-transcode.webm"
-                        data-wf-ignore="true"/>
-                </video>
-            </div>
-            <div class="herocontent"><h1 data-w-id="68857ad2-3e52-3dff-2ef0-77a253fe7444"
-                                         style="opacity:0;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                         class="h1 white">Fast, Easy Permitting</h1>
-                <p data-w-id="f85a14a2-e72b-8cfa-f7c3-088efa9b2f92"
-                   style="opacity:0;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                   class="hero-p">Permit software for developers, builders, contractors, and more. PermitFlow handles
-                    the permit preparation, submission, and tracking nationwide <strong>—</strong> across all
-                    municipalities you’re building in.</p><a data-w-id="b06dc213-3aa6-02a0-3468-9339afe63292"
-                                                             style="background-color:rgb(248,174,11);opacity:0;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                                             href="https://www.permitflow.com/contact-us"
-                                                             class="secondarybtn w-inline-block">
-                    <div class="btntext">Talk to an Expert</div>
-                    <img
-                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a568f2b5689_arrow.svg"
-                        loading="eager"
-                        style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                        alt="Arrow" class="arrowimg"/></a></div>
-            <div class="box1382"></div>
-        </div>
-    </div>
-    <div class="lineblock">
-        <div class="linecol">
-            <div class="linebox"></div>
-            <div class="linebox"></div>
-        </div>
-        <div class="linecol linecol2 heroline"><img
-                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a776b2b569e_herobgicon.svg"
-                loading="eager" alt="Herobg"/></div>
-    </div>
-</div>
-<div class="base-section">
-    <div class="logo-carousel-wrapper">
-        <div class="body2r white center bm-48 bold no-fadein">Trusted by the nation’s leading construction teams</div>
-        <div class="w-embed">
-            <style>
-                @keyframes scroll {
-                    from {
-                        transform: translateX(0);
-                    }
-                    to {
-                        transform: translateX(calc(-100% - 6rem));
-                    }
-                }
+</section>
 
-                .scroll {
-                    animation: scroll 40s linear infinite;
-                }
+<!-- Value Proposition Section -->
+<section class="py-20 md:py-28">
+    <div class="container mx-auto px-4 md:px-8">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 fade-in-up">Why builders permit with PermitFlow</h2>
 
-                @keyframes mob-scroll {
-                    from {
-                        transform: translateX(0);
-                    }
-                    to {
-                        transform: translateX(calc(-100% - 3rem));
-                    }
-                }
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Value Card 1 -->
+            <div class="fade-in-up">
+                <div class="bg-light rounded-lg overflow-hidden mb-6 h-60 relative">
+                    <img src="/api/placeholder/400/320" alt="Permits Faster & Easier" class="w-full h-full object-cover">
+                    <div class="absolute bottom-4 left-4">
+                        <img src="/api/placeholder/60/60" alt="Icon" class="w-14 h-14 rounded-lg">
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold mb-3">01. Permits Faster & Easier</h3>
+                <p class="text-gray-600">
+                    We take paperwork and submittals off your hands. We combine software and local knowledge to prepare requirement ready, error-free applications that save your team hours of time.
+                </p>
+            </div>
 
-                .mob-scroll {
-                    animation: scroll 40s linear infinite;
-                }
+            <!-- Value Card 2 -->
+            <div class="fade-in-up" style="transition-delay: 0.1s;">
+                <div class="bg-light rounded-lg overflow-hidden mb-6 h-60 relative">
+                    <img src="/api/placeholder/400/320" alt="Team of Local Experts" class="w-full h-full object-cover">
+                    <div class="absolute bottom-4 left-4">
+                        <img src="/api/placeholder/60/60" alt="Icon" class="w-14 h-14 rounded-lg">
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold mb-3">02. Team of Local Experts</h3>
+                <p class="text-gray-600">
+                    We are a team of highly experienced permitting professionals with years of collective experience. Our deep, local municipal expertise ensures your project is permitted smoothly.
+                </p>
+            </div>
 
-            </style>
-        </div>
-        <div class="marquee desktop">
-            <div class="marquee-content scroll"><img width="198" loading="eager" alt=""
-                                                     src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ae48813c00c815116d_Lennar.png"
-                                                     class="marquee-image"/><img width="141" loading="eager" alt=""
-                                                                                 src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088aef9e6af987b5d2e30_premier.png"
-                                                                                 class="marquee-image"/><img width="222"
-                                                                                                             loading="eager"
-                                                                                                             alt=""
-                                                                                                             src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088b06f5365d8a9ec1684_toll.png"
-                                                                                                             class="marquee-image rel-5"/><img
-                    width="103.5" loading="eager" alt=""
-                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ae4bad9e5593310c8a_m.png"
-                    class="marquee-image"/><img width="181" loading="eager" alt=""
-                                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0937398822daee30fc415_cushman.png"
-                                                class="marquee-image"/><img width="115.5" loading="eager" alt=""
-                                                                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ac20ba722b788db851_anthony.png"
-                                                                            class="marquee-image"/><img width="139"
-                                                                                                        loading="eager"
-                                                                                                        alt=""
-                                                                                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0c6617416e3ad5e7d6f49_JLL.png"
-                                                                                                        class="marquee-image"/><img
-                    width="144" loading="eager" alt=""
-                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ac43843b952c018e63_brookfield.png"
-                    class="marquee-image"/><img width="150" loading="eager" alt=""
-                                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088acf9e6af987b5d2d36_dicks.png"
-                                                class="marquee-image"/></div>
-            <div class="marquee-content scroll"><img width="198" loading="eager" alt=""
-                                                     src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ae48813c00c815116d_Lennar.png"
-                                                     class="marquee-image"/><img width="141" loading="eager" alt=""
-                                                                                 src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088aef9e6af987b5d2e30_premier.png"
-                                                                                 class="marquee-image"/><img width="222"
-                                                                                                             loading="eager"
-                                                                                                             alt=""
-                                                                                                             src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088b06f5365d8a9ec1684_toll.png"
-                                                                                                             class="marquee-image rel-5"/><img
-                    width="103.5" loading="eager" alt=""
-                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ae4bad9e5593310c8a_m.png"
-                    class="marquee-image"/><img width="181" loading="eager" alt=""
-                                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0937398822daee30fc415_cushman.png"
-                                                class="marquee-image"/><img width="115.5" loading="eager" alt=""
-                                                                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ac20ba722b788db851_anthony.png"
-                                                                            class="marquee-image"/><img width="139"
-                                                                                                        loading="eager"
-                                                                                                        alt=""
-                                                                                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0c6617416e3ad5e7d6f49_JLL.png"
-                                                                                                        class="marquee-image"/><img
-                    width="144" loading="eager" alt=""
-                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ac43843b952c018e63_brookfield.png"
-                    class="marquee-image"/><img width="150" loading="eager" alt=""
-                                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088acf9e6af987b5d2d36_dicks.png"
-                                                class="marquee-image"/></div>
-        </div>
-        <div class="marquee mob">
-            <div class="marquee-content mob-scroll"><img width="113" loading="eager" alt=""
-                                                         src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c09512c0f736411c8da6b2_mob-Lennar.png"
-                                                         class="marquee-image"/><img width="83.5" loading="eager" alt=""
-                                                                                     src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c09511fa8717275d983bf5_mob-premier.png"
-                                                                                     class="marquee-image"/><img
-                    width="126" loading="eager" alt=""
-                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c09511a339a9f20921a468_mob-toll.png"
-                    class="marquee-image rel-5"/><img width="59" loading="eager" alt=""
-                                                      src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0951071688167630f9be8_mob-m.png"
-                                                      class="marquee-image"/><img width="103" loading="eager" alt=""
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0950f99fb98a3c3faeec6_mob-cushman.png"
-                                                                                  class="marquee-image"/><img width="66"
-                                                                                                              loading="eager"
-                                                                                                              alt=""
-                                                                                                              src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0950f09f150c8c1cf612c_mob-anthony.png"
-                                                                                                              class="marquee-image"/><img
-                    width="92" loading="eager" alt=""
-                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0c6628e768b0519452e17_mob-JLL.png"
-                    class="marquee-image"/><img width="82.5" loading="eager" alt=""
-                                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0950f567d5be08e0f0f64_mob-brookfield.png"
-                                                class="marquee-image"/><img width="86" loading="eager" alt=""
-                                                                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0950efa8717275d983a6f_mob-dicks.png"
-                                                                            class="marquee-image"/></div>
-            <div class="marquee-content mob-scroll"><img width="113" loading="eager" alt=""
-                                                         src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c09512c0f736411c8da6b2_mob-Lennar.png"
-                                                         class="marquee-image"/><img width="83.5" loading="eager" alt=""
-                                                                                     src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c09511fa8717275d983bf5_mob-premier.png"
-                                                                                     class="marquee-image"/><img
-                    width="126" loading="eager" alt=""
-                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c09511a339a9f20921a468_mob-toll.png"
-                    class="marquee-image rel-5"/><img width="59" loading="eager" alt=""
-                                                      src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0951071688167630f9be8_mob-m.png"
-                                                      class="marquee-image"/><img width="103" loading="eager" alt=""
-                                                                                  src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0950f99fb98a3c3faeec6_mob-cushman.png"
-                                                                                  class="marquee-image"/><img width="66"
-                                                                                                              loading="eager"
-                                                                                                              alt=""
-                                                                                                              src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0950f09f150c8c1cf612c_mob-anthony.png"
-                                                                                                              class="marquee-image"/><img
-                    width="82.5" loading="eager" alt=""
-                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0950f567d5be08e0f0f64_mob-brookfield.png"
-                    class="marquee-image"/><img width="86" loading="eager" alt=""
-                                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c0950efa8717275d983a6f_mob-dicks.png"
-                                                class="marquee-image"/></div>
-        </div>
-    </div>
-    <div class="lineblock">
-        <div class="linecol">
-            <div class="linebox"></div>
-            <div class="linebox"></div>
-        </div>
-        <div class="linecol linecol2">
-            <div class="linebox backgroundnone"></div>
-            <div class="linebox"></div>
-        </div>
-    </div>
-</div>
-<div class="permit-section-copy">
-    <div class="container w-container">
-        <div class="permitmain"><h2 data-w-id="519e7966-068a-93bd-eccb-f91c1d75f863"
-                                    style="opacity:0;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                    class="h1 permith1">Why builders permit with PermitFlow</h2>
-            <div data-w-id="a3aa4aae-7004-ac22-c2fe-85e4a398f0e2" class="permitbox">
-                <div data-w-id="62d5d4fd-914a-c661-9c44-eff5a3544cb4" class="permititem">
-                    <div class="permitthumb permitthumbone"><img
-                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a1fd22b568f_permits-faster-easier.webp"
-                            loading="lazy" width="340" alt="Permits Faster &amp; Easier" class="imagecover"/><img
-                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a543a2b567d_your-permits.svg"
-                            loading="lazy" alt="Your Permits" class="yourpermitimg"/></div>
-                    <div class="body3b pb12">01. Permits Faster &amp; Easier</div>
-                    <p class="permit-p">We take paperwork and submittals off your hands. We combine software and local
-                        knowledge to prepare requirement ready, error-free applications that save your team hours of
-                        time and shorten municipal review cycles so you can get to construction faster.</p></div>
-                <div data-w-id="41658015-b8c5-0567-7e43-ffca4c073762" class="permititem permititemone">
-                    <div class="permitthumb permitthumbtwo"><img
-                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a52ab2b5697_team-of-local-experts.webp"
-                            loading="lazy" alt="Team of Local Experts" width="340" class="imagecover"/><img
-                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a58d92b5683_amanda-bake.webp"
-                            loading="lazy" width="158" height="Auto" alt="Amanda" class="amandabakeimg _100"/></div>
-                    <div class="body3b pb12">02. Team of Local Experts</div>
-                    <p class="permit-p">We are a team of highly experienced permitting professionals with years of
-                        collective experience. Our deep, local municipal expertise ensures your project is permitted as
-                        smoothly as possible.</p></div>
-                <div data-w-id="9b70c078-2cc3-56f0-cd2e-c29b70ce9957" class="permititem">
-                    <div class="permitthumb permitthumbthree"><img
-                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6396b84e027db0619220d85f_permit-in-one-place.webp"
-                            loading="lazy" alt="Building Permit" width="288.5" class="imagecover"/><img
-                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6396b6de2721b30a5b8d7c6e_building-permit.webp"
-                            loading="lazy" alt="Building Permit" width="160" class="building-permit"/></div>
-                    <div class="body3b pb12">03. Permit in One Place</div>
-                    <p class="permit-p">Submit, track, and pull permits all in one platform and avoid deciphering
-                        municipal websites. Collaborate with your architects, contractors, and stakeholders in
-                        PermitFlow to increase project velocity and transparency.</p></div>
-                <div data-w-id="cfff4a88-ceb7-050f-b510-37d86bfa7053" class="permititem">
-                    <div class="permitthumb permitthumbfour"><img
-                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a79d72b56a2_free-quote.webp"
-                            loading="lazy" alt="Quote" width="340" class="imagecover"/><img
-                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a74242b567e_san-francisco.webp"
-                            loading="lazy" width="179" alt="CA" class="caimg"/><img
-                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa2762b567b_austin.webp"
-                            loading="eager" width="179" alt="TX" class="tximg"/></div>
-                    <div class="body3b pb12">04. Nationwide Coverage</div>
-                    <p class="permit-p">With our nationwide coverage, we can help you with permits in a single
-                        municipality or across multiple states. Whether your business is just starting out or scaling
-                        quickly, we’re here to partner with you each step of the way.</p></div>
+            <!-- Value Card 3 -->
+            <div class="fade-in-up" style="transition-delay: 0.2s;">
+                <div class="bg-light rounded-lg overflow-hidden mb-6 h-60 relative">
+                    <img src="/api/placeholder/400/320" alt="Permit in One Place" class="w-full h-full object-cover">
+                    <div class="absolute bottom-4 left-4">
+                        <img src="/api/placeholder/60/60" alt="Icon" class="w-14 h-14 rounded-lg">
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold mb-3">03. Permit in One Place</h3>
+                <p class="text-gray-600">
+                    Submit, track, and pull permits all in one platform and avoid deciphering municipal websites. Collaborate with your architects, contractors, and stakeholders.
+                </p>
+            </div>
+
+            <!-- Value Card 4 -->
+            <div class="fade-in-up" style="transition-delay: 0.3s;">
+                <div class="bg-light rounded-lg overflow-hidden mb-6 h-60 relative">
+                    <img src="/api/placeholder/400/320" alt="Nationwide Coverage" class="w-full h-full object-cover">
+                    <div class="absolute bottom-4 left-4">
+                        <img src="/api/placeholder/60/60" alt="Icon" class="w-14 h-14 rounded-lg">
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold mb-3">04. Nationwide Coverage</h3>
+                <p class="text-gray-600">
+                    With our nationwide coverage, we can help you with permits in a single municipality or across multiple states. Whether starting out or scaling quickly, we're here to partner with you.
+                </p>
             </div>
         </div>
     </div>
-    <div class="lineblock">
-        <div class="linecol">
-            <div class="linebox liteblue"></div>
-            <div class="linebox liteblue"></div>
+</section>
+
+<!-- How it Works Section -->
+<section id="how-it-works" class="py-20 bg-light">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">How it works</h2>
+            <p class="text-xl text-gray-600 fade-in-up">Our streamlined, digitized process makes permitting faster, easier, and all in one place.</p>
         </div>
-        <div class="linecol linecol2">
-            <div class="linebox liteblue"></div>
-            <div class="linebox liteblue"></div>
-        </div>
-    </div>
-</div>
-<div id="Howitworks" class="howitworks-section">
-    <div class="container w-container">
-        <div class="howitworks">
-            <div class="howitworks-head"><h2 data-w-id="0512a01f-4785-cf42-5793-f01c7e8b375a"
-                                             style="opacity:0;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                             class="h1 mb24">How it works</h2>
-                <div data-w-id="9c6e3e50-d8cf-cd57-55ac-a7bc9ee21226"
-                     style="opacity:0;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                     class="body2r">Our streamlined, digitized process makes permitting faster, easier, and all in one
-                    place.
+
+        <!-- Steps Navigation -->
+        <div class="hidden md:flex justify-between mb-12 border-b border-gray-200 relative">
+            <div class="progress-step active flex-1 pb-3 relative cursor-pointer" data-step="1">
+                <div class="flex flex-col items-center">
+                    <div class="text-sm font-medium text-gray-500">Step 1</div>
+                    <div class="step-text font-medium">Request a Free Quote</div>
                 </div>
+                <div class="progress-bar absolute bottom-0 left-0 right-0"></div>
             </div>
-            <div class="slidermain">
-                <div class="slidertopbox">
-                    <div class="slidertopitem">
-                        <div class="body4b">Step 1</div>
-                        <div class="slidertext">Request a Free Quote</div>
-                        <div data-slick-index="0" class="progressbarslider"></div>
-                    </div>
-                    <div class="slidertopitem">
-                        <div class="body4b">Step 2</div>
-                        <div class="slidertext">Prepare Application</div>
-                        <div data-slick-index="1" class="progressbarslider"></div>
-                    </div>
-                    <div class="slidertopitem">
-                        <div class="body4b">Step 3</div>
-                        <div class="slidertext">Submit</div>
-                        <div data-slick-index="2" class="progressbarslider"></div>
-                    </div>
-                    <div class="slidertopitem">
-                        <div class="body4b">Step 4</div>
-                        <div class="slidertext">Tracking</div>
-                        <div data-slick-index="3" class="progressbarslider"></div>
-                    </div>
-                    <div class="slidertopitem">
-                        <div class="body4b">Step 5</div>
-                        <div class="slidertext">Comments &amp; Corrections</div>
-                        <div data-slick-index="4" class="progressbarslider"></div>
-                    </div>
-                    <div class="slidertopitem">
-                        <div class="body4b">Step 6</div>
-                        <div class="slidertext">Approvals</div>
-                        <div data-slick-index="5" class="progressbarslider"></div>
-                    </div>
+
+            <div class="progress-step flex-1 pb-3 relative cursor-pointer" data-step="2">
+                <div class="flex flex-col items-center">
+                    <div class="text-sm font-medium text-gray-500">Step 2</div>
+                    <div class="step-text font-medium">Prepare Application</div>
                 </div>
-                <div class="slider-block">
-                    <div class="slider singleitem">
-                        <div class="slideritem">
-                            <div class="slideritemcol">
-                                <div class="slidercontent">
-                                    <div class="stepmobiletext">Step 1</div>
-                                    <div class="subheading-one pb8">Request a Free Quote</div>
-                                    <p class="slider-p">Complete our simple project intake form and receive an accurate
-                                        price quote with estimated approval timelines. Planning, building, or addendums
-                                        we’re here to help you permit at any phase of your project.</p><a
-                                        data-w-id="47344d52-0a5d-0787-bd95-623c2f30dcf8"
-                                        href="https://www.permitflow.com/product" class="link-btn w-inline-block">
-                                        <div>Learn more</div>
-                                        <img
-                                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                            loading="eager"
-                                            style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                            alt="Blue Arrow" class="bluearrow"/></a></div>
-                            </div>
-                            <div class="slideritemcol slideritemcol2">
-                                <div class="sliderimg"><img
-                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a79d72b56a2_free-quote.webp"
-                                        loading="lazy" width="530" alt="Quote" class="image-cta-bg"/></div>
-                            </div>
-                        </div>
-                        <div class="slideritem">
-                            <div class="slideritemcol">
-                                <div class="slidercontent">
-                                    <div class="stepmobiletext">Step 2</div>
-                                    <div class="subheading-one pb8">Prepare Application</div>
-                                    <p class="slider-p">Prepare the necessary permit application requirements all in
-                                        PermitFlow. We’ve digitized the process to minimize errors, save time, and
-                                        reduce your costs.</p><a data-w-id="0a03b9d4-3634-dbce-38fd-d2d005f9ae74"
-                                                                 href="https://www.permitflow.com/product"
-                                                                 class="link-btn w-inline-block">
-                                        <div>Learn more</div>
-                                        <img
-                                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                            loading="eager"
-                                            style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                            alt="Blue Arrow" class="bluearrow"/></a></div>
-                            </div>
-                            <div class="slideritemcol slideritemcol2 one">
-                                <div class="sliderimg"><img
-                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa0422b5698_permit-application.webp"
-                                        loading="lazy" alt="Permit Application Flow" width="530" class="image-cta-bg"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slideritem">
-                            <div class="slideritemcol">
-                                <div class="slidercontent">
-                                    <div class="stepmobiletext">Step 3</div>
-                                    <div class="subheading-one pb8">Submit</div>
-                                    <p class="slider-p">Easily submit your application via PermitFlow and avoid having
-                                        to decipher municipal websites. We handle the local nuances of submittals
-                                        whether it’s online or in-person.</p><a
-                                        data-w-id="bbbb80b3-80bb-e8e2-f6bc-16e952d38219"
-                                        href="https://www.permitflow.com/product" class="link-btn w-inline-block">
-                                        <div>Learn more</div>
-                                        <img
-                                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                            loading="eager"
-                                            style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                            alt="Blue Arrow" class="bluearrow"/></a></div>
-                            </div>
-                            <div class="slideritemcol slideritemcol2 two">
-                                <div class="sliderimg"><img
-                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a545e2b56ba_application-forms.webp"
-                                        loading="lazy" alt="Submit" width="530" class="image-cta-bg"/></div>
-                            </div>
-                        </div>
-                        <div class="slideritem">
-                            <div class="slideritemcol">
-                                <div class="slidercontent">
-                                    <div class="stepmobiletext">Step 4</div>
-                                    <div class="subheading-one pb8">Tracking</div>
-                                    <p class="slider-p">Track your submittals and be notified instantly with any
-                                        municipal responses. We monitor and provide updated review time estimates to
-                                        ensure transparency and predictability for your project.</p><a
-                                        data-w-id="0ec1d440-03b9-597f-d268-f807ad16e95b"
-                                        href="https://www.permitflow.com/product" class="link-btn w-inline-block">
-                                        <div>Learn more</div>
-                                        <img
-                                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                            loading="eager"
-                                            style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                            alt="Blue Arrow" class="bluearrow"/></a></div>
-                            </div>
-                            <div class="slideritemcol slideritemcol2 three">
-                                <div class="sliderimg"><img
-                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6396ba6ad716ff5208965d27_building-permit-application.webp"
-                                        loading="lazy" alt="Tracking" width="530" class="image-cta-bg"/></div>
-                            </div>
-                        </div>
-                        <div class="slideritem">
-                            <div class="slideritemcol">
-                                <div class="slidercontent">
-                                    <div class="stepmobiletext">Step 5</div>
-                                    <div class="subheading-one pb8">Comments &amp; Corrections</div>
-                                    <p class="slider-p">Municipal comments and corrections are accessible directly in
-                                        our permitting platform for your team to triage, address, and resubmit all in
-                                        one place – maximizing speed and accountability.</p><a
-                                        data-w-id="26a35c59-b013-751a-6d1b-3dd531a557f9"
-                                        href="https://www.permitflow.com/product" class="link-btn w-inline-block">
-                                        <div>Learn more</div>
-                                        <img
-                                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                            loading="eager"
-                                            style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                            alt="Blue Arrow" class="bluearrow"/></a></div>
-                            </div>
-                            <div class="slideritemcol slideritemcol2 four">
-                                <div class="sliderimg"><img
-                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a4eb22b569f_comments.webp"
-                                        loading="lazy" alt="Comments &amp; Corrections" width="530"
-                                        class="image-cta-bg"/></div>
-                            </div>
-                        </div>
-                        <div class="slideritem">
-                            <div class="slideritemcol">
-                                <div class="slidercontent">
-                                    <div class="stepmobiletext">Step 6</div>
-                                    <div class="subheading-one pb8">Approvals</div>
-                                    <p class="slider-p">Pay any remaining fees, receive your permit in hand, and get to
-                                        construction right away. It’s as simple as that.</p><a
-                                        data-w-id="eb929f5f-da32-f2dc-1252-6bf916051827"
-                                        href="https://www.permitflow.com/product" class="link-btn w-inline-block">
-                                        <div>Learn more</div>
-                                        <img
-                                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa6cf2b568d_blue-arrow.svg"
-                                            loading="eager"
-                                            style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                            alt="Blue Arrow" class="bluearrow"/></a></div>
-                            </div>
-                            <div class="slideritemcol slideritemcol2 five">
-                                <div class="sliderimg"><img
-                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6396bb9daa7b42400a436fa1_remaining-fees.webp"
-                                        loading="lazy" alt="Remaining Fees" width="530" class="image-cta-bg"/></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slidebluebox"></div>
+                <div class="progress-bar absolute bottom-0 left-0 right-0"></div>
+            </div>
+
+            <div class="progress-step flex-1 pb-3 relative cursor-pointer" data-step="3">
+                <div class="flex flex-col items-center">
+                    <div class="text-sm font-medium text-gray-500">Step 3</div>
+                    <div class="step-text font-medium">Submit</div>
                 </div>
+                <div class="progress-bar absolute bottom-0 left-0 right-0"></div>
+            </div>
+
+            <div class="progress-step flex-1 pb-3 relative cursor-pointer" data-step="4">
+                <div class="flex flex-col items-center">
+                    <div class="text-sm font-medium text-gray-500">Step 4</div>
+                    <div class="step-text font-medium">Tracking</div>
+                </div>
+                <div class="progress-bar absolute bottom-0 left-0 right-0"></div>
+            </div>
+
+            <div class="progress-step flex-1 pb-3 relative cursor-pointer" data-step="5">
+                <div class="flex flex-col items-center">
+                    <div class="text-sm font-medium text-gray-500">Step 5</div>
+                    <div class="step-text font-medium">Comments & Corrections</div>
+                </div>
+                <div class="progress-bar absolute bottom-0 left-0 right-0"></div>
+            </div>
+
+            <div class="progress-step flex-1 pb-3 relative cursor-pointer" data-step="6">
+                <div class="flex flex-col items-center">
+                    <div class="text-sm font-medium text-gray-500">Step 6</div>
+                    <div class="step-text font-medium">Approvals</div>
+                </div>
+                <div class="progress-bar absolute bottom-0 left-0 right-0"></div>
             </div>
         </div>
-    </div>
-</div>
-<div id="Permitflow" class="permitflow-section">
-    <div class="container w-container">
-        <div class="permitflowmain"><h2 data-w-id="d0a78360-71a8-a4f7-9ebf-974250b0dc07"
-                                        style="opacity:0;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                        class="h1 white mb75">Who is PermitFlow for?</h2>
-            <div data-w-id="d4844700-9b6b-d70b-e1db-cc553f24e44a" class="slidermain">
-                <div class="sliderpermitbox">
-                    <div class="sliderpermittopitem">
-                        <div class="slidertext slidepermitext">Developers &amp; Owners</div>
-                        <div data-slick-index="0" class="progressbar"></div>
+
+        <!-- Step Content (Only the active one is shown) -->
+        <div class="steps-container">
+            <!-- Step 1 -->
+            <div class="step-content active" data-step="1">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="md:hidden text-sm font-medium text-primary mb-1">Step 1</div>
+                        <h3 class="text-2xl font-bold mb-4">Request a Free Quote</h3>
+                        <p class="text-gray-600 mb-6">
+                            Complete our simple project intake form and receive an accurate price quote with estimated approval timelines. Planning, building, or addendums we're here to help you permit at any phase of your project.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+                            <span>Learn more</span>
+                            <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
                     </div>
-                    <div class="sliderpermittopitem">
-                        <div class="slidertext slidepermitext">Contractors &amp; Subcontractors</div>
-                        <div data-slick-index="1" class="progressbar"></div>
-                    </div>
-                    <div class="sliderpermittopitem">
-                        <div class="slidertext slidepermitext">Architects &amp; Engineers</div>
-                        <div data-slick-index="2" class="progressbar"></div>
-                    </div>
-                    <div class="sliderpermittopitem">
-                        <div class="slidertext slidepermitext">Permit Expediters</div>
-                        <div data-slick-index="3" class="progressbar"></div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <img src="/api/placeholder/500/350" alt="Request a Free Quote" class="w-full h-auto rounded">
                     </div>
                 </div>
-                <div class="singlepermitslider singlepermititem">
-                    <div data-w-id="d4844700-9b6b-d70b-e1db-cc553f24e471" class="slideritem slideritemone">
-                        <div class="slideritemcol slidpermitcolone">
-                            <div class="slidpermitdesc">
-                                <div class="subheading-one white pb16">Developers &amp; Owners</div>
-                                <p class="slidpermit-p">We’re here to help whether you’re working on a single community
-                                    or a nationwide rollout. We combine local expertise and software to ensure you have
-                                    predictability and transparency on requirements, costs, and timelines. We permit
-                                    faster so you can build faster.</p><a
-                                    data-w-id="323b6b48-923f-11d0-fb14-e98ce3a95090"
-                                    style="background-color:rgb(10,122,255)"
-                                    href="https://www.permitflow.com/contact-us" class="primarybtn w-inline-block">
-                                    <div>Talk to an Expert</div>
-                                    <img
-                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a4fee2b569d_white-arrow.svg"
-                                        loading="eager"
-                                        style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                        alt="White Arrow" class="arrowimg"/></a></div>
-                        </div>
-                        <div class="slideritemcol slidpermitcoltwo">
-                            <div class="slidpermitimg"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a62c92b56c8_developers-owners.webp"
-                                    loading="lazy" width="768"
-                                    sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 768px"
-                                    alt="Developers &amp; Owners"
-                                    srcset="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a62c92b56c8_developers-owners-p-500.webp 500w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a62c92b56c8_developers-owners-p-800.webp 800w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a62c92b56c8_developers-owners-p-1080.webp 1080w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a62c92b56c8_developers-owners.webp 1536w"/>
-                            </div>
-                        </div>
+            </div>
+
+            <!-- Step 2 (Hidden initially) -->
+            <div class="step-content hidden" data-step="2">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="md:hidden text-sm font-medium text-primary mb-1">Step 2</div>
+                        <h3 class="text-2xl font-bold mb-4">Prepare Application</h3>
+                        <p class="text-gray-600 mb-6">
+                            Prepare the necessary permit application requirements all in PermitFlow. We've digitized the process to minimize errors, save time, and reduce your costs.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+                            <span>Learn more</span>
+                            <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
                     </div>
-                    <div data-w-id="2e48f1d7-ac86-b8c8-d18b-a75d8096a443" class="slideritem slideritemone">
-                        <div class="slideritemcol slidpermitcolone">
-                            <div class="slidpermitdesc">
-                                <div class="subheading-one white pb16">Contractors &amp; Subcontractors</div>
-                                <p class="slidpermit-p">Focus on the project at hand and provide your customers a
-                                    streamlined experience. We take permit paperwork and submittals off your hands and
-                                    offer tools to get customer information easily while keeping them updated on permit
-                                    progress.</p><a data-w-id="2e48f1d7-ac86-b8c8-d18b-a75d8096a44a"
-                                                    style="background-color:rgb(10,122,255)"
-                                                    href="https://www.permitflow.com/contact-us"
-                                                    class="primarybtn w-inline-block">
-                                    <div>Talk to an Expert</div>
-                                    <img
-                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a4fee2b569d_white-arrow.svg"
-                                        loading="eager"
-                                        style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                        alt="White Arrow" class="arrowimg"/></a></div>
-                        </div>
-                        <div class="slideritemcol slidpermitcoltwo">
-                            <div class="slidpermitimg"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a76102b56ca_contractors.webp"
-                                    loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 770px"
-                                    width="770" alt="Contractors &amp; Subcontractors"
-                                    srcset="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a76102b56ca_contractors-p-500.webp 500w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a76102b56ca_contractors-p-800.webp 800w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a76102b56ca_contractors-p-1080.webp 1080w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a76102b56ca_contractors.webp 1540w"/>
-                            </div>
-                        </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <img src="/api/placeholder/500/350" alt="Prepare Application" class="w-full h-auto rounded">
                     </div>
-                    <div data-w-id="7fa734fa-546a-41d4-71f8-3109b6087dfc" class="slideritem slideritemone">
-                        <div class="slideritemcol slidpermitcolone">
-                            <div class="slidpermitdesc">
-                                <div class="subheading-one white pb16">Architects &amp; Engineers</div>
-                                <p class="slidpermit-p">Free up your time and leave permit research and applications to
-                                    us. Submit and track permits while receiving and responding to municipal comments
-                                    all in PermitFlow. Triage and address plan comments in a single platform for faster
-                                    resubmittals.</p><a data-w-id="7fa734fa-546a-41d4-71f8-3109b6087e03"
-                                                        style="background-color:rgb(10,122,255)"
-                                                        href="https://www.permitflow.com/contact-us"
-                                                        class="primarybtn w-inline-block">
-                                    <div>Talk to an Expert</div>
-                                    <img
-                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a4fee2b569d_white-arrow.svg"
-                                        loading="eager"
-                                        style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                        alt="White Arrow" class="arrowimg"/></a></div>
-                        </div>
-                        <div class="slideritemcol slidpermitcoltwo">
-                            <div class="slidpermitimg"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35ae8a32b56c6_architects.webp"
-                                    loading="lazy" sizes="(max-width: 767px) 100vw, 719px" width="719"
-                                    alt="Architects &amp; Engineers"
-                                    srcset="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35ae8a32b56c6_architects-p-500.webp 500w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35ae8a32b56c6_architects-p-800.webp 800w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35ae8a32b56c6_architects-p-1080.webp 1080w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35ae8a32b56c6_architects.webp 1438w"/>
-                            </div>
-                        </div>
+                </div>
+            </div>
+
+            <!-- Steps 3-6 would follow the same pattern -->
+        </div>
+
+        <!-- Mobile Steps Navigation -->
+        <div class="flex justify-between mt-8 md:hidden">
+            <button class="slider-control prev-step" aria-label="Previous step">
+                <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            <button class="slider-control next-step" aria-label="Next step">
+                <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Target Audience Section -->
+<section class="py-20 bg-dark text-white">
+    <div class="container mx-auto px-4 md:px-8">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 fade-in-up">Who is PermitFlow for?</h2>
+
+        <!-- Audience Navigation -->
+        <div class="hidden md:flex justify-between mb-8 border-b border-gray-700 relative">
+            <div class="audience-tab active flex-1 pb-3 relative cursor-pointer" data-audience="1">
+                <div class="text-center">
+                    <div class="audience-text font-medium">Developers & Owners</div>
+                </div>
+                <div class="progress-bar absolute bottom-0 left-0 right-0"></div>
+            </div>
+
+            <div class="audience-tab flex-1 pb-3 relative cursor-pointer" data-audience="2">
+                <div class="text-center">
+                    <div class="audience-text font-medium">Contractors & Subcontractors</div>
+                </div>
+                <div class="progress-bar absolute bottom-0 left-0 right-0"></div>
+            </div>
+
+            <div class="audience-tab flex-1 pb-3 relative cursor-pointer" data-audience="3">
+                <div class="text-center">
+                    <div class="audience-text font-medium">Architects & Engineers</div>
+                </div>
+                <div class="progress-bar absolute bottom-0 left-0 right-0"></div>
+            </div>
+
+            <div class="audience-tab flex-1 pb-3 relative cursor-pointer" data-audience="4">
+                <div class="text-center">
+                    <div class="audience-text font-medium">Permit Expediters</div>
+                </div>
+                <div class="progress-bar absolute bottom-0 left-0 right-0"></div>
+            </div>
+        </div>
+
+        <!-- Audience Content -->
+        <div class="audience-container">
+            <!-- Audience 1 -->
+            <div class="audience-content active" data-audience="1">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="md:hidden text-sm font-medium text-primary mb-1">Audience</div>
+                        <h3 class="text-2xl font-bold mb-4">Developers & Owners</h3>
+                        <p class="text-gray-300 mb-6">
+                            We're here to help whether you're working on a single community or a nationwide rollout. We combine local expertise and software to ensure you have predictability and transparency on requirements, costs, and timelines. We permit faster so you can build faster.
+                        </p>
+                        <a href="#" class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-md font-medium hover:bg-blue-600 transition-colors">
+                            <span>Talk to an Expert</span>
+                            <svg class="ml-2 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
                     </div>
-                    <div data-w-id="b729c6f5-9943-581d-d2b7-178a2453e092" class="slideritem slideritemone">
-                        <div class="slideritemcol slidpermitcolone">
-                            <div class="slidpermitdesc">
-                                <div class="subheading-one white pb16">Permit Expediters</div>
-                                <p class="slidpermit-p">Digitize and automate your day to day permit operations to
-                                    reduce duplicative and manual work. We offer dedicated workflows to support your
-                                    business, while providing project management features to manage stakeholders,
-                                    documents, and action items.</p><a data-w-id="b729c6f5-9943-581d-d2b7-178a2453e099"
-                                                                       style="background-color:rgb(10,122,255)"
-                                                                       href="https://www.permitflow.com/contact-us"
-                                                                       class="primarybtn w-inline-block">
-                                    <div>Talk to an Expert</div>
-                                    <img
-                                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a4fee2b569d_white-arrow.svg"
-                                        loading="eager"
-                                        style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                        alt="White Arrow" class="arrowimg"/></a></div>
+                    <div class="rounded-lg overflow-hidden">
+                        <img src="/api/placeholder/600/400" alt="Developers & Owners" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audience 2-4 would follow the same pattern (hidden initially) -->
+        </div>
+
+        <!-- Mobile Audience Navigation -->
+        <div class="flex justify-between mt-8 md:hidden">
+            <button class="slider-control prev-audience" aria-label="Previous audience">
+                <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            <button class="slider-control next-audience" aria-label="Next audience">
+                <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Services Offered Section -->
+<section class="py-20">
+    <div class="container mx-auto px-4 md:px-8">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 fade-in-up">What do we offer?</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <!-- Column 1 -->
+            <div class="fade-in-up">
+                <h3 class="text-xl font-semibold mb-6 text-dark">Software Solutions</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                            <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
                         </div>
-                        <div class="slideritemcol slidpermitcoltwo">
-                            <div class="slidpermitimg"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a2fb42b56c9_expediters.webp"
-                                    loading="lazy" sizes="(max-width: 767px) 100vw, 724px" width="724"
-                                    alt="Permit Expediters"
-                                    srcset="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a2fb42b56c9_expediters-p-500.webp 500w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a2fb42b56c9_expediters-p-800.webp 800w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a2fb42b56c9_expediters-p-1080.webp 1080w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a2fb42b56c9_expediters.webp 1448w"/>
-                            </div>
+                        <span class="ml-3 text-gray-700">ADU</span>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                            <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
                         </div>
+                        <span class="ml-3 text-gray-700">Hospitality & Restaurants</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-20 bg-light">
+    <div class="container mx-auto px-4 md:px-8">
+        <h2 class="text-4xl md:text-5xl font-bold mb-16 fade-in-up">What our users say</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg fade-in-up">
+                <div class="flex mb-4">
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                </div>
+                <p class="text-gray-700 mb-8">
+                    "It used to take 2-3 months to get a permit. PermitFlow cut that in half, plus their website handles all the permitting paperwork."
+                </p>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 overflow-hidden">
+                        <img src="/api/placeholder/48/48" alt="Customer" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <div class="flex items-center">
+                            <div class="h-px w-6 bg-gray-400 mr-2"></div>
+                            <div class="text-sm text-gray-500">Project Manager</div>
+                        </div>
+                        <div class="text-sm font-medium">General Contractor</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg fade-in-up" style="transition-delay: 0.1s;">
+                <div class="flex mb-4">
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                </div>
+                <p class="text-gray-700 mb-8">
+                    "I would be depressed if I lost PermitFlow. It is a platform that I depend on. I have it open daily and our whole team uses it to monitor projects."
+                </p>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 overflow-hidden">
+                        <img src="/api/placeholder/48/48" alt="Customer" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <div class="flex items-center">
+                            <div class="h-px w-6 bg-gray-400 mr-2"></div>
+                            <div class="text-sm text-gray-500">Ops Manager</div>
+                        </div>
+                        <div class="text-sm font-medium">General Contractor</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg fade-in-up" style="transition-delay: 0.2s;">
+                <div class="flex mb-4">
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                </div>
+                <p class="text-gray-700 mb-8">
+                    "My expediter went on vacation, leaving me empty-handed on a time-sensitive project. PermitFlow kept that project on track, and it's reliable and easy-to-use."
+                </p>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 overflow-hidden">
+                        <img src="/api/placeholder/48/48" alt="Customer" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <div class="flex items-center">
+                            <div class="h-px w-6 bg-gray-400 mr-2"></div>
+                            <div class="text-sm text-gray-500">Owner</div>
+                        </div>
+                        <div class="text-sm font-medium">General Contractor</div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="lineblock">
-        <div class="linecol">
-            <div class="linebox"></div>
-            <div class="linebox"></div>
+
+        <!-- Testimonial Controls (Mobile) -->
+        <div class="flex justify-center mt-10 md:hidden">
+            <button class="slider-control prev-testimonial mx-2" aria-label="Previous testimonial">
+                <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            <button class="slider-control next-testimonial mx-2" aria-label="Next testimonial">
+                <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+            </button>
         </div>
-        <div class="linecol linecol2">
-            <div class="linebox backgroundnone"></div>
-            <div class="linebox"></div>
-        </div>
     </div>
-</div>
-<div class="offer-section">
-    <div class="container w-container">
-        <div class="offermain"><h2 data-w-id="aedd9de1-482e-df44-c1ef-f43ec1eb6b76"
-                                   style="opacity:0;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                                   class="h2 mb118">What do we offer?</h2>
-            <div class="offerrow">
-                <div id="w-node-_893cbac1-5250-55e2-4749-d4cd26a3728d-5dd524ac"
-                     data-w-id="893cbac1-5250-55e2-4749-d4cd26a3728d"
-                     style="opacity:0;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                     class="offeritem">
-                    <div class="offersubtitle">Software Solutions</div>
-                    <ul role="list" class="offerlist w-list-unstyled">
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" width="18" alt="Right"/></div>
-                            <div class="offerlisttext">Expediting</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Permit Research</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Application &amp; Submittals</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Approval Tracking &amp; Municipal Comments</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Management &amp; Expirations</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Permit Data</div>
-                        </li>
-                    </ul>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 relative">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="bg-primary rounded-lg overflow-hidden shadow-xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="relative p-8 lg:p-12">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-600 rounded-bl-full opacity-20"></div>
+                    <div class="relative z-10">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Experience a 60% faster time to permit with PermitFlow</h2>
+                        <a href="#" class="inline-flex items-center px-8 py-4 bg-secondary text-dark rounded-md font-semibold hover:bg-white transition-colors">
+                            <span>Talk to an Expert</span>
+                            <svg class="ml-2 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <div id="w-node-_4644edbd-7236-04e3-5041-025319f70a65-5dd524ac"
-                     data-w-id="4644edbd-7236-04e3-5041-025319f70a65"
-                     style="opacity:0;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                     class="offeritem">
-                    <div class="offersubtitle">Permits</div>
-                    <ul role="list" class="offerlist w-list-unstyled">
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Building Permits</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Construction Permits</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Mechanical Permits</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Electrical Permits</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Plumbing Permits</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Project Types</div>
-                        </li>
-                    </ul>
-                </div>
-                <div id="w-node-_9099f483-d0a4-9be9-7fb2-6108daab3a72-5dd524ac"
-                     data-w-id="9099f483-d0a4-9be9-7fb2-6108daab3a72"
-                     style="opacity:0;-webkit-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 40px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                     class="offeritem">
-                    <div class="offersubtitle">Project Types</div>
-                    <ul role="list" class="offerlist w-list-unstyled">
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">New Construction</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Tenant Improvements</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Single &amp; Multi-Family Homes</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Roofing</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Signage</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">ADU</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Retail</div>
-                        </li>
-                        <li class="offerlistitem">
-                            <div class="righticon"><img
-                                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a3a972b56a0_righticon.svg"
-                                    loading="eager" alt="Right"/></div>
-                            <div class="offerlisttext">Hospitality &amp; Restaurants</div>
-                        </li>
-                    </ul>
+                <div class="hidden lg:block">
+                    <img src="/api/placeholder/600/400" alt="Building work" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </div>
-    <div class="lineblock-copy">
-        <div class="linecol line-w472">
-            <div class="linebox sky"></div>
-            <div class="linebox sky"></div>
-        </div>
-        <div class="linecol line-w604">
-            <div class="linebox sky"></div>
-            <div class="toolsline">
-                <div class="linebox sky"></div>
-                <div class="linebox sky"></div>
-                <div class="toplinebox clientlinesky"></div>
-                <div class="centerlinebox clientlinebottomsky"></div>
-                <div class="toplinebox clientlinesky top316"></div>
-                <div class="centerlinebox clientlinebottomsky top630"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="clients-section">
-    <div class="container overflowauto w-container">
-        <div class="clients-block small-padding-left"><h2 data-w-id="d046a0f8-c576-a329-64ac-38788bf8ee4e"
-                                                          class="h2 client-h2 full-width">What our users say</h2>
-            <div data-w-id="d046a0f8-c576-a329-64ac-38788bf8ee50" class="clientwrap w-dyn-list">
-                <div role="list" class="clientslider w-dyn-items w-row">
-                    <div role="listitem" class="clientsitem no-padding w-dyn-item w-col w-col-4">
-                        <div class="starrow say-star"><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/></div>
-                        <p class="client-p">It used to take 2-3 months to get a permit. PermitFlow cut that in half,
-                            plus their website handles all the permitting paperwork.</p>
-                        <div class="clientbox">
-                            <div class="clientimhbox"><img
-                                    src="https://cdn.prod.website-files.com/6388a089c0a35aafae2b5679/6388a089c0a35a961d2b5692_project-manager.png"
-                                    loading="eager" alt="Project Manager" class="imagecover"/></div>
-                            <div class="clientdesc">
-                                <div class="linetextbox">
-                                    <div class="linerow"></div>
-                                    <div class="linetext">Project Manager</div>
-                                </div>
-                                <div class="body3r clientbody">General Contractor</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div role="listitem" class="clientsitem no-padding w-dyn-item w-col w-col-4">
-                        <div class="starrow say-star"><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/></div>
-                        <p class="client-p">I would be depressed if I lost PermitFlow. It is a platform that I depend
-                            on. I have it open daily and our whole team uses it to monitor projects.</p>
-                        <div class="clientbox">
-                            <div class="clientimhbox"><img
-                                    src="https://cdn.prod.website-files.com/6388a089c0a35aafae2b5679/6388a089c0a35a961d2b5692_project-manager.png"
-                                    loading="eager" alt="Project Manager" class="imagecover"/></div>
-                            <div class="clientdesc">
-                                <div class="linetextbox">
-                                    <div class="linerow"></div>
-                                    <div class="linetext">Ops Manager</div>
-                                </div>
-                                <div class="body3r clientbody">General Contractor</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div role="listitem" class="clientsitem no-padding w-dyn-item w-col w-col-4">
-                        <div class="starrow say-star"><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/></div>
-                        <p class="client-p">My expediter went on vacation, leaving me empty-handed on a time-sensitive
-                            project. PermitFlow kept that project on track, and it’s reliable and easy-to-use.</p>
-                        <div class="clientbox">
-                            <div class="clientimhbox"><img
-                                    src="https://cdn.prod.website-files.com/6388a089c0a35aafae2b5679/6388a089c0a35a961d2b5692_project-manager.png"
-                                    loading="eager" alt="Project Manager" class="imagecover"/></div>
-                            <div class="clientdesc">
-                                <div class="linetextbox">
-                                    <div class="linerow"></div>
-                                    <div class="linetext">Owner</div>
-                                </div>
-                                <div class="body3r clientbody">General Contractor</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div role="listitem" class="clientsitem no-padding w-dyn-item w-col w-col-4">
-                        <div class="starrow say-star"><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/><img
-                                src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6389cbdd1b34fc80819d94e3_star.svg"
-                                loading="eager" alt="Star" class="staricon"/></div>
-                        <p class="client-p">PermitFlow kicked ass for us, getting a permit set issued in record time. It
-                            was a total win for us!</p>
-                        <div class="clientbox">
-                            <div class="clientimhbox"><img
-                                    src="https://cdn.prod.website-files.com/6388a089c0a35aafae2b5679/6388a089c0a35a961d2b5692_project-manager.png"
-                                    loading="eager" alt="Project Manager" class="imagecover"/></div>
-                            <div class="clientdesc">
-                                <div class="linetextbox">
-                                    <div class="linerow"></div>
-                                    <div class="linetext">Project Manager</div>
-                                </div>
-                                <div class="body3r clientbody">Real Estate Developer</div>
-                            </div>
-                        </div>
-                    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4 md:px-8">
+        <!-- Main Footer -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- Column 1: Logo and Social Links -->
+            <div>
+                <a href="#" class="inline-block mb-6">
+                    <img src="/api/placeholder/160/40" alt="PermitFlow" class="h-10">
+                </a>
+                <div class="flex space-x-4 mb-8">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+                        </svg>
+                    </a>
                 </div>
             </div>
+
+            <!-- Column 2: Product Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Product</h3>
+                <ul class="space-y-3">
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Permit Research</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Permit Preparation & Submittals</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Permit Management & Monitoring</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Permit Data</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Expediting</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Solutions Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Solutions</h3>
+                <ul class="space-y-3">
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Home Builders</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Developers</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">General Contractors</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Subcontractors</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Solar & EV</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Architects</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Resources & Company Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                <ul class="space-y-3 mb-6">
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Talk to Sales</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">News</a>
+                    </li>
+                </ul>
+
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="lineblock">
-        <div class="linecol line-w472">
-            <div class="linebox sky"></div>
-            <div class="linebox sky"></div>
-        </div>
-        <div class="linecol line-w604">
-            <div class="linebox sky"></div>
-            <div class="toolsline">
-                <div class="linebox sky"></div>
-                <div class="linebox sky"></div>
-                <div class="toplinebox clientlinesky"></div>
-                <div class="centerlinebox clientlinebottomsky"></div>
-                <div class="toplinebox clientlinesky top316"></div>
-                <div class="centerlinebox clientlinebottomsky top630"></div>
+
+        <!-- Footer Bottom: Copyright & Legal -->
+        <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                &copy; <span id="current-year"></span> PermitFlow. All Rights Reserved.
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Use</a>
+                <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
             </div>
         </div>
     </div>
-    <div class="lineblock">
-        <div class="linecol footlineone">
-            <div class="linebox skyline"></div>
-            <div class="linebox skyline"></div>
-        </div>
-        <div class="linecol footcoltwo">
-            <div class="linebox footlineboxone"></div>
-            <div class="footlinebox">
-                <div class="linebox skyline"></div>
-                <div class="linebox skyline"></div>
-                <div class="toplinebox"></div>
-                <div class="centerlinebox"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="preparepermit-section">
-    <div class="container mobilepadding w-container">
-        <div class="preparepermit-block">
-            <div data-w-id="9493ab4c-700e-9884-7bf9-7714485b59c8" class="prepareimg"><img
-                    src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa4752b56cc_bildingwork.webp"
-                    loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 940px"
-                    srcset="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa4752b56cc_bildingwork-p-500.webp 500w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa4752b56cc_bildingwork-p-800.webp 800w, https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa4752b56cc_bildingwork.webp 946w"
-                    alt="Building" class="imagecover"/>
-                <div class="preparebg"><img
-                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a30a42b56b2_preparebg.svg"
-                        loading="lazy" alt="Prepare" class="image-cta-bg"/></div>
-            </div>
-            <div class="preparedetail"><h2 data-w-id="9493ab4c-700e-9884-7bf9-7714485b59cd" class="h2 prepare-h2">
-                    Experience a 60% faster time to permit with PermitFlow</h2><a
-                    data-w-id="9493ab4c-700e-9884-7bf9-7714485b59d1" href="https://www.permitflow.com/contact-us"
-                    class="secondarybtn w-inline-block">
-                    <div class="btntext">Talk to an Expert</div>
-                    <img
-                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a568f2b5689_arrow.svg"
-                        loading="eager" alt="Arrow" class="arrowimg"/></a></div>
-        </div>
-    </div>
-    <div class="lineblock">
-        <div class="linecol footlineone">
-            <div class="linebox skyline"></div>
-            <div class="linebox skyline"></div>
-        </div>
-        <div class="linecol footcoltwo">
-            <div class="linebox footlineboxone"></div>
-            <div class="footlinebox">
-                <div class="linebox skyline"></div>
-                <div class="linebox skyline"></div>
-                <div class="toplinebox"></div>
-                <div class="toplinebox bottom"></div>
-                <div class="centerlinebox"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="footer">
-    <div class="container w-container">
-        <div class="footerblock">
-            <div class="footerleftbox"><a href="/" aria-current="page" class="footerlogo w-inline-block w--current"><img
-                        loading="eager"
-                        src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35abdef2b56b0_footer-logo.svg"
-                        alt="PermitFlow"/></a>
-                <div class="socialbox"><a href="https://www.linkedin.com/company/permitflow/" target="_blank"
-                                          class="socialicon w-inline-block"><img loading="eager"
-                                                                                 src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a30a42b56c7_linkedin.svg"
-                                                                                 alt="Linkedin"/></a><a
-                        href="https://twitter.com/permitflow?lang=en" target="_blank" class="socialicon w-inline-block"><img
-                            loading="eager"
-                            src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a92a42b56b8_twitter.svg"
-                            alt="Twitter"/></a><a href="https://www.instagram.com/permitflow/" target="_blank"
-                                                  class="socialicon w-inline-block"><img loading="eager"
-                                                                                         src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a5f912b56c1_instagram.svg"
-                                                                                         alt="Instagram"/></a><a
-                        href="https://www.youtube.com/channel/UCcPw5ma4OeZKCanODWpQiqg" target="_blank"
-                        class="socialicon w-inline-block"><img loading="eager"
-                                                               src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35ae33e2b56bf_youtube.svg"
-                                                               alt="Youtube"/></a></div>
-            </div>
-            <div class="footerrightbox">
-                <div class="footermenuitem footermenuone">
-                    <div class="footermenubox">
-                        <div class="body3b white pb14">Product</div>
-                        <ul role="list" class="footermenulist w-list-unstyled">
-                            <li class="menulistitem"><a href="/product" class="menulink">Permit Research</a></li>
-                            <li class="menulistitem"><a href="https://www.permitflow.com/product" class="menulink">Permit
-                                    Preparation &amp; Submittals</a></li>
-                            <li class="menulistitem"><a href="https://www.permitflow.com/product" class="menulink">Permit
-                                    Management &amp; Monitoring</a></li>
-                            <li class="menulistitem"><a href="https://www.permitflow.com/product" class="menulink">Permit
-                                    Data</a></li>
-                            <li class="menulistitem"><a href="https://www.permitflow.com/product" class="menulink">Expediting</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footermenubox hide">
-                        <div class="body3b white pb14">Who We Help</div>
-                        <ul role="list" class="footermenulist w-list-unstyled">
-                            <li class="menulistitem"><a href="#" class="menulink">Owners &amp; Developers</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Architects</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">General Contractors</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Subcontractors</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Permit Expediters</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footermenuitem footermenutwo">
-                    <div class="footermenubox">
-                        <div class="body3b white pb14">Solutions</div>
-                        <ul role="list" class="footermenulist w-list-unstyled">
-                            <li class="menulistitem"><a href="/solutions/home-builders" class="menulink">Home
-                                    Builders</a></li>
-                            <li class="menulistitem"><a href="/solutions/developers" class="menulink">Developers</a>
-                            </li>
-                            <li class="menulistitem"><a href="/solutions/general-contractors" class="menulink">General
-                                    Contractors</a></li>
-                            <li class="menulistitem"><a href="/solutions/subcontractors"
-                                                        class="menulink">Subcontractors</a></li>
-                            <li class="menulistitem"><a href="/solutions/solar-ev" class="menulink">Solar &amp; EV</a>
-                            </li>
-                            <li class="menulistitem"><a href="/solutions/architects" class="menulink">Architects</a>
-                            </li>
-                            <li class="menulistitem hdn"><a href="/customer#howitworks" class="menulink">How It
-                                    Works</a></li>
-                        </ul>
-                    </div>
-                    <div class="footermenubox hide">
-                        <div class="body3b white pb14">Permits</div>
-                        <ul role="list" class="footermenulist w-list-unstyled">
-                            <li class="menulistitem"><a href="#" class="menulink">Building Permits</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Mechanical Permits</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Electrical Permits</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Plumbing Permits</a></li>
-                        </ul>
-                    </div>
-                    <div class="footermenubox hide">
-                        <div class="body3b white pb14">Project Types</div>
-                        <ul role="list" class="footermenulist w-list-unstyled">
-                            <li class="menulistitem"><a href="#" class="menulink">New Construction</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Tenant Improvements</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Residential Alterations</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Single-Family Homes</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Multi-Family Homes</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Signage</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">ADU</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Retail</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Hospitality &amp; Restaurants</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footermenuitem">
-                    <div class="footermenubox hide">
-                        <div class="body3b white pb14">Company</div>
-                        <ul role="list" class="footermenulist w-list-unstyled">
-                            <li class="menulistitem"><a href="#" class="menulink">About Us</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Contact</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Careers</a></li>
-                        </ul>
-                    </div>
-                    <div class="footermenubox">
-                        <div class="body3b white pb14">Resources</div>
-                        <ul role="list" class="footermenulist w-list-unstyled">
-                            <li class="menulistitem"><a href="/contact-us" class="menulink">Talk to Sales</a></li>
-                            <li class="menulistitem"></li>
-                            <li class="menulistitem"><a href="/resources" class="menulink">Blog</a></li>
-                            <li class="menulistitem"><a href="/category/news" class="menulink">News</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footermenuitem">
-                    <div class="footermenubox hide">
-                        <div class="body3b white pb14">Company</div>
-                        <ul role="list" class="footermenulist w-list-unstyled">
-                            <li class="menulistitem"><a href="#" class="menulink">About Us</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Contact</a></li>
-                            <li class="menulistitem"><a href="#" class="menulink">Careers</a></li>
-                        </ul>
-                    </div>
-                    <div class="footermenubox">
-                        <div class="body3b white pb14">Company</div>
-                        <ul role="list" class="footermenulist w-list-unstyled">
-                            <li class="menulistitem"><a href="https://jobs.ashbyhq.com/permitflow" class="menulink">Careers</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="copyrightblock">
-            <div class="copyrightbox">
-                <div class="copyrighttext">©</div>
-                <div class="current-year"></div>
-                <div class="copyrighttext">PermitFlow. All Rights Reserved.</div>
-            </div>
-            <div class="policybox"><a href="https://www.permitflow.com/terms-and-conditions" class="privacylink">Terms
-                    of Use</a><a href="https://www.permitflow.com/privacy-policy" class="privacylink">Privacy Policy</a>
-            </div>
-        </div>
-    </div>
-    <div class="lineblock">
-        <div class="linecol footlineone">
-            <div class="linebox"></div>
-            <div class="linebox"></div>
-        </div>
-        <div class="linecol footcoltwo">
-            <div class="linebox footlineboxone"></div>
-            <div class="footlinebox">
-                <div class="linebox"></div>
-                <div class="linebox"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6388a088c0a35a9c812b566a"
-        type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-        crossorigin="anonymous"></script>
-<script src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/js/webflow.schunk.6ea5cfad930e1c85.js"
-        type="text/javascript"></script>
-<script src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/js/webflow.schunk.c2b2888ba9f8c172.js"
-        type="text/javascript"></script>
-<script src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/js/webflow.67d5b2d4.986766da055a29e4.js"
-        type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
-        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdn.jsdelivr.net/npm/infiniteslidev2/infiniteslidev2.min.js"></script>
+</footer>
+
+<!-- JavaScript for interactive elements -->
 <script>
-    $(document).ready(function () {
-        var root = location.protocol + '//' + location.host;
+    // Set current year in footer copyright
+    document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        $.get(root + "/menus/builder-stories", function (response) {
-            var $data = $(response);
-            var $data1 = $(response);
-            $('.resources-menu-second-block.builder-stories .resources-menu-second-content').html($data.filter('#menuload'));
-            $('.resources-menu-item.builder-stories .mobile-cards').html($data1.filter('#menuload'));
-            //console.log( $data.filter('#menuload') );
-        });
-
-        $.get(root + "/menus/faqs", function (response) {
-            var $data = $(response);
-            var $data1 = $(response);
-            $('.resources-menu-second-block.faqs .resources-menu-second-content').html($data.filter('#menuload'));
-            $('.resources-menu-item.faqs .mobile-cards').html($data1.filter('#menuload'));
-            //console.log( $data.filter('#menuload') );
-        });
-
-        $.get(root + "/menus/how-tos", function (response) {
-            var $data = $(response);
-            var $data1 = $(response);
-            $('.resources-menu-second-block.how-to-guides .resources-menu-second-content').html($data.filter('#menuload'));
-            $('.resources-menu-item.how-to-guides .mobile-cards').html($data1.filter('#menuload'));
-            //console.log( $data.filter('#menuload') );
-        });
-
-        $.get(root + "/menus/local-permitting", function (response) {
-            var $data = $(response);
-            var $data1 = $(response);
-            $('.resources-menu-second-block.local-permitting .resources-menu-second-content').html($data.filter('#menuload'));
-            $('.resources-menu-item.local-permitting .mobile-cards').html($data1.filter('#menuload'));
-            //console.log( $data.filter('#menuload') );
-        });
-
-        $.get(root + "/menus/permit-basics", function (response) {
-            var $data = $(response);
-            var $data1 = $(response);
-            $('.resources-menu-second-block.permit-basics .resources-menu-second-content').html($data.filter('#menuload'));
-            $('.resources-menu-item.permit-basics .mobile-cards').html($data1.filter('#menuload'));
-            //console.log( $data.filter('#menuload') );
-        });
-
-        $.get(root + "/menus/news", function (response) {
-            var $data = $(response);
-            var $data1 = $(response);
-            $('.resources-menu-second-block.news .resources-menu-second-content').html($data1.filter('#menuload'));
-            $('.resources-menu-item.news .mobile-cards').html($data.filter('#menuload'));
-            //console.log( $data.filter('#menuload') );
-        });
-
-
+    // Banner close functionality
+    document.getElementById('close-banner').addEventListener('click', function() {
+        document.getElementById('notification-banner').style.display = 'none';
+        document.getElementById('main-header').classList.remove('mt-12');
     });
 
-
-    $(window).scroll(function () {
-        var scroll = $(window).scrollTop();
-        if (scroll >= 60) {
-            $(".header").addClass("stickyheader");
+    // Sticky header
+    window.addEventListener('scroll', function() {
+        const header = document.getElementById('main-header');
+        if (window.scrollY > 50) {
+            header.classList.add('sticky');
         } else {
-            $(".header").removeClass("stickyheader");
+            header.classList.remove('sticky');
         }
     });
-    $(document).ready(function () {
 
-        function logoSilider() {
-            if (window.matchMedia("(min-width: 768px)").matches) {
-                $(".builders-logos").infiniteslide({
-                    speed: 50,
-                    direction: "left",
-                    pauseonhover: true,
-                    responsive: false,
-                    clone: 2,
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        document.getElementById('mobile-nav').classList.add('open');
+    });
+
+    document.getElementById('close-mobile-menu').addEventListener('click', function() {
+        document.getElementById('mobile-nav').classList.remove('open');
+    });
+
+    // Fade-in animations on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const fadeElements = document.querySelectorAll('.fade-in-up');
+
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        // Check on initial load
+        checkFade();
+
+        // Check on scroll
+        window.addEventListener('scroll', checkFade);
+    });
+
+    // How it works steps interaction
+    document.addEventListener('DOMContentLoaded', function() {
+        const steps = document.querySelectorAll('.progress-step');
+        const stepContents = document.querySelectorAll('.step-content');
+
+        steps.forEach(step => {
+            step.addEventListener('click', function() {
+                const stepIndex = this.getAttribute('data-step');
+
+                // Update active step indicator
+                steps.forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+
+                // Show corresponding content
+                stepContents.forEach(content => {
+                    content.classList.add('hidden');
+                    if (content.getAttribute('data-step') === stepIndex) {
+                        content.classList.remove('hidden');
+                        content.classList.add('active');
+                    }
                 });
-            }
-        }
-
-        logoSilider();
-        $(window).resize(function () {
-            logoSilider();
+            });
         });
-    });
-    $(document).ready(function () {
-        if (window.matchMedia("(max-width: 767px)").matches) {
-            $('.builders-logos').slick({
-                infinite: true,
-                arrows: false,
-                dots: false,
-                speed: 600,
-                autoplay: true,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                responsive: [
-                    {
-                        breakpoint: 620,
-                        settings: {
-                            slidesToShow: 3
-                        }
-                    },
-                    {
-                        breakpoint: 567,
-                        settings: {
-                            slidesToShow: 2
-                        }
-                    }
-                ]
+
+        // Mobile slider controls
+        const prevStepBtn = document.querySelector('.prev-step');
+        const nextStepBtn = document.querySelector('.next-step');
+
+        if (prevStepBtn && nextStepBtn) {
+            let currentStep = 1;
+
+            prevStepBtn.addEventListener('click', function() {
+                if (currentStep > 1) {
+                    currentStep--;
+                    const step = document.querySelector(`.progress-step[data-step="${currentStep}"]`);
+                    if (step) step.click();
+                }
+            });
+
+            nextStepBtn.addEventListener('click', function() {
+                if (currentStep < steps.length) {
+                    currentStep++;
+                    const step = document.querySelector(`.progress-step[data-step="${currentStep}"]`);
+                    if (step) step.click();
+                }
             });
         }
     });
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.current-year').text(new Date().getFullYear());
 
-        $('.projectsslider').slick({
-            dots: false,
-            arrow: true,
-            infinite: false,
-            speed: 500,
-            slidesToShow: 3,
-            responsive: [
-                {
-                    breakpoint: 992,
-                    settings: {
-                        slidesToShow: 2
+    // Target audience tabs interaction
+    document.addEventListener('DOMContentLoaded', function() {
+        const audienceTabs = document.querySelectorAll('.audience-tab');
+        const audienceContents = document.querySelectorAll('.audience-content');
+
+        audienceTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const audienceIndex = this.getAttribute('data-audience');
+
+                // Update active tab indicator
+                audienceTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                // Show corresponding content
+                audienceContents.forEach(content => {
+                    content.classList.add('hidden');
+                    if (content.getAttribute('data-audience') === audienceIndex) {
+                        content.classList.remove('hidden');
+                        content.classList.add('active');
                     }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        dots: false,
-                        slidesToShow: 1
-                    }
-                }
-            ]
-        });
-        $('.clientslider').slick({
-            dots: true,
-            arrow: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            responsive: [
-                {
-                    breakpoint: 992,
-                    settings: {
-                        slidesToShow: 1
-                    }
-                }
-            ]
-        });
-    });
-
-
-    //Main navigation Start
-    /* $(function() {
-    $('.header').hover(function() {
-      $('.header').addClass("stickyheader");
-    }).mouseleave(function () {
-      $('.header').removeClass("stickyheader");
-    });
-  }); */
-</script>
-
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://load.gtm.permitflow.com/ns.html?id=GTM-KLR3W7N" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
-<script>
-    $(document).ready(function () {
-        $(".slider").slick({
-            vertical: true,
-            verticalSwiping: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            fade: false,
-            infinite: true,
-            arrows: false,
-            dots: false,
-            autoplay: false,
-            speed: 1000,
-            draggable: false,
-            responsive: [
-                {
-                    breakpoint: 992,
-                    settings: {
-                        vertical: false,
-                        verticalSwiping: false,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        arrows: true,
-                        fade: false,
-                        draggable: true,
-                    }
-                }
-            ]
-        });
-        if (window.matchMedia("(min-width: 992px)").matches) {
-
-            //ticking machine
-            var percentTime = 0;
-            var tick;
-            var time = 1;
-            var progressBarIndex = 0;
-
-            $('.slidertopbox .progressbarslider').each(function (index) {
-                var progress = "<div class='inProgress inProgress" + index + "'></div>";
-                $(this).html(progress);
-            });
-
-            function startProgressbar() {
-                resetProgressbar();
-                percentTime = 0;
-                tick = setInterval(interval, 10);
-            }
-
-            function interval() {
-                if (($('.slider .slick-track div[data-slick-index="' + progressBarIndex + '"]').attr("aria-hidden")) === "true") {
-                    progressBarIndex = $('.slider .slick-track div[aria-hidden="false"]').data("slickIndex");
-                    startProgressbar();
-                } else {
-                    percentTime += 1 / (time + 5);
-                    $('.inProgress').parent().parent().removeClass("activestep");
-                    $('.inProgress' + progressBarIndex).parent().parent().addClass("activestep");
-                    $('.inProgress' + progressBarIndex).css({
-                        width: percentTime + "%"
-                    });
-                    if (percentTime >= 100) {
-                        $('.singleitem').slick('slickNext');
-                        progressBarIndex++;
-                        if (progressBarIndex > 5) {
-                            progressBarIndex = 0;
-                        }
-                        startProgressbar();
-                    }
-                }
-            }
-
-            function resetProgressbar() {
-                $('.inProgress').css({
-                    width: 0 + '%'
                 });
-                clearInterval(tick);
-            }
-
-            //startProgressbar();
-            // End ticking machine
-
-            $('.slidertopitem').click(function () {
-                clearInterval(tick);
-                var goToThisIndex = $(this).find(".progressbarslider").data("slickIndex");
-                $('.singleitem').slick('slickGoTo', goToThisIndex, false);
-                startProgressbar();
             });
-
-            $(window).scroll(function () {
-                var offset = $("#Howitworks").offset().top;
-                //var offsetOne = $("#Permitflow").offset().top;
-                if ($(window).scrollTop() >= offset) {
-                    if (percentTime === 0) {
-                        startProgressbar();
-                        //console.log(percentTime);
-                    }
-                }
-            });
-        }
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        if (window.matchMedia("(min-width: 992px)").matches) {
-
-            $(".singlepermitslider").slick({
-                vertical: true,
-                //verticalSwiping: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                fade: false,
-                infinite: true,
-                arrows: false,
-                dots: false,
-                autoplay: false,
-                speed: 1000,
-                draggable: false,
-            });
-
-            var percentTimeOne = 0;
-            var tickOne;
-            var timeBar = 1;
-            var progressBarIndexOne = 0;
-
-            $('.sliderpermitbox .progressbar').each(function (index) {
-                var progressOne = "<div class='inProgressbox inProgressbox" + index + "'></div>";
-                $(this).html(progressOne);
-            });
-
-            function startProgressbarOne() {
-                resetProgressbarOne();
-                percentTimeOne = 0;
-                tickOne = setInterval(intervalBar, 10);
-            }
-
-            function intervalBar() {
-
-                if (($('.singlepermitslider .slick-track div[data-slick-index="' + progressBarIndexOne + '"]').attr("aria-hidden")) === "true") {
-                    progressBarIndexOne = $('.singlepermitslider .slick-track div[aria-hidden="false"]').data("slickIndex");
-                    startProgressbarOne();
-                } else {
-                    percentTimeOne += 1 / (timeBar + 5);
-                    $('.inProgressbox').parent().parent().removeClass("activestep");
-                    $('.inProgressbox' + progressBarIndexOne).parent().parent().addClass("activestep");
-                    $('.inProgressbox' + progressBarIndexOne).css({
-                        width: percentTimeOne + "%"
-                    });
-                    if (percentTimeOne >= 100) {
-                        $('.singlepermititem').slick('slickNext');
-                        progressBarIndexOne++;
-                        if (progressBarIndexOne > 3) {
-                            progressBarIndexOne = 0;
-                        }
-                        startProgressbarOne();
-                    }
-                }
-            }
-
-            function resetProgressbarOne() {
-                $('.inProgressbox').css({
-                    width: 0 + '%'
-                });
-                clearInterval(tickOne);
-            }
-
-            //startProgressbarOne();
-
-            $('.sliderpermittopitem').click(function () {
-                clearInterval(tickOne);
-                var goToThisIndex = $(this).find(".progressbar").data("slickIndex");
-                $('.singlepermititem').slick('slickGoTo', goToThisIndex, false);
-                startProgressbarOne();
-            });
-
-            $(window).scroll(function () {
-                var offsetOne = $("#Permitflow").offset().top;
-                if ($(window).scrollTop() >= offsetOne) {
-                    if (percentTimeOne === 0) {
-                        startProgressbarOne();
-                    }
-                }
-            });
-        }
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        if (window.matchMedia("(max-width: 767px)").matches) {
-            $(".industrylogobox").slick({
-                fade: false,
-                infinite: false,
-                arrows: false,
-                dots: false,
-                autoplay: true,
-                speed: 600,
-                draggable: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                responsive: [
-                    {
-                        breakpoint: 567,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1
-                        }
-                    }
-                ]
-            });
-        }
-    });
-</script>
-
-
-<script>
-    $(document).ready(function () {
-
-        $(".company-logos-slider").slick({
-            infinite: true,
-            arrows: false,
-            dots: false,
-            autoplay: true,
-            speed: 600,
-            draggable: true,
-            centerMode: true,
-            slidesToShow: 6,
-            slidesToScroll: 1,
-            responsive: [
-                {
-                    breakpoint: 991,
-                    settings: {
-                        slidesToShow: 3
-                    }
-                },
-                {
-                    breakpoint: 767,
-                    settings: {
-                        slidesToShow: 2
-                    }
-                }
-            ]
         });
 
-        $(".case-studies-slider").slick({
-            infinite: true,
-            arrows: true,
-            dots: false,
-            autoplay: false,
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            responsive: [
-                {
-                    breakpoint: 991,
-                    settings: {
-                        slidesToShow: 3
-                    }
-                },
-                {
-                    breakpoint: 767,
-                    settings: {
-                        slidesToShow: 2
-                    }
-                },
-                {
-                    breakpoint: 478,
-                    settings: {
-                        slidesToShow: 1
-                    }
+        // Mobile audience slider controls
+        const prevAudienceBtn = document.querySelector('.prev-audience');
+        const nextAudienceBtn = document.querySelector('.next-audience');
+
+        if (prevAudienceBtn && nextAudienceBtn) {
+            let currentAudience = 1;
+
+            prevAudienceBtn.addEventListener('click', function() {
+                if (currentAudience > 1) {
+                    currentAudience--;
+                    const tab = document.querySelector(`.audience-tab[data-audience="${currentAudience}"]`);
+                    if (tab) tab.click();
                 }
-            ]
-        });
+            });
+
+            nextAudienceBtn.addEventListener('click', function() {
+                if (currentAudience < audienceTabs.length) {
+                    currentAudience++;
+                    const tab = document.querySelector(`.audience-tab[data-audience="${currentAudience}"]`);
+                    if (tab) tab.click();
+                }
+            });
+        }
     });
 
+    // Logo carousel animation
+    // The animation is handled by CSS, no JS required
 
+    // Mobile testimonial slider
+    document.addEventListener('DOMContentLoaded', function() {
+        const testimonials = document.querySelectorAll('.bg-white.p-8.rounded-lg.shadow-lg');
+        const prevTestimonialBtn = document.querySelector('.prev-testimonial');
+        const nextTestimonialBtn = document.querySelector('.next-testimonial');
+
+        if (window.innerWidth < 768 && prevTestimonialBtn && nextTestimonialBtn) {
+            let currentTestimonial = 0;
+
+            // Initially hide all but first testimonial on mobile
+            testimonials.forEach((testimonial, index) => {
+                if (index !== currentTestimonial) {
+                    testimonial.style.display = 'none';
+                }
+            });
+
+            prevTestimonialBtn.addEventListener('click', function() {
+                testimonials[currentTestimonial].style.display = 'none';
+                currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                testimonials[currentTestimonial].style.display = 'block';
+            });
+
+            nextTestimonialBtn.addEventListener('click', function() {
+                testimonials[currentTestimonial].style.display = 'none';
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                testimonials[currentTestimonial].style.display = 'block';
+            });
+        }
+    });
 </script>
-
 </body>
 </html>
+
+</div>
+<span class="ml-3 text-gray-700">Signage</span>
+</li>
+<li class="flex items-start">
+    <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>dd" />
+        </svg>
+    </div>
+    <span class="ml-3 text-gray-700">Expediting</span>
+</li>
+<li class="flex items-start">
+    <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+    </div>
+    <span class="ml-3 text-gray-700">Permit Research</span>
+</li>
+<li class="flex items-start">
+    <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+    </div>
+    <span class="ml-3 text-gray-700">Application & Submittals</span>
+</li>
+<li class="flex items-start">
+    <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+    </div>
+    <span class="ml-3 text-gray-700">Approval Tracking & Municipal Comments</span>
+</li>
+<li class="flex items-start">
+    <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+    </div>
+    <span class="ml-3 text-gray-700">Management & Expirations</span>
+</li>
+<li class="flex items-start">
+    <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+    </div>
+    <span class="ml-3 text-gray-700">Permit Data</span>
+</li>
+</ul>
+</div>
+
+<!-- Column 2 -->
+<div class="fade-in-up" style="transition-delay: 0.1s;">
+    <h3 class="text-xl font-semibold mb-6 text-dark">Permits</h3>
+    <ul class="space-y-4">
+        <li class="flex items-start">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <span class="ml-3 text-gray-700">Building Permits</span>
+        </li>
+        <li class="flex items-start">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <span class="ml-3 text-gray-700">Construction Permits</span>
+        </li>
+        <li class="flex items-start">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <span class="ml-3 text-gray-700">Mechanical Permits</span>
+        </li>
+        <li class="flex items-start">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <span class="ml-3 text-gray-700">Electrical Permits</span>
+        </li>
+        <li class="flex items-start">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <span class="ml-3 text-gray-700">Plumbing Permits</span>
+        </li>
+    </ul>
+</div>
+
+<!-- Column 3 -->
+<div class="fade-in-up" style="transition-delay: 0.2s;">
+    <h3 class="text-xl font-semibold mb-6 text-dark">Project Types</h3>
+    <ul class="space-y-4">
+        <li class="flex items-start">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <span class="ml-3 text-gray-700">New Construction</span>
+        </li>
+        <li class="flex items-start">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <span class="ml-3 text-gray-700">Tenant Improvements</span>
+        </li>
+        <li class="flex items-start">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <span class="ml-3 text-gray-700">Single & Multi-Family Homes</span>
+        </li>
+        <li class="flex items-start">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <span class="ml-3 text-gray-700">Roofing</span>
+        </li>
+        <li class="flex items-start">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <span class="ml-3 text-gray-700">Signage</span>
+        </li>
+        <li class="flex items-start">
+            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="eveno
