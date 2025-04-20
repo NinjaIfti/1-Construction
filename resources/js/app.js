@@ -1,6 +1,5 @@
 import './bootstrap';
 
-// public/js/custom.js
 
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
