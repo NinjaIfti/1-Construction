@@ -83,6 +83,17 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-navy) !important;
 }
 
+/* Logo Styles */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .logo-number {
     color: var(--primary-red) !important;
     font-size: 2.5rem;
