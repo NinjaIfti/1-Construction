@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="80" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="#ffffff"/>
+  <circle cx="50" cy="40" r="25" fill="#0A2240"/>
+  <text x="80" y="45" font-family="Arial" font-size="16" font-weight="bold" fill="#E31B23">METRO</text>
+  <text x="80" y="60" font-family="Arial" font-size="12" fill="#0A2240">CONSTRUCTION</text>
+</svg> 

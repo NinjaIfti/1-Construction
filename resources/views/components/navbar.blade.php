@@ -1,68 +1,63 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
-    <div class="container">
-        <!-- Logo -->
-        <a class="navbar-brand d-flex align-items-center" href="/">
-            <div class="d-flex align-items-center">
-                <span class="fw-bold fs-3 me-2 text-danger">1</span>
-                <div class="d-flex flex-column">
-                    <span class="fw-bold text-primary small lh-1">CONTRACTOR</span>
-                    <span class="fw-bold text-primary small lh-1">SOLUTIONS</span>
+<header id="main-navbar" class="header relative w-full z-50">
+    <nav class="navbar navbar-dark bg-primary py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="/" class="flex items-center">
+                    <div class="flex items-center">
+                        <span class="font-bold text-3xl mr-1 text-white logo-text-num">1</span>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-sm leading-none logo-text">CONTRACTOR</span>
+                            <span class="font-bold text-sm leading-none logo-text">SOLUTIONS</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="mobile-menu-button focus:outline-none hover:text-[#E31B23]">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex lg:items-center lg:justify-between flex-1 ml-16">
+                    <div class="flex items-center space-x-8">
+                        <a href="/product" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm">Product</a>
+                        <a href="/solutions" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm">Solutions</a>
+                        <a href="/resources" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm">Resources</a>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <a href="/login" class="px-5 py-2 border border-navy font-medium rounded-full hover:bg-white hover:text-[#0A2240] transition duration-300 text-sm">
+                            Login
+                        </a>
+                        <a href="/contact" class="px-5 py-2.5 bg-[#E31B23] text-white font-medium rounded-full hover:bg-[#c8171f] transition duration-300 text-sm shadow-md">
+                            Get Started
+                        </a>
+                    </div>
                 </div>
             </div>
-        </a>
-
-        <!-- Mobile Toggle Button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
-                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Navigation Content (collapsible) -->
-        <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item">
-                    <a class="nav-link fw-medium" href="/product">Product</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-medium" href="/solutions">Solutions</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-medium" href="/resources">Resources</a>
-                </li>
-            </ul>
-            <div>
-                <a href="/contact" class="btn btn-danger px-4 rounded-pill fw-medium">
-                    Get Started
-                </a>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu Dropdown (hidden by default) -->
+    <div id="mobile-menu" class="lg:hidden bg-primary shadow-lg absolute w-full">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex flex-col space-y-3">
+                <a href="/product" class="py-2 font-medium text-nav-default hover:text-[#E31B23] transition duration-300">Product</a>
+                <a href="/solutions" class="py-2 font-medium text-nav-default hover:text-[#E31B23] transition duration-300">Solutions</a>
+                <a href="/resources" class="py-2 font-medium text-nav-default hover:text-[#E31B23] transition duration-300">Resources</a>
+                <div class="pt-3 flex flex-col space-y-3">
+                    <a href="/login" class="px-5 py-2 border border-navy font-medium rounded-full hover:bg-white hover:text-[#0A2240] transition duration-300 text-center">
+                        Login
+                    </a>
+                    <a href="/contact" class="px-5 py-2.5 bg-[#E31B23] text-white font-medium rounded-full hover:bg-[#c8171f] transition duration-300 text-center shadow-md">
+                        Get Started
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</nav>
-
-<style>
-.text-primary {
-    color: #0A2240 !important;
-}
-.text-danger, .btn-danger {
-    color: #fff !important;
-    background-color: #E31B23 !important;
-    border-color: #E31B23 !important;
-}
-.btn-danger:hover {
-    background-color: #c8171f !important;
-    border-color: #c8171f !important;
-}
-.nav-link {
-    color: #333 !important;
-    padding: 0.5rem 1rem !important;
-    transition: color 0.3s ease;
-}
-.nav-link:hover {
-    color: #E31B23 !important;
-}
-</style>
-
-<!-- Bootstrap JS Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
-
+</header>

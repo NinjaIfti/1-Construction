@@ -1,194 +1,223 @@
-<section id="services" class="services-section py-5" style="background: linear-gradient(to bottom, #f8f9fa 0%, #f1f1f1 100%);">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 text-center">
-                <h2 class="section-title mb-4" style="color: #0A2240; font-size: 36px; font-weight: 700;">Our Comprehensive Services</h2>
-                <div style="height: 4px; width: 80px; background-color: #E31B23; margin: 0 auto 30px;"></div>
-                <p class="section-subtitle mb-5" style="color: #555; max-width: 800px; margin-left: auto; margin-right: auto;">
+<section id="services" class="py-12 md:py-16" style="background: linear-gradient(to bottom, #f8f9fa 0%, #f1f1f1 100%);">
+    <div class="container mx-auto px-6">
+        <!-- Section Header -->
+        <div class="flex justify-center mb-12">
+            <div class="text-center max-w-3xl">
+                <h2 class="text-4xl font-bold mb-4 text-[#0A2240]" style="color: #0A2240;">Our Comprehensive Services</h2>
+                <div class="h-1 w-20 bg-[#E31B23] mx-auto mb-8" style="background-color: #E31B23;"></div>
+                <p class="text-gray-600 text-lg mb-5 mx-auto">
                     We offer end-to-end permitting solutions tailored to your construction project needs
                 </p>
             </div>
         </div>
 
-        <div class="row mt-5">
-            <!-- Software Solutions Column -->
-            <div class="col-lg-4 mb-5">
-                <div class="service-box h-100" style="background-color: white; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 40px 30px; position: relative; overflow: hidden; transition: transform 0.3s ease;">
-                    <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: #E31B23;"></div>
+        <!-- Services Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+            
+            <!-- Software Solutions Card -->
+            <div class="bg-white rounded-lg shadow-xl relative overflow-hidden transform transition duration-300 hover:translate-y-[-5px]" style="background-color: white;">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-[#E31B23]" style="background-color: #E31B23;"></div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-semibold mb-6 text-[#0A2240]" style="color: #0A2240;">Software Solutions</h3>
                     
-                    <h3 style="color: #0A2240; font-size: 24px; margin-bottom: 20px; font-weight: 600;">Software Solutions</h3>
-                    
-                    <ul class="service-list" style="list-style: none; padding-left: 0; margin-bottom: 0;">
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Permit Status Tracking Dashboard</span>
+                            <span class="text-gray-600 leading-relaxed">Permit Status Tracking Dashboard</span>
                         </li>
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Document Management System</span>
+                            <span class="text-gray-600 leading-relaxed">Document Management System</span>
                         </li>
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Project Timeline Visualization</span>
+                            <span class="text-gray-600 leading-relaxed">Project Timeline Visualization</span>
                         </li>
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Permit Requirement Analysis</span>
+                            <span class="text-gray-600 leading-relaxed">Permit Requirement Analysis</span>
                         </li>
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Automated Notifications System</span>
+                            <span class="text-gray-600 leading-relaxed">Automated Notifications System</span>
                         </li>
-                        <li style="margin-bottom: 0; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Team Collaboration Tools</span>
+                            <span class="text-gray-600 leading-relaxed">Team Collaboration Tools</span>
                         </li>
                     </ul>
                 </div>
             </div>
-
-            <!-- Permits Column -->
-            <div class="col-lg-4 mb-5">
-                <div class="service-box h-100" style="background-color: white; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 40px 30px; position: relative; overflow: hidden; transition: transform 0.3s ease;">
-                    <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: #0A2240;"></div>
+            
+            <!-- Permits Card -->
+            <div class="bg-white rounded-lg shadow-xl relative overflow-hidden transform transition duration-300 hover:translate-y-[-5px]" style="background-color: white;">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-[#0A2240]" style="background-color: #0A2240;"></div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-semibold mb-6 text-[#0A2240]" style="color: #0A2240;">Permits</h3>
                     
-                    <h3 style="color: #0A2240; font-size: 24px; margin-bottom: 20px; font-weight: 600;">Permits</h3>
-                    
-                    <ul class="service-list" style="list-style: none; padding-left: 0; margin-bottom: 0;">
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Building Permits</span>
+                            <span class="text-gray-600 leading-relaxed">Building Permits</span>
                         </li>
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Electrical Permits</span>
+                            <span class="text-gray-600 leading-relaxed">Electrical Permits</span>
                         </li>
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Plumbing Permits</span>
+                            <span class="text-gray-600 leading-relaxed">Plumbing Permits</span>
                         </li>
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Mechanical Permits</span>
+                            <span class="text-gray-600 leading-relaxed">Mechanical Permits</span>
                         </li>
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Fire Safety Permits</span>
+                            <span class="text-gray-600 leading-relaxed">Fire Safety Permits</span>
                         </li>
-                        <li style="margin-bottom: 0; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Zoning Approvals</span>
+                            <span class="text-gray-600 leading-relaxed">Zoning Approvals</span>
                         </li>
                     </ul>
                 </div>
             </div>
-
-            <!-- Project Types Column -->
-            <div class="col-lg-4 mb-5">
-                <div class="service-box h-100" style="background-color: white; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 40px 30px; position: relative; overflow: hidden; transition: transform 0.3s ease;">
-                    <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background-color: #E31B23;"></div>
+            
+            <!-- Project Types Card -->
+            <div class="bg-white rounded-lg shadow-xl relative overflow-hidden transform transition duration-300 hover:translate-y-[-5px]" style="background-color: white;">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-[#E31B23]" style="background-color: #E31B23;"></div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-semibold mb-6 text-[#0A2240]" style="color: #0A2240;">Project Types</h3>
                     
-                    <h3 style="color: #0A2240; font-size: 24px; margin-bottom: 20px; font-weight: 600;">Project Types</h3>
-                    
-                    <ul class="service-list" style="list-style: none; padding-left: 0; margin-bottom: 0;">
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Commercial Construction</span>
+                            <span class="text-gray-600 leading-relaxed">Commercial Construction</span>
                         </li>
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Residential Development</span>
+                            <span class="text-gray-600 leading-relaxed">Residential Development</span>
                         </li>
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Remodeling & Renovations</span>
+                            <span class="text-gray-600 leading-relaxed">Remodeling & Renovations</span>
                         </li>
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Industrial Projects</span>
+                            <span class="text-gray-600 leading-relaxed">Industrial Projects</span>
                         </li>
-                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Mixed-Use Developments</span>
+                            <span class="text-gray-600 leading-relaxed">Mixed-Use Developments</span>
                         </li>
-                        <li style="margin-bottom: 0; display: flex; align-items: flex-start;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="min-width: 24px; margin-right: 15px; margin-top: 2px;">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span style="color: #555; line-height: 1.6;">Infrastructure Projects</span>
+                            <span class="text-gray-600 leading-relaxed">Infrastructure Projects</span>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-6 text-center">
-                <a href="/services" class="service-cta" style="display: inline-block; padding: 14px 32px; background-color: #E31B23; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(227, 27, 35, 0.3);">
-                    Explore All Our Services
-                </a>
-            </div>
+        <!-- CTA Button -->
+        <div class="flex justify-center mt-12">
+            <a href="/services" class="px-8 py-4 bg-[#E31B23] text-white font-semibold rounded-lg shadow-lg hover:bg-[#c8171f] transition duration-300" style="background-color: #E31B23; color: white;">
+                Explore All Our Services
+            </a>
         </div>
     </div>
     
-    <div style="margin-top: 80px; position: relative;">
-        <div style="height: 4px; width: 100%; display: flex;">
-            <div style="flex: 1; background-color: #E31B23;"></div>
-            <div style="flex: 1; background-color: #0A2240;"></div>
-            <div style="flex: 1; background-color: #E31B23;"></div>
-            <div style="flex: 1; background-color: #0A2240;"></div>
+    <!-- Decorative Line at Bottom -->
+    <div class="mt-20 relative">
+        <div class="h-1 w-full flex">
+            <div class="flex-1 bg-[#E31B23]" style="background-color: #E31B23;"></div>
+            <div class="flex-1 bg-[#0A2240]" style="background-color: #0A2240;"></div>
+            <div class="flex-1 bg-[#E31B23]" style="background-color: #E31B23;"></div>
+            <div class="flex-1 bg-[#0A2240]" style="background-color: #0A2240;"></div>
+        </div>
     </div>
-</div>
 </section>
+
+<style>
+/* Backup styles for Services Section */
+#services {
+    background: linear-gradient(to bottom, #f8f9fa 0%, #f1f1f1 100%) !important;
+}
+#services h2, #services h3 {
+    color: #0A2240 !important;
+}
+#services .bg-\[\#E31B23\] {
+    background-color: #E31B23 !important;
+}
+#services .bg-\[\#0A2240\] {
+    background-color: #0A2240 !important;
+}
+#services .text-gray-600 {
+    color: #555 !important;
+}
+#services .bg-white {
+    background-color: white !important;
+}
+#services a.bg-\[\#E31B23\] {
+    background-color: #E31B23 !important;
+    color: white !important;
+}
+#services a.bg-\[\#E31B23\]:hover {
+    background-color: #c8171f !important;
+}
+</style>

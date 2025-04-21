@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="80" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="#ffffff"/>
+  <polygon points="30,20 70,20 50,60" fill="#E31B23"/>
+  <text x="80" y="40" font-family="Arial" font-size="16" font-weight="bold" fill="#0A2240">APEX</text>
+  <text x="80" y="55" font-family="Arial" font-size="12" fill="#0A2240">BUILDERS</text>
+</svg> 
