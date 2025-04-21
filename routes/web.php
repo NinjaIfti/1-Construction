@@ -5,16 +5,16 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome');
 
 // Product page route
-Route::view('/product', 'product')->name('product');
+Route::view('/product', 'layouts.pages.product')->name('product');
 
 // Solutions route
-Route::view('/solutions', 'solutions')->name('solutions');
+Route::view('/solutions', 'layouts.solutions')->name('solutions');
 
 // Resources route
-Route::view('/resources', 'resources')->name('resources');
+Route::view('/resources', 'layouts.resources')->name('resources');
 
 // Contact route
-Route::view('/contact', 'contact')->name('contact');
+Route::view('/contact', 'layouts.contact')->name('contact');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
