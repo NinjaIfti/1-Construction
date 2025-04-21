@@ -42,24 +42,7 @@
     </section>
 
     {{-- Trusted By Section --}}
-    <section class="py-4 bg-light">
-        <div class="container">
-            <div class="text-center mb-4">
-                <p class="text-muted mb-0">TRUSTED BY THE NATION'S LEADING CONSTRUCTION TEAMS</p>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
-                        <div class="client-logo opacity-75">LOGO 1</div>
-                        <div class="client-logo opacity-75">LOGO 2</div>
-                        <div class="client-logo opacity-75">LOGO 3</div>
-                        <div class="client-logo opacity-75">LOGO 4</div>
-                        <div class="client-logo opacity-75">LOGO 5</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('components.slider')
 
     {{-- Features Section --}}
     <section id="features" class="py-5">
