@@ -16,6 +16,9 @@ Route::view('/resources', 'layouts.pages.resources')->name('resources');
 // Contact route
 Route::view('/contact', 'layouts.pages.contact')->name('contact');
 
+// Get Started route
+Route::view('/get-started', 'layouts.pages.getStarted')->name('get-started');
+
 // Custom login route - override default auth route
 Route::view('/login', 'layouts.pages.login')->name('login.custom')->middleware('guest');
 

@@ -34,7 +34,7 @@
                         <a href="{{ route('login.custom') }}" class="px-5 py-2 border border-navy font-medium rounded-full hover:bg-white hover:text-[#0A2240] transition duration-300 text-sm">
                             Login
                         </a>
-                        <a href="/contact" class="px-5 py-2.5 bg-[#E31B23] text-white font-medium rounded-full hover:bg-[#c8171f] transition duration-300 text-sm shadow-md">
+                        <a href="{{ route('get-started') }}" class="px-5 py-2.5 bg-[#E31B23] text-white font-medium rounded-full hover:bg-[#c8171f] transition duration-300 text-sm shadow-md">
                             Get Started
                         </a>
                     </div>
@@ -54,7 +54,7 @@
                     <a href="{{ route('login.custom') }}" class="px-5 py-2 border border-navy font-medium rounded-full hover:bg-white hover:text-[#0A2240] transition duration-300 text-center">
                         Login
                     </a>
-                    <a href="/contact" class="px-5 py-2.5 bg-[#E31B23] text-white font-medium rounded-full hover:bg-[#c8171f] transition duration-300 text-center shadow-md">
+                    <a href="{{ route('get-started') }}" class="px-5 py-2.5 bg-[#E31B23] text-white font-medium rounded-full hover:bg-[#c8171f] transition duration-300 text-center shadow-md">
                         Get Started
                     </a>
                 </div>
