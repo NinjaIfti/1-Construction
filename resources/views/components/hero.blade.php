@@ -1,4 +1,4 @@
-<section class="hero-section-navy relative min-h-[85vh] flex items-center overflow-hidden">
+<section class="hero-section-navy relative min-h-[85vh] flex items-center overflow-hidden bg-[#0A2240]">
     <!-- Container for content -->
     <div class="container mx-auto px-6 relative z-10">
         <div class="flex flex-col lg:flex-row items-center">
@@ -58,14 +58,16 @@
                 </div>
             </div>
             
-            <!-- Right image column (hidden on mobile) -->
-            <div class="w-full lg:w-1/2 hidden lg:block">
+            <!-- Right image column -->
+            <div class="w-full lg:w-1/2 block">
                 <div class="relative h-[500px]">
                     <!-- Red background element -->
                     <div class="absolute w-4/5 h-4/5 right-0 top-0 bg-[#E31B23] rounded-lg z-10"></div>
                     
-                    <!-- Main image -->
-                    <div class="absolute right-5 top-5 rounded-lg z-20 shadow-2xl permit-image"></div>
+                    <!-- Main image - FIXED THIS PART -->
+                    <div class="absolute right-5 top-5 w-4/5 h-4/5 rounded-lg z-20 shadow-2xl overflow-hidden">
+                        <img src="/images/permit.jpg" alt="Permit Processing" class="w-full h-full object-cover" />
+                    </div>
                     
                     <!-- Stats card -->
                     <div class="absolute bottom-8 -left-5 bg-white p-5 rounded-lg shadow-xl z-30 max-w-[220px]">
@@ -97,21 +99,3 @@
     <!-- Red accent line at the bottom -->
     <div class="absolute bottom-0 left-0 w-full h-2 bg-[#E31B23]"></div>
 </section>
-
-<style>
-    .permit-image {
-        width: 100%;
-        height: 100%;
-        background-image: url('/images/permit.jpg');
-        background-size: cover;
-        background-position: center;
-        max-height: 450px;
-        max-width: 90%;
-    }
-    
-    @media (max-width: 768px) {
-        .permit-image {
-            max-height: 350px;
-        }
-    }
-</style>
