@@ -31,7 +31,7 @@
                         <a href="/resources" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm">Resources</a>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <a href="/login" class="px-5 py-2 border border-navy font-medium rounded-full hover:bg-white hover:text-[#0A2240] transition duration-300 text-sm">
+                        <a href="{{ route('login.custom') }}" class="px-5 py-2 border border-navy font-medium rounded-full hover:bg-white hover:text-[#0A2240] transition duration-300 text-sm">
                             Login
                         </a>
                         <a href="/contact" class="px-5 py-2.5 bg-[#E31B23] text-white font-medium rounded-full hover:bg-[#c8171f] transition duration-300 text-sm shadow-md">
@@ -51,7 +51,7 @@
                 <a href="/solutions" class="py-2 font-medium text-nav-default hover:text-[#E31B23] transition duration-300">Solutions</a>
                 <a href="/resources" class="py-2 font-medium text-nav-default hover:text-[#E31B23] transition duration-300">Resources</a>
                 <div class="pt-3 flex flex-col space-y-3">
-                    <a href="/login" class="px-5 py-2 border border-navy font-medium rounded-full hover:bg-white hover:text-[#0A2240] transition duration-300 text-center">
+                    <a href="{{ route('login.custom') }}" class="px-5 py-2 border border-navy font-medium rounded-full hover:bg-white hover:text-[#0A2240] transition duration-300 text-center">
                         Login
                     </a>
                     <a href="/contact" class="px-5 py-2.5 bg-[#E31B23] text-white font-medium rounded-full hover:bg-[#c8171f] transition duration-300 text-center shadow-md">

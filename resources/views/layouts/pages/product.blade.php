@@ -9,7 +9,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- App CSS -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('resources/css/app.css') }}">
     <!-- jQuery (needed for some components) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -51,6 +51,28 @@
             font-weight: 700;
             color: #0A2240;
         }
+        @media (max-width: 640px) {
+            .stat-counter {
+                font-size: 2rem;
+            }
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .feature-card {
+                height: 100%;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+                text-align: center;
+            }
+            
+            .benefit-card {
+                margin-bottom: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body class="font-sans antialiased text-gray-800">
@@ -58,22 +80,22 @@
     @include('components.navbar')
 
     {{-- Hero Section --}}
-    <section class="gradient-bg text-white py-20">
+    <section class="gradient-bg text-white py-12 md:py-20">
         <div class="container mx-auto px-4">
             <div class="flex flex-wrap items-center">
                 <div class="w-full lg:w-1/2 mb-10 lg:mb-0" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="w-20 h-2 bg-[#E31B23] mb-8"></div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Streamline Your <span class="text-[#E31B23]">Permitting</span> Process</h1>
-                    <p class="text-xl mb-8 opacity-90 leading-relaxed">Our comprehensive permit management solution helps contractors navigate complex regulations, reduce approval times, and minimize compliance risks.</p>
-                    <div class="flex flex-wrap gap-4 mt-10">
-                        <a href="#contact" class="px-8 py-4 bg-[#E31B23] text-white font-medium rounded-lg hover:bg-[#c8171f] transition-colors duration-300 shadow-lg transform hover:scale-105">
+                    <div class="w-16 h-1.5 bg-[#E31B23] mb-6"></div>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">Streamline Your <span class="text-[#E31B23]">Permitting</span> Process</h1>
+                    <p class="text-base md:text-xl mb-8 opacity-90 leading-relaxed">Our comprehensive permit management solution helps contractors navigate complex regulations, reduce approval times, and minimize compliance risks.</p>
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <a href="#contact" class="w-full sm:w-auto px-6 py-3 bg-[#E31B23] text-white font-medium rounded-lg hover:bg-[#c8171f] transition-colors duration-300 shadow-lg text-center">
                             Get Started Today
                         </a>
-                        <a href="#features" class="px-8 py-4 bg-transparent border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-[#0A2240] transition-colors duration-300">
-                            See How It Works
+                        <a href="#features" class="w-full sm:w-auto px-6 py-3 bg-transparent border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-[#0A2240] transition-colors duration-300 text-center mt-3 sm:mt-0">
+                            Learn More
                         </a>
                     </div>
-                    <div class="mt-10 flex items-center gap-6">
+                    <div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                         <div class="flex items-center">
                             <i class="bi bi-check-circle-fill text-[#E31B23] text-xl mr-2"></i>
                             <span>60% Faster Approvals</span>
@@ -86,13 +108,13 @@
                 </div>
                 <div class="w-full lg:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
                     <div class="relative">
-                        <div class="absolute bg-[#E31B23] rounded-lg w-4/5 h-4/5 right-0 top-0 z-0 opacity-90"></div>
-                        <div class="relative rounded-lg shadow-2xl overflow-hidden z-10 mt-6 ml-6 transform hover:scale-105 transition-all duration-500">
+                        <div class="absolute bg-[#E31B23] rounded-lg w-full sm:w-4/5 h-full sm:h-4/5 right-0 top-0 z-0 opacity-90"></div>
+                        <div class="relative rounded-lg shadow-xl overflow-hidden z-10 mt-5 ml-5 transform hover:scale-105 transition-all duration-500">
                             <img src="/images/blueprint.jpg" alt="Permit Dashboard" class="w-full">
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0A2240] to-transparent opacity-60"></div>
-                            <div class="absolute bottom-6 left-6 text-white">
-                                <p class="text-xl font-semibold">Permit Management Dashboard</p>
-                                <p class="opacity-80">Real-time tracking and updates</p>
+                            <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white">
+                                <p class="text-base sm:text-xl font-semibold">Permit Management Dashboard</p>
+                                <p class="text-sm opacity-80">Real-time tracking and updates</p>
                             </div>
                         </div>
                     </div>
@@ -101,25 +123,25 @@
         </div>
     </section>
 
-    {{-- Stats Section (New) --}}
-    <section class="py-12 bg-white">
+    {{-- Stats Section --}}
+    <section class="py-8 md:py-12 bg-white">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="stat-counter" id="projectsCounter">0</div>
-                    <p class="text-gray-600 font-medium">Projects Completed</p>
+                    <div class="stat-counter text-2xl sm:text-3xl md:text-4xl" id="projectsCounter">0</div>
+                    <p class="text-gray-600 font-medium text-sm md:text-base">Projects Completed</p>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-counter" id="clientsCounter">0</div>
-                    <p class="text-gray-600 font-medium">Satisfied Clients</p>
+                    <div class="stat-counter text-2xl sm:text-3xl md:text-4xl" id="clientsCounter">0</div>
+                    <p class="text-gray-600 font-medium text-sm md:text-base">Satisfied Clients</p>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="300">
-                    <div class="stat-counter" id="timeCounter">0</div>
-                    <p class="text-gray-600 font-medium">Time Saved (%)</p>
+                    <div class="stat-counter text-2xl sm:text-3xl md:text-4xl" id="timeCounter">0</div>
+                    <p class="text-gray-600 font-medium text-sm md:text-base">Time Saved (%)</p>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="400">
-                    <div class="stat-counter" id="citiesCounter">0</div>
-                    <p class="text-gray-600 font-medium">Cities Covered</p>
+                    <div class="stat-counter text-2xl sm:text-3xl md:text-4xl" id="citiesCounter">0</div>
+                    <p class="text-gray-600 font-medium text-sm md:text-base">Cities Covered</p>
                 </div>
             </div>
         </div>
@@ -129,115 +151,40 @@
     @include('components.slider')
 
     {{-- Features Section --}}
-    <section id="features" class="py-20">
+    <section id="features" class="py-16">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold mb-4">Our Permit Management Solution</h2>
-                <div class="h-1.5 w-24 bg-[#E31B23] mx-auto mb-8"></div>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Experience a faster, more efficient permitting process with our industry-leading platform</p>
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">Our Permit Management Solution</h2>
+                <div class="h-1 w-20 bg-[#E31B23] mx-auto mb-8"></div>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Experience a faster, more efficient permitting process</p>
             </div>
 
-            <div class="flex flex-wrap mb-20">
-                <div class="w-full lg:w-1/2 mb-10 lg:mb-0 lg:pr-12" data-aos="fade-right">
-                    <h3 class="text-3xl font-bold mb-6 text-[#0A2240]">Your projects, our expertise</h3>
-                    <p class="mb-8 text-gray-600 text-lg leading-relaxed">Give your team back valuable time by utilizing our pre-vetted research and submission processes. Our team will review your scope of work and project plans to create a comprehensive list of permits needed to complete it.</p>
+            <div class="flex flex-wrap mb-16">
+                <div class="w-full lg:w-1/2 mb-8 lg:mb-0 lg:pr-8" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-6">Your projects, our expertise</h3>
+                    <p class="mb-6 text-gray-600">Give your team back valuable time by utilizing our pre-vetted research and submission processes. Our team will review your scope of work and project plans to create a comprehensive list of permits needed to complete it.</p>
                     
                     <div class="mb-8">
-                        <div class="flex mb-4">
-                            <button class="px-6 py-3 border-2 border-[#0A2240] rounded-lg mr-4 tab-btn active font-medium text-[#0A2240]" id="old-way-tab">Old Way</button>
-                            <button class="px-6 py-3 border-2 border-[#E31B23] rounded-lg tab-btn font-medium text-[#E31B23]" id="new-way-tab">With 1 Contractor</button>
+                        <div class="flex flex-wrap mb-4 gap-2">
+                            <button class="w-full sm:w-auto px-5 py-2 border border-gray-300 rounded-lg tab-btn active" id="old-way-tab">Old Way</button>
+                            <button class="w-full sm:w-auto px-5 py-2 border border-gray-300 rounded-lg tab-btn" id="new-way-tab">With 1 Contractor</button>
                         </div>
                         
-                        <div class="p-8 border border-gray-200 rounded-lg bg-white shadow-lg">
+                        <div class="p-6 border border-gray-200 rounded-lg bg-white shadow-sm">
                             <div id="old-way-content">
-                                <h4 class="text-[#E31B23] text-2xl font-bold mb-4">Back and Forth to Gather Requirements</h4>
-                                <p class="text-gray-600 text-lg leading-relaxed">Call, email, and meet on-site with building departments and/or external consultants to piece together permit requirements. Waste valuable time with inconsistent information and multiple points of contact.</p>
-                                <div class="mt-6 flex items-center">
-                                    <i class="bi bi-clock-history text-[#E31B23] text-3xl mr-3"></i>
-                                    <p class="text-gray-700 font-medium">Average time: 3-6 weeks</p>
-                                </div>
+                                <h4 class="text-[#E31B23] text-xl font-bold mb-3">Back and Forth to Gather Requirements</h4>
+                                <p class="text-gray-600">Call, email, and meet on-site with building departments and/or external consultants to piece together permit requirements.</p>
                             </div>
                             <div id="new-way-content" class="hidden">
-                                <h4 class="text-[#0A2240] text-2xl font-bold mb-4">Permit Requirements At Your Fingertips</h4>
-                                <p class="text-gray-600 text-lg leading-relaxed">Comprehensive, up-to-date permit requirements put together, vetted, and updated by our team of local experts. Access everything you need in one centralized platform.</p>
-                                <div class="mt-6 flex items-center">
-                                    <i class="bi bi-lightning-charge-fill text-[#E31B23] text-3xl mr-3"></i>
-                                    <p class="text-gray-700 font-medium">Average time: 5-10 days</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8">
-                        <a href="#contact" class="inline-flex items-center text-[#E31B23] font-medium hover:underline">
-                            Learn more about our process
-                            <i class="bi bi-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="w-full lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
-                    <div class="rounded-lg shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500">
-                        <img src="/images/blueprint.jpg" alt="Permit Process" class="w-full">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0A2240] p-6">
-                            <p class="text-white text-lg font-medium">Watch our demo</p>
-                            <div class="h-12 w-12 rounded-full bg-[#E31B23] flex items-center justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:bg-[#c8171f] transition-colors">
-                                <i class="bi bi-play-fill text-white text-2xl"></i>
+                                <h4 class="text-[#0A2240] text-xl font-bold mb-3">Permit Requirements At Your Fingertips</h4>
+                                <p class="text-gray-600">Comprehensive, up-to-date permit requirements put together, vetted, and updated by our team of local experts.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- How It Works Section (New) --}}
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold mb-4">How It Works</h2>
-                <div class="h-1.5 w-24 bg-[#E31B23] mx-auto mb-8"></div>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Our simple 4-step process gets your permits approved faster</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="relative" data-aos="fade-up" data-aos-delay="100">
-                    <div class="bg-white rounded-lg shadow-lg p-8 h-full feature-card border-t-4 border-[#E31B23]">
-                        <div class="absolute -top-5 -left-5 w-12 h-12 rounded-full bg-[#0A2240] text-white flex items-center justify-center text-xl font-bold">1</div>
-                        <div class="text-[#0A2240] mb-6">
-                            <i class="bi bi-clipboard-check text-4xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold mb-4 text-[#0A2240]">Submit Project Details</h4>
-                        <p class="text-gray-600">Upload your project scope, plans, and location information through our secure portal.</p>
-                    </div>
-                </div>
-                <div class="relative" data-aos="fade-up" data-aos-delay="200">
-                    <div class="bg-white rounded-lg shadow-lg p-8 h-full feature-card border-t-4 border-[#E31B23]">
-                        <div class="absolute -top-5 -left-5 w-12 h-12 rounded-full bg-[#0A2240] text-white flex items-center justify-center text-xl font-bold">2</div>
-                        <div class="text-[#0A2240] mb-6">
-                            <i class="bi bi-search text-4xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold mb-4 text-[#0A2240]">Receive Permit Analysis</h4>
-                        <p class="text-gray-600">Our experts analyze your project and provide a comprehensive list of required permits.</p>
-                    </div>
-                </div>
-                <div class="relative" data-aos="fade-up" data-aos-delay="300">
-                    <div class="bg-white rounded-lg shadow-lg p-8 h-full feature-card border-t-4 border-[#E31B23]">
-                        <div class="absolute -top-5 -left-5 w-12 h-12 rounded-full bg-[#0A2240] text-white flex items-center justify-center text-xl font-bold">3</div>
-                        <div class="text-[#0A2240] mb-6">
-                            <i class="bi bi-file-earmark-text text-4xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold mb-4 text-[#0A2240]">Approve Submission</h4>
-                        <p class="text-gray-600">Review and approve the prepared permit applications before we submit them to the relevant authorities.</p>
-                    </div>
-                </div>
-                <div class="relative" data-aos="fade-up" data-aos-delay="400">
-                    <div class="bg-white rounded-lg shadow-lg p-8 h-full feature-card border-t-4 border-[#E31B23]">
-                        <div class="absolute -top-5 -left-5 w-12 h-12 rounded-full bg-[#0A2240] text-white flex items-center justify-center text-xl font-bold">4</div>
-                        <div class="text-[#0A2240] mb-6">
-                            <i class="bi bi-check-circle text-4xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold mb-4 text-[#0A2240]">Track Progress</h4>
-                        <p class="text-gray-600">Monitor real-time status updates through our dashboard until final approval is granted.</p>
+                <div class="w-full lg:w-1/2" data-aos="fade-left">
+                    <div class="rounded-lg shadow-xl overflow-hidden h-full">
+                        <img src="/images/blueprint.jpg" alt="Permit Process" class="w-full h-full object-cover object-center">
                     </div>
                 </div>
             </div>
@@ -245,58 +192,87 @@
     </section>
 
     {{-- Benefits Section --}}
-    <section class="py-20 bg-white">
+    <section class="py-16 bg-gray-100">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold mb-4">Key Benefits</h2>
-                <div class="h-1.5 w-24 bg-[#E31B23] mx-auto mb-8"></div>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Why contractors choose our permitting solution</p>
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">Key Benefits</h2>
+                <div class="h-1 w-20 bg-[#E31B23] mx-auto mb-8"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="bg-white rounded-lg shadow-xl p-10 transition-transform duration-300 hover:transform hover:scale-105 border border-gray-100" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-8 transition-transform duration-300 hover:transform hover:scale-105 benefit-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="text-[#E31B23] mb-6">
-                        <i class="bi bi-speedometer2 text-5xl"></i>
+                        <i class="bi bi-speedometer2 text-4xl"></i>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4 text-[#0A2240]">Faster Approvals</h4>
-                    <p class="text-gray-600 text-lg leading-relaxed">Reduce permit approval times by up to 60% with our streamlined processes and agency relationships.</p>
-                    <div class="mt-6 pt-6 border-t border-gray-100">
-                        <div class="flex items-center">
-                            <div class="h-10 w-10 rounded-full bg-[#E31B23] bg-opacity-10 flex items-center justify-center mr-4">
-                                <i class="bi bi-clock text-[#E31B23]"></i>
-                            </div>
-                            <p class="text-gray-700">Save weeks on project timelines</p>
+                    <h4 class="text-xl font-bold mb-4">Faster Approvals</h4>
+                    <p class="text-gray-600">Reduce permit approval times by up to 60% with our streamlined processes and agency relationships.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-8 transition-transform duration-300 hover:transform hover:scale-105 benefit-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-[#E31B23] mb-6">
+                        <i class="bi bi-shield-check text-4xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Reduced Compliance Risks</h4>
+                    <p class="text-gray-600">Our expertise ensures your projects meet all local building codes and regulatory requirements.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-8 transition-transform duration-300 hover:transform hover:scale-105 benefit-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-[#E31B23] mb-6">
+                        <i class="bi bi-graph-up-arrow text-4xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Cost Savings</h4>
+                    <p class="text-gray-600">Avoid expensive delays and rework by getting permits right the first time with our comprehensive approach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- How It Works Section --}}
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">How It Works</h2>
+                <div class="h-1 w-20 bg-[#E31B23] mx-auto mb-8"></div>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Our simple process gets your permits approved faster</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white rounded-lg shadow-lg p-6 h-full feature-card border-t-4 border-[#E31B23]">
+                        <div class="absolute -top-5 -left-5 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0A2240] text-white flex items-center justify-center text-lg font-bold">1</div>
+                        <div class="text-[#0A2240] mb-6">
+                            <i class="bi bi-clipboard-check text-3xl"></i>
                         </div>
+                        <h4 class="text-lg md:text-xl font-bold mb-4 text-[#0A2240]">Submit Project Details</h4>
+                        <p class="text-gray-600 text-sm md:text-base">Upload your project scope, plans, and location information through our secure portal.</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-xl p-10 transition-transform duration-300 hover:transform hover:scale-105 border border-gray-100" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-[#E31B23] mb-6">
-                        <i class="bi bi-shield-check text-5xl"></i>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4 text-[#0A2240]">Reduced Compliance Risks</h4>
-                    <p class="text-gray-600 text-lg leading-relaxed">Our expertise ensures your projects meet all local building codes and regulatory requirements.</p>
-                    <div class="mt-6 pt-6 border-t border-gray-100">
-                        <div class="flex items-center">
-                            <div class="h-10 w-10 rounded-full bg-[#E31B23] bg-opacity-10 flex items-center justify-center mr-4">
-                                <i class="bi bi-check-circle text-[#E31B23]"></i>
-                            </div>
-                            <p class="text-gray-700">Avoid costly violations and fines</p>
+                <div class="relative" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-white rounded-lg shadow-lg p-6 h-full feature-card border-t-4 border-[#E31B23]">
+                        <div class="absolute -top-5 -left-5 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0A2240] text-white flex items-center justify-center text-lg font-bold">2</div>
+                        <div class="text-[#0A2240] mb-6">
+                            <i class="bi bi-search text-3xl"></i>
                         </div>
+                        <h4 class="text-lg md:text-xl font-bold mb-4 text-[#0A2240]">Receive Permit Analysis</h4>
+                        <p class="text-gray-600 text-sm md:text-base">Our experts analyze your project and provide a comprehensive list of required permits.</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-xl p-10 transition-transform duration-300 hover:transform hover:scale-105 border border-gray-100" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-[#E31B23] mb-6">
-                        <i class="bi bi-graph-up-arrow text-5xl"></i>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4 text-[#0A2240]">Cost Savings</h4>
-                    <p class="text-gray-600 text-lg leading-relaxed">Avoid expensive delays and rework by getting permits right the first time with our comprehensive approach.</p>
-                    <div class="mt-6 pt-6 border-t border-gray-100">
-                        <div class="flex items-center">
-                            <div class="h-10 w-10 rounded-full bg-[#E31B23] bg-opacity-10 flex items-center justify-center mr-4">
-                                <i class="bi bi-cash-coin text-[#E31B23]"></i>
-                            </div>
-                            <p class="text-gray-700">Average savings of $10,000+ per project</p>
+                <div class="relative" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 h-full feature-card border-t-4 border-[#E31B23]">
+                        <div class="absolute -top-5 -left-5 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0A2240] text-white flex items-center justify-center text-lg font-bold">3</div>
+                        <div class="text-[#0A2240] mb-6">
+                            <i class="bi bi-file-earmark-text text-3xl"></i>
                         </div>
+                        <h4 class="text-lg md:text-xl font-bold mb-4 text-[#0A2240]">Approve Submission</h4>
+                        <p class="text-gray-600 text-sm md:text-base">Review and approve the prepared permit applications before we submit them to the relevant authorities.</p>
+                    </div>
+                </div>
+                <div class="relative" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-white rounded-lg shadow-lg p-6 h-full feature-card border-t-4 border-[#E31B23]">
+                        <div class="absolute -top-5 -left-5 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0A2240] text-white flex items-center justify-center text-lg font-bold">4</div>
+                        <div class="text-[#0A2240] mb-6">
+                            <i class="bi bi-check-circle text-3xl"></i>
+                        </div>
+                        <h4 class="text-lg md:text-xl font-bold mb-4 text-[#0A2240]">Track Progress</h4>
+                        <p class="text-gray-600 text-sm md:text-base">Monitor real-time status updates through our dashboard until final approval is granted.</p>
                     </div>
                 </div>
             </div>
@@ -307,13 +283,13 @@
     {{-- Testimonials Section --}}
     @include('components.testimonial')
 
-    {{-- FAQ Section (New) --}}
-    <section class="py-20 bg-gray-50">
+    {{-- FAQ Section --}}
+    <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-                <div class="h-1.5 w-24 bg-[#E31B23] mx-auto mb-8"></div>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Get answers to common questions about our permitting solution</p>
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+                <div class="h-1 w-20 bg-[#E31B23] mx-auto mb-8"></div>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Get answers to common questions about our permitting solution</p>
             </div>
 
             <div class="max-w-4xl mx-auto">
@@ -346,16 +322,6 @@
                         <p>To get started, we need your project's location, basic scope of work, and any existing plans or drawings. Our user-friendly platform makes it easy to upload these documents. After initial review, our team will guide you through any additional information needed for your specific permits.</p>
                     </div>
                 </div>
-                
-                <div class="mb-6 border border-gray-200 rounded-lg bg-white shadow-md" data-aos="fade-up" data-aos-delay="300">
-                    <button class="flex justify-between items-center w-full p-6 text-left font-bold text-lg text-[#0A2240] hover:text-[#E31B23] transition-colors faq-btn">
-                        <span>Do you handle permit fees?</span>
-                        <i class="bi bi-plus-lg text-[#E31B23]"></i>
-                    </button>
-                    <div class="hidden px-6 pb-6 text-gray-600 faq-content">
-                        <p>Yes, we can handle permit fee payments on your behalf. These regulatory fees are passed through without markup and clearly itemized on your invoice. We'll provide fee estimates before submission so you can budget accordingly for your project.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -375,7 +341,8 @@
             AOS.init({
                 duration: 800,
                 easing: 'ease-in-out',
-                once: true
+                once: true,
+                disable: 'mobile' // Optional: disable on mobile for better performance
             });
             
             // Tab functionality
@@ -384,23 +351,27 @@
             const oldWayContent = document.getElementById('old-way-content');
             const newWayContent = document.getElementById('new-way-content');
             
-            oldWayTab.addEventListener('click', function() {
-                oldWayTab.classList.add('active');
-                newWayTab.classList.remove('active');
-                oldWayContent.classList.remove('hidden');
-                newWayContent.classList.add('hidden');
-            });
-            
-            newWayTab.addEventListener('click', function() {
-                newWayTab.classList.add('active');
-                oldWayTab.classList.remove('active');
-                newWayContent.classList.remove('hidden');
-                oldWayContent.classList.add('hidden');
-            });
+            if(oldWayTab && newWayTab && oldWayContent && newWayContent) {
+                oldWayTab.addEventListener('click', function() {
+                    oldWayTab.classList.add('active');
+                    newWayTab.classList.remove('active');
+                    oldWayContent.classList.remove('hidden');
+                    newWayContent.classList.add('hidden');
+                });
+                
+                newWayTab.addEventListener('click', function() {
+                    newWayTab.classList.add('active');
+                    oldWayTab.classList.remove('active');
+                    newWayContent.classList.remove('hidden');
+                    oldWayContent.classList.add('hidden');
+                });
+            }
             
             // Counter animation
             function animateCounter(elementId, targetValue, duration) {
                 const element = document.getElementById(elementId);
+                if(!element) return;
+                
                 const increment = targetValue / (duration / 50);
                 let current = 0;
                 
