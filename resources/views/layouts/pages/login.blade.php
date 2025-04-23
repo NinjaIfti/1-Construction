@@ -151,9 +151,10 @@
                         <div>
                             <button type="submit" 
                                 class="w-full bg-red text-white py-3 px-4 rounded-lg font-medium hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red shadow-md transition-all duration-300">
-                                Sign in
+                                
                             </button>
                         </div>
+                        
                     </form>
                     
                     <div class="mt-8">
@@ -236,13 +237,25 @@
                                     </a>
                                 </div>
                             </div>
-                            
                             <div>
                                 <button type="submit" 
                                     class="w-full bg-red text-white py-3 px-4 rounded-lg font-medium hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red shadow-md transition-all duration-300">
-                                    Sign in
+                                    Sign in 
                                 </button>
                             </div>
+                            
+                            <div>
+    <a href="{{ route('admin.dashboard') }}" 
+        class="w-full bg-red text-white py-3 px-4 rounded-lg font-medium hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red shadow-md transition-all duration-300 inline-block text-center">
+        Sign in Admin
+    </a>
+</div>
+<div>
+    <a href="{{ route('client.dashboard') }}" 
+        class="w-full bg-red text-white py-3 px-4 rounded-lg font-medium hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red shadow-md transition-all duration-300 inline-block text-center">
+        Sign in client
+    </a>
+</div>
                         </form>
                         
                         <div class="mt-8">

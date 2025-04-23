@@ -29,5 +29,7 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
-
+// temporary admin routes
+Route::view('/admin.dashboard', 'layouts.admin.dashboard')->name('admin.dashboard');
+Route::view('/client.dashboard', 'layouts.client.dashboard')->name('client.dashboard');
 require __DIR__.'/auth.php';
