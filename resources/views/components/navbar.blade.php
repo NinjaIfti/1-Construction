@@ -27,7 +27,27 @@
                 <div class="hidden lg:flex lg:items-center lg:justify-between flex-1 ml-16">
                     <div class="flex items-center space-x-8">
                         <a href="/product" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm">Product</a>
-                        <a href="/solutions" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm">Solutions</a>
+                        
+                        <!-- Who We Serve Dropdown -->
+                        <div class="relative group">
+                            <a href="/who-we-serve" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm flex items-center">
+                                Who We Serve
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            
+                            <!-- Slimmer dropdown menu with bold text -->
+                            <div class="absolute left-0 mt-1 w-48 bg-white rounded-md shadow-md py-1 z-10 hidden group-hover:block">
+                                <a href="/who-we-serve/home-builder" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Home Builder</a>
+                                <a href="/who-we-serve/developers" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Developers</a>
+                                <a href="/who-we-serve/general-contractor" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">General Contractor</a>
+                                <a href="/who-we-serve/sub-contractor" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Sub Contractor</a>
+                                <a href="/who-we-serve/solar-ev" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Solar & EV</a>
+                                <a href="/who-we-serve/architect" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Architect</a>
+                            </div>
+                        </div>
+                        
                         <a href="/resources" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm">Resources</a>
                     </div>
                     <div class="flex items-center space-x-4">
@@ -48,7 +68,26 @@
         <div class="container mx-auto px-6 py-3">
             <div class="flex flex-col space-y-3">
                 <a href="/product" class="py-2 font-medium text-nav-default hover:text-[#E31B23] transition duration-300">Product</a>
-                <a href="/solutions" class="py-2 font-medium text-nav-default hover:text-[#E31B23] transition duration-300">Solutions</a>
+                
+                <!-- Mobile Who We Serve with dropdown -->
+                <div x-data="{ open: false }">
+                    <button @click="open = !open" class="py-2 font-medium text-nav-default hover:text-[#E31B23] transition duration-300 flex items-center justify-between w-full">
+                        Who We Serve
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" :class="{'rotate-180': open}">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    
+                    <div x-show="open" class="pl-4 mt-1 space-y-1">
+                        <a href="/who-we-serve/home-builder" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">Home Builder</a>
+                        <a href="/who-we-serve/developers" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">Developers</a>
+                        <a href="/who-we-serve/general-contractor" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">General Contractor</a>
+                        <a href="/who-we-serve/sub-contractor" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">Sub Contractor</a>
+                        <a href="/who-we-serve/solar-ev" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">Solar & EV</a>
+                        <a href="/who-we-serve/architect" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">Architect</a>
+                    </div>
+                </div>
+                
                 <a href="/resources" class="py-2 font-medium text-nav-default hover:text-[#E31B23] transition duration-300">Resources</a>
                 <div class="pt-3 flex flex-col space-y-3">
                     <a href="{{ route('login.custom') }}" class="px-5 py-2 border border-navy font-medium rounded-full hover:bg-white hover:text-[#0A2240] transition duration-300 text-center">
@@ -293,6 +332,29 @@ body {
     background-color: #E31B23;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
+}
+
+/* Dropdown styling */
+.group:hover .group-hover\:block {
+    display: block;
+}
+
+/* Transition for dropdown */
+.group-hover\:block {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Sticky header adjustments for dropdown */
+.sticky-header .group-hover\:block {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.sticky-header .group-hover\:block a {
+    color: #0A2240;
+}
+
+.sticky-header .group-hover\:block a:hover {
+    color: #E31B23;
 }
 </style>
 
