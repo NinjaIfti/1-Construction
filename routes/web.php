@@ -26,8 +26,8 @@ Route::view('/login', 'layouts.pages.login')->name('login.custom')->middleware('
 Route::view('/who-we-serve', 'layouts.pages.who-we-serve')->name('who-we-serve');
 Route::view('/who-we-serve/home-builder', 'layouts.pages.HomeBuilder')->name('who-we-serve.home-builder');
 Route::view('/who-we-serve/developers', 'layouts.pages.developers')->name('who-we-serve.developers');
-Route::view('/who-we-serve/general-contractor', 'layouts.pages.general-contractor')->name('who-we-serve.general-contractor');
-Route::view('/who-we-serve/sub-contractor', 'layouts.pages.sub-contractor')->name('who-we-serve.sub-contractor');
+Route::view('/who-we-serve/GeneralContractor', 'layouts.pages.GeneralContractor')->name('who-we-serve.GeneralContractor');
+Route::view('/who-we-serve/sub-contractor', 'layouts.pages.subcontractor')->name('who-we-serve.sub-contractor');
 Route::view('/who-we-serve/solar-ev', 'layouts.pages.solar-ev')->name('who-we-serve.solar-ev');
 Route::view('/who-we-serve/architect', 'layouts.pages.architect')->name('who-we-serve.architect');
 

@@ -41,7 +41,7 @@
                             <div class="absolute left-0 mt-1 w-48 bg-white rounded-md shadow-md py-1 z-10 hidden group-hover:block">
                                 <a href="{{ route('who-we-serve.home-builder') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Home Builder</a>
                                 <a href="{{ route('who-we-serve.developers') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Developers</a>
-                                <a href="{{ route('who-we-serve.general-contractor') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">General Contractor</a>
+                                <a href="{{ route('who-we-serve.GeneralContractor') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">General Contractor</a>
                                 <a href="{{ route('who-we-serve.sub-contractor') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Sub Contractor</a>
                                 <a href="{{ route('who-we-serve.solar-ev') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Solar & EV</a>
                                 <a href="{{ route('who-we-serve.architect') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Architect</a>
@@ -81,7 +81,7 @@
                     <div x-show="open" class="pl-4 mt-1 space-y-1">
                         <a href="{{ route('who-we-serve.home-builder') }}" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">Home Builder</a>
                         <a href="{{ route('who-we-serve.developers') }}" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">Developers</a>
-                        <a href="{{ route('who-we-serve.general-contractor') }}" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">General Contractor</a>
+                        <a href="{{ route('who-we-serve.GeneralContractor') }}" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">General Contractor</a>
                         <a href="{{ route('who-we-serve.sub-contractor') }}" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">Sub Contractor</a>
                         <a href="{{ route('who-we-serve.solar-ev') }}" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">Solar & EV</a>
                         <a href="{{ route('who-we-serve.architect') }}" class="block py-1 text-sm font-bold text-nav-default hover:text-[#E31B23]">Architect</a>
