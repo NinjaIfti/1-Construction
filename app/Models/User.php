@@ -23,6 +23,24 @@ class User extends Authenticatable
         'role',
         'company_name',
         'phone_number',
+        'company_type',
+        'company_size',
+        'address',
+        'city',
+        'state',
+        'zip',
+        'project_types',
+        'services',
+        'project_volume',
+        'hear_about',
+        'verification_status',
+        'license_number',
+        'contractor_license_file',
+        'drivers_license_file',
+        'insurance_certificate_file',
+        'admin_feedback',
+        'documents_submitted_at',
+        'verified_at',
     ];
 
     /**
@@ -43,6 +61,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'project_types' => 'array',
+        'services' => 'array',
+        'documents_submitted_at' => 'datetime',
+        'verified_at' => 'datetime',
     ];
 
     /**
@@ -83,5 +105,56 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->role === 'admin';
+    }
+
+    /**
+     * Check if the user is a contractor.
+     */
+    public function isContractor()
+    {
+        return $this->role === 'contractor';
+    }
+
+    /**
+     * Check if the contractor is verified.
+     */
+    public function isVerified()
+    {
+        return $this->verification_status === 'approved' && $this->verified_at !== null;
+    }
+
+    /**
+     * Check if documents are submitted.
+     */
+    public function hasSubmittedDocuments()
+    {
+        return $this->documents_submitted_at !== null;
+    }
+
+    /**
+     * Check if the contractor is under review.
+     */
+    public function isUnderReview()
+    {
+        return $this->verification_status === 'under_review';
+    }
+
+    /**
+     * Get verification status label
+     */
+    public function getVerificationStatusLabel()
+    {
+        switch ($this->verification_status) {
+            case 'pending':
+                return 'Missing Documents';
+            case 'under_review':
+                return 'Under Review';
+            case 'approved':
+                return 'Verified';
+            case 'rejected':
+                return 'Rejected';
+            default:
+                return 'Unknown';
+        }
     }
 }

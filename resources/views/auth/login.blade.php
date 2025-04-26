@@ -200,7 +200,7 @@
                     <div class="text-center mt-8">
                         <p class="text-sm text-gray-600">
                             Don't have an account? 
-                            <a href="/signup" class="font-medium text-red hover:text-red-800 hover:underline">
+                            <a href="/get-started" class="font-medium text-red hover:text-red-800 hover:underline">
                                 Sign up now
                             </a>
                         </p>
@@ -300,7 +300,7 @@
                         <div class="text-center mt-8">
                             <p class="text-sm text-gray-600">
                                 Don't have an account? 
-                                <a href="/signup" class="font-medium text-red hover:text-red-800 hover:underline">
+                                <a href="/get-started" class="font-medium text-red hover:text-red-800 hover:underline">
                                     Sign up now
                                 </a>
                             </p>

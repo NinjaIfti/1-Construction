@@ -6,6 +6,10 @@ use App\Http\Controllers\PermitController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ContractorController;
+use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\Admin\VerificationController as AdminVerificationController;
 
 Route::view('/', 'welcome');
 
@@ -23,6 +27,7 @@ Route::view('/contact', 'layouts.pages.contact')->name('contact');
 
 // Get Started route
 Route::view('/get-started', 'layouts.pages.getStarted')->name('get-started');
+Route::post('/register-contractor', [RegisterController::class, 'register'])->name('register.contractor');
 
 // Admin dashboard route
 Route::get('/layouts/admin/dashboard', function () {
@@ -34,30 +39,8 @@ Route::get('/layouts/client/dashboard', function () {
     return view('layouts.client.dashboard');
 })->middleware(['auth'])->name('client.dashboard');
 
-// Who We Serve routes
-Route::view('/who-we-serve', 'layouts.pages.who-we-serve')->name('who-we-serve');
-Route::view('/who-we-serve/home-builder', 'layouts.pages.HomeBuilder')->name('who-we-serve.home-builder');
-Route::view('/who-we-serve/developers', 'layouts.pages.developers')->name('who-we-serve.developers');
-Route::view('/who-we-serve/GeneralContractor', 'layouts.pages.GeneralContractor')->name('who-we-serve.GeneralContractor');
-Route::view('/who-we-serve/sub-contractor', 'layouts.pages.subcontractor')->name('who-we-serve.sub-contractor');
-Route::view('/who-we-serve/solar-ev', 'layouts.pages.solar-ev')->name('who-we-serve.solar-ev');
-Route::view('/who-we-serve/architect', 'layouts.pages.architect')->name('who-we-serve.architect');
-
-// Default dashboard - redirects based on user role
-Route::get('dashboard', function() {
-    if (auth()->user()->isAdmin()) {
-        return redirect()->route('admin.dashboard');
-    } else {
-        return redirect()->route('client.dashboard');
-    }
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
-
-// Authenticated routes
-Route::middleware(['auth'])->group(function () {
+// Contractor Verified Routes
+Route::middleware(['auth', 'verified.contractor'])->group(function () {
     // Projects
     Route::resource('projects', ProjectController::class);
     Route::get('projects/{project}/dashboard', [ProjectController::class, 'dashboard'])->name('projects.dashboard');
@@ -84,7 +67,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('documents/{document}/download', [DocumentController::class, 'download'])->name('documents.download');
     Route::get('documents/{document}/preview', [DocumentController::class, 'preview'])->name('documents.preview');
     Route::post('documents/{document}/replace', [DocumentController::class, 'replace'])->name('documents.replace');
-    
+});
+
+// All authenticated routes (both verified and unverified)
+Route::middleware(['auth'])->group(function () {
     // Notifications
     Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
     Route::get('notifications/unread', [NotificationController::class, 'unread'])->name('notifications.unread');
@@ -96,6 +82,45 @@ Route::middleware(['auth'])->group(function () {
     // API routes for notifications
     Route::get('api/notifications/count', [NotificationController::class, 'getUnreadCount'])->name('api.notifications.count');
     Route::get('api/notifications/recent', [NotificationController::class, 'getRecentNotifications'])->name('api.notifications.recent');
+    
+    // Contractor Verification Routes
+    Route::get('/verification', [VerificationController::class, 'index'])->name('verification.index');
+    Route::post('/verification/submit', [VerificationController::class, 'submitDocuments'])->name('verification.submit');
+});
+
+// Who We Serve routes
+Route::view('/who-we-serve', 'layouts.pages.who-we-serve')->name('who-we-serve');
+Route::view('/who-we-serve/home-builder', 'layouts.pages.HomeBuilder')->name('who-we-serve.home-builder');
+Route::view('/who-we-serve/developers', 'layouts.pages.developers')->name('who-we-serve.developers');
+Route::view('/who-we-serve/GeneralContractor', 'layouts.pages.GeneralContractor')->name('who-we-serve.GeneralContractor');
+Route::view('/who-we-serve/sub-contractor', 'layouts.pages.subcontractor')->name('who-we-serve.sub-contractor');
+Route::view('/who-we-serve/solar-ev', 'layouts.pages.solar-ev')->name('who-we-serve.solar-ev');
+Route::view('/who-we-serve/architect', 'layouts.pages.architect')->name('who-we-serve.architect');
+
+// Default dashboard - redirects based on user role
+Route::get('dashboard', function() {
+    if (auth()->user()->isAdmin()) {
+        return redirect()->route('admin.dashboard');
+    } else {
+        return redirect()->route('client.dashboard');
+    }
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+// Contractors routes
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/contractors', [ContractorController::class, 'index'])->name('contractors.index');
+    Route::get('/contractors/{contractor}', [ContractorController::class, 'show'])->name('contractors.show');
+    Route::get('/api/dashboard/contractors', [ContractorController::class, 'getDashboardContractors'])->name('api.dashboard.contractors');
+    
+    // Admin Verification Routes
+    Route::get('/admin/verifications', [AdminVerificationController::class, 'index'])->name('admin.verifications.index');
+    Route::get('/admin/verifications/{contractor}', [AdminVerificationController::class, 'show'])->name('admin.verifications.show');
+    Route::get('/admin/verifications/{contractor}/edit', [AdminVerificationController::class, 'edit'])->name('admin.verifications.edit');
+    Route::put('/admin/verifications/{contractor}', [AdminVerificationController::class, 'update'])->name('admin.verifications.update');
 });
 
 require __DIR__.'/auth.php';

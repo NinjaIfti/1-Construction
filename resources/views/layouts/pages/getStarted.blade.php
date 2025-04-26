@@ -195,30 +195,31 @@
                                         </div>
                                     </div>
                                     
-                                    <form class="space-y-4">
+                                    <form id="signup-form" method="POST" action="{{ route('register.contractor') }}" class="space-y-4">
+                                        @csrf
                                         <div class="form-group">
                                             <label for="fullname">Full Name</label>
-                                            <input type="text" id="fullname" placeholder="Enter your full name" required />
+                                            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required />
                                         </div>
                                         
                                         <div class="form-group">
                                             <label for="email">Email Address</label>
-                                            <input type="email" id="email" placeholder="your@email.com" required />
+                                            <input type="email" id="email" name="email" placeholder="your@email.com" required />
                                         </div>
                                         
                                         <div class="form-group">
                                             <label for="password">Password</label>
-                                            <input type="password" id="password" placeholder="Create a secure password" required />
+                                            <input type="password" id="password" name="password" placeholder="Create a secure password" required />
                                             <p class="text-xs text-gray-500 mt-1">Password must be at least 8 characters with 1 uppercase letter, 1 number, and 1 special character</p>
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label for="confirm-password">Confirm Password</label>
-                                            <input type="password" id="confirm-password" placeholder="Confirm your password" required />
+                                            <label for="password_confirmation">Confirm Password</label>
+                                            <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required />
                                         </div>
                                         
                                         <div class="form-group flex items-start">
-                                            <input type="checkbox" id="terms" class="mt-1 mr-2" required />
+                                            <input type="checkbox" id="terms" name="terms" class="mt-1 mr-2" required />
                                             <label for="terms" class="text-sm">
                                                 I agree to the <a href="#" class="text-red-500 hover:underline">Terms of Service</a> and <a href="#" class="text-red-500 hover:underline">Privacy Policy</a>
                                             </label>
@@ -299,12 +300,12 @@
                                     <form class="space-y-4">
                                         <div class="form-group">
                                             <label for="company-name">Company Name</label>
-                                            <input type="text" id="company-name" placeholder="Enter your company name" required />
+                                            <input type="text" id="company-name" name="company_name" form="signup-form" placeholder="Enter your company name" required />
                                         </div>
                                         
                                         <div class="form-group">
                                             <label for="company-type">Company Type</label>
-                                            <select id="company-type" required>
+                                            <select id="company-type" name="company_type" form="signup-form" required>
                                                 <option value="" disabled selected>Select your company type</option>
                                                 <option value="general-contractor">General Contractor</option>
                                                 <option value="subcontractor">Subcontractor</option>
@@ -318,7 +319,7 @@
                                         
                                         <div class="form-group">
                                             <label for="company-size">Company Size</label>
-                                            <select id="company-size" required>
+                                            <select id="company-size" name="company_size" form="signup-form" required>
                                                 <option value="" disabled selected>Select your company size</option>
                                                 <option value="1-5">1-5 employees</option>
                                                 <option value="6-20">6-20 employees</option>
@@ -330,28 +331,28 @@
                                         
                                         <div class="form-group">
                                             <label for="phone">Phone Number</label>
-                                            <input type="tel" id="phone" placeholder="(123) 456-7890" />
+                                            <input type="tel" id="phone" name="phone" form="signup-form" placeholder="(123) 456-7890" />
                                         </div>
                                         
                                         <div class="form-group">
                                             <label for="address">Company Address</label>
-                                            <input type="text" id="address" placeholder="Street Address" />
+                                            <input type="text" id="address" name="address" form="signup-form" placeholder="Street Address" />
                                         </div>
                                         
                                         <div class="grid grid-cols-2 gap-4">
                                             <div class="form-group">
                                                 <label for="city">City</label>
-                                                <input type="text" id="city" />
+                                                <input type="text" id="city" name="city" form="signup-form" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="state">State</label>
-                                                <input type="text" id="state" />
+                                                <input type="text" id="state" name="state" form="signup-form" />
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label for="zip">ZIP Code</label>
-                                            <input type="text" id="zip" placeholder="12345" />
+                                            <input type="text" id="zip" name="zip" form="signup-form" placeholder="12345" />
                                         </div>
                                         
                                         <div class="pt-4 flex space-x-4">
@@ -430,19 +431,19 @@
                                             <label class="text-base font-medium">Primary focus of your projects</label>
                                             <div class="mt-2 space-y-2">
                                                 <div class="flex items-start">
-                                                    <input type="checkbox" id="residential" class="mt-1 mr-2" />
+                                                    <input type="checkbox" id="residential" name="project_types[]" form="signup-form" value="residential" class="mt-1 mr-2" />
                                                     <label for="residential" class="text-sm">Residential Construction</label>
                                                 </div>
                                                 <div class="flex items-start">
-                                                    <input type="checkbox" id="commercial" class="mt-1 mr-2" />
+                                                    <input type="checkbox" id="commercial" name="project_types[]" form="signup-form" value="commercial" class="mt-1 mr-2" />
                                                     <label for="commercial" class="text-sm">Commercial Construction</label>
                                                 </div>
                                                 <div class="flex items-start">
-                                                    <input type="checkbox" id="industrial" class="mt-1 mr-2" />
+                                                    <input type="checkbox" id="industrial" name="project_types[]" form="signup-form" value="industrial" class="mt-1 mr-2" />
                                                     <label for="industrial" class="text-sm">Industrial Construction</label>
                                                 </div>
                                                 <div class="flex items-start">
-                                                    <input type="checkbox" id="infrastructure" class="mt-1 mr-2" />
+                                                    <input type="checkbox" id="infrastructure" name="project_types[]" form="signup-form" value="infrastructure" class="mt-1 mr-2" />
                                                     <label for="infrastructure" class="text-sm">Infrastructure & Civil</label>
                                                 </div>
                                             </div>
@@ -452,19 +453,19 @@
                                             <label class="text-base font-medium">Services you're interested in</label>
                                             <div class="mt-2 space-y-2">
                                                 <div class="flex items-start">
-                                                    <input type="checkbox" id="permit-research" class="mt-1 mr-2" />
+                                                    <input type="checkbox" id="permit-research" name="services[]" form="signup-form" value="permit-research" class="mt-1 mr-2" />
                                                     <label for="permit-research" class="text-sm">Permit Research & Requirements</label>
                                                 </div>
                                                 <div class="flex items-start">
-                                                    <input type="checkbox" id="permit-submission" class="mt-1 mr-2" />
+                                                    <input type="checkbox" id="permit-submission" name="services[]" form="signup-form" value="permit-submission" class="mt-1 mr-2" />
                                                     <label for="permit-submission" class="text-sm">Permit Submission & Management</label>
                                                 </div>
                                                 <div class="flex items-start">
-                                                    <input type="checkbox" id="expediting" class="mt-1 mr-2" />
+                                                    <input type="checkbox" id="expediting" name="services[]" form="signup-form" value="expediting" class="mt-1 mr-2" />
                                                     <label for="expediting" class="text-sm">Permit Expediting Services</label>
                                                 </div>
                                                 <div class="flex items-start">
-                                                    <input type="checkbox" id="consulting" class="mt-1 mr-2" />
+                                                    <input type="checkbox" id="consulting" name="services[]" form="signup-form" value="consulting" class="mt-1 mr-2" />
                                                     <label for="consulting" class="text-sm">Compliance Consulting</label>
                                                 </div>
                                             </div>
@@ -472,7 +473,7 @@
                                         
                                         <div class="form-group">
                                             <label for="project-volume">How many permitting projects do you handle per year?</label>
-                                            <select id="project-volume">
+                                            <select id="project-volume" name="project_volume" form="signup-form">
                                                 <option value="" disabled selected>Select option</option>
                                                 <option value="1-5">1-5 projects</option>
                                                 <option value="6-20">6-20 projects</option>
@@ -483,7 +484,7 @@
                                         
                                         <div class="form-group">
                                             <label for="hear-about">How did you hear about us?</label>
-                                            <select id="hear-about">
+                                            <select id="hear-about" name="hear_about" form="signup-form">
                                                 <option value="" disabled selected>Select option</option>
                                                 <option value="search">Search Engine</option>
                                                 <option value="social">Social Media</option>
@@ -499,7 +500,7 @@
                                                 <i class="bi bi-arrow-left mr-2"></i>
                                                 Back
                                             </button>
-                                            <button type="submit" class="w-1/2 bg-red text-white py-3 px-4 rounded-lg font-medium hover:bg-opacity-90 transition-all duration-300">
+                                            <button type="submit" form="signup-form" class="w-1/2 bg-red text-white py-3 px-4 rounded-lg font-medium hover:bg-opacity-90 transition-all duration-300">
                                                 Complete Registration
                                                 <i class="bi bi-check-circle ml-2"></i>
                                             </button>
@@ -565,3 +566,43 @@
 @include('components.footer')
    </body>
 </html>
+
+<script>
+    // Update progress bar when changing tabs
+    document.getElementById('next-to-company').addEventListener('click', function() {
+        document.querySelector('.progress-value').style.width = '33%';
+        document.querySelector('[data-tab="account"]').classList.remove('active');
+        document.querySelector('[data-tab="company"]').classList.add('active');
+        document.querySelector('#account-tab').classList.add('hidden');
+        document.querySelector('#company-tab').classList.remove('hidden');
+    });
+    
+    document.getElementById('back-to-account').addEventListener('click', function() {
+        document.querySelector('.progress-value').style.width = '0%';
+        document.querySelector('[data-tab="company"]').classList.remove('active');
+        document.querySelector('[data-tab="account"]').classList.add('active');
+        document.querySelector('#company-tab').classList.add('hidden');
+        document.querySelector('#account-tab').classList.remove('hidden');
+    });
+    
+    document.getElementById('next-to-preferences').addEventListener('click', function() {
+        document.querySelector('.progress-value').style.width = '66%';
+        document.querySelector('[data-tab="company"]').classList.remove('active');
+        document.querySelector('[data-tab="preferences"]').classList.add('active');
+        document.querySelector('#company-tab').classList.add('hidden');
+        document.querySelector('#preferences-tab').classList.remove('hidden');
+    });
+    
+    document.getElementById('back-to-company').addEventListener('click', function() {
+        document.querySelector('.progress-value').style.width = '33%';
+        document.querySelector('[data-tab="preferences"]').classList.remove('active');
+        document.querySelector('[data-tab="company"]').classList.add('active');
+        document.querySelector('#preferences-tab').classList.add('hidden');
+        document.querySelector('#company-tab').classList.remove('hidden');
+    });
+    
+    // Complete progress bar when submitting the form
+    document.getElementById('signup-form').addEventListener('submit', function() {
+        document.querySelector('.progress-value').style.width = '100%';
+    });
+</script>

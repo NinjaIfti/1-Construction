@@ -25,6 +25,13 @@
           <div class="text-right">
             <div class="text-lg font-bold">{{ auth()->user()->name }}</div>
             <div class="text-sm">{{ auth()->user()->company_name }}</div>
+            @if(auth()->user()->verification_status === 'approved')
+              <div class="text-xs text-green-400">Verified Account</div>
+            @elseif(auth()->user()->verification_status === 'under_review')
+              <div class="text-xs text-yellow-400">Under Review</div>
+            @else
+              <div class="text-xs text-red-400">Verification Required</div>
+            @endif
             <form method="POST" action="{{ route('logout') }}" class="mt-1">
               @csrf
               <button type="submit" class="text-xs text-red-600 hover:underline">Logout</button>
@@ -42,26 +49,48 @@
               <i class="fas fa-home mr-3"></i>
               <span>Dashboard</span>
             </button>
-            <button id="submit-permit-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 bg-blue-900">
-              <i class="fas fa-file-upload mr-3"></i>
-              <span>Submit Permit</span>
-            </button>
-            <button id="messages-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700">
-              <i class="fas fa-comment mr-3"></i>
-              <span>Messages</span>
-            </button>
-            <button id="documents-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700">
-              <i class="fas fa-folder mr-3"></i>
-              <span>Documents</span>
-            </button>
+            
+            @if(auth()->user()->verification_status === 'approved')
+              <!-- Full menu for verified contractors -->
+              <button id="submit-permit-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 bg-blue-900">
+                <i class="fas fa-file-upload mr-3"></i>
+                <span>Submit Permit</span>
+              </button>
+              <button id="messages-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700">
+                <i class="fas fa-comment mr-3"></i>
+                <span>Messages</span>
+              </button>
+              <button id="documents-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700">
+                <i class="fas fa-folder mr-3"></i>
+                <span>Documents</span>
+              </button>
+            @else
+              <!-- Only verification menu for unverified contractors -->
+              <button id="verification-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 bg-blue-900">
+                <i class="fas fa-id-card mr-3"></i>
+                <span>Verification</span>
+              </button>
+            @endif
           </div>
         </div>
 
         <!-- Main Content Container for all content sections -->
         <div class="w-full md:w-3/4 p-6">
+          @yield('content')
+          
           <!-- Dashboard Content -->
           <div id="dashboard-content" class="hidden">
             <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
+            
+            @if(auth()->user()->verification_status !== 'approved')
+              <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6" role="alert">
+                <p class="font-bold">Account Verification Required</p>
+                <p>To access all features, please complete the verification process.</p>
+                <a href="{{ route('verification.index') }}" class="mt-2 inline-block bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded">
+                  Go to Verification
+                </a>
+              </div>
+            @endif
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <div class="bg-blue-100 p-4 rounded shadow">
@@ -89,8 +118,13 @@
             </div>
           </div>
 
+          <!-- Verification Content -->
+          <div id="verification-content" class="hidden">
+            <!-- Will be replaced by verification.index view -->
+          </div>
+
           <!-- Submit Permit Content -->
-          <div id="submit-permit-content" class="block">
+          <div id="submit-permit-content" class="hidden">
             <h2 class="text-2xl font-bold mb-4">Submit a Permit</h2>
             <h3 class="text-lg font-semibold mb-6">Permit Submission Form</h3>
             
@@ -248,26 +282,6 @@
                       <button class="text-red-500"><i class="fas fa-trash"></i></button>
                     </td>
                   </tr>
-                  <tr class="border-b hover:bg-gray-50">
-                    <td class="p-4">Contract.docx</td>
-                    <td class="p-4">Word</td>
-                    <td class="p-4">Apr 20, 2025</td>
-                    <td class="p-4">0.5 MB</td>
-                    <td class="p-4">
-                      <button class="text-blue-500 mr-2"><i class="fas fa-download"></i></button>
-                      <button class="text-red-500"><i class="fas fa-trash"></i></button>
-                    </td>
-                  </tr>
-                  <tr class="hover:bg-gray-50">
-                    <td class="p-4">Invoice #1234.pdf</td>
-                    <td class="p-4">PDF</td>
-                    <td class="p-4">Apr 19, 2025</td>
-                    <td class="p-4">0.8 MB</td>
-                    <td class="p-4">
-                      <button class="text-blue-500 mr-2"><i class="fas fa-download"></i></button>
-                      <button class="text-red-500"><i class="fas fa-trash"></i></button>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -278,100 +292,94 @@
   </div>
 
   <script>
-    // Make the file upload work when clicking on the upload area
     document.addEventListener('DOMContentLoaded', function() {
-      const uploadArea = document.querySelector('.border-dashed');
-      const fileInput = document.querySelector('input[type="file"]');
-      
-      uploadArea.addEventListener('click', function() {
-        fileInput.click();
-      });
-      
-      uploadArea.addEventListener('dragover', function(e) {
-        e.preventDefault();
-        this.classList.add('bg-gray-50');
-      });
-      
-      uploadArea.addEventListener('dragleave', function(e) {
-        e.preventDefault();
-        this.classList.remove('bg-gray-50');
-      });
-      
-      uploadArea.addEventListener('drop', function(e) {
-        e.preventDefault();
-        this.classList.remove('bg-gray-50');
-        fileInput.files = e.dataTransfer.files;
-        const fileCount = fileInput.files.length;
-        if(fileCount > 0) {
-          alert(`${fileCount} file(s) selected`);
-        }
-      });
-      
-      fileInput.addEventListener('change', function() {
-        const fileCount = this.files.length;
-        if(fileCount > 0) {
-          alert(`${fileCount} file(s) selected`);
-        }
-      });
-
-      // Navigation functionality
+      // Buttons
       const dashboardBtn = document.getElementById('dashboard-btn');
       const submitPermitBtn = document.getElementById('submit-permit-btn');
       const messagesBtn = document.getElementById('messages-btn');
       const documentsBtn = document.getElementById('documents-btn');
+      const verificationBtn = document.getElementById('verification-btn');
       
+      // Content sections
       const dashboardContent = document.getElementById('dashboard-content');
       const submitPermitContent = document.getElementById('submit-permit-content');
       const messagesContent = document.getElementById('messages-content');
       const documentsContent = document.getElementById('documents-content');
+      const verificationContent = document.getElementById('verification-content');
       
-      // Function to hide all content sections
+      // Hide all content sections by default
       function hideAllContent() {
         dashboardContent.classList.add('hidden');
-        submitPermitContent.classList.add('hidden');
-        messagesContent.classList.add('hidden');
-        documentsContent.classList.add('hidden');
+        if (submitPermitContent) submitPermitContent.classList.add('hidden');
+        if (messagesContent) messagesContent.classList.add('hidden');
+        if (documentsContent) documentsContent.classList.add('hidden');
+        if (verificationContent) verificationContent.classList.add('hidden');
       }
       
-      // Function to remove active class from all buttons
-      function removeActiveClass() {
+      // Remove active class from all buttons
+      function deactivateAllButtons() {
         dashboardBtn.classList.remove('bg-blue-900');
-        submitPermitBtn.classList.remove('bg-blue-900');
-        messagesBtn.classList.remove('bg-blue-900');
-        documentsBtn.classList.remove('bg-blue-900');
+        if (submitPermitBtn) submitPermitBtn.classList.remove('bg-blue-900');
+        if (messagesBtn) messagesBtn.classList.remove('bg-blue-900');
+        if (documentsBtn) documentsBtn.classList.remove('bg-blue-900');
+        if (verificationBtn) verificationBtn.classList.remove('bg-blue-900');
       }
       
-      // Dashboard button click
+      // Show dashboard content by default
+      // If we're on the verification page, show that content instead
+      if (window.location.pathname.includes('verification')) {
+        hideAllContent();
+        if (verificationBtn) {
+          deactivateAllButtons();
+          verificationBtn.classList.add('bg-blue-900');
+        }
+      } else {
+        hideAllContent();
+        dashboardContent.classList.remove('hidden');
+        deactivateAllButtons();
+        dashboardBtn.classList.add('bg-blue-900');
+      }
+      
+      // Event listeners for sidebar buttons
       dashboardBtn.addEventListener('click', function() {
         hideAllContent();
-        removeActiveClass();
         dashboardContent.classList.remove('hidden');
-        this.classList.add('bg-blue-900');
+        deactivateAllButtons();
+        dashboardBtn.classList.add('bg-blue-900');
       });
       
-      // Submit Permit button click
-      submitPermitBtn.addEventListener('click', function() {
-        hideAllContent();
-        removeActiveClass();
-        submitPermitContent.classList.remove('hidden');
-        this.classList.add('bg-blue-900');
-      });
+      if (submitPermitBtn) {
+        submitPermitBtn.addEventListener('click', function() {
+          hideAllContent();
+          submitPermitContent.classList.remove('hidden');
+          deactivateAllButtons();
+          submitPermitBtn.classList.add('bg-blue-900');
+        });
+      }
       
-      // Messages button click
-      messagesBtn.addEventListener('click', function() {
-        hideAllContent();
-        removeActiveClass();
-        messagesContent.classList.remove('hidden');
-        this.classList.add('bg-blue-900');
-      });
+      if (messagesBtn) {
+        messagesBtn.addEventListener('click', function() {
+          hideAllContent();
+          messagesContent.classList.remove('hidden');
+          deactivateAllButtons();
+          messagesBtn.classList.add('bg-blue-900');
+        });
+      }
       
-      // Documents button click
-      documentsBtn.addEventListener('click', function() {
-        hideAllContent();
-        removeActiveClass();
-        documentsContent.classList.remove('hidden');
-        this.classList.add('bg-blue-900');
-      });
+      if (documentsBtn) {
+        documentsBtn.addEventListener('click', function() {
+          hideAllContent();
+          documentsContent.classList.remove('hidden');
+          deactivateAllButtons();
+          documentsBtn.classList.add('bg-blue-900');
+        });
+      }
+      
+      if (verificationBtn) {
+        verificationBtn.addEventListener('click', function() {
+          window.location.href = "{{ route('verification.index') }}";
+        });
+      }
     });
   </script>
 </body>

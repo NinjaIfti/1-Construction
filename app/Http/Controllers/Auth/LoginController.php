@@ -31,10 +31,15 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ($user->isAdmin()) {
-            return redirect()->intended('/layouts/admin/dashboard');
+            return redirect()->intended(route('admin.dashboard'));
         }
         
-        return redirect()->intended('/dashboard');
+        if ($user->isContractor() && !$user->hasSubmittedDocuments()) {
+            return redirect()->route('verification.index')
+                ->with('info', 'Please complete your account verification to get started.');
+        }
+        
+        return redirect()->intended(route('client.dashboard'));
     }
 
     /**
