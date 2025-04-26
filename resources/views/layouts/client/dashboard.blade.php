@@ -13,16 +13,22 @@
       <!-- Header -->
       <div class="bg-gray-900 text-white p-4 flex justify-between items-center">
         <div class="flex items-center">
-          <span class="text-red-600 text-4xl font-bold">1</span>
-          <div class="ml-2">
-            <div class="text-xl font-bold">CONTRACTOR</div>
-            <div class="text-2xl font-bold -mt-1">SOLUTIONS</div>
-          </div>
+          <a href="/" class="flex items-center">
+            <span class="text-red-600 text-4xl font-bold">1</span>
+            <div class="ml-2">
+              <div class="text-xl font-bold">CONTRACTOR</div>
+              <div class="text-2xl font-bold -mt-1">SOLUTIONS</div>
+            </div>
+          </a>
         </div>
         <div class="flex items-center">
           <div class="text-right">
-            <div class="text-lg font-bold">Client Name</div>
-            <div class="text-sm">Client Company</div>
+            <div class="text-lg font-bold">{{ auth()->user()->name }}</div>
+            <div class="text-sm">{{ auth()->user()->company_name }}</div>
+            <form method="POST" action="{{ route('logout') }}" class="mt-1">
+              @csrf
+              <button type="submit" class="text-xs text-red-600 hover:underline">Logout</button>
+            </form>
           </div>
           <div class="ml-2 w-8 h-8 bg-gray-300 rounded-full"></div>
         </div>

@@ -24,8 +24,15 @@ Route::view('/contact', 'layouts.pages.contact')->name('contact');
 // Get Started route
 Route::view('/get-started', 'layouts.pages.getStarted')->name('get-started');
 
-// Custom login route - override default auth route
-Route::view('/login', 'layouts.pages.login')->name('login.custom');
+// Admin dashboard route
+Route::get('/layouts/admin/dashboard', function () {
+    return view('layouts.admin.dashboard');
+})->middleware(['auth', 'admin'])->name('admin.dashboard');
+
+// Client dashboard route
+Route::get('/layouts/client/dashboard', function () {
+    return view('layouts.client.dashboard');
+})->middleware(['auth'])->name('client.dashboard');
 
 // Who We Serve routes
 Route::view('/who-we-serve', 'layouts.pages.who-we-serve')->name('who-we-serve');
@@ -36,9 +43,14 @@ Route::view('/who-we-serve/sub-contractor', 'layouts.pages.subcontractor')->name
 Route::view('/who-we-serve/solar-ev', 'layouts.pages.solar-ev')->name('who-we-serve.solar-ev');
 Route::view('/who-we-serve/architect', 'layouts.pages.architect')->name('who-we-serve.architect');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// Default dashboard - redirects based on user role
+Route::get('dashboard', function() {
+    if (auth()->user()->isAdmin()) {
+        return redirect()->route('admin.dashboard');
+    } else {
+        return redirect()->route('client.dashboard');
+    }
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
@@ -86,7 +98,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('api/notifications/recent', [NotificationController::class, 'getRecentNotifications'])->name('api.notifications.recent');
 });
 
-// temporary admin routes
-Route::view('/admin.dashboard', 'layouts.admin.dashboard')->name('admin.dashboard');
-Route::view('/client.dashboard', 'layouts.client.dashboard')->name('client.dashboard');
 require __DIR__.'/auth.php';

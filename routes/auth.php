@@ -1,15 +1,36 @@
 <?php
 
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use Illuminate\Support\Facades\Auth;
 
 Route::middleware('guest')->group(function () {
     Volt::route('register', 'pages.auth.register')
         ->name('register');
 
-    Volt::route('auth/login', 'pages.auth.login')
-        ->name('login');
+    Route::view('login', 'auth.login')->name('login');
+    Route::post('login', function() {
+        $credentials = request()->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+ 
+        if (auth()->attempt($credentials, request()->boolean('remember'))) {
+            request()->session()->regenerate();
+ 
+            if (auth()->user()->isAdmin()) {
+                return redirect()->intended(route('admin.dashboard'));
+            } else {
+                return redirect()->intended(route('client.dashboard'));
+            }
+        }
+ 
+        return back()->withErrors([
+            'email' => 'These credentials do not match our records.',
+        ]);
+    });
 
     Volt::route('forgot-password', 'pages.auth.forgot-password')
         ->name('password.request');
@@ -28,4 +49,11 @@ Route::middleware('auth')->group(function () {
 
     Volt::route('confirm-password', 'pages.auth.confirm-password')
         ->name('password.confirm');
+        
+    Route::post('logout', function() {
+        Auth::guard('web')->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect('/login');
+    })->name('logout');
 });

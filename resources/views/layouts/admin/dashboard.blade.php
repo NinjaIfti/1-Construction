@@ -34,11 +34,13 @@
         <!-- Header -->
         <div class="bg-gray-900 text-white p-4 flex justify-between items-center">
           <div class="flex items-center">
-            <span class="text-red-600 text-3xl md:text-4xl font-bold">1</span>
-            <div class="ml-2">
-              <div class="text-lg md:text-xl font-bold">CONTRACTOR</div>
-              <div class="text-xl md:text-2xl font-bold -mt-1">SOLUTIONS</div>
-            </div>
+            <a href="/" class="flex items-center">
+              <span class="text-red-600 text-3xl md:text-4xl font-bold">1</span>
+              <div class="ml-2">
+                <div class="text-lg md:text-xl font-bold">CONTRACTOR</div>
+                <div class="text-xl md:text-2xl font-bold -mt-1">SOLUTIONS</div>
+              </div>
+            </a>
           </div>
           <div x-data="{ dropdownOpen: false }" class="relative">
             <div class="flex items-center">
@@ -56,9 +58,12 @@
                 <i class="fas fa-cog mr-2"></i> Profile Settings
               </a>
               <div class="border-t border-gray-100 my-1"></div>
-              <a href="{{ route('login.custom') }}" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
-                <i class="fas fa-sign-out-alt mr-2"></i> Logout
-              </a>
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                  <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                </button>
+              </form>
             </div>
           </div>
         </div>
