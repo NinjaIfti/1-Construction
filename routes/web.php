@@ -25,7 +25,7 @@ Route::view('/contact', 'layouts.pages.contact')->name('contact');
 Route::view('/get-started', 'layouts.pages.getStarted')->name('get-started');
 
 // Custom login route - override default auth route
-Route::view('/login', 'layouts.pages.login')->name('login.custom')->middleware('guest');
+Route::view('/login', 'layouts.pages.login')->name('login.custom');
 
 // Who We Serve routes
 Route::view('/who-we-serve', 'layouts.pages.who-we-serve')->name('who-we-serve');
