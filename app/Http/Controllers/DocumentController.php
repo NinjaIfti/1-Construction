@@ -54,6 +54,7 @@ class DocumentController extends Controller
             'file_path' => $path,
             'file_type' => $file->getClientMimeType(),
             'file_size' => $file->getSize(),
+            'document_status' => 'pending',
         ]);
         
         return redirect()->route('permits.show', $permit)

@@ -14,25 +14,26 @@ class Project extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
         'name',
-        'user_id',
+        'description',
         'address',
         'city',
         'state',
-        'zip_code',
+        'zip',
+        'project_type',
         'status',
         'start_date',
         'end_date',
-        'description',
+        'user_id',
     ];
 
     /**
      * The attributes that should be cast.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
         'start_date' => 'date',
@@ -68,7 +69,7 @@ class Project extends Model
      */
     public function getFullAddressAttribute(): string
     {
-        return "{$this->address}, {$this->city}, {$this->state} {$this->zip_code}";
+        return "{$this->address}, {$this->city}, {$this->state} {$this->zip}";
     }
 
     /**

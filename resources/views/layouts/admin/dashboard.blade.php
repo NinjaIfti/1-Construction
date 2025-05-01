@@ -29,10 +29,14 @@
     dropdownOpen: false,
     contractors: [],
     loadContractors() {
-      fetch('{{ route('api.dashboard.contractors') }}')
+      fetch('/admin/api/dashboard/contractors')
         .then(response => response.json())
         .then(data => {
-          this.contractors = data;
+          this.contractors = data.recent || [];
+        })
+        .catch(error => {
+          console.error('Error loading contractors:', error);
+          this.contractors = [];
         });
     }
   }" 
@@ -101,11 +105,11 @@
                   <i class="fas fa-file-alt mr-3"></i>
                   <span>Permit Requests</span>
                 </button>
-                <button @click="activeTab = 'documents'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'documents' ? 'bg-blue-900' : ''">
+                <a href="{{ route('admin.documents.index') }}" @click="activeTab = 'documents'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'documents' ? 'bg-blue-900' : ''">
                   <i class="fas fa-folder mr-3"></i>
                   <span>Documents</span>
-                </button>
-                <a href="{{ route('contractors.index') }}" @click="activeTab = 'contractors.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'contractors.index' ? 'bg-blue-900' : ''">
+                </a>
+                <a href="{{ route('admin.contractors.index') }}" @click="activeTab = 'contractors.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'contractors.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-users mr-3"></i>
                   <span>Contractors</span>
                 </a>
@@ -133,11 +137,11 @@
                   <i class="fas fa-file-alt mr-3"></i>
                   <span>Permit Requests</span>
                 </button>
-                <button @click="activeTab = 'documents'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'documents' ? 'bg-blue-900' : ''">
+                <a href="{{ route('admin.documents.index') }}" @click="activeTab = 'documents'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'documents' ? 'bg-blue-900' : ''">
                   <i class="fas fa-folder mr-3"></i>
                   <span>Documents</span>
-                </button>
-                <a href="{{ route('contractors.index') }}" @click="activeTab = 'contractors.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'contractors.index' ? 'bg-blue-900' : ''">
+                </a>
+                <a href="{{ route('admin.contractors.index') }}" @click="activeTab = 'contractors.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'contractors.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-users mr-3"></i>
                   <span>Contractors</span>
                 </a>
@@ -183,20 +187,34 @@
                     </div>
                   </div>
                   
-                  <!-- Upload Documents Section -->
+                  <!-- Documents Section -->
                   <div class="border rounded-lg p-4">
-                    <h3 class="font-bold mb-4">Upload Documents</h3>
-                    <div 
-                      class="border-2 border-dashed rounded p-4 md:p-6 flex flex-col items-center justify-center cursor-pointer transition-colors"
-                      :class="uploadDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300'"
-                      @dragover.prevent="uploadDragActive = true"
-                      @dragleave.prevent="uploadDragActive = false"
-                      @drop.prevent="uploadDragActive = false; alert('File uploaded successfully!')"
-                      @click="document.getElementById('fileUpload').click()"
-                    >
-                      <input type="file" id="fileUpload" class="hidden" @change="alert('File selected successfully!')">
-                      <i class="fas fa-cloud-upload-alt text-2xl md:text-3xl text-gray-400 mb-2"></i>
-                      <p class="text-xs md:text-sm text-gray-500 text-center">Drag and drop files here, or click to upload</p>
+                    <h3 class="font-bold mb-4">
+                      Documents
+                      <a href="{{ route('admin.documents.index') }}" class="text-sm text-blue-500 hover:underline ml-2">View All</a>
+                    </h3>
+                    <div class="flex space-x-4 md:space-x-6 justify-between md:justify-start">
+                      <div class="text-center">
+                        <div class="text-2xl md:text-3xl font-bold">{{ $documentsCount ?? 0 }}</div>
+                        <div class="text-xs md:text-sm text-gray-600">Total</div>
+                      </div>
+                      <div class="text-center">
+                        <div class="text-2xl md:text-3xl font-bold">{{ $pendingDocumentsCount ?? 0 }}</div>
+                        <div class="text-xs md:text-sm text-gray-600">Pending</div>
+                      </div>
+                      <div class="text-center">
+                        <div class="text-2xl md:text-3xl font-bold">{{ $todayDocumentsCount ?? 0 }}</div>
+                        <div class="text-xs md:text-sm text-gray-600">Today</div>
+                      </div>
+                    </div>
+                    
+                    <!-- Upload documents button -->
+                    <div class="mt-4">
+                      <button class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded text-sm" 
+                              @click="document.getElementById('dashboardUpload').click()">
+                        <i class="fas fa-cloud-upload-alt mr-2"></i> Upload Document
+                      </button>
+                      <input type="file" id="dashboardUpload" class="hidden">
                     </div>
                   </div>
                 </div>
@@ -207,7 +225,7 @@
                 <div class="border rounded-lg p-4">
                   <h3 class="font-bold mb-4">
                     Contractor Directory
-                    <a href="{{ route('contractors.index') }}" class="text-sm text-blue-500 hover:underline ml-2">View All</a>
+                    <a href="{{ route('admin.contractors.index') }}" class="text-sm text-blue-500 hover:underline ml-2">View All</a>
                   </h3>
                   <div class="space-y-2">
                     <template x-for="contractor in contractors" :key="contractor.id">
@@ -221,7 +239,7 @@
                             <div x-text="contractor.name" class="text-xs text-gray-500"></div>
                           </div>
                         </div>
-                        <a :href="'/contractors/' + contractor.id" class="text-blue-500 hover:underline">
+                        <a :href="'/admin/contractors/' + contractor.id" class="text-blue-500 hover:underline">
                           <i class="fas fa-eye"></i>
                         </a>
                       </div>
@@ -277,62 +295,7 @@
             </div>
             @endif
 
-            <!-- Contractors Tab -->
-            <div x-show="activeTab === 'contractors' && '{{ Route::currentRouteName() }}' === 'admin.dashboard'" class="animate-fadeIn">
-              <h2 class="text-xl md:text-2xl font-bold mb-6">Contractors</h2>
-              <div class="bg-white rounded-lg shadow p-4">
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <a href="{{ route('get-started') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
-                    <i class="fas fa-user-plus mr-2"></i> Add Contractor
-                  </a>
-                  <div class="flex-grow"></div>
-                  <div class="relative">
-                    <input type="text" placeholder="Search contractors..." class="border rounded px-4 py-2 pl-10 w-full">
-                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
-                  </div>
-                </div>
-                
-                <div class="overflow-x-auto">
-                  <table class="min-w-full bg-white">
-                    <thead>
-                      <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
-                        <th class="py-3 px-6 text-left">Company</th>
-                        <th class="py-3 px-6 text-left">Contact</th>
-                        <th class="py-3 px-6 text-left">Email</th>
-                        <th class="py-3 px-6 text-left">Phone</th>
-                        <th class="py-3 px-6 text-left">Type</th>
-                        <th class="py-3 px-6 text-center">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody class="text-gray-600 text-sm">
-                      <template x-for="contractor in contractors" :key="contractor.id">
-                        <tr class="border-b border-gray-200 hover:bg-gray-50">
-                          <td class="py-3 px-6" x-text="contractor.company_name"></td>
-                          <td class="py-3 px-6" x-text="contractor.name"></td>
-                          <td class="py-3 px-6" x-text="contractor.email"></td>
-                          <td class="py-3 px-6" x-text="contractor.phone_number || 'N/A'"></td>
-                          <td class="py-3 px-6" x-text="contractor.company_type || 'N/A'"></td>
-                          <td class="py-3 px-6 text-center">
-                            <div class="flex item-center justify-center gap-2">
-                              <a :href="'/contractors/' + contractor.id" class="text-blue-500"><i class="fas fa-eye"></i></a>
-                              <button class="text-green-500"><i class="fas fa-edit"></i></button>
-                            </div>
-                          </td>
-                        </tr>
-                      </template>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div x-show="contractors.length === 0" class="text-center py-4">
-                  <p class="text-gray-500">No contractors found</p>
-                </div>
-                
-                <div class="mt-4 text-center">
-                  <a href="{{ route('contractors.index') }}" class="text-blue-500 hover:underline">View All Contractors</a>
-                </div>
-              </div>
-            </div>
+          
             
           </div>
         </div>

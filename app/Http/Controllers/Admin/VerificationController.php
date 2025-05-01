@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\AdminController;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\VerificationStatusUpdated;
 
-class VerificationController extends Controller
+/**
+ * Handles verification requests and management on the admin side.
+ * Allows admins to review, approve, or reject contractor verifications.
+ */
+class VerificationController extends AdminController
 {
     /**
      * Display a listing of pending and verified contractors.

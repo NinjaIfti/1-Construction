@@ -12,7 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
+            // Admin access middleware - restricts access to admin users only
             'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
+            
+            // Contractor verification middleware - ensures contractors are verified
             'verified.contractor' => \App\Http\Middleware\VerifiedContractorMiddleware::class,
         ]);
     })

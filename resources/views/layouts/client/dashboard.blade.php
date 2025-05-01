@@ -6,6 +6,36 @@
   <title>Contractor Solutions Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 0.25rem;
+    }
+    .dropdown-content a, .dropdown-content button {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+    }
+    .dropdown-content a:hover, .dropdown-content button:hover {
+      background-color: #f1f1f1;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
 </head>
 <body class="bg-gray-100">
   <div class="container mx-auto p-4">
@@ -32,12 +62,23 @@
             @else
               <div class="text-xs text-red-400">Verification Required</div>
             @endif
-            <form method="POST" action="{{ route('logout') }}" class="mt-1">
-              @csrf
-              <button type="submit" class="text-xs text-red-600 hover:underline">Logout</button>
-            </form>
           </div>
-          <div class="ml-2 w-8 h-8 bg-gray-300 rounded-full"></div>
+          <div class="ml-2 dropdown">
+            <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center cursor-pointer">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="{{ route('profile.index') }}" class="flex items-center">
+                <i class="fas fa-user-cog mr-2"></i> Profile Settings
+              </a>
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="flex items-center text-red-600">
+                  <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -76,6 +117,19 @@
 
         <!-- Main Content Container for all content sections -->
         <div class="w-full md:w-3/4 p-6">
+          <!-- Flash Messages -->
+          @if (session('success'))
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
+              <p>{{ session('success') }}</p>
+            </div>
+          @endif
+
+          @if (session('error'))
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert">
+              <p>{{ session('error') }}</p>
+            </div>
+          @endif
+          
           @yield('content')
           
           <!-- Dashboard Content -->
@@ -94,15 +148,15 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <div class="bg-blue-100 p-4 rounded shadow">
-                <div class="text-xl font-bold">12</div>
+                <div class="text-xl font-bold">{{ $activeProjects ?? 0 }}</div>
                 <div class="text-sm text-gray-600">Active Projects</div>
               </div>
               <div class="bg-green-100 p-4 rounded shadow">
-                <div class="text-xl font-bold">5</div>
+                <div class="text-xl font-bold">{{ $completedProjects ?? 0 }}</div>
                 <div class="text-sm text-gray-600">Completed Projects</div>
               </div>
               <div class="bg-yellow-100 p-4 rounded shadow">
-                <div class="text-xl font-bold">3</div>
+                <div class="text-xl font-bold">{{ $pendingApprovals ?? 0 }}</div>
                 <div class="text-sm text-gray-600">Pending Approvals</div>
               </div>
             </div>
@@ -110,10 +164,11 @@
             <div class="bg-white rounded-lg shadow p-4 mb-6">
               <h3 class="font-bold mb-2">Recent Activity</h3>
               <ul class="divide-y">
-                <li class="py-2">Roofing permit approved - Apr 22</li>
-                <li class="py-2">New message from inspector - Apr 21</li>
-                <li class="py-2">Document uploaded - Apr 20</li>
-                <li class="py-2">Permit status updated - Apr 19</li>
+                @forelse($recentActivities ?? [] as $activity)
+                  <li class="py-2">{{ $activity['message'] }} - {{ $activity['date'] }}</li>
+                @empty
+                  <li class="py-2 text-gray-500">No recent activities</li>
+                @endforelse
               </ul>
             </div>
           </div>
@@ -250,40 +305,70 @@
               </div>
             </div>
             
+            <div class="bg-white rounded-lg shadow overflow-hidden mb-4">
+              <div class="p-3 border-b bg-gray-50 flex items-center">
+                <i class="fas fa-folder-open text-yellow-500 mr-2"></i>
+                <span class="font-bold">Roofing Permits</span>
+              </div>
+              
+              <div class="p-4 border-b hover:bg-gray-50 cursor-pointer flex items-center">
+                <i class="fas fa-file-pdf text-red-500 mr-3"></i>
+                <div class="flex-grow">
+                  <div class="font-medium">Site Plan.pdf</div>
+                  <div class="text-sm text-gray-500">Added Apr 22</div>
+                </div>
+                <div class="flex space-x-2">
+                  <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-download"></i></button>
+                  <button class="text-gray-500 hover:text-gray-700"><i class="fas fa-eye"></i></button>
+                  <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash-alt"></i></button>
+                </div>
+              </div>
+              
+              <div class="p-4 border-b hover:bg-gray-50 cursor-pointer flex items-center">
+                <i class="fas fa-file-image text-green-500 mr-3"></i>
+                <div class="flex-grow">
+                  <div class="font-medium">Property Photo.jpg</div>
+                  <div class="text-sm text-gray-500">Added Apr 21</div>
+                </div>
+                <div class="flex space-x-2">
+                  <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-download"></i></button>
+                  <button class="text-gray-500 hover:text-gray-700"><i class="fas fa-eye"></i></button>
+                  <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash-alt"></i></button>
+                </div>
+              </div>
+              
+              <div class="p-4 hover:bg-gray-50 cursor-pointer flex items-center">
+                <i class="fas fa-file-contract text-blue-500 mr-3"></i>
+                <div class="flex-grow">
+                  <div class="font-medium">Contract.pdf</div>
+                  <div class="text-sm text-gray-500">Added Apr 20</div>
+                </div>
+                <div class="flex space-x-2">
+                  <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-download"></i></button>
+                  <button class="text-gray-500 hover:text-gray-700"><i class="fas fa-eye"></i></button>
+                  <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash-alt"></i></button>
+                </div>
+              </div>
+            </div>
+            
             <div class="bg-white rounded-lg shadow overflow-hidden">
-              <table class="min-w-full">
-                <thead>
-                  <tr class="bg-gray-100">
-                    <th class="text-left p-4">Name</th>
-                    <th class="text-left p-4">Type</th>
-                    <th class="text-left p-4">Date</th>
-                    <th class="text-left p-4">Size</th>
-                    <th class="text-left p-4">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="border-b hover:bg-gray-50">
-                    <td class="p-4">Site Plan.pdf</td>
-                    <td class="p-4">PDF</td>
-                    <td class="p-4">Apr 22, 2025</td>
-                    <td class="p-4">1.2 MB</td>
-                    <td class="p-4">
-                      <button class="text-blue-500 mr-2"><i class="fas fa-download"></i></button>
-                      <button class="text-red-500"><i class="fas fa-trash"></i></button>
-                    </td>
-                  </tr>
-                  <tr class="border-b hover:bg-gray-50">
-                    <td class="p-4">Building Permit.pdf</td>
-                    <td class="p-4">PDF</td>
-                    <td class="p-4">Apr 21, 2025</td>
-                    <td class="p-4">3.5 MB</td>
-                    <td class="p-4">
-                      <button class="text-blue-500 mr-2"><i class="fas fa-download"></i></button>
-                      <button class="text-red-500"><i class="fas fa-trash"></i></button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="p-3 border-b bg-gray-50 flex items-center">
+                <i class="fas fa-folder-open text-yellow-500 mr-2"></i>
+                <span class="font-bold">Renovation Documents</span>
+              </div>
+              
+              <div class="p-4 border-b hover:bg-gray-50 cursor-pointer flex items-center">
+                <i class="fas fa-file-alt text-gray-500 mr-3"></i>
+                <div class="flex-grow">
+                  <div class="font-medium">Design Spec.docx</div>
+                  <div class="text-sm text-gray-500">Added Apr 19</div>
+                </div>
+                <div class="flex space-x-2">
+                  <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-download"></i></button>
+                  <button class="text-gray-500 hover:text-gray-700"><i class="fas fa-eye"></i></button>
+                  <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash-alt"></i></button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -293,92 +378,125 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Buttons
+      // Cache DOM elements
       const dashboardBtn = document.getElementById('dashboard-btn');
-      const submitPermitBtn = document.getElementById('submit-permit-btn');
-      const messagesBtn = document.getElementById('messages-btn');
-      const documentsBtn = document.getElementById('documents-btn');
-      const verificationBtn = document.getElementById('verification-btn');
-      
-      // Content sections
       const dashboardContent = document.getElementById('dashboard-content');
-      const submitPermitContent = document.getElementById('submit-permit-content');
-      const messagesContent = document.getElementById('messages-content');
-      const documentsContent = document.getElementById('documents-content');
-      const verificationContent = document.getElementById('verification-content');
+      let verificationBtn, verificationContent, submitPermitBtn, submitPermitContent, messagesBtn, messagesContent, documentsBtn, documentsContent;
       
-      // Hide all content sections by default
+      // Get elements based on verification status
+      if (document.getElementById('verification-btn')) {
+        verificationBtn = document.getElementById('verification-btn');
+        verificationContent = document.getElementById('verification-content');
+      }
+      
+      if (document.getElementById('submit-permit-btn')) {
+        submitPermitBtn = document.getElementById('submit-permit-btn');
+        submitPermitContent = document.getElementById('submit-permit-content');
+      }
+      
+      if (document.getElementById('messages-btn')) {
+        messagesBtn = document.getElementById('messages-btn');
+        messagesContent = document.getElementById('messages-content');
+      }
+      
+      if (document.getElementById('documents-btn')) {
+        documentsBtn = document.getElementById('documents-btn');
+        documentsContent = document.getElementById('documents-content');
+      }
+      
+      // Helper function to hide all content sections
       function hideAllContent() {
-        dashboardContent.classList.add('hidden');
+        // Use Array.from to convert NodeList to Array for forEach
+        Array.from(document.querySelectorAll('.w-full.md\\:w-3\\/4.p-6 > div')).forEach(section => {
+          if (!section.classList.contains('hidden') && !section.hasAttribute('id')) {
+            section.classList.add('hidden');
+          }
+        });
+        
+        if (dashboardContent) dashboardContent.classList.add('hidden');
+        if (verificationContent) verificationContent.classList.add('hidden');
         if (submitPermitContent) submitPermitContent.classList.add('hidden');
         if (messagesContent) messagesContent.classList.add('hidden');
         if (documentsContent) documentsContent.classList.add('hidden');
-        if (verificationContent) verificationContent.classList.add('hidden');
       }
       
-      // Remove active class from all buttons
-      function deactivateAllButtons() {
-        dashboardBtn.classList.remove('bg-blue-900');
+      // Helper function to remove active class from all buttons
+      function removeActiveFromButtons() {
+        if (dashboardBtn) dashboardBtn.classList.remove('bg-blue-900');
+        if (verificationBtn) verificationBtn.classList.remove('bg-blue-900');
         if (submitPermitBtn) submitPermitBtn.classList.remove('bg-blue-900');
         if (messagesBtn) messagesBtn.classList.remove('bg-blue-900');
         if (documentsBtn) documentsBtn.classList.remove('bg-blue-900');
-        if (verificationBtn) verificationBtn.classList.remove('bg-blue-900');
       }
       
-      // Show dashboard content by default
-      // If we're on the verification page, show that content instead
-      if (window.location.pathname.includes('verification')) {
-        hideAllContent();
-        if (verificationBtn) {
-          deactivateAllButtons();
-          verificationBtn.classList.add('bg-blue-900');
-        }
-      } else {
-        hideAllContent();
-        dashboardContent.classList.remove('hidden');
-        deactivateAllButtons();
-        dashboardBtn.classList.add('bg-blue-900');
+      // Show dashboard on button click
+      if (dashboardBtn) {
+        dashboardBtn.addEventListener('click', function() {
+          hideAllContent();
+          removeActiveFromButtons();
+          dashboardContent.classList.remove('hidden');
+          dashboardBtn.classList.add('bg-blue-900');
+        });
       }
       
-      // Event listeners for sidebar buttons
-      dashboardBtn.addEventListener('click', function() {
-        hideAllContent();
-        dashboardContent.classList.remove('hidden');
-        deactivateAllButtons();
-        dashboardBtn.classList.add('bg-blue-900');
-      });
+      // Show verification on button click
+      if (verificationBtn) {
+        verificationBtn.addEventListener('click', function() {
+          // Redirect to verification page
+          window.location.href = "{{ route('verification.index') }}";
+        });
+      }
       
+      // Show submit permit on button click
       if (submitPermitBtn) {
         submitPermitBtn.addEventListener('click', function() {
           hideAllContent();
+          removeActiveFromButtons();
           submitPermitContent.classList.remove('hidden');
-          deactivateAllButtons();
           submitPermitBtn.classList.add('bg-blue-900');
         });
       }
       
+      // Show messages on button click
       if (messagesBtn) {
         messagesBtn.addEventListener('click', function() {
           hideAllContent();
+          removeActiveFromButtons();
           messagesContent.classList.remove('hidden');
-          deactivateAllButtons();
           messagesBtn.classList.add('bg-blue-900');
         });
       }
       
+      // Show documents on button click
       if (documentsBtn) {
         documentsBtn.addEventListener('click', function() {
           hideAllContent();
+          removeActiveFromButtons();
           documentsContent.classList.remove('hidden');
-          deactivateAllButtons();
           documentsBtn.classList.add('bg-blue-900');
         });
       }
       
-      if (verificationBtn) {
-        verificationBtn.addEventListener('click', function() {
-          window.location.href = "{{ route('verification.index') }}";
-        });
+      // Show default content on page load
+      let contentLoaded = false;
+      
+      // Check if we're on a specific page using the route segment
+      const currentPath = window.location.pathname;
+      
+      if (currentPath.includes('verification')) {
+        // Do nothing, the verification page will handle its own content
+        contentLoaded = true;
+      } else if (currentPath.includes('profile')) {
+        // Do nothing, the profile page will handle its own content
+        contentLoaded = true;
+      } else if (!contentLoaded) {
+        // Default to dashboard
+        hideAllContent();
+        removeActiveFromButtons();
+        if (dashboardContent) {
+          dashboardContent.classList.remove('hidden');
+          dashboardBtn.classList.add('bg-blue-900');
+        }
       }
     });
   </script>

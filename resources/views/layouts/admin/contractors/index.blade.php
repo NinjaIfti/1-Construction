@@ -49,7 +49,7 @@
                                 <a href="{{ route('admin.verifications.show', $contractor) }}" class="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 px-3 py-1 rounded text-sm mr-2">
                                     <i class="fas fa-clipboard-check mr-1"></i> Review
                                 </a>
-                                <a href="{{ route('contractors.show', $contractor->id) }}" class="bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-1 rounded text-sm">
+                                <a href="{{ route('admin.contractors.show', $contractor->id) }}" class="bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-1 rounded text-sm">
                                     <i class="fas fa-eye mr-1"></i> View
                                 </a>
                             </td>

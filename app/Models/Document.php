@@ -14,15 +14,31 @@ class Document extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
-        'permit_id',
         'name',
-        'file_path',
-        'file_type',
-        'file_size',
         'description',
+        'file_path',
+        'file_size',
+        'file_type',
+        'status',
+        'uploaded_by',
+        'permit_id',
+        'is_approved',
+        'approved_at',
+        'approved_by',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'file_size' => 'integer',
+        'is_approved' => 'boolean',
+        'approved_at' => 'datetime',
     ];
 
     /**
@@ -31,6 +47,22 @@ class Document extends Model
     public function permit(): BelongsTo
     {
         return $this->belongsTo(Permit::class);
+    }
+
+    /**
+     * Get the user who uploaded the document.
+     */
+    public function uploader(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'uploaded_by');
+    }
+
+    /**
+     * Get the user who approved the document.
+     */
+    public function approver(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'approved_by');
     }
 
     /**
@@ -86,5 +118,27 @@ class Document extends Model
         }
         
         return $bytes . ' bytes';
+    }
+
+    /**
+     * Get the folder path for the document.
+     */
+    public function getFolderPathAttribute(): string
+    {
+        if ($this->permit_id) {
+            return 'permits/' . $this->permit_id;
+        } elseif ($this->contractor_id) {
+            return 'contractors/' . $this->contractor_id;
+        }
+
+        return 'documents';
+    }
+
+    /**
+     * Get full storage path for the document.
+     */
+    public function getStoragePathAttribute(): string
+    {
+        return storage_path('app/public/' . $this->file_path);
     }
 } 

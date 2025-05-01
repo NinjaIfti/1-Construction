@@ -14,32 +14,30 @@ class Permit extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
-        'project_id',
-        'permit_number',
-        'type',
-        'status',
-        'submission_date',
-        'approval_date',
-        'expiration_date',
+        'name',
         'description',
-        'fee_amount',
-        'fee_paid',
+        'permit_type',
+        'status',
+        'submitted_date',
+        'approved_date',
+        'expiration_date',
+        'permit_number',
+        'issuing_authority',
+        'project_id',
     ];
 
     /**
      * The attributes that should be cast.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
-        'submission_date' => 'date',
-        'approval_date' => 'date',
+        'submitted_date' => 'date',
+        'approved_date' => 'date',
         'expiration_date' => 'date',
-        'fee_amount' => 'decimal:2',
-        'fee_paid' => 'boolean',
     ];
 
     /**
@@ -61,9 +59,9 @@ class Permit extends Model
     /**
      * Get the comments for the permit.
      */
-    public function comments(): HasMany
+    public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     /**

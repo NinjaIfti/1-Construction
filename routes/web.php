@@ -9,7 +9,11 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ContractorController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\VerificationController as AdminVerificationController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ContractorController as AdminContractorController;
+use App\Http\Controllers\Admin\DocumentController as AdminDocumentController;
 
 Route::view('/', 'welcome');
 
@@ -29,15 +33,8 @@ Route::view('/contact', 'layouts.pages.contact')->name('contact');
 Route::view('/get-started', 'layouts.pages.getStarted')->name('get-started');
 Route::post('/register-contractor', [RegisterController::class, 'register'])->name('register.contractor');
 
-// Admin dashboard route
-Route::get('/layouts/admin/dashboard', function () {
-    return view('layouts.admin.dashboard');
-})->middleware(['auth', 'admin'])->name('admin.dashboard');
-
 // Client dashboard route
-Route::get('/layouts/client/dashboard', function () {
-    return view('layouts.client.dashboard');
-})->middleware(['auth'])->name('client.dashboard');
+Route::get('/client/dashboard', [ContractorController::class, 'dashboard'])->middleware(['auth'])->name('client.dashboard');
 
 // Contractor Verified Routes
 Route::middleware(['auth', 'verified.contractor'])->group(function () {
@@ -71,6 +68,10 @@ Route::middleware(['auth', 'verified.contractor'])->group(function () {
 
 // All authenticated routes (both verified and unverified)
 Route::middleware(['auth'])->group(function () {
+    // Profile Management
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update-password');
+    
     // Notifications
     Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
     Route::get('notifications/unread', [NotificationController::class, 'unread'])->name('notifications.unread');
@@ -106,21 +107,34 @@ Route::get('dashboard', function() {
     }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+// Admin Routes
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    // Admin Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-// Contractors routes
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/contractors', [ContractorController::class, 'index'])->name('contractors.index');
-    Route::get('/contractors/{contractor}', [ContractorController::class, 'show'])->name('contractors.show');
-    Route::get('/api/dashboard/contractors', [ContractorController::class, 'getDashboardContractors'])->name('api.dashboard.contractors');
+    // Contractor Management
+    Route::get('/contractors', [AdminContractorController::class, 'index'])->name('contractors.index');
+    Route::get('/contractors/{contractor}', [AdminContractorController::class, 'show'])->name('contractors.show');
+    Route::get('/api/dashboard/contractors', [AdminContractorController::class, 'getDashboardContractors'])->name('api.dashboard.contractors');
     
-    // Admin Verification Routes
-    Route::get('/admin/verifications', [AdminVerificationController::class, 'index'])->name('admin.verifications.index');
-    Route::get('/admin/verifications/{contractor}', [AdminVerificationController::class, 'show'])->name('admin.verifications.show');
-    Route::get('/admin/verifications/{contractor}/edit', [AdminVerificationController::class, 'edit'])->name('admin.verifications.edit');
-    Route::put('/admin/verifications/{contractor}', [AdminVerificationController::class, 'update'])->name('admin.verifications.update');
+    // Verification Management
+    Route::get('/verifications', [AdminVerificationController::class, 'index'])->name('verifications.index');
+    Route::get('/verifications/{contractor}', [AdminVerificationController::class, 'show'])->name('verifications.show');
+    Route::get('/verifications/{contractor}/edit', [AdminVerificationController::class, 'edit'])->name('verifications.edit');
+    Route::put('/verifications/{contractor}', [AdminVerificationController::class, 'update'])->name('verifications.update');
+    
+    // Document Management
+    Route::get('/documents', [AdminDocumentController::class, 'index'])->name('documents.index');
+    Route::get('/documents/upload', [AdminDocumentController::class, 'upload'])->name('documents.upload');
+    Route::post('/documents/store', [AdminDocumentController::class, 'storeDocument'])->name('documents.store');
+    Route::post('/documents/create-folder', [AdminDocumentController::class, 'createFolder'])->name('documents.create-folder');
+    Route::get('/documents/folders', [AdminDocumentController::class, 'listFolders'])->name('documents.list-folders');
+    Route::get('/documents/{document}', [AdminDocumentController::class, 'show'])->name('documents.show');
+    Route::get('/documents/{document}/download', [AdminDocumentController::class, 'download'])->name('documents.download');
+    Route::get('/documents/{document}/preview', [AdminDocumentController::class, 'preview'])->name('documents.preview');
+    Route::post('/documents/{document}/approve', [AdminDocumentController::class, 'approve'])->name('documents.approve');
+    Route::post('/documents/{document}/reject', [AdminDocumentController::class, 'reject'])->name('documents.reject');
+    Route::get('/api/dashboard/documents', [AdminDocumentController::class, 'getDashboardDocuments'])->name('api.dashboard.documents');
 });
 
 require __DIR__.'/auth.php';

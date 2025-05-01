@@ -21,7 +21,7 @@ class VerificationController extends Controller
         
         // Check if user is already verified
         if ($user->isVerified()) {
-            return redirect()->route('contractor.dashboard');
+            return redirect()->route('client.dashboard');
         }
         
         return view('layouts.client.verification.index', compact('user'));
@@ -39,6 +39,9 @@ class VerificationController extends Controller
         
         $request->validate([
             'license_number' => 'required|string|max:255',
+            'company_name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
             'contractor_license' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
             'drivers_license' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
             'insurance_certificate' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
@@ -52,6 +55,9 @@ class VerificationController extends Controller
         // Update user
         $user->update([
             'license_number' => $request->license_number,
+            'company_name' => $request->company_name,
+            'address' => $request->address,
+            'phone_number' => $request->phone_number,
             'contractor_license_file' => $contractorLicensePath,
             'drivers_license_file' => $driversLicensePath,
             'insurance_certificate_file' => $insuranceCertificatePath,
