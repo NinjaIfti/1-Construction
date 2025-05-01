@@ -28,6 +28,10 @@ class Document extends Model
         'is_approved',
         'approved_at',
         'approved_by',
+        'folder_id',
+        'user_id',
+        'contractor_id',
+        'document_status',
     ];
 
     /**
@@ -140,5 +144,21 @@ class Document extends Model
     public function getStoragePathAttribute(): string
     {
         return storage_path('app/public/' . $this->file_path);
+    }
+
+    /**
+     * Get the folder that contains the document.
+     */
+    public function folder(): BelongsTo
+    {
+        return $this->belongsTo(DocumentFolder::class, 'folder_id');
+    }
+
+    /**
+     * Get the contractor associated with the document.
+     */
+    public function contractor(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'contractor_id');
     }
 } 

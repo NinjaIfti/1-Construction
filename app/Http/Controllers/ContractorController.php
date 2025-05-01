@@ -123,4 +123,22 @@ class ContractorController extends Controller
             
         return $activities;
     }
+
+    /**
+ * Show the client dashboard with document section active.
+ */
+   public function documents()
+   {
+    $user = Auth::user();
+    
+    // Dashboard statistics for sidebar
+    $activeProjects = $user->projects()->where('status', 'active')->count();
+    $completedProjects = $user->projects()->where('status', 'completed')->count();
+    $pendingApprovals = $user->projects()->where('status', 'pending')->count();
+    
+    // Get recent activities
+    $recentActivities = $this->getRecentActivities($user);
+    
+    return view('client.dashboard', compact('activeProjects', 'completedProjects', 'pendingApprovals', 'recentActivities', 'activeSection'));
+   }
 } 

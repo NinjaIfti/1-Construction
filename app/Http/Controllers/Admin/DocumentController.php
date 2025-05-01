@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Manages documents from the admin perspective.
@@ -14,15 +15,33 @@ class DocumentController extends AdminController
     /**
      * Display a listing of all documents.
      * 
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $documents = Document::with('permit')
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
-            
-        return view('layouts.admin.documents.index', compact('documents'));
+        $query = Document::with(['permit', 'contractor', 'folder']);
+        
+        // Filter by contractor if requested
+        if ($request->has('contractor_id') && $request->contractor_id) {
+            $query->where('contractor_id', $request->contractor_id);
+        }
+        
+        // Filter by category/folder if requested
+        if ($request->has('category') && $request->category) {
+            $query->whereHas('folder', function($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->category . '%');
+            });
+        }
+        
+        $documents = $query->orderBy('created_at', 'desc')
+            ->paginate(10)
+            ->withQueryString();
+        
+        // Get all contractors for the filter dropdown
+        $contractors = \App\Models\User::where('role', 'contractor')->orderBy('name')->get();
+        
+        return view('layouts.admin.documents.index', compact('documents', 'contractors'));
     }
     
     /**
@@ -44,7 +63,18 @@ class DocumentController extends AdminController
      */
     public function download(Document $document)
     {
-        return response()->download(storage_path('app/' . $document->file_path), $document->original_filename);
+        $path = $document->file_path;
+        $filename = basename($path);
+        
+        // Try both storage locations
+        if (Storage::exists($path)) {
+            return response()->download(storage_path('app/' . $path), $document->name . '.' . $document->extension);
+        } elseif (Storage::disk('public')->exists($path)) {
+            return response()->download(storage_path('app/public/' . $path), $document->name . '.' . $document->extension);
+        }
+        
+        // If file doesn't exist in either location, fallback to the original path
+        return response()->download(storage_path('app/' . $path), $document->name . '.' . $document->extension);
     }
     
     /**
@@ -55,7 +85,17 @@ class DocumentController extends AdminController
      */
     public function preview(Document $document)
     {
-        return response()->file(storage_path('app/' . $document->file_path));
+        $path = $document->file_path;
+        
+        // Try both storage locations
+        if (Storage::exists($path)) {
+            return response()->file(storage_path('app/' . $path));
+        } elseif (Storage::disk('public')->exists($path)) {
+            return response()->file(storage_path('app/public/' . $path));
+        }
+        
+        // If file doesn't exist in either location, fallback to the original path
+        return response()->file(storage_path('app/' . $path));
     }
     
     /**
@@ -138,36 +178,46 @@ class DocumentController extends AdminController
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'contractor_id' => 'required|exists:users,id',
-            'category' => 'required|string',
-            'subcategory' => 'nullable|string',
+            'folder_id' => 'nullable|exists:document_folders,id',
             'file' => 'required|file|max:10240',
         ]);
         
         // Get contractor info
         $contractor = \App\Models\User::findOrFail($validated['contractor_id']);
         
-        // Generate folder path
+        // Use existing folder if provided
+        $folder = null;
+        if (!empty($validated['folder_id'])) {
+            $folder = \App\Models\DocumentFolder::findOrFail($validated['folder_id']);
+        } else {
+            // Create default folder if none provided
+            $folder = \App\Models\DocumentFolder::firstOrCreate([
+                'name' => 'General',
+                'user_id' => $contractor->id,
+                'parent_folder_id' => null
+            ]);
+        }
+        
+        // Generate folder path based on folder structure
         $folderPath = 'contractors/' . $contractor->id . '_' . strtolower(str_replace(' ', '_', $contractor->name));
         
-        // Add category subfolder
-        $folderPath .= '/' . strtolower(str_replace(' ', '_', $validated['category']));
+        // Add folder name to path
+        $currentFolder = $folder;
+        $folderNames = [];
         
-        // Add subcategory if provided
-        if (!empty($validated['subcategory'])) {
-            $folderPath .= '/' . strtolower(str_replace(' ', '_', $validated['subcategory']));
+        while ($currentFolder) {
+            array_unshift($folderNames, strtolower(str_replace(' ', '_', $currentFolder->name)));
+            $currentFolder = $currentFolder->parentFolder;
         }
+        
+        $folderPath .= '/' . implode('/', $folderNames);
         
         // Store the file
         $file = $request->file('file');
         $path = $file->store($folderPath, 'public');
         
-        // If the file is related to a permit, find or create it
-        $permit = null;
-        if ($validated['category'] === 'permits' && !empty($validated['subcategory'])) {
-            $permit = \App\Models\Permit::where('permit_number', $validated['subcategory'])
-                ->where('contractor_id', $contractor->id)
-                ->first();
-        }
+        // Make sure we store path without 'public/' prefix for consistent access
+        $path = str_replace('public/', '', $path);
         
         // Create document record
         $document = new \App\Models\Document([
@@ -177,14 +227,18 @@ class DocumentController extends AdminController
             'file_type' => $file->getClientMimeType(),
             'file_size' => $file->getSize(),
             'document_status' => 'pending',
+            'contractor_id' => $contractor->id,
+            'folder_id' => $folder->id,
+            'uploaded_by' => auth()->id()
         ]);
         
-        // Associate with permit if found
-        if ($permit) {
-            $document->permit_id = $permit->id;
-        }
-        
         $document->save();
+        
+        // Redirect back based on where the upload was initiated
+        if ($request->has('from_folder') && $request->from_folder) {
+            return redirect()->route('admin.documents.folder', $folder)
+                ->with('success', 'Document uploaded successfully.');
+        }
         
         return redirect()->route('admin.documents.index')
             ->with('success', 'Document uploaded and organized successfully.');
@@ -265,5 +319,53 @@ class DocumentController extends AdminController
         }
         
         return response()->json(['folders' => $folders]);
+    }
+
+    /**
+     * Browse folders for a specific contractor.
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\View\View
+     */
+    public function folders(Request $request)
+    {
+        $request->validate([
+            'contractor_id' => 'required|exists:users,id',
+        ]);
+        
+        $contractor = \App\Models\User::findOrFail($request->contractor_id);
+        
+        // Get root folders for this contractor
+        $rootFolders = \App\Models\DocumentFolder::where('user_id', $contractor->id)
+            ->whereNull('parent_folder_id')
+            ->with(['subfolders', 'documents'])
+            ->get();
+        
+        $contractors = \App\Models\User::where('role', 'contractor')->orderBy('name')->get();
+        
+        return view('layouts.admin.documents.folders', compact('contractor', 'rootFolders', 'contractors'));
+    }
+
+    /**
+     * Show documents in a specific folder.
+     * 
+     * @param  \App\Models\DocumentFolder  $folder
+     * @return \Illuminate\View\View
+     */
+    public function folderDocuments(\App\Models\DocumentFolder $folder)
+    {
+        $folder->load(['subfolders', 'documents']);
+        $contractor = $folder->user;
+        
+        // Get breadcrumb data
+        $breadcrumbs = [];
+        $currentFolder = $folder;
+        
+        while ($currentFolder) {
+            array_unshift($breadcrumbs, $currentFolder);
+            $currentFolder = $currentFolder->parentFolder;
+        }
+        
+        return view('layouts.admin.documents.folder', compact('folder', 'contractor', 'breadcrumbs'));
     }
 } 

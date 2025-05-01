@@ -25,21 +25,48 @@
                             name="contractor_id" 
                             class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required
-                            x-on:change="loadFolders()"
-                            x-data="{ loadFolders() { 
-                                fetch('{{ route('admin.documents.list-folders') }}?contractor_id=' + this.value)
+                            x-data
+                            x-init="$el.value = '{{ request('contractor_id') }}'"
+                            x-on:change="
+                                fetch('{{ route('admin.documents.list-folders') }}?contractor_id=' + $el.value)
                                     .then(response => response.json())
                                     .then(data => {
-                                        // Handle folder data
-                                        console.log(data);
-                                    });
-                            } }"
+                                        const folderSelect = document.getElementById('folder_id');
+                                        folderSelect.innerHTML = '<option value=\"\">Select Folder</option>';
+                                        
+                                        if (data.folders && data.folders.length) {
+                                            data.folders.forEach(folder => {
+                                                const option = document.createElement('option');
+                                                option.value = folder.id;
+                                                option.textContent = folder.name;
+                                                folderSelect.appendChild(option);
+                                            });
+                                        }
+                                    })
+                            "
                         >
                             <option value="">Select Contractor</option>
                             @foreach($contractors as $contractor)
-                                <option value="{{ $contractor->id }}">{{ $contractor->name }} - {{ $contractor->company_name }}</option>
+                                <option value="{{ $contractor->id }}" @if(request('contractor_id') == $contractor->id) selected @endif>
+                                    {{ $contractor->name }} - {{ $contractor->company_name ?? '' }}
+                                </option>
                             @endforeach
                         </select>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="folder_id" class="block text-gray-700 font-medium mb-2">Folder</label>
+                        <select 
+                            id="folder_id" 
+                            name="folder_id" 
+                            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                            <option value="">Select Folder</option>
+                            <!-- Populated dynamically based on contractor selection -->
+                        </select>
+                        <p class="text-sm text-gray-500 mt-1">
+                            If no folder exists, please create one using the form on the right.
+                        </p>
                     </div>
                     
                     <div class="mb-4">

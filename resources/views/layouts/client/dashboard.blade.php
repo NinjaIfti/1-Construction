@@ -35,11 +35,67 @@
     .dropdown:hover .dropdown-content {
       display: block;
     }
+    
+    /* Make the sidebar extend full height */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    .dashboard-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 1rem;
+      width: 95%; /* Wider container */
+      max-width: 1600px; /* Much larger max width */
+    }
+    
+    .dashboard-main {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: white;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      width: 100%; /* Full width */
+    }
+    
+    .content-wrapper {
+      display: flex;
+      flex: 1;
+      min-height: 0;
+    }
+    
+    .sidebar {
+      background-color: #1a202c;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    @media (min-width: 768px) {
+      .sidebar {
+        width: 25%;
+      }
+      
+      .main-content {
+        width: 75%;
+      }
+    }
   </style>
 </head>
 <body class="bg-gray-100">
-  <div class="container mx-auto p-4">
-    <div class="max-w-5xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="dashboard-container container mx-auto">
+    <div class="dashboard-main">
       <!-- Header -->
       <div class="bg-gray-900 text-white p-4 flex justify-between items-center">
         <div class="flex items-center">
@@ -82,10 +138,10 @@
         </div>
       </div>
 
-      <div class="flex flex-col md:flex-row">
+      <div class="content-wrapper">
         <!-- Sidebar -->
-        <div class="w-full md:w-1/4 bg-gray-900 text-white">
-          <div class="p-4">
+        <div class="sidebar text-white">
+          <div class="p-4 flex-1">
             <button id="dashboard-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700">
               <i class="fas fa-home mr-3"></i>
               <span>Dashboard</span>
@@ -101,7 +157,7 @@
                 <i class="fas fa-comment mr-3"></i>
                 <span>Messages</span>
               </button>
-              <button id="documents-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700">
+              <button id="documents-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 {{ request()->routeIs('client.documents.*') ? 'bg-blue-900' : '' }}">
                 <i class="fas fa-folder mr-3"></i>
                 <span>Documents</span>
               </button>
@@ -112,11 +168,14 @@
                 <span>Verification</span>
               </button>
             @endif
+            
+            <!-- Add a spacer div to push content to the top -->
+            <div class="flex-grow"></div>
           </div>
         </div>
 
         <!-- Main Content Container for all content sections -->
-        <div class="w-full md:w-3/4 p-6">
+        <div class="main-content p-6">
           <!-- Flash Messages -->
           @if (session('success'))
             <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
@@ -291,86 +350,7 @@
             </div>
           </div>
 
-          <!-- Documents Content -->
-          <div id="documents-content" class="hidden">
-            <h2 class="text-2xl font-bold mb-4">Documents</h2>
-            
-            <div class="flex justify-between mb-4">
-              <div>
-                <button class="bg-blue-500 text-white px-4 py-2 rounded mr-2">Upload New</button>
-                <button class="bg-gray-300 px-4 py-2 rounded">Create Folder</button>
-              </div>
-              <div>
-                <input type="text" class="border rounded p-2" placeholder="Search documents..." />
-              </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow overflow-hidden mb-4">
-              <div class="p-3 border-b bg-gray-50 flex items-center">
-                <i class="fas fa-folder-open text-yellow-500 mr-2"></i>
-                <span class="font-bold">Roofing Permits</span>
-              </div>
-              
-              <div class="p-4 border-b hover:bg-gray-50 cursor-pointer flex items-center">
-                <i class="fas fa-file-pdf text-red-500 mr-3"></i>
-                <div class="flex-grow">
-                  <div class="font-medium">Site Plan.pdf</div>
-                  <div class="text-sm text-gray-500">Added Apr 22</div>
-                </div>
-                <div class="flex space-x-2">
-                  <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-download"></i></button>
-                  <button class="text-gray-500 hover:text-gray-700"><i class="fas fa-eye"></i></button>
-                  <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </div>
-              
-              <div class="p-4 border-b hover:bg-gray-50 cursor-pointer flex items-center">
-                <i class="fas fa-file-image text-green-500 mr-3"></i>
-                <div class="flex-grow">
-                  <div class="font-medium">Property Photo.jpg</div>
-                  <div class="text-sm text-gray-500">Added Apr 21</div>
-                </div>
-                <div class="flex space-x-2">
-                  <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-download"></i></button>
-                  <button class="text-gray-500 hover:text-gray-700"><i class="fas fa-eye"></i></button>
-                  <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </div>
-              
-              <div class="p-4 hover:bg-gray-50 cursor-pointer flex items-center">
-                <i class="fas fa-file-contract text-blue-500 mr-3"></i>
-                <div class="flex-grow">
-                  <div class="font-medium">Contract.pdf</div>
-                  <div class="text-sm text-gray-500">Added Apr 20</div>
-                </div>
-                <div class="flex space-x-2">
-                  <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-download"></i></button>
-                  <button class="text-gray-500 hover:text-gray-700"><i class="fas fa-eye"></i></button>
-                  <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow overflow-hidden">
-              <div class="p-3 border-b bg-gray-50 flex items-center">
-                <i class="fas fa-folder-open text-yellow-500 mr-2"></i>
-                <span class="font-bold">Renovation Documents</span>
-              </div>
-              
-              <div class="p-4 border-b hover:bg-gray-50 cursor-pointer flex items-center">
-                <i class="fas fa-file-alt text-gray-500 mr-3"></i>
-                <div class="flex-grow">
-                  <div class="font-medium">Design Spec.docx</div>
-                  <div class="text-sm text-gray-500">Added Apr 19</div>
-                </div>
-                <div class="flex space-x-2">
-                  <button class="text-blue-500 hover:text-blue-700"><i class="fas fa-download"></i></button>
-                  <button class="text-gray-500 hover:text-gray-700"><i class="fas fa-eye"></i></button>
-                  <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </div>
-            </div>
-          </div>
+        
         </div>
       </div>
     </div>
@@ -432,10 +412,8 @@
       // Show dashboard on button click
       if (dashboardBtn) {
         dashboardBtn.addEventListener('click', function() {
-          hideAllContent();
-          removeActiveFromButtons();
-          dashboardContent.classList.remove('hidden');
-          dashboardBtn.classList.add('bg-blue-900');
+          // Instead of just toggling content, navigate to the dashboard page
+          window.location.href = "{{ route('dashboard') }}";
         });
       }
       
@@ -467,13 +445,12 @@
         });
       }
       
-      // Show documents on button click
+      // Show documents on button click - MODIFIED TO USE LINK INSTEAD
       if (documentsBtn) {
-        documentsBtn.addEventListener('click', function() {
-          hideAllContent();
-          removeActiveFromButtons();
-          documentsContent.classList.remove('hidden');
-          documentsBtn.classList.add('bg-blue-900');
+        documentsBtn.removeAttribute('onclick'); // Remove the onclick handler
+        documentsBtn.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevent default action
+          window.location.href = "{{ route('client.documents.index') }}";
         });
       }
       
@@ -483,19 +460,25 @@
       // Check if we're on a specific page using the route segment
       const currentPath = window.location.pathname;
       
-      if (currentPath.includes('verification')) {
+      if (currentPath.includes('/client/documents')) {
+        // This is a documents page, handled by the documents views
+        contentLoaded = true;
+        // Don't hide content rendered by the documents views
+        removeActiveFromButtons();
+        if (documentsBtn) documentsBtn.classList.add('bg-blue-900');
+      } else if (currentPath.includes('verification')) {
         // Do nothing, the verification page will handle its own content
         contentLoaded = true;
       } else if (currentPath.includes('profile')) {
         // Do nothing, the profile page will handle its own content
         contentLoaded = true;
-      } else if (!contentLoaded) {
+      } else {
         // Default to dashboard
         hideAllContent();
         removeActiveFromButtons();
         if (dashboardContent) {
           dashboardContent.classList.remove('hidden');
-          dashboardBtn.classList.add('bg-blue-900');
+          if (dashboardBtn) dashboardBtn.classList.add('bg-blue-900');
         }
       }
     });

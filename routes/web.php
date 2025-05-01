@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\VerificationController as AdminVerificationContro
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ContractorController as AdminContractorController;
 use App\Http\Controllers\Admin\DocumentController as AdminDocumentController;
-
+use App\Http\Controllers\ClientDocumentController;
 Route::view('/', 'welcome');
 
 // Product page route
@@ -87,6 +87,21 @@ Route::middleware(['auth'])->group(function () {
     // Contractor Verification Routes
     Route::get('/verification', [VerificationController::class, 'index'])->name('verification.index');
     Route::post('/verification/submit', [VerificationController::class, 'submitDocuments'])->name('verification.submit');
+
+    // Client Document Management
+    Route::prefix('client/documents')->name('client.documents.')->group(function () {
+        Route::get('/', [ClientDocumentController::class, 'index'])->name('index');
+        Route::post('/upload', [ClientDocumentController::class, 'upload'])->name('upload');
+        Route::post('/create-folder', [ClientDocumentController::class, 'createFolder'])->name('create-folder');
+        Route::get('/search', [ClientDocumentController::class, 'search'])->name('search');
+        Route::get('/{document}', [ClientDocumentController::class, 'show'])->name('show');
+        Route::get('/{document}/edit', [ClientDocumentController::class, 'edit'])->name('edit');
+        Route::put('/{document}', [ClientDocumentController::class, 'update'])->name('update');
+        Route::delete('/{document}', [ClientDocumentController::class, 'destroy'])->name('destroy');
+        Route::get('/{document}/download', [ClientDocumentController::class, 'download'])->name('download');
+        Route::get('/{document}/preview', [ClientDocumentController::class, 'preview'])->name('preview');
+        Route::delete('/folders/{folder}', [ClientDocumentController::class, 'destroyFolder'])->name('destroy-folder');
+    });
 });
 
 // Who We Serve routes
@@ -128,7 +143,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/documents/upload', [AdminDocumentController::class, 'upload'])->name('documents.upload');
     Route::post('/documents/store', [AdminDocumentController::class, 'storeDocument'])->name('documents.store');
     Route::post('/documents/create-folder', [AdminDocumentController::class, 'createFolder'])->name('documents.create-folder');
-    Route::get('/documents/folders', [AdminDocumentController::class, 'listFolders'])->name('documents.list-folders');
+    Route::get('/documents/folders', [AdminDocumentController::class, 'folders'])->name('documents.folders');
+    Route::get('/documents/folder/{folder}', [AdminDocumentController::class, 'folderDocuments'])->name('documents.folder');
+    Route::get('/documents/list-folders', [AdminDocumentController::class, 'listFolders'])->name('documents.list-folders');
     Route::get('/documents/{document}', [AdminDocumentController::class, 'show'])->name('documents.show');
     Route::get('/documents/{document}/download', [AdminDocumentController::class, 'download'])->name('documents.download');
     Route::get('/documents/{document}/preview', [AdminDocumentController::class, 'preview'])->name('documents.preview');
@@ -136,5 +153,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/documents/{document}/reject', [AdminDocumentController::class, 'reject'])->name('documents.reject');
     Route::get('/api/dashboard/documents', [AdminDocumentController::class, 'getDashboardDocuments'])->name('api.dashboard.documents');
 });
-
+// Client documents dashboard route
+Route::get('/client/documents-dashboard', [ContractorController::class, 'documents'])->middleware(['auth'])->name('client.documents-dashboard');
 require __DIR__.'/auth.php';
