@@ -10,10 +10,12 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ContractorController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ClientMessageController;
 use App\Http\Controllers\Admin\VerificationController as AdminVerificationController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ContractorController as AdminContractorController;
 use App\Http\Controllers\Admin\DocumentController as AdminDocumentController;
+use App\Http\Controllers\Admin\AdminMessageController;
 use App\Http\Controllers\ClientDocumentController;
 Route::view('/', 'welcome');
 
@@ -84,6 +86,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('api/notifications/count', [NotificationController::class, 'getUnreadCount'])->name('api.notifications.count');
     Route::get('api/notifications/recent', [NotificationController::class, 'getRecentNotifications'])->name('api.notifications.recent');
     
+    // API routes for messages
+    Route::get('api/messages/unread', [ClientMessageController::class, 'unreadCount'])->name('api.messages.unread');
+    
     // Contractor Verification Routes
     Route::get('/verification', [VerificationController::class, 'index'])->name('verification.index');
     Route::post('/verification/submit', [VerificationController::class, 'submitDocuments'])->name('verification.submit');
@@ -101,6 +106,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{document}/download', [ClientDocumentController::class, 'download'])->name('download');
         Route::get('/{document}/preview', [ClientDocumentController::class, 'preview'])->name('preview');
         Route::delete('/folders/{folder}', [ClientDocumentController::class, 'destroyFolder'])->name('destroy-folder');
+    });
+
+    // Client Message Management
+    Route::prefix('client/messages')->name('client.messages.')->group(function () {
+        Route::get('/', [ClientMessageController::class, 'index'])->name('index');
+        Route::get('/create', [ClientMessageController::class, 'create'])->name('create');
+        Route::post('/', [ClientMessageController::class, 'store'])->name('store');
+        Route::get('/{message}', [ClientMessageController::class, 'show'])->name('show');
+        Route::get('/{message}/reply', [ClientMessageController::class, 'reply'])->name('reply');
+        Route::post('/{message}/reply', [ClientMessageController::class, 'storeReply'])->name('store-reply');
     });
 });
 
@@ -152,6 +167,16 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/documents/{document}/approve', [AdminDocumentController::class, 'approve'])->name('documents.approve');
     Route::post('/documents/{document}/reject', [AdminDocumentController::class, 'reject'])->name('documents.reject');
     Route::get('/api/dashboard/documents', [AdminDocumentController::class, 'getDashboardDocuments'])->name('api.dashboard.documents');
+
+    // Admin Message Management
+    Route::get('/messages', [AdminMessageController::class, 'index'])->name('messages.index');
+    Route::get('/messages/create', [AdminMessageController::class, 'create'])->name('messages.create');
+    Route::post('/messages', [AdminMessageController::class, 'store'])->name('messages.store');
+    Route::get('/messages/{message}', [AdminMessageController::class, 'show'])->name('messages.show');
+    Route::get('/messages/{message}/reply', [AdminMessageController::class, 'reply'])->name('messages.reply');
+    Route::post('/messages/{message}/reply', [AdminMessageController::class, 'storeReply'])->name('messages.store-reply');
+    Route::get('/messages/contractor/{contractor}', [AdminMessageController::class, 'contractorMessages'])->name('messages.contractor');
+    Route::get('/api/messages/unread', [AdminMessageController::class, 'unreadCount'])->name('api.messages.unread');
 });
 // Client documents dashboard route
 Route::get('/client/documents-dashboard', [ContractorController::class, 'documents'])->middleware(['auth'])->name('client.documents-dashboard');

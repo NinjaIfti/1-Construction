@@ -109,6 +109,13 @@
                   <i class="fas fa-folder mr-3"></i>
                   <span>Documents</span>
                 </a>
+                <a href="{{ route('admin.messages.index') }}" @click="activeTab = 'messages'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'messages' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-comment mr-3"></i>
+                  <span>Messages</span>
+                  <span id="message-badge" class="ml-auto bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() > 0 ? '' : 'hidden' }}">
+                    {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() }}
+                  </span>
+                </a>
                 <a href="{{ route('admin.contractors.index') }}" @click="activeTab = 'contractors.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'contractors.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-users mr-3"></i>
                   <span>Contractors</span>
@@ -140,6 +147,13 @@
                 <a href="{{ route('admin.documents.index') }}" @click="activeTab = 'documents'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'documents' ? 'bg-blue-900' : ''">
                   <i class="fas fa-folder mr-3"></i>
                   <span>Documents</span>
+                </a>
+                <a href="{{ route('admin.messages.index') }}" @click="activeTab = 'messages'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'messages' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-comment mr-3"></i>
+                  <span>Messages</span>
+                  <span id="message-badge" class="ml-auto bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() > 0 ? '' : 'hidden' }}">
+                    {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() }}
+                  </span>
                 </a>
                 <a href="{{ route('admin.contractors.index') }}" @click="activeTab = 'contractors.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'contractors.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-users mr-3"></i>

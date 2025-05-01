@@ -100,6 +100,30 @@ class User extends Authenticatable
     }
 
     /**
+     * Get messages sent by the user.
+     */
+    public function sentMessages()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    /**
+     * Get messages received by the user.
+     */
+    public function receivedMessages()
+    {
+        return $this->hasMany(Message::class, 'recipient_id');
+    }
+
+    /**
+     * Get messages associated with this contractor.
+     */
+    public function contractorMessages()
+    {
+        return $this->hasMany(Message::class, 'contractor_id');
+    }
+
+    /**
      * Check if the user is an admin.
      */
     public function isAdmin()

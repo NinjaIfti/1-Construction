@@ -32,6 +32,7 @@ class Document extends Model
         'user_id',
         'contractor_id',
         'document_status',
+        'message_id',
     ];
 
     /**
@@ -125,6 +126,14 @@ class Document extends Model
     }
 
     /**
+     * Get the message that this document is attached to.
+     */
+    public function message(): BelongsTo
+    {
+        return $this->belongsTo(Message::class, 'message_id');
+    }
+
+    /**
      * Get the folder path for the document.
      */
     public function getFolderPathAttribute(): string
@@ -133,6 +142,8 @@ class Document extends Model
             return 'permits/' . $this->permit_id;
         } elseif ($this->contractor_id) {
             return 'contractors/' . $this->contractor_id;
+        } elseif ($this->message_id) {
+            return 'messages/' . $this->message_id;
         }
 
         return 'documents';

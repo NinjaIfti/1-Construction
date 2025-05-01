@@ -153,10 +153,13 @@
                 <i class="fas fa-file-upload mr-3"></i>
                 <span>Submit Permit</span>
               </button>
-              <button id="messages-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700">
+              <a href="{{ route('client.messages.index') }}" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 {{ request()->routeIs('client.messages.*') ? 'bg-blue-900' : '' }}">
                 <i class="fas fa-comment mr-3"></i>
                 <span>Messages</span>
-              </button>
+                <span id="message-badge" class="ml-auto bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() > 0 ? '' : 'hidden' }}">
+                  {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() }}
+                </span>
+              </a>
               <button id="documents-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 {{ request()->routeIs('client.documents.*') ? 'bg-blue-900' : '' }}">
                 <i class="fas fa-folder mr-3"></i>
                 <span>Documents</span>
@@ -482,6 +485,31 @@
         }
       }
     });
+  </script>
+
+  <script>
+    // Fetch unread message count every 30 seconds for notification badge update
+    function updateUnreadCount() {
+        fetch("{{ route('api.messages.unread') }}")
+            .then(response => response.json())
+            .then(data => {
+                const badge = document.getElementById('message-badge');
+                if (badge) {
+                    if (data.count > 0) {
+                        badge.textContent = data.count;
+                        badge.classList.remove('hidden');
+                    } else {
+                        badge.classList.add('hidden');
+                    }
+                }
+            });
+    }
+    
+    // Initial update
+    updateUnreadCount();
+    
+    // Set interval for updates
+    setInterval(updateUnreadCount, 30000);
   </script>
 </body>
 </html>
