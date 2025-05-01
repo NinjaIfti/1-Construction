@@ -93,6 +93,10 @@
             
             @if(auth()->user()->verification_status === 'approved')
               <!-- Full menu for verified contractors -->
+              <a href="{{ route('projects.index') }}" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700">
+                <i class="fas fa-project-diagram mr-3"></i>
+                <span>Projects</span>
+              </a>
               <button id="submit-permit-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 bg-blue-900">
                 <i class="fas fa-file-upload mr-3"></i>
                 <span>Submit Permit</span>
