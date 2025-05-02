@@ -13,11 +13,7 @@
     sidebarOpen: false,
     activeTab: '{{ str_contains(Route::currentRouteName(), "verifications") ? "admin.verifications.index" : Route::currentRouteName() }}',
     uploadDragActive: false,
-    notifications: [
-      { text: 'New permit request', date: 'Apr 22' },
-      { text: 'Apdrest updated', date: 'Apr 21' },
-      { text: 'Phonicles approved', date: 'Apr 20' }
-    ],
+    notifications: [],
     projectStatuses: [
       { name: 'New notifications', date: 'Apr 12', status: '' },
       { name: 'Site-Development', date: 'Apr 23', status: '' },
@@ -53,9 +49,20 @@
         .catch(error => {
           console.error('Error loading permits:', error);
         });
+    },
+    loadNotifications() {
+      fetch('/api/notifications/recent')
+        .then(response => response.json())
+        .then(data => {
+          this.notifications = data;
+        })
+        .catch(error => {
+          console.error('Error loading notifications:', error);
+          this.notifications = [];
+        });
     }
   }" 
-  x-init="loadContractors(); loadPermits()" 
+  x-init="loadContractors(); loadPermits(); loadNotifications()" 
   class="min-h-screen">
     <div class="flex flex-col lg:flex-row gap-6 p-4 md:p-6">
       <!-- Admin Dashboard Panel -->
@@ -120,9 +127,13 @@
                   <i class="fas fa-file-alt mr-3"></i>
                   <span>Permit Requests</span>
                 </a>
-                <a href="{{ route('admin.documents.index') }}" @click="activeTab = 'documents'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'documents' ? 'bg-blue-900' : ''">
+                <a href="{{ route('admin.documents.index') }}" @click="activeTab = 'admin.documents.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.documents.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-folder mr-3"></i>
                   <span>Documents</span>
+                </a>
+                <a href="{{ route('tasks.index') }}" @click="activeTab = 'tasks'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'tasks' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-tasks mr-3"></i>
+                  <span>Tasks</span>
                 </a>
                 <a href="{{ route('admin.messages.index') }}" @click="activeTab = 'messages'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'messages' ? 'bg-blue-900' : ''">
                   <i class="fas fa-comment mr-3"></i>
@@ -159,9 +170,13 @@
                   <i class="fas fa-file-alt mr-3"></i>
                   <span>Permit Requests</span>
                 </a>
-                <a href="{{ route('admin.documents.index') }}" @click="activeTab = 'documents'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'documents' ? 'bg-blue-900' : ''">
+                <a href="{{ route('admin.documents.index') }}" @click="activeTab = 'admin.documents.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.documents.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-folder mr-3"></i>
                   <span>Documents</span>
+                </a>
+                <a href="{{ route('tasks.index') }}" @click="activeTab = 'tasks'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'tasks' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-tasks mr-3"></i>
+                  <span>Tasks</span>
                 </a>
                 <a href="{{ route('admin.messages.index') }}" @click="activeTab = 'messages'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'messages' ? 'bg-blue-900' : ''">
                   <i class="fas fa-comment mr-3"></i>

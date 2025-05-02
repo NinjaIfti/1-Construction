@@ -127,6 +127,17 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{permit}', [ClientPermitController::class, 'show'])->name('show');
         Route::post('/{permit}/comments', [ClientPermitController::class, 'addComment'])->name('comments.store');
     });
+
+    // Project Task routes
+    Route::get('/projects/{project}/tasks', [TaskController::class, 'index'])->name('projects.tasks.index');
+    Route::get('/projects/{project}/tasks/create', [TaskController::class, 'create'])->name('projects.tasks.create');
+    Route::post('/projects/{project}/tasks', [TaskController::class, 'store'])->name('projects.tasks.store');
+    Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+    Route::get('/tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
+    Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
+    Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
+    Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+    Route::get('/api/projects/{project}/tasks', [TaskController::class, 'getProjectTasks'])->name('api.projects.tasks');
 });
 
 // Who We Serve routes
@@ -198,4 +209,20 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 });
 // Client documents dashboard route
 Route::get('/client/documents-dashboard', [ContractorController::class, 'documents'])->middleware(['auth'])->name('client.documents-dashboard');
+
+// Notification APIs
+Route::middleware(['auth'])->prefix('api')->name('api.')->group(function () {
+    Route::get('/notifications/unread', [NotificationController::class, 'getUnreadNotifications'])->name('notifications.unread');
+    Route::get('/notifications/recent', [NotificationController::class, 'getRecentNotifications'])->name('notifications.recent');
+    Route::post('/notifications/{notification}/read', [NotificationController::class, 'markAsRead'])->name('notifications.mark-read');
+    Route::post('/notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.mark-all-read');
+});
+
+// Client Dashboard APIs
+Route::middleware(['auth'])->prefix('client/api')->name('client.api.')->group(function () {
+    Route::get('/dashboard/stats', [ContractorController::class, 'getDashboardStats'])->name('dashboard.stats');
+    Route::get('/dashboard/activities', [ContractorController::class, 'getDashboardActivities'])->name('dashboard.activities');
+    Route::get('/dashboard/documents', [ClientDocumentController::class, 'getDashboardDocuments'])->name('dashboard.documents');
+});
+
 require __DIR__.'/auth.php';

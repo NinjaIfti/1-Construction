@@ -84,7 +84,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the notifications for the user.
+     * Get all notifications for the user.
      */
     public function notifications()
     {
@@ -94,7 +94,7 @@ class User extends Authenticatable
     /**
      * Get the tasks assigned to the user.
      */
-    public function tasks()
+    public function assignedTasks()
     {
         return $this->hasMany(Task::class, 'assigned_to');
     }

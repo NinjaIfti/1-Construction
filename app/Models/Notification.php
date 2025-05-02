@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Notification extends Model
 {
@@ -17,13 +18,13 @@ class Notification extends Model
      */
     protected $fillable = [
         'user_id',
-        'permit_id',
         'title',
         'message',
         'type',
+        'url',
         'read',
-        'email_sent',
-        'sms_sent',
+        'related_id',
+        'related_type'
     ];
 
     /**
@@ -33,24 +34,24 @@ class Notification extends Model
      */
     protected $casts = [
         'read' => 'boolean',
-        'email_sent' => 'boolean',
-        'sms_sent' => 'boolean',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 
     /**
      * Get the user that owns the notification.
      */
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
     /**
-     * Get the permit associated with the notification.
+     * Get the related model for this notification.
      */
-    public function permit(): BelongsTo
+    public function related()
     {
-        return $this->belongsTo(Permit::class);
+        return $this->morphTo('related');
     }
 
     /**

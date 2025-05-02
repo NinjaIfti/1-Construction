@@ -356,4 +356,63 @@ class ClientDocumentController extends Controller
         return redirect()->route('client.documents.index', ['folder_id' => $parentFolderId])
             ->with('success', 'Folder and its contents deleted successfully.');
     }
+
+    /**
+     * Get document statistics and recent documents for dashboard display.
+     */
+    public function getDashboardDocuments()
+    {
+        $user = Auth::user();
+        
+        // Get recent documents
+        $recentDocuments = Document::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get()
+            ->map(function($document) {
+                return [
+                    'id' => $document->id,
+                    'name' => $document->name,
+                    'type' => $document->file_type,
+                    'size' => $this->formatFileSize($document->file_size),
+                    'date' => $document->created_at->format('M d'),
+                    'folder' => $document->folder ? $document->folder->name : 'Root',
+                    'status' => $document->document_status,
+                    'url' => route('client.documents.preview', $document)
+                ];
+            });
+        
+        // Calculate folder counts
+        $folderCounts = DocumentFolder::where('user_id', $user->id)
+            ->count();
+            
+        // Calculate document counts
+        $totalDocuments = Document::where('user_id', $user->id)->count();
+        $recentUploads = Document::where('user_id', $user->id)
+            ->whereDate('created_at', '>=', now()->subDays(7))
+            ->count();
+        
+        return response()->json([
+            'recent' => $recentDocuments,
+            'stats' => [
+                'totalDocuments' => $totalDocuments,
+                'totalFolders' => $folderCounts,
+                'recentUploads' => $recentUploads
+            ]
+        ]);
+    }
+    
+    /**
+     * Format file size for display.
+     */
+    private function formatFileSize($size)
+    {
+        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+        $i = 0;
+        while ($size >= 1024 && $i < count($units) - 1) {
+            $size /= 1024;
+            $i++;
+        }
+        return round($size, 2) . ' ' . $units[$i];
+    }
 }

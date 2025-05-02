@@ -5,99 +5,76 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\Project;
 use App\Models\User;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
     /**
-     * Display a listing of tasks.
+     * Display a listing of the user's tasks.
+     * 
+     * When no project is specified, show all tasks for the authenticated user
      */
-    public function index(Request $request)
+    public function index(Project $project = null)
     {
-        $query = Auth::user()->isAdmin()
-            ? Task::with(['project', 'user'])
-            : Task::where('user_id', Auth::id())
-                ->orWhereHas('project', function ($query) {
-                    $query->where('user_id', Auth::id());
-                })->with(['project', 'user']);
-                
-        // Filter by status
-        if ($request->has('status') && in_array($request->status, ['Pending', 'In Progress', 'Completed'])) {
-            $query->where('status', $request->status);
+        if ($project) {
+            // Project-specific tasks
+            $this->authorize('view', $project);
+            $tasks = $project->tasks()->latest()->get();
+            return view('layouts.client.tasks.index', compact('project', 'tasks'));
+        } else {
+            // All tasks for the authenticated user
+            $user = Auth::user();
+            $tasks = $user->assignedTasks()
+                ->with('project')
+                ->latest()
+                ->get();
+            return view('layouts.client.tasks.my_tasks', compact('tasks'));
         }
-        
-        // Filter by priority
-        if ($request->has('priority') && in_array($request->priority, ['Low', 'Medium', 'High'])) {
-            $query->where('priority', $request->priority);
-        }
-        
-        // Filter by due date
-        if ($request->has('due_date')) {
-            if ($request->due_date === 'today') {
-                $query->whereDate('due_date', now());
-            } elseif ($request->due_date === 'overdue') {
-                $query->where('status', '!=', 'Completed')
-                      ->whereDate('due_date', '<', now());
-            } elseif ($request->due_date === 'upcoming') {
-                $query->where('status', '!=', 'Completed')
-                      ->whereDate('due_date', '>', now())
-                      ->whereDate('due_date', '<=', now()->addDays(7));
-            }
-        }
-        
-        $tasks = $query->latest()->paginate(10);
-        
-        return view('tasks.index', compact('tasks'));
     }
 
     /**
      * Show the form for creating a new task.
      */
-    public function create(Request $request)
+    public function create(Project $project)
     {
-        $project = null;
+        $this->authorize('update', $project);
         
-        if ($request->has('project_id')) {
-            $project = Project::findOrFail($request->project_id);
-            $this->authorize('update', $project);
-        } else {
-            $projects = Auth::user()->isAdmin()
-                ? Project::all()
-                : Auth::user()->projects;
-        }
-        
-        $users = User::all();
-        
-        return view('tasks.create', compact('project', 'projects', 'users'));
+        return view('layouts.client.tasks.create', compact('project'));
     }
 
     /**
      * Store a newly created task in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Project $project)
     {
-        $validated = $request->validate([
-            'project_id' => 'required|exists:projects,id',
-            'user_id' => 'required|exists:users,id',
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'priority' => 'required|in:Low,Medium,High',
-            'status' => 'required|in:Pending,In Progress,Completed',
-            'due_date' => 'required|date',
-        ]);
-        
-        $project = Project::findOrFail($validated['project_id']);
         $this->authorize('update', $project);
         
-        $task = Task::create($validated);
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'due_date' => 'nullable|date',
+            'priority' => 'required|in:Low,Medium,High',
+            'status' => 'required|in:Pending,In Progress,Completed',
+            'assigned_to' => 'nullable|exists:users,id',
+        ]);
         
-        if ($validated['status'] === 'Completed') {
-            $task->completed_at = now();
-            $task->save();
+        $task = $project->tasks()->create($validated);
+        
+        // Create notification for this task
+        if ($task->assigned_to) {
+            $assignedUser = User::find($task->assigned_to);
+            NotificationService::notify(
+                $assignedUser,
+                "New task assigned: {$task->title}",
+                $task,
+                'task',
+                route('tasks.show', $task)
+            );
         }
         
-        return redirect()->route('tasks.show', $task)
+        return redirect()->route('projects.tasks.index', $project)
             ->with('success', 'Task created successfully.');
     }
 
@@ -106,11 +83,9 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        $this->authorize('view', $task);
+        $this->authorize('view', $task->project);
         
-        $task->load('project', 'user');
-        
-        return view('tasks.show', compact('task'));
+        return view('layouts.client.tasks.show', compact('task'));
     }
 
     /**
@@ -118,11 +93,9 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        $this->authorize('update', $task);
+        $this->authorize('update', $task->project);
         
-        $users = User::all();
-        
-        return view('tasks.edit', compact('task', 'users'));
+        return view('layouts.client.tasks.edit', compact('task'));
     }
 
     /**
@@ -130,25 +103,30 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        $this->authorize('update', $task);
+        $this->authorize('update', $task->project);
         
         $validated = $request->validate([
-            'user_id' => 'required|exists:users,id',
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'due_date' => 'nullable|date',
             'priority' => 'required|in:Low,Medium,High',
             'status' => 'required|in:Pending,In Progress,Completed',
-            'due_date' => 'required|date',
+            'assigned_to' => 'nullable|exists:users,id',
         ]);
         
-        // Set completed_at timestamp if task is being marked as completed
-        if ($validated['status'] === 'Completed' && $task->status !== 'Completed') {
-            $validated['completed_at'] = now();
-        } elseif ($validated['status'] !== 'Completed') {
-            $validated['completed_at'] = null;
-        }
-        
+        $oldStatus = $task->status;
         $task->update($validated);
+        
+        // Create notification if status changed
+        if ($oldStatus != $task->status) {
+            NotificationService::notify(
+                $task->project->user,
+                "Task '{$task->title}' status changed to {$task->status}",
+                $task,
+                'task',
+                route('tasks.show', $task)
+            );
+        }
         
         return redirect()->route('tasks.show', $task)
             ->with('success', 'Task updated successfully.');
@@ -159,60 +137,40 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        $this->authorize('delete', $task);
+        $this->authorize('delete', $task->project);
         
+        $project = $task->project;
         $task->delete();
         
-        return redirect()->route('tasks.index')
+        return redirect()->route('projects.tasks.index', $project)
             ->with('success', 'Task deleted successfully.');
     }
     
     /**
-     * Update the status of a task.
+     * Get tasks for API.
      */
-    public function updateStatus(Request $request, Task $task)
-    {
-        $this->authorize('update', $task);
-        
-        $validated = $request->validate([
-            'status' => 'required|in:Pending,In Progress,Completed',
-        ]);
-        
-        if ($validated['status'] === 'Completed' && $task->status !== 'Completed') {
-            $task->update([
-                'status' => 'Completed',
-                'completed_at' => now(),
-            ]);
-        } else {
-            $task->update([
-                'status' => $validated['status'],
-                'completed_at' => $validated['status'] === 'Completed' ? $task->completed_at : null,
-            ]);
-        }
-        
-        return redirect()->back()
-            ->with('success', 'Task status updated successfully.');
-    }
-    
-    /**
-     * Display tasks for a specific project.
-     */
-    public function projectTasks(Project $project)
+    public function getProjectTasks(Project $project)
     {
         $this->authorize('view', $project);
         
-        $tasks = $project->tasks()->latest()->paginate(10);
-        
-        return view('tasks.project_tasks', compact('project', 'tasks'));
-    }
-    
-    /**
-     * Display tasks assigned to the current user.
-     */
-    public function myTasks()
-    {
-        $tasks = Auth::user()->tasks()->latest()->paginate(10);
-        
-        return view('tasks.my_tasks', compact('tasks'));
+        $tasks = $project->tasks()
+            ->orderBy('due_date')
+            ->get()
+            ->map(function($task) {
+                return [
+                    'id' => $task->id,
+                    'title' => $task->title,
+                    'status' => $task->status,
+                    'priority' => $task->priority,
+                    'due_date' => $task->due_date ? $task->due_date->format('M d, Y') : null,
+                    'url' => route('tasks.show', $task),
+                    'assigned_to' => $task->assigned_to ? [
+                        'id' => $task->assignedUser->id,
+                        'name' => $task->assignedUser->name
+                    ] : null
+                ];
+            });
+            
+        return response()->json($tasks);
     }
 } 

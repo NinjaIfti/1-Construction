@@ -94,208 +94,216 @@
   </style>
 </head>
 <body class="bg-gray-100">
-  <div class="dashboard-container container mx-auto">
-    <div class="dashboard-main">
-      <!-- Header -->
-      <div class="bg-gray-900 text-white p-4 flex justify-between items-center">
-        <div class="flex items-center">
-          <a href="/" class="flex items-center">
-            <span class="text-red-600 text-4xl font-bold">1</span>
-            <div class="ml-2">
-              <div class="text-xl font-bold">CONTRACTOR</div>
-              <div class="text-2xl font-bold -mt-1">SOLUTIONS</div>
-            </div>
-          </a>
-        </div>
-        <div class="flex items-center">
-          <div class="text-right">
-            <div class="text-lg font-bold">{{ auth()->user()->name }}</div>
-            <div class="text-sm">{{ auth()->user()->company_name }}</div>
-            @if(auth()->user()->verification_status === 'approved')
-              <div class="text-xs text-green-400">Verified Account</div>
-            @elseif(auth()->user()->verification_status === 'under_review')
-              <div class="text-xs text-yellow-400">Under Review</div>
-            @else
-              <div class="text-xs text-red-400">Verification Required</div>
-            @endif
+  <div x-data="dashboardData">
+    <div class="dashboard-container container mx-auto">
+      <div class="dashboard-main">
+        <!-- Header -->
+        <div class="bg-gray-900 text-white p-4 flex justify-between items-center">
+          <div class="flex items-center">
+            <a href="/" class="flex items-center">
+              <span class="text-red-600 text-4xl font-bold">1</span>
+              <div class="ml-2">
+                <div class="text-xl font-bold">CONTRACTOR</div>
+                <div class="text-2xl font-bold -mt-1">SOLUTIONS</div>
+              </div>
+            </a>
           </div>
-          <div class="ml-2 dropdown">
-            <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center cursor-pointer">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="dropdown-content">
-              <a href="{{ route('profile.index') }}" class="flex items-center">
-                <i class="fas fa-user-cog mr-2"></i> Profile Settings
-              </a>
-              <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit" class="flex items-center text-red-600">
-                  <i class="fas fa-sign-out-alt mr-2"></i> Logout
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="content-wrapper">
-        <!-- Sidebar -->
-        <div class="sidebar text-white">
-          <div class="p-4 flex-1">
-            <button id="dashboard-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700">
-              <i class="fas fa-home mr-3"></i>
-              <span>Dashboard</span>
-            </button>
-            
-            @if(auth()->user()->verification_status === 'approved')
-              <!-- Full menu for verified contractors -->
-              <a href="{{ route('client.permits.create') }}" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 {{ request()->routeIs('client.permits.create') ? 'bg-blue-900' : '' }}">
-                <i class="fas fa-file-upload mr-3"></i>
-                <span>Submit Permit</span>
-              </a>
-              <a href="{{ route('client.messages.index') }}" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 {{ request()->routeIs('client.messages.*') ? 'bg-blue-900' : '' }}">
-                <i class="fas fa-comment mr-3"></i>
-                <span>Messages</span>
-                <span id="message-badge" class="ml-auto bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() > 0 ? '' : 'hidden' }}">
-                  {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() }}
-                </span>
-              </a>
-              <button id="documents-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 {{ request()->routeIs('client.documents.*') ? 'bg-blue-900' : '' }}">
-                <i class="fas fa-folder mr-3"></i>
-                <span>Documents</span>
-              </button>
+          <div class="flex items-center">
+            <div class="text-right">
+              <div class="text-lg font-bold">{{ auth()->user()->name }}</div>
+              <div class="text-sm">{{ auth()->user()->company_name }}</div>
               @if(auth()->user()->verification_status === 'approved')
-              <a href="{{ route('client.permits.index') }}" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 {{ request()->routeIs('client.permits.*') ? 'bg-blue-900' : '' }}">
-                <i class="fas fa-file-alt mr-3"></i>
-                <span>Permits</span>
-              </a>
+                <div class="text-xs text-green-400">Verified Account</div>
+              @elseif(auth()->user()->verification_status === 'under_review')
+                <div class="text-xs text-yellow-400">Under Review</div>
+              @else
+                <div class="text-xs text-red-400">Verification Required</div>
               @endif
-            @else
-              <!-- Only verification menu for unverified contractors -->
-              <button id="verification-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 bg-blue-900">
-                <i class="fas fa-id-card mr-3"></i>
-                <span>Verification</span>
-              </button>
-            @endif
-            
-            <!-- Add a spacer div to push content to the top -->
-            <div class="flex-grow"></div>
+            </div>
+            <div class="ml-2 dropdown">
+              <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center cursor-pointer">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="dropdown-content">
+                <a href="{{ route('profile.index') }}" class="flex items-center">
+                  <i class="fas fa-user-cog mr-2"></i> Profile Settings
+                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                  @csrf
+                  <button type="submit" class="flex items-center text-red-600">
+                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Main Content Container for all content sections -->
-        <div class="main-content p-6">
-          <!-- Flash Messages -->
-          @if (session('success'))
-            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
-              <p>{{ session('success') }}</p>
-            </div>
-          @endif
-
-          @if (session('error'))
-            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert">
-              <p>{{ session('error') }}</p>
-            </div>
-          @endif
-          
-          @yield('content')
-          
-          <!-- Dashboard Content -->
-          <div id="dashboard-content" class="hidden">
-            <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
-            
-            @if(auth()->user()->verification_status !== 'approved')
-              <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6" role="alert">
-                <p class="font-bold">Account Verification Required</p>
-                <p>To access all features, please complete the verification process.</p>
-                <a href="{{ route('verification.index') }}" class="mt-2 inline-block bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded">
-                  Go to Verification
+        <div class="content-wrapper">
+          <!-- Sidebar -->
+          <div class="sidebar text-white">
+            <div class="p-4 flex-1">
+              <button id="dashboard-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'dashboard' ? 'bg-blue-900' : ''">
+                <i class="fas fa-home mr-3"></i>
+                <span>Dashboard</span>
+              </button>
+              
+              @if(auth()->user()->verification_status === 'approved')
+                <!-- Full menu for verified contractors -->
+                <a href="{{ route('client.permits.create') }}" @click="activeTab = 'client.permits.create'" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'client.permits.create' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-file-upload mr-3"></i>
+                  <span>Submit Permit</span>
                 </a>
+                <a href="{{ route('client.messages.index') }}" @click="activeTab = 'client.messages.index'" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'client.messages.index' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-comment mr-3"></i>
+                  <span>Messages</span>
+                  <span id="message-badge" class="ml-auto bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() > 0 ? '' : 'hidden' }}">
+                    {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() }}
+                  </span>
+                </a>
+                <a href="{{ route('client.documents.index') }}" @click="activeTab = 'client.documents.index'" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'client.documents.index' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-folder mr-3"></i>
+                  <span>Documents</span>
+                </a>
+                <a href="{{ route('tasks.index') }}" @click="activeTab = 'tasks.index'" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'tasks.index' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-tasks mr-3"></i>
+                  <span>Tasks</span>
+                </a>
+              @else
+                <!-- Only verification menu for unverified contractors -->
+                <button id="verification-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 bg-blue-900">
+                  <i class="fas fa-id-card mr-3"></i>
+                  <span>Verification</span>
+                </button>
+              @endif
+              
+              <a href="{{ route('projects.index') }}" @click="activeTab = 'projects.index'" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'projects.index' ? 'bg-blue-900' : ''">
+                <i class="fas fa-project-diagram mr-3"></i>
+                <span>Projects</span>
+              </a>
+              
+              <!-- Add a spacer div to push content to the top -->
+              <div class="flex-grow"></div>
+            </div>
+          </div>
+
+          <!-- Main Content Container for all content sections -->
+          <div class="main-content p-6">
+            <!-- Flash Messages -->
+            @if (session('success'))
+              <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
+                <p>{{ session('success') }}</p>
+              </div>
+            @endif
+
+            @if (session('error'))
+              <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert">
+                <p>{{ session('error') }}</p>
               </div>
             @endif
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div class="bg-blue-100 p-4 rounded shadow">
-                <div class="text-xl font-bold">{{ $activeProjects ?? 0 }}</div>
-                <div class="text-sm text-gray-600">Active Projects</div>
-              </div>
-              <div class="bg-green-100 p-4 rounded shadow">
-                <div class="text-xl font-bold">{{ $completedProjects ?? 0 }}</div>
-                <div class="text-sm text-gray-600">Completed Projects</div>
-              </div>
-              <div class="bg-yellow-100 p-4 rounded shadow">
-                <div class="text-xl font-bold">{{ $pendingApprovals ?? 0 }}</div>
-                <div class="text-sm text-gray-600">Pending Approvals</div>
-              </div>
-            </div>
+            @yield('content')
             
-            <div class="bg-white rounded-lg shadow p-4 mb-6">
-              <h3 class="font-bold mb-2">Recent Activity</h3>
-              <ul class="divide-y">
-                @forelse($recentActivities ?? [] as $activity)
-                  <li class="py-2">{{ $activity['message'] }} - {{ $activity['date'] }}</li>
-                @empty
-                  <li class="py-2 text-gray-500">No recent activities</li>
-                @endforelse
-              </ul>
-            </div>
-          </div>
-
-          <!-- Verification Content -->
-          <div id="verification-content" class="hidden">
-            <!-- Will be replaced by verification.index view -->
-          </div>
-
-          <!-- Messages Content -->
-          <div id="messages-content" class="hidden">
-            <h2 class="text-2xl font-bold mb-4">Messages</h2>
-            
-            <div class="flex mb-4">
-              <input type="text" class="flex-grow border rounded-l p-2" placeholder="Search messages..." />
-              <button class="bg-blue-500 text-white px-4 rounded-r">Search</button>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow overflow-hidden">
-              <div class="border-b p-4 hover:bg-gray-50 cursor-pointer">
-                <div class="flex justify-between">
-                  <span class="font-bold">City Inspector</span>
-                  <span class="text-sm text-gray-500">Apr 22</span>
+            <!-- Dashboard Content -->
+            <div id="dashboard-content" class="hidden">
+              <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
+              
+              @if(auth()->user()->verification_status !== 'approved')
+                <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6" role="alert">
+                  <p class="font-bold">Account Verification Required</p>
+                  <p>To access all features, please complete the verification process.</p>
+                  <a href="{{ route('verification.index') }}" class="mt-2 inline-block bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded">
+                    Go to Verification
+                  </a>
                 </div>
-                <p class="text-gray-600">Please provide the site plan for your roofing project.</p>
+              @endif
+              
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-blue-100 p-4 rounded shadow">
+                  <div id="active-projects-count" class="text-xl font-bold">{{ $activeProjects ?? 0 }}</div>
+                  <div class="text-sm text-gray-600">Active Projects</div>
+                </div>
+                <div class="bg-green-100 p-4 rounded shadow">
+                  <div id="completed-projects-count" class="text-xl font-bold">{{ $completedProjects ?? 0 }}</div>
+                  <div class="text-sm text-gray-600">Completed Projects</div>
+                </div>
+                <div class="bg-yellow-100 p-4 rounded shadow">
+                  <div id="pending-approvals-count" class="text-xl font-bold">{{ $pendingApprovals ?? 0 }}</div>
+                  <div class="text-sm text-gray-600">Pending Approvals</div>
+                </div>
               </div>
               
-              <div class="border-b p-4 hover:bg-gray-50 cursor-pointer">
-                <div class="flex justify-between">
-                  <span class="font-bold">Permit Office</span>
-                  <span class="text-sm text-gray-500">Apr 21</span>
-                </div>
-                <p class="text-gray-600">Your permit application has been received. Please allow 3-5 business days for processing.</p>
-              </div>
-              
-              <div class="border-b p-4 hover:bg-gray-50 cursor-pointer">
-                <div class="flex justify-between">
-                  <span class="font-bold">Project Manager</span>
-                  <span class="text-sm text-gray-500">Apr 20</span>
-                </div>
-                <p class="text-gray-600">The contractors will arrive on site tomorrow morning at 8:00 AM.</p>
-              </div>
-              
-              <div class="p-4 hover:bg-gray-50 cursor-pointer">
-                <div class="flex justify-between">
-                  <span class="font-bold">Account Manager</span>
-                  <span class="text-sm text-gray-500">Apr 19</span>
-                </div>
-                <p class="text-gray-600">Welcome to Contractor Solutions! Let us know if you have any questions.</p>
+              <div class="bg-white rounded-lg shadow p-4 mb-6">
+                <h3 class="font-bold mb-2">Recent Activity</h3>
+                <ul class="divide-y">
+                  <template x-for="activity in notifications" :key="activity.id">
+                    <li class="py-2">
+                      <span x-text="activity.message"></span> - <span x-text="activity.date"></span>
+                    </li>
+                  </template>
+                  <template x-if="notifications.length === 0">
+                    <li class="py-2 text-gray-500">No recent activities</li>
+                  </template>
+                </ul>
               </div>
             </div>
-            
-            <div class="mt-4 flex">
-              <textarea class="flex-grow border rounded-l p-2" placeholder="Type a new message..."></textarea>
-              <button class="bg-blue-500 text-white px-4 rounded-r">Send</button>
-            </div>
-          </div>
 
-        
+            <!-- Verification Content -->
+            <div id="verification-content" class="hidden">
+              <!-- Will be replaced by verification.index view -->
+            </div>
+
+            <!-- Messages Content -->
+            <div id="messages-content" class="hidden">
+              <h2 class="text-2xl font-bold mb-4">Messages</h2>
+              
+              <div class="flex mb-4">
+                <input type="text" class="flex-grow border rounded-l p-2" placeholder="Search messages..." />
+                <button class="bg-blue-500 text-white px-4 rounded-r">Search</button>
+              </div>
+              
+              <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="border-b p-4 hover:bg-gray-50 cursor-pointer">
+                  <div class="flex justify-between">
+                    <span class="font-bold">City Inspector</span>
+                    <span class="text-sm text-gray-500">Apr 22</span>
+                  </div>
+                  <p class="text-gray-600">Please provide the site plan for your roofing project.</p>
+                </div>
+                
+                <div class="border-b p-4 hover:bg-gray-50 cursor-pointer">
+                  <div class="flex justify-between">
+                    <span class="font-bold">Permit Office</span>
+                    <span class="text-sm text-gray-500">Apr 21</span>
+                  </div>
+                  <p class="text-gray-600">Your permit application has been received. Please allow 3-5 business days for processing.</p>
+                </div>
+                
+                <div class="border-b p-4 hover:bg-gray-50 cursor-pointer">
+                  <div class="flex justify-between">
+                    <span class="font-bold">Project Manager</span>
+                    <span class="text-sm text-gray-500">Apr 20</span>
+                  </div>
+                  <p class="text-gray-600">The contractors will arrive on site tomorrow morning at 8:00 AM.</p>
+                </div>
+                
+                <div class="p-4 hover:bg-gray-50 cursor-pointer">
+                  <div class="flex justify-between">
+                    <span class="font-bold">Account Manager</span>
+                    <span class="text-sm text-gray-500">Apr 19</span>
+                  </div>
+                  <p class="text-gray-600">Welcome to Contractor Solutions! Let us know if you have any questions.</p>
+                </div>
+              </div>
+              
+              <div class="mt-4 flex">
+                <textarea class="flex-grow border rounded-l p-2" placeholder="Type a new message..."></textarea>
+                <button class="bg-blue-500 text-white px-4 rounded-r">Send</button>
+              </div>
+            </div>
+
+          
+          </div>
         </div>
       </div>
     </div>
@@ -454,5 +462,104 @@
     // Set interval for updates
     setInterval(updateUnreadCount, 30000);
   </script>
+
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('dashboardData', () => ({
+        notifications: [],
+        unreadNotifications: 0,
+        activeTab: 'dashboard',
+        sidebarOpen: false,
+        
+        init() {
+          this.loadNotifications();
+          this.updateStats();
+          
+          // Set active tab from backend data
+          @if(isset($activeSection) && $activeSection)
+          this.activeTab = '{{ $activeSection }}';
+          @endif
+        },
+        
+        loadNotifications() {
+          fetch('/api/notifications/recent')
+            .then(response => response.json())
+            .then(data => {
+              this.notifications = data;
+            })
+            .catch(error => {
+              console.error('Error loading notifications:', error);
+              this.notifications = [];
+            });
+            
+          fetch('/api/notifications/unread')
+            .then(response => response.json())
+            .then(data => {
+              this.unreadNotifications = data.length;
+            })
+            .catch(error => {
+              console.error('Error loading unread notifications:', error);
+              this.unreadNotifications = 0;
+            });
+        },
+        
+        updateStats() {
+          fetch('/client/api/dashboard/stats')
+            .then(response => response.json())
+            .then(data => {
+              document.getElementById('active-projects-count').textContent = data.activeProjects;
+              document.getElementById('completed-projects-count').textContent = data.completedProjects;
+              document.getElementById('pending-approvals-count').textContent = data.pendingApprovals;
+            })
+            .catch(error => {
+              console.error('Error loading dashboard stats:', error);
+            });
+        }
+      }))
+    })
+  </script>
+
+  <!-- Sidebar for mobile (collapsible) -->
+  <div 
+    class="lg:hidden bg-gray-900 text-white overflow-hidden transition-all duration-300"
+    :class="sidebarOpen ? 'max-h-screen' : 'max-h-0'"
+  >
+    <div class="p-4">
+      <div class="flex flex-col space-y-6">
+        <a href="{{ route('client.dashboard') }}" @click="activeTab = 'dashboard'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'dashboard' ? 'bg-blue-900' : ''">
+          <i class="fas fa-home mr-3"></i>
+          <span>Dashboard</span>
+        </a>
+        
+        @if(auth()->user()->verification_status === 'approved')
+          <!-- Full menu for verified contractors -->
+          <a href="{{ route('client.permits.create') }}" @click="activeTab = 'client.permits.create'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'client.permits.create' ? 'bg-blue-900' : ''">
+            <i class="fas fa-file-upload mr-3"></i>
+            <span>Submit Permit</span>
+          </a>
+          <a href="{{ route('client.messages.index') }}" @click="activeTab = 'client.messages.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'client.messages.index' ? 'bg-blue-900' : ''">
+            <i class="fas fa-comment mr-3"></i>
+            <span>Messages</span>
+            <span id="message-badge-mobile" class="ml-auto bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() > 0 ? '' : 'hidden' }}">
+              {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() }}
+            </span>
+          </a>
+          <a href="{{ route('client.documents.index') }}" @click="activeTab = 'client.documents.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'client.documents.index' ? 'bg-blue-900' : ''">
+            <i class="fas fa-folder mr-3"></i>
+            <span>Documents</span>
+          </a>
+          <a href="{{ route('tasks.index') }}" @click="activeTab = 'tasks.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'tasks.index' ? 'bg-blue-900' : ''">
+            <i class="fas fa-tasks mr-3"></i>
+            <span>Tasks</span>
+          </a>
+        @endif
+        
+        <a href="{{ route('projects.index') }}" @click="activeTab = 'projects.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'projects.index' ? 'bg-blue-900' : ''">
+          <i class="fas fa-project-diagram mr-3"></i>
+          <span>Projects</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -24,6 +24,7 @@ class Task extends Model
         'priority',
         'due_date',
         'completed_at',
+        'assigned_to',
     ];
 
     /**
@@ -50,6 +51,14 @@ class Task extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the user this task is assigned to.
+     */
+    public function assignedUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'assigned_to');
     }
 
     /**

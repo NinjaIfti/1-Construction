@@ -125,20 +125,72 @@ class ContractorController extends Controller
     }
 
     /**
- * Show the client dashboard with document section active.
- */
-   public function documents()
-   {
-    $user = Auth::user();
+     * Show the client dashboard with document section active.
+     */
+    public function documents()
+    {
+        $user = Auth::user();
+        
+        // Dashboard statistics for sidebar
+        $activeProjects = $user->projects()->where('status', 'active')->count();
+        $completedProjects = $user->projects()->where('status', 'completed')->count();
+        $pendingApprovals = $user->projects()->where('status', 'pending')->count();
+        
+        // Get recent activities
+        $recentActivities = $this->getRecentActivities($user->id);
+        
+        // Define the active section for the dashboard
+        $activeSection = 'documents';
+        
+        return view('layouts.client.dashboard', compact('activeProjects', 'completedProjects', 'pendingApprovals', 'recentActivities', 'activeSection'));
+    }
+
+    /**
+     * Get dashboard statistics for API.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getDashboardStats()
+    {
+        $user = Auth::user();
+        
+        // Get dashboard statistics
+        $activeProjects = Project::where('user_id', $user->id)
+            ->where('status', '!=', 'completed')
+            ->count();
+            
+        $completedProjects = Project::where('user_id', $user->id)
+            ->where('status', 'completed')
+            ->count();
+            
+        $pendingApprovals = Permit::whereHas('project', function($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })
+            ->whereIn('status', ['submitted', 'under_review'])
+            ->count();
+            
+        $totalDocuments = Document::where('user_id', $user->id)->count();
+            
+        return response()->json([
+            'activeProjects' => $activeProjects,
+            'completedProjects' => $completedProjects,
+            'pendingApprovals' => $pendingApprovals,
+            'totalDocuments' => $totalDocuments
+        ]);
+    }
     
-    // Dashboard statistics for sidebar
-    $activeProjects = $user->projects()->where('status', 'active')->count();
-    $completedProjects = $user->projects()->where('status', 'completed')->count();
-    $pendingApprovals = $user->projects()->where('status', 'pending')->count();
-    
-    // Get recent activities
-    $recentActivities = $this->getRecentActivities($user);
-    
-    return view('client.dashboard', compact('activeProjects', 'completedProjects', 'pendingApprovals', 'recentActivities', 'activeSection'));
-   }
+    /**
+     * Get dashboard activities for API.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getDashboardActivities()
+    {
+        $user = Auth::user();
+        
+        // Get recent activities
+        $activities = $this->getRecentActivities($user->id);
+        
+        return response()->json($activities);
+    }
 } 

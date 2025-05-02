@@ -21,12 +21,13 @@ class Permit extends Model
         'description',
         'permit_type',
         'status',
-        'submitted_date',
+        'submission_date',
         'approved_date',
         'expiration_date',
         'permit_number',
         'issuing_authority',
         'project_id',
+        'type',
     ];
 
     /**
@@ -35,7 +36,7 @@ class Permit extends Model
      * @var array
      */
     protected $casts = [
-        'submitted_date' => 'date',
+        'submission_date' => 'date',
         'approved_date' => 'date',
         'expiration_date' => 'date',
     ];

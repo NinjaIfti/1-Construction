@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class NotificationController extends Controller
 {
@@ -63,10 +64,9 @@ class NotificationController extends Controller
     {
         $this->authorize('update', $notification);
         
-        $notification->markAsRead();
+        $notification->update(['read' => true]);
         
-        return redirect()->back()
-            ->with('success', 'Notification marked as read.');
+        return response()->json(['success' => true]);
     }
 
     /**
@@ -74,12 +74,13 @@ class NotificationController extends Controller
      */
     public function markAllAsRead()
     {
-        Auth::user()->notifications()
-            ->unread()
+        $user = Auth::user();
+        
+        $user->notifications()
+            ->where('read', false)
             ->update(['read' => true]);
             
-        return redirect()->back()
-            ->with('success', 'All notifications marked as read.');
+        return response()->json(['success' => true]);
     }
 
     /**
@@ -106,29 +107,55 @@ class NotificationController extends Controller
     }
 
     /**
-     * Get recent unread notifications for navbar dropdown.
+     * Get all unread notifications for the current user
+     * 
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function getRecentNotifications()
+    public function getUnreadNotifications()
     {
-        $notifications = Auth::user()->notifications()
-            ->with('permit.project')
-            ->latest()
-            ->take(5)
+        $user = Auth::user();
+        
+        $notifications = $user->notifications()
+            ->where('read', false)
+            ->orderBy('created_at', 'desc')
             ->get()
-            ->map(function ($notification) {
+            ->map(function($notification) {
                 return [
                     'id' => $notification->id,
-                    'title' => $notification->title,
-                    'message' => substr($notification->message, 0, 100) . (strlen($notification->message) > 100 ? '...' : ''),
-                    'read' => $notification->read,
-                    'created_at' => $notification->created_at->diffForHumans(),
-                    'permit_id' => $notification->permit_id,
+                    'message' => $notification->message,
+                    'type' => $notification->type,
+                    'date' => $notification->created_at->format('M d'),
+                    'url' => $notification->url
                 ];
             });
             
-        return response()->json([
-            'notifications' => $notifications,
-            'unread_count' => Auth::user()->notifications()->unread()->count(),
-        ]);
+        return response()->json($notifications);
+    }
+    
+    /**
+     * Get recent notifications for dashboard display
+     * 
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getRecentNotifications()
+    {
+        $user = Auth::user();
+        
+        $notifications = $user->notifications()
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get()
+            ->map(function($notification) {
+                return [
+                    'id' => $notification->id,
+                    'message' => $notification->message,
+                    'type' => $notification->type,
+                    'date' => $notification->created_at->format('M d'),
+                    'url' => $notification->url,
+                    'read' => (bool) $notification->read
+                ];
+            });
+            
+        return response()->json($notifications);
     }
 } 
