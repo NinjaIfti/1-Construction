@@ -149,10 +149,10 @@
             
             @if(auth()->user()->verification_status === 'approved')
               <!-- Full menu for verified contractors -->
-              <button id="submit-permit-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 bg-blue-900">
+              <a href="{{ route('client.permits.create') }}" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 {{ request()->routeIs('client.permits.create') ? 'bg-blue-900' : '' }}">
                 <i class="fas fa-file-upload mr-3"></i>
                 <span>Submit Permit</span>
-              </button>
+              </a>
               <a href="{{ route('client.messages.index') }}" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 {{ request()->routeIs('client.messages.*') ? 'bg-blue-900' : '' }}">
                 <i class="fas fa-comment mr-3"></i>
                 <span>Messages</span>
@@ -164,6 +164,12 @@
                 <i class="fas fa-folder mr-3"></i>
                 <span>Documents</span>
               </button>
+              @if(auth()->user()->verification_status === 'approved')
+              <a href="{{ route('client.permits.index') }}" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 {{ request()->routeIs('client.permits.*') ? 'bg-blue-900' : '' }}">
+                <i class="fas fa-file-alt mr-3"></i>
+                <span>Permits</span>
+              </a>
+              @endif
             @else
               <!-- Only verification menu for unverified contractors -->
               <button id="verification-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 bg-blue-900">
@@ -240,70 +246,6 @@
             <!-- Will be replaced by verification.index view -->
           </div>
 
-          <!-- Submit Permit Content -->
-          <div id="submit-permit-content" class="hidden">
-            <h2 class="text-2xl font-bold mb-4">Submit a Permit</h2>
-            <h3 class="text-lg font-semibold mb-6">Permit Submission Form</h3>
-            
-            <form>
-              <div class="mb-6">
-                <label class="block mb-2">Project Address</label>
-                <input type="text" class="w-full border rounded p-2" placeholder="Enter project address" />
-              </div>
-              
-              <div class="mb-6">
-                <label class="block mb-2">Permit Type</label>
-                <div class="relative">
-                  <select class="w-full border rounded p-2 appearance-none bg-white">
-                    <option>Select permit type</option>
-                    <option>Roofing</option>
-                    <option>Electrical</option>
-                    <option>Plumbing</option>
-                    <option>Construction</option>
-                    <option>Renovation</option>
-                  </select>
-                  <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <i class="fas fa-chevron-down"></i>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="mb-6">
-                <label class="block mb-2">Description</label>
-                <textarea class="w-full border rounded p-2" rows="3" placeholder="Enter project description"></textarea>
-              </div>
-              
-              <div class="mb-6">
-                <label class="block mb-2">Upload Documents</label>
-                <div class="border-2 border-dashed border-gray-300 rounded p-8 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 transition">
-                  <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
-                  <p class="text-sm text-gray-500 text-center">Drag and drop files here, or click to upload</p>
-                  <input type="file" class="hidden" multiple />
-                </div>
-              </div>
-              
-              <div class="mb-6">
-                <div class="flex justify-between items-center mb-2">
-                  <h3 class="font-bold">Messages</h3>
-                  <a href="#" class="text-sm text-blue-500 hover:underline">View all messages</a>
-                </div>
-                <div class="border rounded p-2">
-                  <div class="flex justify-between items-center border-b pb-2 mb-2">
-                    <div class="text-sm text-gray-500">Apr 22</div>
-                    <div class="font-medium">Please provide the site plan.</div>
-                    <div class="text-sm text-gray-500">Apr 22</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="text-center">
-                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-12 rounded transition duration-300">
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-
           <!-- Messages Content -->
           <div id="messages-content" class="hidden">
             <h2 class="text-2xl font-bold mb-4">Messages</h2>
@@ -364,17 +306,12 @@
       // Cache DOM elements
       const dashboardBtn = document.getElementById('dashboard-btn');
       const dashboardContent = document.getElementById('dashboard-content');
-      let verificationBtn, verificationContent, submitPermitBtn, submitPermitContent, messagesBtn, messagesContent, documentsBtn, documentsContent;
+      let verificationBtn, verificationContent, messagesBtn, messagesContent, documentsBtn, documentsContent;
       
       // Get elements based on verification status
       if (document.getElementById('verification-btn')) {
         verificationBtn = document.getElementById('verification-btn');
         verificationContent = document.getElementById('verification-content');
-      }
-      
-      if (document.getElementById('submit-permit-btn')) {
-        submitPermitBtn = document.getElementById('submit-permit-btn');
-        submitPermitContent = document.getElementById('submit-permit-content');
       }
       
       if (document.getElementById('messages-btn')) {
@@ -398,7 +335,6 @@
         
         if (dashboardContent) dashboardContent.classList.add('hidden');
         if (verificationContent) verificationContent.classList.add('hidden');
-        if (submitPermitContent) submitPermitContent.classList.add('hidden');
         if (messagesContent) messagesContent.classList.add('hidden');
         if (documentsContent) documentsContent.classList.add('hidden');
       }
@@ -407,7 +343,6 @@
       function removeActiveFromButtons() {
         if (dashboardBtn) dashboardBtn.classList.remove('bg-blue-900');
         if (verificationBtn) verificationBtn.classList.remove('bg-blue-900');
-        if (submitPermitBtn) submitPermitBtn.classList.remove('bg-blue-900');
         if (messagesBtn) messagesBtn.classList.remove('bg-blue-900');
         if (documentsBtn) documentsBtn.classList.remove('bg-blue-900');
       }
@@ -425,16 +360,6 @@
         verificationBtn.addEventListener('click', function() {
           // Redirect to verification page
           window.location.href = "{{ route('verification.index') }}";
-        });
-      }
-      
-      // Show submit permit on button click
-      if (submitPermitBtn) {
-        submitPermitBtn.addEventListener('click', function() {
-          hideAllContent();
-          removeActiveFromButtons();
-          submitPermitContent.classList.remove('hidden');
-          submitPermitBtn.classList.add('bg-blue-900');
         });
       }
       
@@ -469,6 +394,24 @@
         // Don't hide content rendered by the documents views
         removeActiveFromButtons();
         if (documentsBtn) documentsBtn.classList.add('bg-blue-900');
+      } else if (currentPath.includes('/client/permits/create')) {
+        // This is the submit permit page
+        contentLoaded = true;
+        removeActiveFromButtons();
+        const submitPermitBtn = document.querySelector('a[href*="client.permits.create"]');
+        if (submitPermitBtn) submitPermitBtn.classList.add('bg-blue-900');
+      } else if (currentPath.includes('/client/permits')) {
+        // This is a permits page
+        contentLoaded = true;
+        // Don't hide content rendered by the permits views
+        removeActiveFromButtons();
+        const permitsBtn = document.querySelector('a[href*="client.permits.index"]');
+        if (permitsBtn) permitsBtn.classList.add('bg-blue-900');
+      } else if (currentPath.includes('/client/messages')) {
+        // This is a messages page
+        contentLoaded = true;
+        removeActiveFromButtons();
+        if (messagesBtn) messagesBtn.classList.add('bg-blue-900');
       } else if (currentPath.includes('verification')) {
         // Do nothing, the verification page will handle its own content
         contentLoaded = true;

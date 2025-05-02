@@ -17,7 +17,7 @@ class ProjectController extends Controller
             ? Project::with('user')->latest()->paginate(10)
             : Auth::user()->projects()->latest()->paginate(10);
             
-        return view('projects.index', compact('projects'));
+        return view('layouts.client.projects.index', compact('projects'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        return view('layouts.client.projects.create');
     }
 
     /**
@@ -38,8 +38,9 @@ class ProjectController extends Controller
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:100',
             'state' => 'required|string|max:100',
-            'zip_code' => 'required|string|max:20',
-            'start_date' => 'required|date',
+            'zip' => 'required|string|max:20',
+            'project_type' => 'required|string|max:100',
+            'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'description' => 'nullable|string',
             'status' => 'required|in:Planning,Active,On Hold,Completed',
@@ -63,7 +64,7 @@ class ProjectController extends Controller
         $permits = $project->permits()->latest()->get();
         $tasks = $project->tasks()->latest()->get();
         
-        return view('projects.show', compact('project', 'permits', 'tasks'));
+        return view('layouts.client.projects.show', compact('project', 'permits', 'tasks'));
     }
 
     /**
@@ -73,7 +74,7 @@ class ProjectController extends Controller
     {
         $this->authorize('update', $project);
         
-        return view('projects.edit', compact('project'));
+        return view('layouts.client.projects.edit', compact('project'));
     }
 
     /**
@@ -88,8 +89,9 @@ class ProjectController extends Controller
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:100',
             'state' => 'required|string|max:100',
-            'zip_code' => 'required|string|max:20',
-            'start_date' => 'required|date',
+            'zip' => 'required|string|max:20',
+            'project_type' => 'required|string|max:100',
+            'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'description' => 'nullable|string',
             'status' => 'required|in:Planning,Active,On Hold,Completed',
@@ -139,7 +141,7 @@ class ProjectController extends Controller
         $recentPermits = $project->permits()->latest()->take(5)->get();
         $recentTasks = $project->tasks()->latest()->take(5)->get();
         
-        return view('projects.dashboard', compact(
+        return view('layouts.client.projects.dashboard', compact(
             'project', 
             'permitsByStatus', 
             'tasksByStatus', 

@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\ContractorController as AdminContractorController
 use App\Http\Controllers\Admin\DocumentController as AdminDocumentController;
 use App\Http\Controllers\Admin\AdminMessageController;
 use App\Http\Controllers\ClientDocumentController;
+use App\Http\Controllers\ClientPermitController;
 Route::view('/', 'welcome');
 
 // Product page route
@@ -117,6 +118,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{message}/reply', [ClientMessageController::class, 'reply'])->name('reply');
         Route::post('/{message}/reply', [ClientMessageController::class, 'storeReply'])->name('store-reply');
     });
+
+    // Client permit routes
+    Route::prefix('client/permits')->name('client.permits.')->group(function () {
+        Route::get('/', [ClientPermitController::class, 'index'])->name('index');
+        Route::get('/create', [ClientPermitController::class, 'create'])->name('create');
+        Route::post('/', [ClientPermitController::class, 'store'])->name('store');
+        Route::get('/{permit}', [ClientPermitController::class, 'show'])->name('show');
+        Route::post('/{permit}/comments', [ClientPermitController::class, 'addComment'])->name('comments.store');
+    });
 });
 
 // Who We Serve routes
@@ -152,6 +162,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/verifications/{contractor}', [AdminVerificationController::class, 'show'])->name('verifications.show');
     Route::get('/verifications/{contractor}/edit', [AdminVerificationController::class, 'edit'])->name('verifications.edit');
     Route::put('/verifications/{contractor}', [AdminVerificationController::class, 'update'])->name('verifications.update');
+    
+    // Permit Management
+    Route::get('/permits', [App\Http\Controllers\Admin\AdminPermitController::class, 'index'])->name('permits.index');
+    Route::get('/permits/contractor/{contractor}', [App\Http\Controllers\Admin\AdminPermitController::class, 'contractorPermits'])->name('permits.contractor');
+    Route::get('/permits/{permit}', [App\Http\Controllers\Admin\AdminPermitController::class, 'show'])->name('permits.show');
+    Route::patch('/permits/{permit}/status', [App\Http\Controllers\Admin\AdminPermitController::class, 'updateStatus'])->name('permits.update-status');
+    Route::post('/permits/{permit}/comments', [App\Http\Controllers\Admin\AdminPermitController::class, 'addComment'])->name('permits.comments.store');
+    Route::get('/api/dashboard/permits', [App\Http\Controllers\Admin\AdminPermitController::class, 'getDashboardPermits'])->name('api.dashboard.permits');
     
     // Document Management
     Route::get('/documents', [AdminDocumentController::class, 'index'])->name('documents.index');

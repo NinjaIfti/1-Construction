@@ -28,6 +28,10 @@
     ],
     dropdownOpen: false,
     contractors: [],
+    permits: {
+      counts: { pending: 0, in_review: 0, approved: 0, rejected: 0, total: 0 },
+      recent: []
+    },
     loadContractors() {
       fetch('/admin/api/dashboard/contractors')
         .then(response => response.json())
@@ -38,9 +42,20 @@
           console.error('Error loading contractors:', error);
           this.contractors = [];
         });
+    },
+    loadPermits() {
+      fetch('/admin/api/dashboard/permits')
+        .then(response => response.json())
+        .then(data => {
+          this.permits.counts = data.counts || { pending: 0, in_review: 0, approved: 0, rejected: 0, total: 0 };
+          this.permits.recent = data.recent || [];
+        })
+        .catch(error => {
+          console.error('Error loading permits:', error);
+        });
     }
   }" 
-  x-init="loadContractors()" 
+  x-init="loadContractors(); loadPermits()" 
   class="min-h-screen">
     <div class="flex flex-col lg:flex-row gap-6 p-4 md:p-6">
       <!-- Admin Dashboard Panel -->
@@ -101,10 +116,10 @@
                   <i class="fas fa-home mr-3"></i>
                   <span>Dashboard</span>
                 </a>
-                <button @click="activeTab = 'permits'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'permits' ? 'bg-blue-900' : ''">
+                <a href="{{ route('admin.permits.index') }}" @click="activeTab = 'admin.permits.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.permits.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-file-alt mr-3"></i>
                   <span>Permit Requests</span>
-                </button>
+                </a>
                 <a href="{{ route('admin.documents.index') }}" @click="activeTab = 'documents'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'documents' ? 'bg-blue-900' : ''">
                   <i class="fas fa-folder mr-3"></i>
                   <span>Documents</span>
@@ -140,10 +155,10 @@
                   <i class="fas fa-home mr-3"></i>
                   <span>Dashboard</span>
                 </a>
-                <button @click="activeTab = 'permits'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'permits' ? 'bg-blue-900' : ''">
+                <a href="{{ route('admin.permits.index') }}" @click="activeTab = 'admin.permits.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.permits.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-file-alt mr-3"></i>
                   <span>Permit Requests</span>
-                </button>
+                </a>
                 <a href="{{ route('admin.documents.index') }}" @click="activeTab = 'documents'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'documents' ? 'bg-blue-900' : ''">
                   <i class="fas fa-folder mr-3"></i>
                   <span>Documents</span>
@@ -187,17 +202,20 @@
                     <h3 class="font-bold mb-4">Permit Requests</h3>
                     <div class="flex space-x-4 md:space-x-6 justify-between md:justify-start">
                       <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-bold">12</div>
+                        <div class="text-2xl md:text-3xl font-bold" x-text="permits.counts.pending">0</div>
                         <div class="text-xs md:text-sm text-gray-600">New</div>
                       </div>
                       <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-bold">8</div>
+                        <div class="text-2xl md:text-3xl font-bold" x-text="permits.counts.in_review">0</div>
                         <div class="text-xs md:text-sm text-gray-600">In Review</div>
                       </div>
                       <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-bold">5</div>
+                        <div class="text-2xl md:text-3xl font-bold" x-text="permits.counts.approved">0</div>
                         <div class="text-xs md:text-sm text-gray-600">Approved</div>
                       </div>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                      <a href="{{ route('admin.permits.index') }}" class="text-sm text-blue-600 hover:text-blue-900">View All Permits</a>
                     </div>
                   </div>
                   
