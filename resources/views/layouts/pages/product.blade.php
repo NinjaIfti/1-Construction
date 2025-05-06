@@ -110,7 +110,7 @@
                     <div class="relative">
                         <div class="absolute bg-[#E31B23] rounded-lg w-full sm:w-4/5 h-full sm:h-4/5 right-0 top-0 z-0 opacity-90"></div>
                         <div class="relative rounded-lg shadow-xl overflow-hidden z-10 mt-5 ml-5 transform hover:scale-105 transition-all duration-500">
-                            <img src="/images/blueprint.jpg" alt="Permit Dashboard" class="w-full">
+                            <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa4752b56cc_bildingwork.webp" alt="Permit Dashboard" class="w-full">
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0A2240] to-transparent opacity-60"></div>
                             <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white">
                                 <p class="text-base sm:text-xl font-semibold">Permit Management Dashboard</p>
@@ -184,7 +184,7 @@
                 </div>
                 <div class="w-full lg:w-1/2" data-aos="fade-left">
                     <div class="rounded-lg shadow-xl overflow-hidden h-full">
-                        <img src="/images/blueprint.jpg" alt="Permit Process" class="w-full h-full object-cover object-center">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2eac486f97c3a7443d5bd_Arch-small%20-%20Tenant%20Improvements.jpg" alt="Permit Dashboard" class="w-full h-full object-cover object-center">
                     </div>
                 </div>
             </div>

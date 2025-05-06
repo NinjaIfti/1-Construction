@@ -49,9 +49,16 @@
                                 <a href="{{ route('admin.verifications.show', $contractor) }}" class="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 px-3 py-1 rounded text-sm mr-2">
                                     <i class="fas fa-clipboard-check mr-1"></i> Review
                                 </a>
-                                <a href="{{ route('admin.contractors.show', $contractor->id) }}" class="bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-1 rounded text-sm">
+                                <a href="{{ route('admin.contractors.show', $contractor->id) }}" class="bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-1 rounded text-sm mr-2">
                                     <i class="fas fa-eye mr-1"></i> View
                                 </a>
+                                <form action="{{ route('admin.contractors.destroy', $contractor->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this contractor? This will delete all related data including projects, permits, documents, and invoices.');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1 rounded text-sm">
+                                        <i class="fas fa-trash mr-1"></i> Delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

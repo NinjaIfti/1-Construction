@@ -41,18 +41,16 @@ class DashboardController extends AdminController
             $todayDocumentsCount = Document::whereDate('created_at', now()->toDateString())->count();
         }
         
-        // Projects and other data
+        // Projects data
         $projectsCount = 0;
-        $tasksCount = 0;
         
         // Add additional model checks if these classes exist
         if (class_exists(Project::class)) {
             $projectsCount = Project::count();
         }
         
-        if (class_exists(Task::class)) {
-            $tasksCount = Task::count();
-        }
+        // Remove Tasks count since the table has been deleted
+        $tasksCount = 0;
         
         return view('layouts.admin.dashboard', compact(
             'contractorsCount',

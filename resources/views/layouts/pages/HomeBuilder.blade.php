@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <!-- App CSS -->
     <link rel="stylesheet" href="{{ asset('resources/css/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- jQuery (needed for some components) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -37,6 +38,17 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
         
+        .trusted-logo {
+    height: 60px;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+      }
+
+       .trusted-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+            }
         .btn-primary {
             background-color: #E31B23;
             color: white;
@@ -309,11 +321,11 @@
                     </div>
                     
                     <div class="mt-8 flex items-center">
-                        <div class="flex -space-x-3">
-                            <img src="{{ asset('images/client1.jpg') }}" class="w-10 h-10 rounded-full border-2 border-navy" alt="Client">
-                            <img src="{{ asset('images/client2.jpg') }}" class="w-10 h-10 rounded-full border-2 border-navy" alt="Client">
-                            <img src="{{ asset('images/client3.jpg') }}" class="w-10 h-10 rounded-full border-2 border-navy" alt="Client">
-                        </div>
+                    <div class="flex -space-x-3">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=250&auto=format&fit=crop" class="w-10 h-10 rounded-full border-2 border-navy" alt="Client">
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=250&auto=format&fit=crop" class="w-10 h-10 rounded-full border-2 border-navy" alt="Client">
+    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=250&auto=format&fit=crop" class="w-10 h-10 rounded-full border-2 border-navy" alt="Client">
+</div>
                         <div class="ml-3">
                             <div class="flex items-center text-yellow-400">
                                 <i class="bi bi-star-fill"></i>
@@ -350,97 +362,97 @@
         <div class="absolute bottom-0 right-0 w-2/3 h-full bg-gradient-to-r from-red-600 to-red-500 opacity-10 -z-0" style="clip-path: polygon(100% 0, 30% 100%, 100% 100%);"></div>
     </section>
     
-    <!-- Trusted By Section -->
-    <section class="py-12 bg-gray-100">
-        <div class="container mx-auto px-6 lg:px-8">
-            <h2 class="text-center text-md text-gray-600 font-semibold uppercase tracking-wider mb-10" data-aos="fade-up">TRUSTED BY LEADING HOME BUILDERS NATIONWIDE</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="100">
-                    <img src="{{ asset('images/logos/builder1.png') }}" alt="Home Builder Logo" class="trusted-logo">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="200">
-                    <img src="{{ asset('images/logos/builder2.png') }}" alt="Home Builder Logo" class="trusted-logo">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="300">
-                    <img src="{{ asset('images/logos/builder3.png') }}" alt="Home Builder Logo" class="trusted-logo">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="400">
-                    <img src="{{ asset('images/logos/builder4.png') }}" alt="Home Builder Logo" class="trusted-logo">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="500">
-                    <img src="{{ asset('images/logos/builder5.png') }}" alt="Home Builder Logo" class="trusted-logo">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="600">
-                    <img src="{{ asset('images/logos/builder6.png') }}" alt="Home Builder Logo" class="trusted-logo">
-                </div>
+<!-- Trusted By Section -->
+<section class="py-12 bg-gray-100">
+    <div class="container mx-auto px-6 lg:px-8">
+        <h2 class="text-center text-md text-gray-600 font-semibold uppercase tracking-wider mb-10" data-aos="fade-up">TRUSTED BY LEADING HOME BUILDERS NATIONWIDE</h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+            <div class="flex justify-center" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://cdn.pixabay.com/photo/2017/03/16/21/18/logo-2150297_640.png" alt="Home Builder Logo" class="trusted-logo">
+            </div>
+            <div class="flex justify-center" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2023924_640.png" alt="Home Builder Logo" class="trusted-logo">
+            </div>
+            <div class="flex justify-center" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://cdn.pixabay.com/photo/2017/01/13/01/22/rocket-1976107_640.png" alt="Home Builder Logo" class="trusted-logo">
+            </div>
+            <div class="flex justify-center" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://cdn.pixabay.com/photo/2016/08/25/07/30/orange-1618917_640.png" alt="Home Builder Logo" class="trusted-logo">
+            </div>
+            <div class="flex justify-center" data-aos="fade-up" data-aos-delay="500">
+                <img src="https://cdn.pixabay.com/photo/2017/01/31/23/42/animal-2028334_640.png" alt="Home Builder Logo" class="trusted-logo">
+            </div>
+            <div class="flex justify-center" data-aos="fade-up" data-aos-delay="600">
+                <img src="https://cdn.pixabay.com/photo/2016/11/07/13/04/yoga-1805784_640.png" alt="Home Builder Logo" class="trusted-logo">
             </div>
         </div>
-    </section>
+    </div>
+</section>
     
-    <!-- Feature Cards -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-sm text-red-600 font-semibold uppercase tracking-wider mb-2">TAILORED SOLUTIONS</div>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-navy">Solutions for Every Type of Residential Project</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Specialized permitting tools designed for home builders of all sizes</p>
+<!-- Feature Cards -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-sm text-red-600 font-semibold uppercase tracking-wider mb-2">TAILORED SOLUTIONS</div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-navy">Solutions for Every Type of Residential Project</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Specialized permitting tools designed for home builders of all sizes</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Production Builders Card -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="100">
+                <div class="h-56 overflow-hidden relative">
+                    <img src="https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg" alt="Production Builders" class="w-full object-cover h-full transition-transform duration-700 hover:scale-110">
+                    <div class="absolute top-0 left-0 bg-red-600 text-white py-1 px-3">
+                        <span class="text-sm font-semibold">HIGH VOLUME</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-navy">Production Builders</h3>
+                    <p class="text-gray-600 mb-4">Streamline permit processing for high-volume residential developments and reduce cycle times with our parallel submission system.</p>
+                    <a href="/production-builders" class="text-red-600 font-medium hover:text-red-800 transition-colors group flex items-center">
+                        Learn more <i class="bi bi-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Production Builders Card -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="{{ asset('images/production-builders.jpg') }}" alt="Production Builders" class="w-full object-cover h-full transition-transform duration-700 hover:scale-110">
-                        <div class="absolute top-0 left-0 bg-red-600 text-white py-1 px-3">
-                            <span class="text-sm font-semibold">HIGH VOLUME</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 text-navy">Production Builders</h3>
-                        <p class="text-gray-600 mb-4">Streamline permit processing for high-volume residential developments and reduce cycle times with our parallel submission system.</p>
-                        <a href="/production-builders" class="text-red-600 font-medium hover:text-red-800 transition-colors group flex items-center">
-                            Learn more <i class="bi bi-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                        </a>
+            <!-- Scatter Lot Communities Card -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="200">
+                <div class="h-56 overflow-hidden relative">
+                    <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2dbcb93f49b4a78b1b118_Home%20Builders%20-small-%20Scatter%20Lot%20Communities.avif" alt="Scatter Lot Communities" class="w-full object-cover h-full transition-transform duration-700 hover:scale-110">
+                    <div class="absolute top-0 left-0 bg-red-600 text-white py-1 px-3">
+                        <span class="text-sm font-semibold">MULTI-JURISDICTION</span>
                     </div>
                 </div>
-                
-                <!-- Scatter Lot Communities Card -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="{{ asset('images/scatter-lot-communities.jpg') }}" alt="Scatter Lot Communities" class="w-full object-cover h-full transition-transform duration-700 hover:scale-110">
-                        <div class="absolute top-0 left-0 bg-red-600 text-white py-1 px-3">
-                            <span class="text-sm font-semibold">MULTI-JURISDICTION</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 text-navy">Scatter Lot Communities</h3>
-                        <p class="text-gray-600 mb-4">Manage multiple permits across various jurisdictions with centralized tracking and sophisticated coordination tools.</p>
-                        <a href="/scatter-lot-communities" class="text-red-600 font-medium hover:text-red-800 transition-colors group flex items-center">
-                            Learn more <i class="bi bi-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                        </a>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-navy">Scatter Lot Communities</h3>
+                    <p class="text-gray-600 mb-4">Manage multiple permits across various jurisdictions with centralized tracking and sophisticated coordination tools.</p>
+                    <a href="/scatter-lot-communities" class="text-red-600 font-medium hover:text-red-800 transition-colors group flex items-center">
+                        Learn more <i class="bi bi-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Custom Home Builders Card -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="300">
+                <div class="h-56 overflow-hidden relative">
+                    <img src="https://cdn.pixabay.com/photo/2017/04/10/22/28/residence-2219972_1280.jpg" alt="Custom Home Builders" class="w-full object-cover h-full transition-transform duration-700 hover:scale-110">
+                    <div class="absolute top-0 left-0 bg-red-600 text-white py-1 px-3">
+                        <span class="text-sm font-semibold">PREMIUM</span>
                     </div>
                 </div>
-                
-                <!-- Custom Home Builders Card -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="{{ asset('images/high-end-custom-homes.jpg') }}" alt="Custom Home Builders" class="w-full object-cover h-full transition-transform duration-700 hover:scale-110">
-                        <div class="absolute top-0 left-0 bg-red-600 text-white py-1 px-3">
-                            <span class="text-sm font-semibold">PREMIUM</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3 text-navy">Custom Home Builders</h3>
-                        <p class="text-gray-600 mb-4">Navigate complex permitting requirements for unique, high-end residential projects with our concierge service.</p>
-                        <a href="/custom-home-builders" class="text-red-600 font-medium hover:text-red-800 transition-colors group flex items-center">
-                            Learn more <i class="bi bi-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                        </a>
-                    </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-navy">Custom Home Builders</h3>
+                    <p class="text-gray-600 mb-4">Navigate complex permitting requirements for unique, high-end residential projects with our concierge service.</p>
+                    <a href="/custom-home-builders" class="text-red-600 font-medium hover:text-red-800 transition-colors group flex items-center">
+                        Learn more <i class="bi bi-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
     
     <!-- Platform Features -->
     <section class="py-20 bg-gray-100 section-overlay">
@@ -505,7 +517,7 @@
                 
                 <div class="lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
                     <div class="relative">
-                        <img src="{{ asset('images/homebuilder-dashboard.jpg') }}" alt="Home Builder Dashboard" class="rounded-lg shadow-2xl">
+                        <img src="https://cdn.pixabay.com/photo/2017/05/09/13/33/laptop-2298286_1280.jpg" alt="Home Builder Dashboard" class="rounded-lg shadow-2xl">
                         <div class="absolute -bottom-6 -right-6 bg-red-600 text-white p-6 rounded-lg shadow-xl">
                             <div class="flex items-baseline">
                                 <span class="text-4xl font-bold">60%</span>
@@ -587,7 +599,7 @@
     </section>
     
     <!-- CTA Banner -->
-    <section class="py-16 bg-navy text-white relative overflow-hidden">
+    <section class="py-16 bg-navy text-white relative overflow-hidden" style="background: linear-gradient(rgba(10, 34, 64, 0.9), rgba(10, 34, 64, 0.9)), url('https://cdn.pixabay.com/photo/2018/03/15/07/03/construction-3227657_1280.jpg'); background-size: cover; background-position: center;">
         <div class="container mx-auto px-6 lg:px-8 relative z-10">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">Ready to Accelerate Your Permitting Process?</h2>
@@ -610,112 +622,112 @@
     </section>
     
     <!-- Testimonials -->
-    <section class="py-20 bg-gray-100">
-        <div class="container mx-auto px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <div class="text-sm text-red-600 font-semibold uppercase tracking-wider mb-2">CLIENT SUCCESS</div>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-navy">What Home Builders Are Saying</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Hear from builders who've transformed their permitting process with 1 Construction</p>
+<section class="py-20 bg-gray-100" style="background-color: #f3f4f6;">
+    <div class="container mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-sm text-red-600 font-semibold uppercase tracking-wider mb-2">CLIENT SUCCESS</div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-navy">What Home Builders Are Saying</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Hear from builders who've transformed their permitting process with 1 Construction</p>
+        </div>
+        
+        <div class="grid grid-cols-1 gap-8">
+            <!-- Featured Testimonial -->
+            <div class="bg-navy text-white rounded-lg shadow-xl p-8 md:p-10 relative overflow-hidden" data-aos="fade-up" style="background: linear-gradient(rgba(12, 35, 64, 0.95), rgba(12, 35, 64, 0.95)), url('https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'); background-size: cover; background-position: center;">
+                <div class="flex flex-col md:flex-row gap-8 items-start relative z-10">
+                    <div class="md:w-1/4 flex flex-col items-center md:items-start">
+                        <img src="https://cdn.pixabay.com/photo/2019/11/11/04/33/man-4617089_1280.jpg" alt="Robert Johnson" class="w-28 h-28 rounded-full mb-4 border-4 border-red-500 object-cover">
+                        <div>
+                            <p class="font-bold text-xl">Robert Johnson</p>
+                            <p class="text-sm text-blue-100">VP of Operations, Johnson Homes</p>
+                            <div class="flex mt-3">
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-3/4">
+                        <p class="text-2xl italic mb-6 leading-relaxed">"1 Construction has completely transformed how we handle permitting. What used to be a major bottleneck in our production schedule is now a streamlined process. We've reduced our permit cycle times by over 60% in multiple jurisdictions, which has been a game-changer for our business."</p>
+                        <div class="flex items-center justify-between">
+                            <p class="text-gray-300">Johnson Homes builds over 500 homes annually across 12 different municipalities.</p>
+                            <a href="/case-studies/johnson-homes" class="text-red-400 hover:text-red-300 transition-colors font-medium flex items-center">
+                                Read Case Study <i class="bi bi-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute top-0 right-0 w-48 h-48 opacity-5">
+                    <i class="bi bi-quote text-9xl"></i>
+                </div>
             </div>
             
-            <div class="grid grid-cols-1 gap-8">
-                <!-- Featured Testimonial -->
-                <div class="bg-navy text-white rounded-lg shadow-xl p-8 md:p-10 relative overflow-hidden" data-aos="fade-up">
-                    <div class="flex flex-col md:flex-row gap-8 items-start relative z-10">
-                        <div class="md:w-1/4 flex flex-col items-center md:items-start">
-                            <img src="{{ asset('images/testimonials/robert-builder.jpg') }}" alt="Robert Johnson" class="w-28 h-28 rounded-full mb-4 border-4 border-red-500">
-                            <div>
-                                <p class="font-bold text-xl">Robert Johnson</p>
-                                <p class="text-sm text-blue-100">VP of Operations, Johnson Homes</p>
-                                <div class="flex mt-3">
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md:w-3/4">
-                            <p class="text-2xl italic mb-6 leading-relaxed">"1 Construction has completely transformed how we handle permitting. What used to be a major bottleneck in our production schedule is now a streamlined process. We've reduced our permit cycle times by over 60% in multiple jurisdictions, which has been a game-changer for our business."</p>
-                            <div class="flex items-center justify-between">
-                                <p class="text-gray-300">Johnson Homes builds over 500 homes annually across 12 different municipalities.</p>
-                                <a href="/case-studies/johnson-homes" class="text-red-400 hover:text-red-300 transition-colors font-medium flex items-center">
-                                    Read Case Study <i class="bi bi-arrow-right ml-2"></i>
-                                </a>
+            <!-- Regular Testimonials -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
+                <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <img src="https://cdn.pixabay.com/photo/2018/01/21/14/16/woman-3096664_1280.jpg" alt="Sarah Miller" class="w-16 h-16 rounded-full mr-4 border-2 border-red-500 object-cover">
+                        <div>
+                            <p class="font-bold text-lg text-navy">Sarah Miller</p>
+                            <p class="text-sm text-gray-500">Project Manager, Miller Custom Homes</p>
+                            <div class="flex mt-1">
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute top-0 right-0 w-48 h-48 opacity-5">
-                        <i class="bi bi-quote text-9xl"></i>
-                    </div>
+                    <p class="italic text-gray-700">"The tracking dashboard has completely eliminated the guesswork from our permit status. We always know exactly where we stand with each application, which has dramatically improved our planning and scheduling."</p>
                 </div>
                 
-                <!-- Regular Testimonials -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
-                    <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="flex items-center mb-4">
-                            <img src="{{ asset('images/testimonials/sarah-builder.jpg') }}" alt="Sarah Miller" class="w-16 h-16 rounded-full mr-4 border-2 border-red-500">
-                            <div>
-                                <p class="font-bold text-lg text-navy">Sarah Miller</p>
-                                <p class="text-sm text-gray-500">Project Manager, Miller Custom Homes</p>
-                                <div class="flex mt-1">
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <img src="https://cdn.pixabay.com/photo/2017/08/01/01/33/beanie-2562646_1280.jpg" alt="Michael Chen" class="w-16 h-16 rounded-full mr-4 border-2 border-red-500 object-cover">
+                        <div>
+                            <p class="font-bold text-lg text-navy">Michael Chen</p>
+                            <p class="text-sm text-gray-500">CEO, Horizon Builders</p>
+                            <div class="flex mt-1">
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
                             </div>
                         </div>
-                        <p class="italic text-gray-700">"The tracking dashboard has completely eliminated the guesswork from our permit status. We always know exactly where we stand with each application, which has dramatically improved our planning and scheduling."</p>
                     </div>
-                    
-                    <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex items-center mb-4">
-                            <img src="{{ asset('images/testimonials/michael-builder.jpg') }}" alt="Michael Chen" class="w-16 h-16 rounded-full mr-4 border-2 border-red-500">
-                            <div>
-                                <p class="font-bold text-lg text-navy">Michael Chen</p>
-                                <p class="text-sm text-gray-500">CEO, Horizon Builders</p>
-                                <div class="flex mt-1">
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                </div>
+                    <p class="italic text-gray-700">"The ROI is incredible. We've eliminated the need for dedicated permit coordinators and reduced our cycle times by 8 weeks on average, allowing us to start more projects and grow our business faster."</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <img src="https://cdn.pixabay.com/photo/2017/02/16/23/10/smile-2072907_1280.jpg" alt="Jennifer Garcia" class="w-16 h-16 rounded-full mr-4 border-2 border-red-500 object-cover">
+                        <div>
+                            <p class="font-bold text-lg text-navy">Jennifer Garcia</p>
+                            <p class="text-sm text-gray-500">Operations Director, Garcia Homes</p>
+                            <div class="flex mt-1">
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
+                                <i class="bi bi-star-fill text-yellow-400"></i>
                             </div>
                         </div>
-                        <p class="italic text-gray-700">"The ROI is incredible. We've eliminated the need for dedicated permit coordinators and reduced our cycle times by 8 weeks on average, allowing us to start more projects and grow our business faster."</p>
                     </div>
-                    
-                    <div class="bg-white rounded-lg shadow-lg p-6 testimonial-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="flex items-center mb-4">
-                            <img src="{{ asset('images/testimonials/jennifer-builder.jpg') }}" alt="Jennifer Garcia" class="w-16 h-16 rounded-full mr-4 border-2 border-red-500">
-                            <div>
-                                <p class="font-bold text-lg text-navy">Jennifer Garcia</p>
-                                <p class="text-sm text-gray-500">Operations Director, Garcia Homes</p>
-                                <div class="flex mt-1">
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                    <i class="bi bi-star-fill text-yellow-400"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="italic text-gray-700">"As we expanded into new municipalities, 1 Construction made the transition seamless. They already knew the requirements for each jurisdiction, saving us months of research and trial and error."</p>
-                    </div>
+                    <p class="italic text-gray-700">"As we expanded into new municipalities, 1 Construction made the transition seamless. They already knew the requirements for each jurisdiction, saving us months of research and trial and error."</p>
                 </div>
             </div>
-            
-            <div class="text-center mt-10" data-aos="fade-up">
-                <a href="/testimonials" class="text-red-600 font-medium hover:text-red-800 transition-colors inline-flex items-center">
-                    View all testimonials <i class="bi bi-arrow-right ml-2"></i>
-                </a>
-            </div>
         </div>
-    </section>
+        
+        <div class="text-center mt-10" data-aos="fade-up">
+            <a href="/testimonials" class="text-red-600 font-medium hover:text-red-800 transition-colors inline-flex items-center">
+                View all testimonials <i class="bi bi-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
     
     <!-- FAQ Section -->
     <section class="py-20 bg-white">

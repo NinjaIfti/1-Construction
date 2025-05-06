@@ -167,6 +167,11 @@ class PermitController extends Controller
             ]);
         }
         
+        // Add approval date if status changed to Approved
+        if ($validated['status'] === 'Approved' && $oldStatus !== 'Approved') {
+            $permit->update(['approval_date' => now()]);
+        }
+        
         return redirect()->route('permits.show', $permit)
             ->with('success', 'Permit updated successfully.');
     }

@@ -90,13 +90,13 @@
                             {{ $permit->submission_date ? $permit->submission_date->format('F j, Y') : 'N/A' }}
                         </dd>
                     </div>
-                    @if($permit->approval_date)
+                    @if($permit->approved_date)
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
                             Approval Date
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $permit->approval_date->format('F j, Y') }}
+                            {{ $permit->approved_date->format('F j, Y') }}
                         </dd>
                     </div>
                     @endif
@@ -191,7 +191,7 @@
                             Name
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $permit->project->user->name }}
+                            {{ $permit->project->contractor->name ?? 'Not assigned' }}
                         </dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -199,44 +199,42 @@
                             Company
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $permit->project->user->company_name ?? 'N/A' }}
+                            {{ $permit->project->contractor->company_name ?? 'Not specified' }}
                         </dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            Email
+                            Contact Email
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $permit->project->user->email }}
+                            {{ $permit->project->contractor->email ?? 'Not available' }}
                         </dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            Phone
+                            Phone Number
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $permit->project->user->phone ?? 'N/A' }}
+                            {{ $permit->project->contractor->phone_number ?? 'Not provided' }}
                         </dd>
                     </div>
+                    @if($permit->project->contractor)
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            Project
+                            Address
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $permit->project->name }}
-                            <div class="text-xs text-gray-500 mt-1">{{ $permit->project->address }}</div>
+                            @if($permit->project->contractor->address)
+                                {{ $permit->project->contractor->address }},
+                                {{ $permit->project->contractor->city }},
+                                {{ $permit->project->contractor->state }}
+                                {{ $permit->project->contractor->zip }}
+                            @else
+                                No address provided
+                            @endif
                         </dd>
                     </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:px-6">
-                        <div class="flex justify-between">
-                            <a href="{{ route('admin.contractors.show', $permit->project->user) }}" class="inline-flex items-center px-3 py-1.5 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                View Contractor Profile
-                            </a>
-                            <a href="{{ route('admin.messages.create') }}?recipient_id={{ $permit->project->user->id }}" class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                Message Contractor
-                            </a>
-                        </div>
-                    </div>
+                    @endif
                 </dl>
             </div>
         </div>
@@ -312,9 +310,9 @@
     <!-- Status Update Modal -->
     <div id="status-modal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg max-w-md w-full p-6">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-semibold">Update Permit Status</h3>
-                <button onclick="document.getElementById('status-modal').classList.add('hidden'); return false;" class="text-gray-400 hover:text-gray-500">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-semibold text-gray-900">Update Permit Status</h3>
+                <button onclick="document.getElementById('status-modal').classList.add('hidden'); return false;" class="text-gray-400 hover:text-gray-500 focus:outline-none">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -323,32 +321,39 @@
                 @csrf
                 @method('PATCH')
                 
-                <div class="mb-4">
-                    <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                    <select id="status" name="status" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                        <option value="Pending" {{ $permit->status == 'Pending' ? 'selected' : '' }}>Pending</option>
-                        <option value="In Review" {{ $permit->status == 'In Review' ? 'selected' : '' }}>In Review</option>
-                        <option value="Approved" {{ $permit->status == 'Approved' ? 'selected' : '' }}>Approved</option>
-                        <option value="Rejected" {{ $permit->status == 'Rejected' ? 'selected' : '' }}>Rejected</option>
-                    </select>
+                <div class="space-y-6">
+                    <div>
+                        <label class="text-sm font-medium text-gray-700 mb-2 block">Status</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="relative flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="status" value="Approved" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" {{ $permit->status == 'Approved' ? 'checked' : '' }}>
+                                <span class="ml-3">
+                                    <span class="block text-sm font-medium text-gray-900">Approve</span>
+                                    <span class="block text-sm text-gray-500">Permit will be approved for one year</span>
+                                </span>
+                            </label>
+                            <label class="relative flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="status" value="Rejected" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" {{ $permit->status == 'Rejected' ? 'checked' : '' }}>
+                                <span class="ml-3">
+                                    <span class="block text-sm font-medium text-gray-900">Reject</span>
+                                    <span class="block text-sm text-gray-500">Permit will be rejected</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="admin_notes" class="block text-sm font-medium text-gray-700 mb-2">Admin Notes (Optional)</label>
+                        <textarea id="admin_notes" name="admin_notes" rows="3" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="Add any notes about this decision...">{{ $permit->admin_notes }}</textarea>
+                    </div>
                 </div>
                 
-                <div class="mb-4">
-                    <label for="admin_notes" class="block text-sm font-medium text-gray-700 mb-1">Admin Notes</label>
-                    <textarea id="admin_notes" name="admin_notes" rows="3" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">{{ $permit->admin_notes }}</textarea>
-                </div>
-                
-                <div id="expiration-date-container" class="mb-4 {{ $permit->status != 'Approved' ? 'hidden' : '' }}">
-                    <label for="expiration_date" class="block text-sm font-medium text-gray-700 mb-1">Expiration Date</label>
-                    <input type="date" id="expiration_date" name="expiration_date" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" value="{{ $permit->expiration_date ? $permit->expiration_date->format('Y-m-d') : '' }}">
-                </div>
-                
-                <div class="flex justify-end space-x-3">
+                <div class="mt-6 flex justify-end space-x-3">
                     <button type="button" onclick="document.getElementById('status-modal').classList.add('hidden'); return false;" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         Cancel
                     </button>
                     <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        Save
+                        Update Status
                     </button>
                 </div>
             </form>

@@ -176,7 +176,7 @@
 
         <!-- CTA Button -->
         <div class="flex justify-center mt-12">
-            <a href="/services" class="px-8 py-4 bg-[#E31B23] text-white font-semibold rounded-lg shadow-lg hover:bg-[#c8171f] transition duration-300" style="background-color: #E31B23; color: white;">
+            <a href="/get-started" class="px-8 py-4 bg-[#E31B23] text-white font-semibold rounded-lg shadow-lg hover:bg-[#c8171f] transition duration-300" style="background-color: #E31B23; color: white;">
                 Explore All Our Services
             </a>
         </div>

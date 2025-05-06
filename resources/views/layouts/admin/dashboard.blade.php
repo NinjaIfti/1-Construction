@@ -24,8 +24,8 @@
     ],
     dropdownOpen: false,
     contractors: [],
-    permits: {
-      counts: { pending: 0, in_review: 0, approved: 0, rejected: 0, total: 0 },
+    projects: {
+      counts: { pending: 0, in_progress: 0, completed: 0, total: 0 },
       recent: []
     },
     loadContractors() {
@@ -39,15 +39,15 @@
           this.contractors = [];
         });
     },
-    loadPermits() {
-      fetch('/admin/api/dashboard/permits')
+    loadProjects() {
+      fetch('/admin/api/dashboard/projects')
         .then(response => response.json())
         .then(data => {
-          this.permits.counts = data.counts || { pending: 0, in_review: 0, approved: 0, rejected: 0, total: 0 };
-          this.permits.recent = data.recent || [];
+          this.projects.counts = data.counts || { pending: 0, in_progress: 0, completed: 0, total: 0 };
+          this.projects.recent = data.recent || [];
         })
         .catch(error => {
-          console.error('Error loading permits:', error);
+          console.error('Error loading projects:', error);
         });
     },
     loadNotifications() {
@@ -62,7 +62,7 @@
         });
     }
   }" 
-  x-init="loadContractors(); loadPermits(); loadNotifications()" 
+  x-init="loadContractors(); loadProjects(); loadNotifications()" 
   class="min-h-screen">
     <div class="flex flex-col lg:flex-row gap-6 p-4 md:p-6">
       <!-- Admin Dashboard Panel -->
@@ -123,24 +123,9 @@
                   <i class="fas fa-home mr-3"></i>
                   <span>Dashboard</span>
                 </a>
-                <a href="{{ route('admin.permits.index') }}" @click="activeTab = 'admin.permits.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.permits.index' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-file-alt mr-3"></i>
-                  <span>Permit Requests</span>
-                </a>
-                <a href="{{ route('admin.documents.index') }}" @click="activeTab = 'admin.documents.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.documents.index' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-folder mr-3"></i>
-                  <span>Documents</span>
-                </a>
-                <a href="{{ route('tasks.index') }}" @click="activeTab = 'tasks'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'tasks' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-tasks mr-3"></i>
-                  <span>Tasks</span>
-                </a>
-                <a href="{{ route('admin.messages.index') }}" @click="activeTab = 'messages'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'messages' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-comment mr-3"></i>
-                  <span>Messages</span>
-                  <span id="message-badge" class="ml-auto bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() > 0 ? '' : 'hidden' }}">
-                    {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() }}
-                  </span>
+                <a href="{{ route('admin.projects.index') }}" @click="activeTab = 'admin.projects.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.projects.index' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-project-diagram mr-3"></i>
+                  <span>Projects</span>
                 </a>
                 <a href="{{ route('admin.contractors.index') }}" @click="activeTab = 'contractors.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'contractors.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-users mr-3"></i>
@@ -150,10 +135,14 @@
                   <i class="fas fa-check-circle mr-3"></i>
                   <span>Verifications</span>
                 </a>
-                <button @click="activeTab = 'notifications'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'notifications' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-bell mr-3"></i>
-                  <span>Notifications</span>
-                </button>
+                <a href="{{ route('admin.invoices.index') }}" @click="activeTab = 'admin.invoices.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.invoices.index' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-file-invoice-dollar mr-3"></i>
+                  <span>Invoices</span>
+                </a>
+                <a href="{{ route('admin.permits.index') }}" @click="activeTab = 'admin.permits.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.permits.index' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-file-alt mr-3"></i>
+                  <span>Permits</span>
+                </a>
               </div>
             </div>
           </div>
@@ -166,24 +155,9 @@
                   <i class="fas fa-home mr-3"></i>
                   <span>Dashboard</span>
                 </a>
-                <a href="{{ route('admin.permits.index') }}" @click="activeTab = 'admin.permits.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.permits.index' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-file-alt mr-3"></i>
-                  <span>Permit Requests</span>
-                </a>
-                <a href="{{ route('admin.documents.index') }}" @click="activeTab = 'admin.documents.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.documents.index' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-folder mr-3"></i>
-                  <span>Documents</span>
-                </a>
-                <a href="{{ route('tasks.index') }}" @click="activeTab = 'tasks'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'tasks' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-tasks mr-3"></i>
-                  <span>Tasks</span>
-                </a>
-                <a href="{{ route('admin.messages.index') }}" @click="activeTab = 'messages'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'messages' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-comment mr-3"></i>
-                  <span>Messages</span>
-                  <span id="message-badge" class="ml-auto bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() > 0 ? '' : 'hidden' }}">
-                    {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() }}
-                  </span>
+                <a href="{{ route('admin.projects.index') }}" @click="activeTab = 'admin.projects.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.projects.index' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-project-diagram mr-3"></i>
+                  <span>Projects</span>
                 </a>
                 <a href="{{ route('admin.contractors.index') }}" @click="activeTab = 'contractors.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'contractors.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-users mr-3"></i>
@@ -193,10 +167,14 @@
                   <i class="fas fa-check-circle mr-3"></i>
                   <span>Verifications</span>
                 </a>
-                <button @click="activeTab = 'notifications'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'notifications' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-bell mr-3"></i>
-                  <span>Notifications</span>
-                </button>
+                <a href="{{ route('admin.invoices.index') }}" @click="activeTab = 'admin.invoices.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.invoices.index' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-file-invoice-dollar mr-3"></i>
+                  <span>Invoices</span>
+                </a>
+                <a href="{{ route('admin.permits.index') }}" @click="activeTab = 'admin.permits.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.permits.index' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-file-alt mr-3"></i>
+                  <span>Permits</span>
+                </a>
               </div>
             </div>
           </div>
@@ -210,58 +188,57 @@
             <div x-show="activeTab === 'admin.dashboard'">
               <h2 class="text-xl md:text-2xl font-bold mb-6">Admin Dashboard</h2>
               
-              <!-- Permit Requests Section -->
+              <!-- Projects Section -->
               <div class="mb-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div class="border rounded-lg p-4">
-                    <h3 class="font-bold mb-4">Permit Requests</h3>
+                    <h3 class="font-bold mb-4">Projects Overview</h3>
                     <div class="flex space-x-4 md:space-x-6 justify-between md:justify-start">
                       <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-bold" x-text="permits.counts.pending">0</div>
-                        <div class="text-xs md:text-sm text-gray-600">New</div>
-                      </div>
-                      <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-bold" x-text="permits.counts.in_review">0</div>
-                        <div class="text-xs md:text-sm text-gray-600">In Review</div>
-                      </div>
-                      <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-bold" x-text="permits.counts.approved">0</div>
-                        <div class="text-xs md:text-sm text-gray-600">Approved</div>
-                      </div>
-                    </div>
-                    <div class="mt-4 flex justify-end">
-                      <a href="{{ route('admin.permits.index') }}" class="text-sm text-blue-600 hover:text-blue-900">View All Permits</a>
-                    </div>
-                  </div>
-                  
-                  <!-- Documents Section -->
-                  <div class="border rounded-lg p-4">
-                    <h3 class="font-bold mb-4">
-                      Documents
-                      <a href="{{ route('admin.documents.index') }}" class="text-sm text-blue-500 hover:underline ml-2">View All</a>
-                    </h3>
-                    <div class="flex space-x-4 md:space-x-6 justify-between md:justify-start">
-                      <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-bold">{{ $documentsCount ?? 0 }}</div>
-                        <div class="text-xs md:text-sm text-gray-600">Total</div>
-                      </div>
-                      <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-bold">{{ $pendingDocumentsCount ?? 0 }}</div>
+                        <div class="text-2xl md:text-3xl font-bold" x-text="projects.counts.pending">0</div>
                         <div class="text-xs md:text-sm text-gray-600">Pending</div>
                       </div>
                       <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-bold">{{ $todayDocumentsCount ?? 0 }}</div>
-                        <div class="text-xs md:text-sm text-gray-600">Today</div>
+                        <div class="text-2xl md:text-3xl font-bold" x-text="projects.counts.in_progress">0</div>
+                        <div class="text-xs md:text-sm text-gray-600">In Progress</div>
+                      </div>
+                      <div class="text-center">
+                        <div class="text-2xl md:text-3xl font-bold" x-text="projects.counts.completed">0</div>
+                        <div class="text-xs md:text-sm text-gray-600">Completed</div>
                       </div>
                     </div>
-                    
-                    <!-- Upload documents button -->
-                    <div class="mt-4">
-                      <button class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded text-sm" 
-                              @click="document.getElementById('dashboardUpload').click()">
-                        <i class="fas fa-cloud-upload-alt mr-2"></i> Upload Document
-                      </button>
-                      <input type="file" id="dashboardUpload" class="hidden">
+                    <div class="mt-4 flex justify-end">
+                      <a href="{{ route('admin.projects.index') }}" class="text-sm text-blue-600 hover:text-blue-900">View All Projects</a>
+                    </div>
+                  </div>
+                  
+                  <!-- Recent Projects -->
+                  <div class="border rounded-lg p-4">
+                    <h3 class="font-bold mb-4">
+                      Recent Projects
+                      <a href="{{ route('admin.projects.index') }}" class="text-sm text-blue-500 hover:underline ml-2">View All</a>
+                    </h3>
+                    <div class="space-y-2">
+                      <template x-for="project in projects.recent" :key="project.id">
+                        <div class="flex justify-between items-center p-2 hover:bg-gray-50 rounded">
+                          <div class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-3">
+                              <i class="fas fa-project-diagram text-gray-500"></i>
+                            </div>
+                            <div>
+                              <div x-text="project.name" class="font-medium"></div>
+                              <div class="text-xs text-gray-500" x-text="project.contractor && project.contractor.company_name ? project.contractor.company_name : 'No Contractor'"></div>
+                            </div>
+                          </div>
+                          <a :href="'/admin/projects/' + project.id" class="text-blue-500 hover:underline">
+                            <i class="fas fa-eye"></i>
+                          </a>
+                        </div>
+                      </template>
+                      
+                      <div x-show="projects.recent.length === 0" class="text-center py-4 text-gray-500">
+                        No recent projects
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -313,37 +290,8 @@
                   </div>
                 </div>
               </div>
-              
-              <!-- Project Status -->
-              <div>
-                <h3 class="font-bold mb-4">Project Status</h3>
-                <div class="space-y-3">
-                  <template x-for="project in projectStatuses" :key="project.name">
-                    <div class="flex justify-between items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="alert('Project details: ' + project.name)">
-                      <div x-text="project.name"></div>
-                      <div class="flex items-center">
-                        <template x-if="project.date">
-                          <div class="text-xs md:text-sm text-gray-600 mr-2" x-text="project.date"></div>
-                        </template>
-                        <template x-if="project.status === 'awaiting'">
-                          <div class="text-xs md:text-sm bg-yellow-100 px-2 py-1 rounded">Awaiting</div>
-                        </template>
-                        <template x-if="project.status === 'approved'">
-                          <div class="text-xs md:text-sm bg-green-100 px-2 py-1 rounded">Approved</div>
-                        </template>
-                        <template x-if="project.status === 'pending'">
-                          <div class="text-xs md:text-sm bg-gray-100 px-2 py-1 rounded">Pending</div>
-                        </template>
-                      </div>
-                    </div>
-                  </template>
-                </div>
-              </div>
             </div>
             @endif
-
-          
-            
           </div>
         </div>
       </div>

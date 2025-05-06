@@ -1,7 +1,7 @@
 @extends('layouts.client.dashboard')
 
 @section('content')
-<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto">
     <div class="flex justify-between items-center mb-6">
         <div>
             <h1 class="text-2xl font-semibold text-navy">{{ $project->name }} Dashboard</h1>
@@ -74,16 +74,12 @@
             <div class="p-5">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 mr-3">
-                        <i class="fas fa-tasks text-xl text-purple-500"></i>
+                        <i class="fas fa-file-alt text-xl text-purple-500"></i>
                     </div>
                     <div>
-                        <p class="text-sm font-medium text-gray-500">Tasks</p>
+                        <p class="text-sm font-medium text-gray-500">Documents</p>
                         <div class="flex items-center space-x-2">
-                            <p class="text-xl font-semibold text-gray-800">{{ $project->tasks->count() }}</p>
-                            <div class="flex space-x-1">
-                                <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">{{ $tasksByStatus['In Progress'] ?? 0 }} In Progress</span>
-                                <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">{{ $tasksByStatus['Completed'] ?? 0 }} Completed</span>
-                            </div>
+                            <p class="text-xl font-semibold text-gray-800">{{ $project->documents()->count() ?? 0 }}</p>
                         </div>
                     </div>
                 </div>
@@ -202,55 +198,39 @@
         </div>
     </div>
 
-    <!-- Recent Tasks Section -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
-        <div class="px-4 py-5 sm:px-6 bg-gray-50 flex justify-between items-center">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Recent Tasks
-            </h3>
-            <a href="{{ route('projects.tasks', $project) }}" class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
-                View All Tasks
+    <!-- Recent Documents Section (Replacing Tasks) -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+            <h2 class="text-lg font-semibold text-gray-800">Recent Documents</h2>
+            <a href="{{ route('permits.documents.index', $project->permits()->first()) }}" class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                View All Documents
             </a>
         </div>
-        
         <div class="border-t border-gray-200">
-            @if($recentTasks->count() > 0)
+            @if(isset($project->permits) && $project->permits->isNotEmpty() && $project->permits->first()->documents->isNotEmpty())
                 <ul class="divide-y divide-gray-200">
-                    @foreach($recentTasks as $task)
+                    @foreach($project->permits->first()->documents->take(5) as $document)
                         <li class="px-6 py-4 flex items-center justify-between">
                             <div>
-                                <p class="text-sm font-medium text-gray-900">{{ $task->title }}</p>
-                                <p class="text-sm text-gray-500">Due: {{ $task->due_date ? $task->due_date->format('M d, Y') : 'No due date' }}</p>
+                                <p class="text-sm font-medium text-gray-900">{{ $document->name }}</p>
+                                <p class="text-sm text-gray-500">Added: {{ $document->created_at->format('M d, Y') }}</p>
                             </div>
                             <div class="flex items-center">
-                                @if($task->status == 'Pending')
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800 mr-3">
-                                        Pending
-                                    </span>
-                                @elseif($task->status == 'In Progress')
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 mr-3">
-                                        In Progress
-                                    </span>
-                                @elseif($task->status == 'Completed')
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 mr-3">
-                                        Completed
-                                    </span>
-                                @endif
-                                <a href="#" class="text-blue-600 hover:text-blue-900 text-sm font-medium">
+                                <a href="{{ route('documents.show', $document) }}" class="text-blue-600 hover:text-blue-900 text-sm font-medium">
                                     View
                                 </a>
                             </div>
                         </li>
                     @endforeach
                 </ul>
-                <div class="px-6 py-3 text-right">
-                    <a href="{{ route('projects.tasks', $project) }}" class="text-blue-600 hover:text-blue-900 text-sm font-medium">
-                        View All Tasks &rarr;
+                <div class="px-6 py-3 bg-gray-50">
+                    <a href="{{ route('permits.documents.index', $project->permits()->first()) }}" class="text-blue-600 hover:text-blue-900 text-sm font-medium">
+                        View All Documents &rarr;
                     </a>
                 </div>
             @else
-                <div class="p-6 text-center text-gray-500">
-                    <p>No tasks have been created for this project yet.</p>
+                <div class="px-6 py-4">
+                    <p>No documents have been uploaded for this project yet.</p>
                 </div>
             @endif
         </div>

@@ -18,6 +18,8 @@ use App\Http\Controllers\Admin\DocumentController as AdminDocumentController;
 use App\Http\Controllers\Admin\AdminMessageController;
 use App\Http\Controllers\ClientDocumentController;
 use App\Http\Controllers\ClientPermitController;
+use App\Http\Controllers\Admin\InvoiceController as AdminInvoiceController;
+use App\Http\Controllers\ContractorInvoiceController;
 Route::view('/', 'welcome');
 
 // Product page route
@@ -27,7 +29,7 @@ Route::view('/product', 'layouts.pages.product')->name('product');
 Route::view('/solutions', 'layouts.pages.solutions')->name('solutions');
 
 // Resources route
-Route::view('/resources', 'layouts.pages.resources')->name('resources');
+Route::view('/resourcess', 'layouts.pages.resourcess')->name('resourcess');
 
 // Contact route
 Route::view('/contact', 'layouts.pages.contact')->name('contact');
@@ -49,12 +51,6 @@ Route::middleware(['auth', 'verified.contractor'])->group(function () {
     Route::resource('permits', PermitController::class);
     Route::post('permits/{permit}/comments', [PermitController::class, 'addComment'])->name('permits.comments.store');
     Route::patch('permits/{permit}/status', [PermitController::class, 'updateStatus'])->name('permits.update-status');
-    
-    // Tasks
-    Route::resource('tasks', TaskController::class);
-    Route::patch('tasks/{task}/status', [TaskController::class, 'updateStatus'])->name('tasks.update-status');
-    Route::get('projects/{project}/tasks', [TaskController::class, 'projectTasks'])->name('projects.tasks');
-    Route::get('my-tasks', [TaskController::class, 'myTasks'])->name('tasks.my-tasks');
     
     // Documents
     Route::get('permits/{permit}/documents', [DocumentController::class, 'index'])->name('permits.documents.index');
@@ -128,16 +124,13 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/{permit}/comments', [ClientPermitController::class, 'addComment'])->name('comments.store');
     });
 
-    // Project Task routes
-    Route::get('/projects/{project}/tasks', [TaskController::class, 'index'])->name('projects.tasks.index');
-    Route::get('/projects/{project}/tasks/create', [TaskController::class, 'create'])->name('projects.tasks.create');
-    Route::post('/projects/{project}/tasks', [TaskController::class, 'store'])->name('projects.tasks.store');
-    Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
-    Route::get('/tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
-    Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
-    Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
-    Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
-    Route::get('/api/projects/{project}/tasks', [TaskController::class, 'getProjectTasks'])->name('api.projects.tasks');
+    // Client Invoice Management
+    Route::prefix('client/invoices')->name('client.invoices.')->group(function () {
+        Route::get('/', [ContractorInvoiceController::class, 'index'])->name('index');
+        Route::get('/{invoice}', [ContractorInvoiceController::class, 'show'])->name('show');
+        Route::get('/{invoice}/payment', [ContractorInvoiceController::class, 'paymentForm'])->name('payment');
+        Route::post('/{invoice}/payment', [ContractorInvoiceController::class, 'processPayment'])->name('process-payment');
+    });
 });
 
 // Who We Serve routes
@@ -166,7 +159,19 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Contractor Management
     Route::get('/contractors', [AdminContractorController::class, 'index'])->name('contractors.index');
     Route::get('/contractors/{contractor}', [AdminContractorController::class, 'show'])->name('contractors.show');
+    Route::delete('/contractors/{contractor}', [AdminContractorController::class, 'destroy'])->name('contractors.destroy');
     Route::get('/api/dashboard/contractors', [AdminContractorController::class, 'getDashboardContractors'])->name('api.dashboard.contractors');
+    
+    // Invoice Management
+    Route::get('/invoices', [AdminInvoiceController::class, 'index'])->name('invoices.index');
+    Route::get('/invoices/create', [AdminInvoiceController::class, 'create'])->name('invoices.create');
+    Route::post('/invoices', [AdminInvoiceController::class, 'store'])->name('invoices.store');
+    Route::get('/invoices/{invoice}', [AdminInvoiceController::class, 'show'])->name('invoices.show');
+    Route::get('/invoices/{invoice}/edit', [AdminInvoiceController::class, 'edit'])->name('invoices.edit');
+    Route::put('/invoices/{invoice}', [AdminInvoiceController::class, 'update'])->name('invoices.update');
+    Route::delete('/invoices/{invoice}', [AdminInvoiceController::class, 'destroy'])->name('invoices.destroy');
+    Route::patch('/invoices/{invoice}/mark-paid', [AdminInvoiceController::class, 'markAsPaid'])->name('invoices.mark-paid');
+    Route::get('/invoices/contractor/{contractor}', [AdminInvoiceController::class, 'contractorInvoices'])->name('invoices.contractor');
     
     // Verification Management
     Route::get('/verifications', [AdminVerificationController::class, 'index'])->name('verifications.index');
@@ -206,6 +211,17 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/messages/{message}/reply', [AdminMessageController::class, 'storeReply'])->name('messages.store-reply');
     Route::get('/messages/contractor/{contractor}', [AdminMessageController::class, 'contractorMessages'])->name('messages.contractor');
     Route::get('/api/messages/unread', [AdminMessageController::class, 'unreadCount'])->name('api.messages.unread');
+
+    // Admin Project Routes
+    Route::get('/projects', [App\Http\Controllers\Admin\ProjectController::class, 'index'])->name('projects.index');
+    Route::get('/projects/create', [App\Http\Controllers\Admin\ProjectController::class, 'create'])->name('projects.create');
+    Route::post('/projects', [App\Http\Controllers\Admin\ProjectController::class, 'store'])->name('projects.store');
+    Route::get('/projects/{project}', [App\Http\Controllers\Admin\ProjectController::class, 'show'])->name('projects.show');
+    Route::get('/projects/{project}/edit', [App\Http\Controllers\Admin\ProjectController::class, 'edit'])->name('projects.edit');
+    Route::put('/projects/{project}', [App\Http\Controllers\Admin\ProjectController::class, 'update'])->name('projects.update');
+    Route::delete('/projects/{project}', [App\Http\Controllers\Admin\ProjectController::class, 'destroy'])->name('projects.destroy');
+    Route::patch('/projects/{project}/approve', [App\Http\Controllers\Admin\ProjectController::class, 'approve'])->name('projects.approve');
+    Route::patch('/projects/{project}/complete', [App\Http\Controllers\Admin\ProjectController::class, 'complete'])->name('projects.complete');
 });
 // Client documents dashboard route
 Route::get('/client/documents-dashboard', [ContractorController::class, 'documents'])->middleware(['auth'])->name('client.documents-dashboard');

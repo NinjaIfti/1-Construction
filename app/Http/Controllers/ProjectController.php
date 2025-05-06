@@ -44,9 +44,18 @@ class ProjectController extends Controller
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'description' => 'nullable|string',
             'status' => 'required|in:Planning,Active,On Hold,Completed',
+            'contractor_id' => 'nullable|exists:users,id',
         ]);
         
-        $project = Auth::user()->projects()->create($validated);
+        $project = new Project($validated);
+        $project->user_id = Auth::id();
+        
+        // If contractor_id is not provided, set the authenticated user as both owner and contractor
+        if (!isset($validated['contractor_id']) && Auth::user()->isContractor()) {
+            $project->contractor_id = Auth::id();
+        }
+        
+        $project->save();
         
         return redirect()->route('projects.show', $project)
             ->with('success', 'Project created successfully.');
@@ -59,10 +68,10 @@ class ProjectController extends Controller
     {
         $this->authorize('view', $project);
         
-        $project->load(['permits', 'tasks']);
+        $project->load(['permits']);
         
         $permits = $project->permits()->latest()->get();
-        $tasks = $project->tasks()->latest()->get();
+        $tasks = collect();
         
         return view('layouts.client.projects.show', compact('project', 'permits', 'tasks'));
     }
@@ -95,7 +104,13 @@ class ProjectController extends Controller
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'description' => 'nullable|string',
             'status' => 'required|in:Planning,Active,On Hold,Completed',
+            'contractor_id' => 'nullable|exists:users,id',
         ]);
+        
+        // Only update contractor_id if it's provided and different
+        if (isset($validated['contractor_id']) && $validated['contractor_id'] != $project->contractor_id) {
+            $project->contractor_id = $validated['contractor_id'];
+        }
         
         $project->update($validated);
         
@@ -123,7 +138,7 @@ class ProjectController extends Controller
     {
         $this->authorize('view', $project);
         
-        $project->load(['permits', 'tasks']);
+        $project->load(['permits']);
         
         $permitsByStatus = [
             'Pending' => $project->permits()->where('status', 'Pending')->count(),
@@ -133,13 +148,13 @@ class ProjectController extends Controller
         ];
         
         $tasksByStatus = [
-            'Pending' => $project->tasks()->where('status', 'Pending')->count(),
-            'In Progress' => $project->tasks()->where('status', 'In Progress')->count(),
-            'Completed' => $project->tasks()->where('status', 'Completed')->count(),
+            'Pending' => 0,
+            'In Progress' => 0,
+            'Completed' => 0,
         ];
         
         $recentPermits = $project->permits()->latest()->take(5)->get();
-        $recentTasks = $project->tasks()->latest()->take(5)->get();
+        $recentTasks = collect();
         
         return view('layouts.client.projects.dashboard', compact(
             'project', 

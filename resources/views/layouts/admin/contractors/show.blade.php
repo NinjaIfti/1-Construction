@@ -4,7 +4,7 @@
 <div class="animate-fadeIn">
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-xl md:text-2xl font-bold">Contractor Details</h2>
-        <a href="{{ route('contractors.index') }}" class="text-blue-500 hover:underline flex items-center">
+        <a href="{{ route('admin.contractors.index') }}" class="text-blue-500 hover:underline flex items-center">
             <i class="fas fa-arrow-left mr-2"></i> Back to Contractors
         </a>
     </div>
@@ -126,6 +126,13 @@
             <button class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">
                 <i class="fas fa-edit mr-2"></i> Edit Profile
             </button>
+            <form action="{{ route('admin.contractors.destroy', $contractor->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this contractor? This will delete all related data including projects, permits, documents, and invoices.');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+                    <i class="fas fa-trash mr-2"></i> Delete Contractor
+                </button>
+            </form>
         </div>
     </div>
 </div>

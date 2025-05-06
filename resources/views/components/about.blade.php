@@ -5,7 +5,7 @@
 <div class="w-full lg:w-1/2 mb-10 lg:mb-0">
     <div class="relative">
     <div class="w-[85%] h-[400px] rounded-lg bg-[#0A2240] overflow-hidden shadow-xl">
-        <img src="{{ asset('/images/hero.jpeg') }}" alt="20+ Years of Experience" class="w-full h-full object-cover">
+        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a52ab2b5697_team-of-local-experts.webp" alt="20+ Years of Experience" class="w-full h-full object-cover">
     </div>
         <!-- Years Experience Box -->
         <div class="absolute -bottom-8 right-0 bg-[#E31B23] w-[200px] h-[200px] rounded-lg flex items-center justify-center shadow-lg" style="background-color: #E31B23;">
@@ -67,8 +67,8 @@
                 
                 <!-- CTA -->
                 <div class="mt-8">
-                    <a href="#contact" class="px-6 py-3 bg-[#E31B23] text-white font-semibold rounded-lg shadow-lg hover:bg-[#c8171f] transition duration-300 mr-4" style="background-color: #E31B23; color: white;">
-                        Contact Us
+                    <a href="/get-started" class="px-6 py-3 bg-[#E31B23] text-white font-semibold rounded-lg shadow-lg hover:bg-[#c8171f] transition duration-300 mr-4" style="background-color: #E31B23; color: white;">
+                        Get Started
                     </a>
                     <a href="#services" class="px-6 py-3 bg-transparent text-[#0A2240] font-semibold border-2 border-[#0A2240] rounded-lg hover:bg-[#0A2240] hover:text-white transition duration-300" style="color: #0A2240; border-color: #0A2240;">
                         Our Services

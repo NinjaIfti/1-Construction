@@ -50,9 +50,7 @@
                     
                     <!-- Client Info -->
                     <div class="flex items-center border-t border-gray-100 pt-5 mt-auto">
-                        <div class="w-14 h-14 rounded-full bg-[#0A2240] flex items-center justify-center" style="background-color: #0A2240;">
-                            <span class="text-white font-bold text-lg">PM</span>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" alt="Project Manager" class="w-14 h-14 rounded-full object-cover">
                         <div class="ml-4">
                             <h4 class="text-[#0A2240] font-semibold" style="color: #0A2240;">Project Manager</h4>
                             <p class="text-gray-500 text-sm">Commercial Construction</p>
@@ -102,9 +100,7 @@
                     
                     <!-- Client Info -->
                     <div class="flex items-center border-t border-gray-100 pt-5 mt-auto">
-                        <div class="w-14 h-14 rounded-full bg-[#E31B23] flex items-center justify-center" style="background-color: #E31B23;">
-                            <span class="text-white font-bold text-lg">OM</span>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" alt="Operations Manager" class="w-14 h-14 rounded-full object-cover">
                         <div class="ml-4">
                             <h4 class="text-[#0A2240] font-semibold" style="color: #0A2240;">Operations Manager</h4>
                             <p class="text-gray-500 text-sm">Residential Developer</p>
@@ -154,9 +150,7 @@
                     
                     <!-- Client Info -->
                     <div class="flex items-center border-t border-gray-100 pt-5 mt-auto">
-                        <div class="w-14 h-14 rounded-full bg-[#0A2240] flex items-center justify-center" style="background-color: #0A2240;">
-                            <span class="text-white font-bold text-lg">OW</span>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" alt="Owner" class="w-14 h-14 rounded-full object-cover">
                         <div class="ml-4">
                             <h4 class="text-[#0A2240] font-semibold" style="color: #0A2240;">Owner</h4>
                             <p class="text-gray-500 text-sm">General Contracting</p>
@@ -166,12 +160,7 @@
             </div>
         </div>
         
-        <!-- CTA Button -->
-        <div class="text-center mt-12">
-            <a href="/testimonials" class="inline-block px-8 py-4 bg-[#E31B23] text-white font-semibold rounded-lg shadow-lg hover:bg-[#c8171f] transition duration-300" style="background-color: #E31B23; color: white;">
-                View More Testimonials
-            </a>
-        </div>
+        
     </div>
     
     <!-- Decorative Line at Bottom -->

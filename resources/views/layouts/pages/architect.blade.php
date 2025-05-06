@@ -100,7 +100,7 @@
                 </div>
                 <div class="lg:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                     <div class="relative overflow-hidden rounded-lg">
-                        <img src="{{ asset('images/architecture-blueprint.jpg') }}" alt="Architecture blueprint and model" class="w-full object-cover rounded-lg">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2eac513bec0ce6917ac90_Vertical%20Page%20-%20Architects%20-%20Hero-p-2000.jpg" alt="Architecture blueprint and model" class="w-full object-cover rounded-lg">
                     </div>
                 </div>
             </div>
@@ -110,33 +110,7 @@
         <div class="absolute bottom-0 right-0 w-2/3 h-full bg-gradient-to-r from-blue-800 to-blue-600 -z-0" style="clip-path: polygon(100% 0, 0% 100%, 100% 100%);"></div>
     </section>
     
-    <!-- Trusted By Section -->
-    <section class="py-12 bg-gray-200">
-        <div class="container mx-auto px-6 lg:px-8">
-            <h2 class="text-center text-lg text-gray-500 font-medium mb-8" data-aos="fade-up">TRUSTED BY LEADING ARCHITECTURE FIRMS</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="100">
-                    <img src="{{ asset('images/logos/architecture1.png') }}" alt="Architecture Firm Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="200">
-                    <img src="{{ asset('images/logos/architecture2.png') }}" alt="Architecture Firm Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="300">
-                    <img src="{{ asset('images/logos/architecture3.png') }}" alt="Architecture Firm Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="400">
-                    <img src="{{ asset('images/logos/architecture4.png') }}" alt="Architecture Firm Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="500">
-                    <img src="{{ asset('images/logos/architecture5.png') }}" alt="Architecture Firm Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="600">
-                    <img src="{{ asset('images/logos/architecture6.png') }}" alt="Architecture Firm Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-            </div>
-        </div>
-    </section>
+   
     
     <!-- Feature Cards -->
     <section class="py-16 bg-gray-200">
@@ -150,7 +124,7 @@
                 <!-- Code Compliance Card -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="100">
                     <div class="h-48 overflow-hidden">
-                        <img src="{{ asset('images/code-compliance.jpg') }}" alt="Code Compliance Check" class="w-full object-cover h-full">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2eac26769581932a5c52f_Arch-small-%20Full%20Service%20Firm.jpg" alt="Code Compliance Check" class="w-full object-cover h-full">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">Code Compliance</h3>
@@ -162,7 +136,7 @@
                 <!-- Design Review Card -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="200">
                     <div class="h-48 overflow-hidden">
-                        <img src="{{ asset('images/design-review.jpg') }}" alt="Design Review Process" class="w-full object-cover h-full">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2eac4e950c0721a12cdf9_Arch-small%20-%20Commercial.jpg" alt="Design Review Process" class="w-full object-cover h-full">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">Design Review Management</h3>
@@ -174,7 +148,7 @@
                 <!-- Permit Tracking Card -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="300">
                     <div class="h-48 overflow-hidden">
-                        <img src="{{ asset('images/permit-tracking.jpg') }}" alt="Permit Tracking Dashboard" class="w-full object-cover h-full">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2eac486f97c3a7443d5bd_Arch-small%20-%20Tenant%20Improvements.jpg" alt="Permit Tracking Dashboard" class="w-full object-cover h-full">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">Permit Dashboard</h3>
@@ -229,7 +203,7 @@
     </section>
     
     <!-- Platform Features -->
-    <section class="py-16 bg-gray-200">
+    <section class="py-16" style="background-color: #e5e7eb;">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
                 <div class="lg:w-1/2" data-aos="fade-right">
@@ -290,8 +264,8 @@
                 
                 <div class="lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
                     <div class="relative">
-                        <img src="{{ asset('images/architect-dashboard.jpg') }}" alt="Architect Dashboard" class="rounded-lg shadow-xl">
-                        <div class="absolute -bottom-6 -right-6 bg-blue-700 text-white p-4 rounded-lg shadow-lg">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2eac4f8a239f60ae930cc_Arch-small%20-%20Value%20Adds.jpg" alt="Architect Dashboard" class="rounded-lg shadow-xl">
+                        <div style="background-color: #1E3A8A;" class="absolute -bottom-6 -right-6 text-white p-4 rounded-lg shadow-lg">
                             <p class="font-bold">Up to 60% faster</p>
                             <p class="text-sm">design approvals</p>
                         </div>
@@ -302,7 +276,7 @@
     </section>
     
     <!-- CTA Banner -->
-    <section class="py-12 bg-architect-blue text-white">
+    <section class="py-12 text-white" style="background-color: #1E3A8A;">
         <div class="container mx-auto px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold mb-6" data-aos="fade-up">Ready to transform your permitting process?</h2>
             <p class="text-lg mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Join hundreds of architecture firms across the country who are saving time and reducing revision cycles.</p>
@@ -327,10 +301,10 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Featured Testimonial -->
-                <div class="bg-blue-700 text-white rounded-lg shadow-lg p-6 md:col-span-3 relative" data-aos="fade-up">
+                <div style="background-color: #1E3A8A;" class="text-white rounded-lg shadow-lg p-6 md:col-span-3 relative" data-aos="fade-up">
                     <div class="flex flex-col md:flex-row gap-6 items-start">
                         <div class="md:w-1/4 flex flex-col items-center md:items-start">
-                            <img src="{{ asset('images/testimonials/alexandra.jpg') }}" alt="Alexandra Reynolds" class="w-24 h-24 rounded-full mb-4">
+                            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Alexandra Reynolds" class="w-24 h-24 rounded-full mb-4 object-cover">
                             <div>
                                 <p class="font-bold">Alexandra Reynolds</p>
                                 <p class="text-sm text-blue-200">Principal, Reynolds Architecture</p>
@@ -356,7 +330,7 @@
                 <!-- Regular Testimonials -->
                 <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center mb-4">
-                        <img src="{{ asset('images/testimonials/james.jpg') }}" alt="James Kim" class="w-16 h-16 rounded-full mr-4">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="James Kim" class="w-16 h-16 rounded-full mr-4 object-cover">
                         <div>
                             <p class="font-bold">James Kim</p>
                             <p class="text-sm text-gray-500">Project Manager, Urban Design Associates</p>
@@ -374,7 +348,7 @@
                 
                 <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center mb-4">
-                        <img src="{{ asset('images/testimonials/sophia.jpg') }}" alt="Sophia Martinez" class="w-16 h-16 rounded-full mr-4">
+                        <img src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=689&q=80" alt="Sophia Martinez" class="w-16 h-16 rounded-full mr-4 object-cover">
                         <div>
                             <p class="font-bold">Sophia Martinez</p>
                             <p class="text-sm text-gray-500">Director, Martinez & Associates</p>
@@ -392,7 +366,7 @@
                 
                 <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="flex items-center mb-4">
-                        <img src="{{ asset('images/testimonials/daniel.jpg') }}" alt="Daniel Patel" class="w-16 h-16 rounded-full mr-4">
+                        <img src="https://images.unsplash.com/photo-1615813967515-e1838c1c5116?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Daniel Patel" class="w-16 h-16 rounded-full mr-4 object-cover">
                         <div>
                             <p class="font-bold">Daniel Patel</p>
                             <p class="text-sm text-gray-500">Founder, Innovative Architects</p>

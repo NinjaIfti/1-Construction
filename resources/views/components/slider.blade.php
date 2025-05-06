@@ -8,23 +8,23 @@
         <!-- Desktop Logos -->
         <div class="hidden md:block">
             <div class="grid grid-cols-6 gap-6 items-center">
-                <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-24 transition-transform duration-300 hover:transform hover:scale-105">
-                    <img src="/images/clients/client1.svg" alt="Construct Pro" class="max-h-16">
+                <div class="flex items-center justify-center h-24 transition-transform duration-300 hover:transform hover:scale-105">
+                    <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ae4bad9e5593310c8a_m.png" alt="M Construction" class="max-h-16">
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-24 transition-transform duration-300 hover:transform hover:scale-105">
-                    <img src="/images/clients/client2.svg" alt="BuildTech" class="max-h-16">
+                <div class="flex items-center justify-center h-24 transition-transform duration-300 hover:transform hover:scale-105">
+                    <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ac20ba722b788db851_anthony.png" alt="Anthony Construction" class="max-h-16">
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-24 transition-transform duration-300 hover:transform hover:scale-105">
-                    <img src="/images/clients/client3.svg" alt="Apex Build" class="max-h-16">
+                <div class="flex items-center justify-center h-24 transition-transform duration-300 hover:transform hover:scale-105">
+                    <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ac43843b952c018e63_brookfield.png" alt="Brookfield" class="max-h-16">
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-24 transition-transform duration-300 hover:transform hover:scale-105">
-                    <img src="/images/clients/client4.svg" alt="Prime Homes" class="max-h-16">
+                <div class="flex items-center justify-center h-24 transition-transform duration-300 hover:transform hover:scale-105">
+                    <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088acf9e6af987b5d2d36_dicks.png" alt="Dick's Construction" class="max-h-16">
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-24 transition-transform duration-300 hover:transform hover:scale-105">
-                    <img src="/images/clients/client5.svg" alt="Metro Construction" class="max-h-16">
+                <div class="flex items-center justify-center h-24 transition-transform duration-300 hover:transform hover:scale-105">
+                    <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ae48813c00c815116d_Lennar.png" alt="Lennar" class="max-h-16">
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-24 transition-transform duration-300 hover:transform hover:scale-105">
-                    <img src="/images/clients/client6.svg" alt="Apex Builders" class="max-h-16">
+                <div class="flex items-center justify-center h-24 transition-transform duration-300 hover:transform hover:scale-105">
+                    <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088aef9e6af987b5d2e30_premier.png" alt="Premier Construction" class="max-h-16">
                 </div>
             </div>
         </div>
@@ -34,44 +34,40 @@
             <div class="client-carousel">
                 <div class="flex">
                     <div class="flex-shrink-0 w-1/2 p-2">
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-24">
-                            <img src="/images/clients/client1.svg" alt="Construct Pro" class="max-h-16">
+                        <div class="flex items-center justify-center h-24">
+                            <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ae4bad9e5593310c8a_m.png" alt="M Construction" class="max-h-16">
                         </div>
                     </div>
                     <div class="flex-shrink-0 w-1/2 p-2">
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-24">
-                            <img src="/images/clients/client2.svg" alt="BuildTech" class="max-h-16">
+                        <div class="flex items-center justify-center h-24">
+                            <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ac20ba722b788db851_anthony.png" alt="Anthony Construction" class="max-h-16">
                         </div>
                     </div>
                     <div class="flex-shrink-0 w-1/2 p-2">
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-24">
-                            <img src="/images/clients/client3.svg" alt="Apex Build" class="max-h-16">
+                        <div class="flex items-center justify-center h-24">
+                            <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ac43843b952c018e63_brookfield.png" alt="Brookfield" class="max-h-16">
                         </div>
                     </div>
                     <div class="flex-shrink-0 w-1/2 p-2">
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-24">
-                            <img src="/images/clients/client4.svg" alt="Prime Homes" class="max-h-16">
+                        <div class="flex items-center justify-center h-24">
+                            <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088acf9e6af987b5d2d36_dicks.png" alt="Dick's Construction" class="max-h-16">
                         </div>
                     </div>
                     <div class="flex-shrink-0 w-1/2 p-2">
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-24">
-                            <img src="/images/clients/client5.svg" alt="Metro Construction" class="max-h-16">
+                        <div class="flex items-center justify-center h-24">
+                            <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088ae48813c00c815116d_Lennar.png" alt="Lennar" class="max-h-16">
                         </div>
                     </div>
                     <div class="flex-shrink-0 w-1/2 p-2">
-                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-24">
-                            <img src="/images/clients/client6.svg" alt="Apex Builders" class="max-h-16">
+                        <div class="flex items-center justify-center h-24">
+                            <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c088aef9e6af987b5d2e30_premier.png" alt="Premier Construction" class="max-h-16">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="text-center mt-10">
-            <a href="/clients" class="inline-block px-6 py-3 bg-[#E31B23] text-white font-medium rounded-lg hover:bg-[#c8171f] transition-colors duration-300">
-                View All Clients
-            </a>
-        </div>
+        
     </div>
 </section>
 

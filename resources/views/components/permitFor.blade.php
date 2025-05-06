@@ -45,7 +45,7 @@
                         <div class="w-full lg:w-1/2">
                             <div class="relative">
                                 <div class="absolute bg-[#E31B23] rounded-lg w-full h-full right-0 bottom-0 opacity-20"></div>
-                                <img src="/api/placeholder/600/400" alt="Developers and Owners" class="relative z-10 rounded-lg shadow-lg" />
+                                <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2eac4f8a239f60ae930cc_Arch-small%20-%20Value%20Adds-p-1080.jpg" alt="Developers and Owners" class="relative z-10 rounded-lg shadow-lg" />
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                         <div class="w-full lg:w-1/2">
                             <div class="relative">
                                 <div class="absolute bg-[#E31B23] rounded-lg w-full h-full right-0 bottom-0 opacity-20"></div>
-                                <img src="/api/placeholder/600/400" alt="Contractors and Subcontractors" class="relative z-10 rounded-lg shadow-lg" />
+                                <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2e182503ac789fb37333c_SB-small-Signage.avif" alt="Contractors and Subcontractors" class="relative z-10 rounded-lg shadow-lg" />
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                         <div class="w-full lg:w-1/2">
                             <div class="relative">
                                 <div class="absolute bg-[#E31B23] rounded-lg w-full h-full right-0 bottom-0 opacity-20"></div>
-                                <img src="/api/placeholder/600/400" alt="Architects and Engineers" class="relative z-10 rounded-lg shadow-lg" />
+                                <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2e181c80b06d7d244cf19_SB-small-Roofers.avif" alt="Architects and Engineers" class="relative z-10 rounded-lg shadow-lg" />
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                         <div class="w-full lg:w-1/2">
                             <div class="relative">
                                 <div class="absolute bg-[#E31B23] rounded-lg w-full h-full right-0 bottom-0 opacity-20"></div>
-                                <img src="/api/placeholder/600/400" alt="Permit Expediters" class="relative z-10 rounded-lg shadow-lg" />
+                                <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2ddc6c9152fbd5c9231c4_General%20Contractors%20-small-%20Commercial%20Contractors.avif" alt="Permit Expediters" class="relative z-10 rounded-lg shadow-lg" />
                             </div>
                         </div>
                     </div>

@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('subject');
             $table->text('content');
-            $table->foreignId('sender_id')->constrained('users');
-            $table->foreignId('recipient_id')->constrained('users');
-            $table->foreignId('contractor_id')->nullable()->constrained('users');
-            $table->foreignId('parent_id')->nullable()->constrained('messages');
+            $table->foreignId('sender_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('recipient_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('contractor_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('parent_id')->nullable()->constrained('messages')->onDelete('cascade');
             $table->boolean('has_attachment')->default(false);
             $table->timestamp('read_at')->nullable();
             $table->timestamps();

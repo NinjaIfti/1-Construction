@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <a href="/" class="flex items-center">
                     <div class="flex items-center">
-                        <span class="font-bold text-3xl mr-1 text-white logo-text-num">1</span>
+                        <span class="font-bold text-3xl mr-1 text-[#E31B23] logo-text-num">1</span>
                         <div class="flex flex-col">
                             <span class="font-bold text-sm leading-none logo-text">CONTRACTOR</span>
                             <span class="font-bold text-sm leading-none logo-text">SOLUTIONS</span>
@@ -29,26 +29,28 @@
                         <a href="{{ route('product') }}" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm">Product</a>
                         
                         <!-- Who We Serve Dropdown -->
-                        <div class="relative group">
-                            <a href="{{ route('who-we-serve') }}" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm flex items-center">
+                        <div class="relative group dropdown-container">
+                            <button type="button" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm flex items-center dropdown-toggle">
                                 Who We Serve
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                 </svg>
-                            </a>
+                            </button>
                             
-                            <!-- Slimmer dropdown menu with bold text -->
-                            <div class="absolute left-0 mt-1 w-48 bg-white rounded-md shadow-md py-1 z-10 hidden group-hover:block">
-                                <a href="{{ route('who-we-serve.home-builder') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Home Builder</a>
-                                <a href="{{ route('who-we-serve.developers') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Developers</a>
-                                <a href="{{ route('who-we-serve.GeneralContractor') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">General Contractor</a>
-                                <a href="{{ route('who-we-serve.sub-contractor') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Sub Contractor</a>
-                                <a href="{{ route('who-we-serve.solar-ev') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Solar & EV</a>
-                                <a href="{{ route('who-we-serve.architect') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Architect</a>
+                            <!-- Dropdown menu with improved hover behavior -->
+                            <div class="dropdown-menu absolute left-0 mt-1 w-48 bg-white rounded-md shadow-md py-1 z-10 hidden">
+                                <div class="dropdown-menu-content pt-2 pb-2">
+                                    <a href="{{ route('who-we-serve.home-builder') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Home Builder</a>
+                                    <a href="{{ route('who-we-serve.developers') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Developers</a>
+                                    <a href="{{ route('who-we-serve.GeneralContractor') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">General Contractor</a>
+                                    <a href="{{ route('who-we-serve.sub-contractor') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Sub Contractor</a>
+                                    <a href="{{ route('who-we-serve.solar-ev') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Solar & EV</a>
+                                    <a href="{{ route('who-we-serve.architect') }}" class="block px-3 py-1.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:text-[#E31B23]">Architect</a>
+                                </div>
                             </div>
                         </div>
                         
-                        <a href="{{ route('resources') }}" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm">Resources</a>
+                        <a href="{{ route('resourcess') }}" class="font-medium text-nav-default hover:text-[#E31B23] transition duration-300 text-sm">Resources</a>
                     </div>
                     <div class="flex items-center space-x-4">
                         <a href="{{ route('login') }}" class="px-5 py-2 border border-navy font-medium rounded-full hover:bg-white hover:text-[#0A2240] transition duration-300 text-sm">
@@ -72,7 +74,7 @@
                 <!-- Mobile Who We Serve with dropdown -->
                 <div x-data="{ open: false }">
                     <button @click="open = !open" class="py-2 font-medium text-nav-default hover:text-[#E31B23] transition duration-300 flex items-center justify-between w-full">
-                        <a href="{{ route('who-we-serve') }}" class="flex-grow text-left">Who We Serve</a>
+                        <span class="flex-grow text-left">Who We Serve</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" :class="{'rotate-180': open}">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
@@ -88,7 +90,7 @@
                     </div>
                 </div>
                 
-                <a href="{{ route('resources') }}" class="py-2 font-medium text-nav-default hover:text-[#E31B23] transition duration-300">Resources</a>
+                <a href="{{ route('resourcess') }}" class="py-2 font-medium text-nav-default hover:text-[#E31B23] transition duration-300">Resources</a>
                 <div class="pt-3 flex flex-col space-y-3">
                     <a href="{{ route('login') }}" class="px-5 py-2 border border-navy font-medium rounded-full hover:bg-white hover:text-[#0A2240] transition duration-300 text-center">
                         Login
@@ -163,8 +165,12 @@ body {
     color: white !important;
 }
 
-.logo-text, .logo-text-num {
+.logo-text {
     color: white !important;
+}
+
+.logo-text-num {
+    color: #E31B23 !important;
 }
 
 /* Mobile hamburger button */
@@ -232,9 +238,13 @@ body {
     transition: all 0.5s ease;
 }
 
-.sticky-header .logo-text, 
-.sticky-header .logo-text-num {
+.sticky-header .logo-text {
     color: #0A2240 !important;
+    transition: color 0.5s ease;
+}
+
+.sticky-header .logo-text-num {
+    color: #E31B23 !important;
     transition: color 0.5s ease;
 }
 
@@ -356,6 +366,49 @@ body {
 .sticky-header .group-hover\:block a:hover {
     color: #E31B23;
 }
+
+/* Dropdown Menu Improvements */
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown-menu {
+    transition: opacity 0.2s, visibility 0.2s;
+    opacity: 0;
+    visibility: hidden;
+    display: block !important;
+}
+
+.dropdown-container:hover .dropdown-menu,
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: 0;
+    right: 0;
+    height: 16px;
+}
+
+.dropdown-menu-content {
+    position: relative;
+}
+
+/* Fix for Get Started button when scrolling */
+.sticky-header a[href="{{ route('get-started') }}"],
+.header a[href="{{ route('get-started') }}"] {
+    background-color: #E31B23 !important;
+    color: white !important;
+}
+
+.sticky-header a[href="{{ route('get-started') }}"]:hover,
+.header a[href="{{ route('get-started') }}"]:hover {
+    background-color: #c8171f !important;
+}
 </style>
 
 <!-- Updated JavaScript -->
@@ -366,6 +419,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize sticky header
     initStickyHeader();
+    
+    // Initialize dropdown functionality
+    initDropdowns();
     
     // Initialize other functionality
     initAnimations();
@@ -485,5 +541,29 @@ function initAnimations() {
     
     // Run on scroll
     window.addEventListener('scroll', checkIfInView);
+}
+
+// Initialize dropdown functionality
+function initDropdowns() {
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const parent = this.closest('.dropdown-container');
+            const menu = parent.querySelector('.dropdown-menu');
+            
+            // Toggle the 'show' class
+            menu.classList.toggle('show');
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function closeDropdown(event) {
+                if (!parent.contains(event.target)) {
+                    menu.classList.remove('show');
+                    document.removeEventListener('click', closeDropdown);
+                }
+            });
+        });
+    });
 }
 </script>

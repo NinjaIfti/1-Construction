@@ -56,6 +56,8 @@
       padding: 1rem;
       width: 95%; /* Wider container */
       max-width: 1600px; /* Much larger max width */
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .dashboard-main {
@@ -66,7 +68,7 @@
       background-color: white;
       border-radius: 0.5rem;
       overflow: hidden;
-      width: 100%; /* Full width */
+      width: 100%;
     }
     
     .content-wrapper {
@@ -164,10 +166,6 @@
                 <a href="{{ route('client.documents.index') }}" @click="activeTab = 'client.documents.index'" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'client.documents.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-folder mr-3"></i>
                   <span>Documents</span>
-                </a>
-                <a href="{{ route('tasks.index') }}" @click="activeTab = 'tasks.index'" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'tasks.index' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-tasks mr-3"></i>
-                  <span>Tasks</span>
                 </a>
               @else
                 <!-- Only verification menu for unverified contractors -->
@@ -469,7 +467,6 @@
         notifications: [],
         unreadNotifications: 0,
         activeTab: 'dashboard',
-        sidebarOpen: false,
         
         init() {
           this.loadNotifications();
@@ -526,7 +523,7 @@
   >
     <div class="p-4">
       <div class="flex flex-col space-y-6">
-        <a href="{{ route('client.dashboard') }}" @click="activeTab = 'dashboard'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'dashboard' ? 'bg-blue-900' : ''">
+        <a href="{{ route('client.dashboard') }}" @click="activeTab = 'client.dashboard'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'client.dashboard' ? 'bg-blue-900' : ''">
           <i class="fas fa-home mr-3"></i>
           <span>Dashboard</span>
         </a>
@@ -547,10 +544,6 @@
           <a href="{{ route('client.documents.index') }}" @click="activeTab = 'client.documents.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'client.documents.index' ? 'bg-blue-900' : ''">
             <i class="fas fa-folder mr-3"></i>
             <span>Documents</span>
-          </a>
-          <a href="{{ route('tasks.index') }}" @click="activeTab = 'tasks.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'tasks.index' ? 'bg-blue-900' : ''">
-            <i class="fas fa-tasks mr-3"></i>
-            <span>Tasks</span>
           </a>
         @endif
         

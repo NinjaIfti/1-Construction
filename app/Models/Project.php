@@ -28,6 +28,8 @@ class Project extends Model
         'start_date',
         'end_date',
         'user_id',
+        'contractor_id',
+        'budget',
     ];
 
     /**
@@ -36,9 +38,17 @@ class Project extends Model
      * @var array
      */
     protected $casts = [
-        'start_date' => 'date',
-        'end_date' => 'date',
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+        'budget' => 'decimal:2',
     ];
+
+    /**
+     * The relationships that should be eager loaded.
+     *
+     * @var array
+     */
+    protected $with = ['contractor'];
 
     /**
      * Get the user that owns the project.
@@ -61,7 +71,8 @@ class Project extends Model
      */
     public function tasks(): HasMany
     {
-        return $this->hasMany(Task::class);
+        // Since the tasks table is deleted, return an empty collection
+        return $this->hasMany(Document::class)->whereNull('id');
     }
 
     /**
@@ -102,5 +113,24 @@ class Project extends Model
         $approvedPermits = $this->permits()->where('status', 'Approved')->count();
         
         return (int) (($approvedPermits / $totalPermits) * 100);
+    }
+
+    /**
+     * Get the contractor for the project.
+     */
+    public function contractor(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'contractor_id')->where('role', 'contractor');
+    }
+
+    /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        
+        // Always eager load the contractor relationship when getting permits
+        static::with(['contractor']);
     }
 } 

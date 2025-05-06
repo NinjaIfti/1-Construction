@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 class AdminPermitController extends Controller
 {
@@ -72,37 +73,35 @@ class AdminPermitController extends Controller
 
     /**
      * Update the permit status.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Permit  $permit
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function updateStatus(Request $request, Permit $permit)
     {
-        $validated = $request->validate([
-            'status' => 'required|in:Pending,In Review,Approved,Rejected',
-            'admin_notes' => 'nullable|string',
-            'expiration_date' => 'nullable|date|after:today',
+        $request->validate([
+            'status' => ['required', 'string', Rule::in(['Approved', 'Rejected'])],
+            'admin_notes' => ['nullable', 'string', 'max:1000'],
         ]);
 
-        $oldStatus = $permit->status;
-        $permit->status = $validated['status'];
-        $permit->admin_notes = $validated['admin_notes'];
-        
-        if ($validated['status'] === 'Approved') {
-            $permit->approval_date = now();
-            $permit->expiration_date = $validated['expiration_date'] ?? now()->addYear();
-        }
-        
-        $permit->save();
-        
-        // Create notification for the contractor
-        Notification::create([
-            'user_id' => $permit->project->user_id,
-            'permit_id' => $permit->id,
-            'title' => 'Permit Status Updated',
-            'message' => "Your permit {$permit->permit_number} status has been updated from {$oldStatus} to {$permit->status}.",
-            'type' => 'permit_status',
+        $permit->update([
+            'status' => $request->status,
+            'admin_notes' => $request->admin_notes,
+            'approval_date' => $request->status === 'Approved' ? now() : null,
         ]);
-        
+
+        // Create notification for the client
+        $permit->notifications()->create([
+            'user_id' => $permit->project->user_id,
+            'title' => 'Permit Status Updated',
+            'message' => "Your permit #{$permit->permit_number} has been {$request->status}.",
+            'type' => 'permit_status',
+            'read' => false,
+        ]);
+
         return redirect()->route('admin.permits.show', $permit)
-            ->with('success', "Permit status updated to {$permit->status} successfully.");
+            ->with('success', 'Permit status updated successfully.');
     }
 
     /**

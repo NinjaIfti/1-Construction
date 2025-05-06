@@ -95,7 +95,7 @@
                 </div>
                 <div class="lg:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                     <div class="relative overflow-hidden rounded-lg">
-                        <img src="{{ asset('images/solar-panels.jpg') }}" alt="Solar panel installation" class="w-full object-cover rounded-lg">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67d44ad8dad67ac7df02e3c2_solar-4824604-small-p-2000.avif" alt="Solar panel installation" class="w-full object-cover rounded-lg">
                     </div>
                 </div>
             </div>
@@ -105,33 +105,7 @@
         <div class="absolute bottom-0 right-0 w-2/3 h-full bg-gradient-to-r from-green-700 to-green-500 -z-0" style="clip-path: polygon(100% 0, 0% 100%, 100% 100%);"></div>
     </section>
     
-    <!-- Trusted By Section -->
-    <section class="py-12 bg-gray-200">
-        <div class="container mx-auto px-6 lg:px-8">
-            <h2 class="text-center text-lg text-gray-500 font-medium mb-8" data-aos="fade-up">TRUSTED BY LEADING SOLAR & EV COMPANIES</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="100">
-                    <img src="{{ asset('images/logos/solar1.png') }}" alt="Solar Company Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="200">
-                    <img src="{{ asset('images/logos/solar2.png') }}" alt="Solar Company Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="300">
-                    <img src="{{ asset('images/logos/ev1.png') }}" alt="EV Company Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="400">
-                    <img src="{{ asset('images/logos/ev2.png') }}" alt="EV Company Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="500">
-                    <img src="{{ asset('images/logos/solar3.png') }}" alt="Solar Company Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="600">
-                    <img src="{{ asset('images/logos/ev3.png') }}" alt="EV Company Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-            </div>
-        </div>
-    </section>
+  
     
     <!-- Feature Cards -->
     <section class="py-16 bg-gray-200">
@@ -145,7 +119,7 @@
                 <!-- Residential Solar Card -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="100">
                     <div class="h-48 overflow-hidden">
-                        <img src="{{ asset('images/residential-solar.jpg') }}" alt="Residential Solar Installation" class="w-full object-cover h-full">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c9d0cad1dbee9044c9f7fd_house-6935453.webp" alt="Residential Solar Installation" class="w-full object-cover h-full">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">Residential Solar</h3>
@@ -157,7 +131,7 @@
                 <!-- Commercial Solar Card -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="200">
                     <div class="h-48 overflow-hidden">
-                        <img src="{{ asset('images/commercial-solar.jpg') }}" alt="Commercial Solar Installation" class="w-full object-cover h-full">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67c9d0c9640926eea6c76bf7_jeroen-van-de-water-aQOzmgcT6sI-unsplash.webp" alt="Commercial Solar Installation" class="w-full object-cover h-full">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">Commercial Solar</h3>
@@ -169,7 +143,7 @@
                 <!-- EV Charging Card -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="300">
                     <div class="h-48 overflow-hidden">
-                        <img src="{{ asset('images/ev-charging.jpg') }}" alt="EV Charging Station" class="w-full object-cover h-full">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35a638c2b569b_nationwide-coverage.webp" alt="EV Charging Station" class="w-full object-cover h-full">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">EV Charging Infrastructure</h3>
@@ -243,7 +217,7 @@
                 
                 <div class="lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
                     <div class="relative">
-                        <img src="{{ asset('images/solar-dashboard.jpg') }}" alt="Solar Project Dashboard" class="rounded-lg shadow-xl">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67d1a734b2704be0a570015b_justin-lim-Fpcy-AdFhUg-unsplash-p-2000.webp" alt="Solar Project Dashboard" class="rounded-lg shadow-xl">
                         <div class="absolute -bottom-6 -right-6 bg-green-600 text-white p-4 rounded-lg shadow-lg">
                             <p class="font-bold">Save up to 50%</p>
                             <p class="text-sm">on permitting time</p>
@@ -315,7 +289,7 @@
                 <div class="bg-green-700 text-white rounded-lg shadow-lg p-6 md:col-span-3 relative" data-aos="fade-up">
                     <div class="flex flex-col md:flex-row gap-6 items-start">
                         <div class="md:w-1/4 flex flex-col items-center md:items-start">
-                            <img src="{{ asset('images/testimonials/jennifer.jpg') }}" alt="Jennifer Lee" class="w-24 h-24 rounded-full mb-4">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Jennifer Lee" class="w-24 h-24 rounded-full mb-4 object-cover">
                             <div>
                                 <p class="font-bold">Jennifer Lee</p>
                                 <p class="text-sm text-green-200">Operations Director, SunPower Solutions</p>
@@ -341,7 +315,7 @@
                 <!-- Regular Testimonials -->
                 <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center mb-4">
-                        <img src="{{ asset('images/testimonials/marcus.jpg') }}" alt="Marcus Johnson" class="w-16 h-16 rounded-full mr-4">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Marcus Johnson" class="w-16 h-16 rounded-full mr-4 object-cover">
                         <div>
                             <p class="font-bold">Marcus Johnson</p>
                             <p class="text-sm text-gray-500">CEO, EV Charge Pro</p>
@@ -359,7 +333,7 @@
                 
                 <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center mb-4">
-                        <img src="{{ asset('images/testimonials/amara.jpg') }}" alt="Amara Singh" class="w-16 h-16 rounded-full mr-4">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Amara Singh" class="w-16 h-16 rounded-full mr-4 object-cover">
                         <div>
                             <p class="font-bold">Amara Singh</p>
                             <p class="text-sm text-gray-500">Permit Manager, GreenTech Solar</p>
@@ -377,7 +351,7 @@
                 
                 <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="flex items-center mb-4">
-                        <img src="{{ asset('images/testimonials/thomas.jpg') }}" alt="Thomas Chen" class="w-16 h-16 rounded-full mr-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Thomas Chen" class="w-16 h-16 rounded-full mr-4 object-cover">
                         <div>
                             <p class="font-bold">Thomas Chen</p>
                             <p class="text-sm text-gray-500">Project Director, Charge Forward</p>

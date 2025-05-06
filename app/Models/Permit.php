@@ -22,12 +22,14 @@ class Permit extends Model
         'permit_type',
         'status',
         'submission_date',
+        'approval_date',
         'approved_date',
         'expiration_date',
         'permit_number',
         'issuing_authority',
         'project_id',
         'type',
+        'admin_notes',
     ];
 
     /**
@@ -37,6 +39,7 @@ class Permit extends Model
      */
     protected $casts = [
         'submission_date' => 'date',
+        'approval_date' => 'date',
         'approved_date' => 'date',
         'expiration_date' => 'date',
     ];
@@ -84,26 +87,6 @@ class Permit extends Model
     }
 
     /**
-     * Determine if the permit is pending.
-     *
-     * @return bool
-     */
-    public function isPending(): bool
-    {
-        return $this->status === 'Pending';
-    }
-
-    /**
-     * Determine if the permit is in review.
-     *
-     * @return bool
-     */
-    public function isInReview(): bool
-    {
-        return $this->status === 'In Review';
-    }
-
-    /**
      * Determine if the permit is rejected.
      *
      * @return bool
@@ -114,16 +97,24 @@ class Permit extends Model
     }
 
     /**
-     * Get the days remaining until expiration.
+     * Get the approval date (handles both column names)
      *
-     * @return int|null
+     * @return \Carbon\Carbon|null
      */
-    public function getDaysUntilExpiration()
+    public function getApprovalDateAttribute()
     {
-        if (!$this->expiration_date) {
-            return null;
-        }
-        
-        return now()->diffInDays($this->expiration_date, false);
+        return $this->approved_date ?? $this->approval_date;
+    }
+
+    /**
+     * Set the approval date (updates both columns)
+     *
+     * @param mixed $value
+     * @return void
+     */
+    public function setApprovalDateAttribute($value)
+    {
+        $this->attributes['approval_date'] = $value;
+        $this->attributes['approved_date'] = $value;
     }
 } 

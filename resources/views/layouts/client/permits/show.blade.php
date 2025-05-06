@@ -93,13 +93,13 @@
                         {{ $permit->submission_date ? $permit->submission_date->format('F j, Y') : 'N/A' }}
                     </dd>
                 </div>
-                @if($permit->approval_date)
+                @if($permit->approved_date)
                 <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">
                         Approval Date
                     </dt>
                     <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                        {{ $permit->approval_date->format('F j, Y') }}
+                        {{ $permit->approved_date->format('F j, Y') }}
                     </dd>
                 </div>
                 @endif

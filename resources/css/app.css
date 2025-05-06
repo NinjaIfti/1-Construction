@@ -57,8 +57,12 @@ body {
     color: white !important;
 }
 
-.logo-text, .logo-text-num {
+.logo-text {
     color: white !important;
+}
+
+.logo-text-num {
+    color: #E31B23 !important;
 }
 
 /* Mobile hamburger button */
@@ -123,9 +127,13 @@ body {
     transition: all 0.5s ease;
 }
 
-.sticky-header .logo-text, 
-.sticky-header .logo-text-num {
+.sticky-header .logo-text {
     color: #0A2240 !important;
+    transition: color 0.5s ease;
+}
+
+.sticky-header .logo-text-num {
+    color: #E31B23 !important;
     transition: color 0.5s ease;
 }
 

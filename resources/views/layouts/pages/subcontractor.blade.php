@@ -81,7 +81,7 @@
                 </div>
                 <div class="lg:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                     <div class="relative overflow-hidden rounded-lg">
-                        <img src="{{ asset('images/subcontractor.jpg') }}" alt="Specialty trade workers on site" class="w-full object-cover rounded-lg">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2e186fa51fe0ce95c603b_Vertical%20Page%20-%20Subcontractors%20-%20Hero-p-2000.avif" alt="Specialty trade workers on site" class="w-full object-cover rounded-lg">
                     </div>
                 </div>
             </div>
@@ -91,33 +91,7 @@
         <div class="absolute bottom-0 right-0 w-2/3 h-full bg-blue-100 -z-0" style="clip-path: polygon(100% 0, 0% 100%, 100% 100%);"></div>
     </section>
     
-    <!-- Trusted By Section -->
-    <section class="py-12 bg-gray-200">
-        <div class="container mx-auto px-6 lg:px-8">
-            <h2 class="text-center text-lg text-gray-500 font-medium mb-8" data-aos="fade-up">TRUSTED BY LEADING SPECIALTY TRADE CONTRACTORS</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="100">
-                    <img src="{{ asset('images/logos/specialty1.png') }}" alt="Subcontractor Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="200">
-                    <img src="{{ asset('images/logos/specialty2.png') }}" alt="Subcontractor Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="300">
-                    <img src="{{ asset('images/logos/specialty3.png') }}" alt="Subcontractor Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="400">
-                    <img src="{{ asset('images/logos/specialty4.png') }}" alt="Subcontractor Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="500">
-                    <img src="{{ asset('images/logos/specialty5.png') }}" alt="Subcontractor Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="flex justify-center" data-aos="fade-up" data-aos-delay="600">
-                    <img src="{{ asset('images/logos/specialty6.png') }}" alt="Subcontractor Logo" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
-                </div>
-            </div>
-        </div>
-    </section>
+
     
     <!-- Feature Cards -->
     <section class="py-16 bg-gray-200">
@@ -131,7 +105,7 @@
                 <!-- Electrical Card -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="100">
                     <div class="h-48 overflow-hidden">
-                        <img src="{{ asset('images/electrical.jpg') }}" alt="Electrical Work" class="w-full object-cover h-full">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2e182503ac789fb37333c_SB-small-Signage.avif" alt="Electrical Work" class="w-full object-cover h-full">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">Electrical</h3>
@@ -143,7 +117,7 @@
                 <!-- Plumbing Card -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="200">
                     <div class="h-48 overflow-hidden">
-                        <img src="{{ asset('images/plumbing.jpg') }}" alt="Plumbing Work" class="w-full object-cover h-full">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2e182a0958b53d794ecf3_SB-small-Pool%20Builder.avif" alt="Plumbing Work" class="w-full object-cover h-full">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">Plumbing</h3>
@@ -155,7 +129,7 @@
                 <!-- HVAC Card -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden card" data-aos="fade-up" data-aos-delay="300">
                     <div class="h-48 overflow-hidden">
-                        <img src="{{ asset('images/hvac.jpg') }}" alt="HVAC Systems" class="w-full object-cover h-full">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2e17fa05e653a5f0353cf_SB-small-HVAC.avif" alt="HVAC Systems" class="w-full object-cover h-full">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">HVAC</h3>
@@ -236,7 +210,7 @@
                 
                 <div class="lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
                     <div class="relative">
-                        <img src="{{ asset('images/subcontractor-dashboard.jpg') }}" alt="Subcontractor Dashboard" class="rounded-lg shadow-xl">
+                        <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/67e2e185134266777e17e574_SB-small-Value%20Adds.avif" alt="Subcontractor Dashboard" class="rounded-lg shadow-xl">
                         <div class="absolute -bottom-6 -right-6 bg-red-600 text-white p-4 rounded-lg shadow-lg">
                             <p class="font-bold">Save up to 40%</p>
                             <p class="text-sm">on administrative time</p>
@@ -248,7 +222,7 @@
     </section>
     
     <!-- Process Steps -->
-    <section class="py-16 bg-gray-200">
+    <section class="py-16" style="background-color: #e5e7eb;">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="text-center mb-12" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">How it works</h2>
@@ -258,21 +232,21 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Step 1 -->
                 <div class="bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="bg-navy text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
+                    <div style="background-color: #0A2240;" class="text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
                     <h3 class="text-xl font-bold mb-3">Set up your account</h3>
                     <p class="text-gray-600">Create your profile with trade specialties, licenses, and service areas.</p>
                 </div>
                 
                 <!-- Step 2 -->
                 <div class="bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="bg-navy text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
+                    <div style="background-color: #0A2240;" class="text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
                     <h3 class="text-xl font-bold mb-3">Create your first project</h3>
                     <p class="text-gray-600">Enter project details, connect with the GC, and access permit requirements.</p>
                 </div>
                 
                 <!-- Step 3 -->
                 <div class="bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="bg-navy text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
+                    <div style="background-color: #0A2240;" class="text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
                     <h3 class="text-xl font-bold mb-3">Submit and track</h3>
                     <p class="text-gray-600">Submit permit applications online and track status through to final approval.</p>
                 </div>
@@ -281,7 +255,7 @@
     </section>
     
     <!-- CTA Banner -->
-    <section class="py-12 bg-navy text-white">
+    <section class="py-12 text-white" style="background-color: #0A2240;">
         <div class="container mx-auto px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold mb-6" data-aos="fade-up">Ready to simplify your permitting process?</h2>
             <p class="text-lg mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Join thousands of specialty contractors who are saving time and reducing headaches with 1 Construction.</p>
@@ -306,10 +280,10 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Featured Testimonial -->
-                <div class="bg-navy text-white rounded-lg shadow-lg p-6 md:col-span-3 relative" data-aos="fade-up">
+                <div style="background-color: #0A2240;" class="text-white rounded-lg shadow-lg p-6 md:col-span-3 relative" data-aos="fade-up">
                     <div class="flex flex-col md:flex-row gap-6 items-start">
                         <div class="md:w-1/4 flex flex-col items-center md:items-start">
-                            <img src="{{ asset('images/testimonials/michael.jpg') }}" alt="Michael Jones" class="w-24 h-24 rounded-full mb-4">
+                            <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Michael Jones" class="w-24 h-24 rounded-full mb-4 object-cover">
                             <div>
                                 <p class="font-bold">Michael Jones</p>
                                 <p class="text-sm text-gray-300">Owner, Jones Electrical Services</p>
@@ -335,7 +309,7 @@
                 <!-- Regular Testimonials -->
                 <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center mb-4">
-                        <img src="{{ asset('images/testimonials/sarah.jpg') }}" alt="Sarah Williams" class="w-16 h-16 rounded-full mr-4">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="Sarah Williams" class="w-16 h-16 rounded-full mr-4 object-cover">
                         <div>
                             <p class="font-bold">Sarah Williams</p>
                             <p class="text-sm text-gray-500">Manager, Williams Plumbing</p>
@@ -353,7 +327,7 @@
                 
                 <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center mb-4">
-                        <img src="{{ asset('images/testimonials/david.jpg') }}" alt="David Nguyen" class="w-16 h-16 rounded-full mr-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="David Nguyen" class="w-16 h-16 rounded-full mr-4 object-cover">
                         <div>
                             <p class="font-bold">David Nguyen</p>
                             <p class="text-sm text-gray-500">CEO, Nguyen HVAC Solutions</p>
@@ -371,7 +345,7 @@
                 
                 <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="flex items-center mb-4">
-                        <img src="{{ asset('images/testimonials/carlos.jpg') }}" alt="Carlos Rodriguez" class="w-16 h-16 rounded-full mr-4">
+                        <img src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80" alt="Carlos Rodriguez" class="w-16 h-16 rounded-full mr-4 object-cover">
                         <div>
                             <p class="font-bold">Carlos Rodriguez</p>
                             <p class="text-sm text-gray-500">Owner, Rodriguez Fire Protection</p>

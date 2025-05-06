@@ -32,6 +32,12 @@ Route::middleware('guest')->group(function () {
         ]);
     });
 
+    // Social Login Routes
+    Route::get('auth/{provider}/redirect', [App\Http\Controllers\Auth\SocialiteController::class, 'redirect'])
+        ->name('socialite.redirect');
+    Route::get('auth/{provider}/callback', [App\Http\Controllers\Auth\SocialiteController::class, 'callback'])
+        ->name('socialite.callback');
+
     Volt::route('forgot-password', 'pages.auth.forgot-password')
         ->name('password.request');
 

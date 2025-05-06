@@ -41,6 +41,9 @@ class User extends Authenticatable
         'admin_feedback',
         'documents_submitted_at',
         'verified_at',
+        'google_id',
+        'linkedin_id',
+        'contractor_id',
     ];
 
     /**
@@ -76,6 +79,22 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the permits associated with the user.
+     */
+    public function permits()
+    {
+        return $this->hasMany(Permit::class);
+    }
+
+    /**
+     * Get the documents associated with the user.
+     */
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
+
+    /**
      * Get the comments created by the user.
      */
     public function comments()
@@ -96,7 +115,8 @@ class User extends Authenticatable
      */
     public function assignedTasks()
     {
-        return $this->hasMany(Task::class, 'assigned_to');
+        // Return empty collection since tasks table is deleted
+        return $this->hasMany(Document::class)->whereNull('id');
     }
 
     /**
@@ -124,6 +144,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get invoices associated with this user.
+     */
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    /**
      * Check if the user is an admin.
      */
     public function isAdmin()
@@ -134,7 +162,7 @@ class User extends Authenticatable
     /**
      * Check if the user is a contractor.
      */
-    public function isContractor()
+    public function isContractor(): bool
     {
         return $this->role === 'contractor';
     }
@@ -180,5 +208,13 @@ class User extends Authenticatable
             default:
                 return 'Unknown';
         }
+    }
+
+    /**
+     * Get the contractor associated with the user.
+     */
+    public function contractor()
+    {
+        return $this->belongsTo(Contractor::class);
     }
 }

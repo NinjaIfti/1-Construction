@@ -46,11 +46,11 @@
                 <div>
                     <h3 class="text-[#E31B23] font-bold mb-4">Services</h3>
                     <ul class="space-y-2">
-                        <li><a href="/services" class="text-white hover:text-gray-300 transition duration-300">Permit Research</a></li>
-                        <li><a href="/services" class="text-white hover:text-gray-300 transition duration-300">Permit Preparation</a></li>
-                        <li><a href="/services" class="text-white hover:text-gray-300 transition duration-300">Permit Submission</a></li>
-                        <li><a href="/services" class="text-white hover:text-gray-300 transition duration-300">Permit Tracking</a></li>
-                        <li><a href="/services" class="text-white hover:text-gray-300 transition duration-300">Expediting</a></li>
+                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">Permit Research</a></li>
+                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">Permit Preparation</a></li>
+                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">Permit Submission</a></li>
+                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">Permit Tracking</a></li>
+                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">Expediting</a></li>
                     </ul>
                 </div>
                 
