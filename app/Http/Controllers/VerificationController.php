@@ -19,8 +19,8 @@ class VerificationController extends Controller
     {
         $user = Auth::user();
         
-        // Check if user is already verified
-        if ($user->isVerified()) {
+        // Redirect all contractors to client dashboard, bypassing verification
+        if ($user->isContractor()) {
             return redirect()->route('client.dashboard');
         }
         

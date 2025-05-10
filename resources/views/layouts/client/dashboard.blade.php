@@ -75,6 +75,7 @@
       display: flex;
       flex: 1;
       min-height: 0;
+      min-height: calc(100vh - 74px); /* subtract header height */
     }
     
     .sidebar {
@@ -82,6 +83,19 @@
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
+      min-height: calc(100vh - 74px); /* match content-wrapper height */
+      /* height: 100vh; */
+      /* position: fixed; */
+      /* top: 0; */
+      /* left: 0; */
+      /* width: 25%; */
+      /* overflow-y: auto; */
+      /* z-index: 10; */
+    }
+    
+    .main-content {
+      width: 75%;
+      min-height: calc(100vh - 74px); /* match content-wrapper height */
     }
     
     @media (min-width: 768px) {
@@ -114,13 +128,6 @@
             <div class="text-right">
               <div class="text-lg font-bold">{{ auth()->user()->name }}</div>
               <div class="text-sm">{{ auth()->user()->company_name }}</div>
-              @if(auth()->user()->verification_status === 'approved')
-                <div class="text-xs text-green-400">Verified Account</div>
-              @elseif(auth()->user()->verification_status === 'under_review')
-                <div class="text-xs text-yellow-400">Under Review</div>
-              @else
-                <div class="text-xs text-red-400">Verification Required</div>
-              @endif
             </div>
             <div class="ml-2 dropdown">
               <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center cursor-pointer">
@@ -144,44 +151,33 @@
         <div class="content-wrapper">
           <!-- Sidebar -->
           <div class="sidebar text-white">
-            <div class="p-4 flex-1">
-              <button id="dashboard-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'dashboard' ? 'bg-blue-900' : ''">
-                <i class="fas fa-home mr-3"></i>
-                <span>Dashboard</span>
-              </button>
-              
-              @if(auth()->user()->verification_status === 'approved')
-                <!-- Full menu for verified contractors -->
-                <a href="{{ route('client.permits.create') }}" @click="activeTab = 'client.permits.create'" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'client.permits.create' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-file-upload mr-3"></i>
-                  <span>Submit Permit</span>
+            <div class="p-4">
+              <div class="flex flex-col space-y-6">
+                <a href="{{ route('client.dashboard') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('dashboard') || request()->routeIs('client.dashboard') ? 'bg-blue-900' : '' }}">
+                  <i class="fas fa-home mr-3"></i>
+                  <span>Dashboard</span>
                 </a>
-                <a href="{{ route('client.messages.index') }}" @click="activeTab = 'client.messages.index'" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'client.messages.index' ? 'bg-blue-900' : ''">
-                  <i class="fas fa-comment mr-3"></i>
-                  <span>Messages</span>
-                  <span id="message-badge" class="ml-auto bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() > 0 ? '' : 'hidden' }}">
-                    {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() }}
-                  </span>
+                
+                <a href="{{ route('projects.index') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('projects.*') ? 'bg-blue-900' : '' }}">
+                  <i class="fas fa-project-diagram mr-3"></i>
+                  <span>Projects</span>
                 </a>
-                <a href="{{ route('client.documents.index') }}" @click="activeTab = 'client.documents.index'" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'client.documents.index' ? 'bg-blue-900' : ''">
+                
+                <a href="{{ route('client.documents.index') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('client.documents.*') ? 'bg-blue-900' : '' }}">
                   <i class="fas fa-folder mr-3"></i>
                   <span>Documents</span>
                 </a>
-              @else
-                <!-- Only verification menu for unverified contractors -->
-                <button id="verification-btn" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700 bg-blue-900">
-                  <i class="fas fa-id-card mr-3"></i>
-                  <span>Verification</span>
-                </button>
-              @endif
-              
-              <a href="{{ route('projects.index') }}" @click="activeTab = 'projects.index'" class="flex items-center w-full mb-6 p-2 rounded transition duration-300 hover:bg-blue-700" :class="activeTab === 'projects.index' ? 'bg-blue-900' : ''">
-                <i class="fas fa-project-diagram mr-3"></i>
-                <span>Projects</span>
-              </a>
-              
-              <!-- Add a spacer div to push content to the top -->
-              <div class="flex-grow"></div>
+                
+                <a href="{{ route('client.permits.create') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('client.permits.*') ? 'bg-blue-900' : '' }}">
+                  <i class="fas fa-file-upload mr-3"></i>
+                  <span>Submit Permit</span>
+                </a>
+                
+                <a href="{{ route('client.messages.index') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('client.messages.*') ? 'bg-blue-900' : '' }}">
+                  <i class="fas fa-comment mr-3"></i>
+                  <span>Messages</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -205,16 +201,6 @@
             <!-- Dashboard Content -->
             <div id="dashboard-content" class="hidden">
               <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
-              
-              @if(auth()->user()->verification_status !== 'approved')
-                <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6" role="alert">
-                  <p class="font-bold">Account Verification Required</p>
-                  <p>To access all features, please complete the verification process.</p>
-                  <a href="{{ route('verification.index') }}" class="mt-2 inline-block bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded">
-                    Go to Verification
-                  </a>
-                </div>
-              @endif
               
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <div class="bg-blue-100 p-4 rounded shadow">
@@ -244,11 +230,6 @@
                   </template>
                 </ul>
               </div>
-            </div>
-
-            <!-- Verification Content -->
-            <div id="verification-content" class="hidden">
-              <!-- Will be replaced by verification.index view -->
             </div>
 
             <!-- Messages Content -->
@@ -312,14 +293,9 @@
       // Cache DOM elements
       const dashboardBtn = document.getElementById('dashboard-btn');
       const dashboardContent = document.getElementById('dashboard-content');
-      let verificationBtn, verificationContent, messagesBtn, messagesContent, documentsBtn, documentsContent;
+      let messagesBtn, messagesContent, documentsBtn, documentsContent;
       
       // Get elements based on verification status
-      if (document.getElementById('verification-btn')) {
-        verificationBtn = document.getElementById('verification-btn');
-        verificationContent = document.getElementById('verification-content');
-      }
-      
       if (document.getElementById('messages-btn')) {
         messagesBtn = document.getElementById('messages-btn');
         messagesContent = document.getElementById('messages-content');
@@ -340,7 +316,6 @@
         });
         
         if (dashboardContent) dashboardContent.classList.add('hidden');
-        if (verificationContent) verificationContent.classList.add('hidden');
         if (messagesContent) messagesContent.classList.add('hidden');
         if (documentsContent) documentsContent.classList.add('hidden');
       }
@@ -348,7 +323,6 @@
       // Helper function to remove active class from all buttons
       function removeActiveFromButtons() {
         if (dashboardBtn) dashboardBtn.classList.remove('bg-blue-900');
-        if (verificationBtn) verificationBtn.classList.remove('bg-blue-900');
         if (messagesBtn) messagesBtn.classList.remove('bg-blue-900');
         if (documentsBtn) documentsBtn.classList.remove('bg-blue-900');
       }
@@ -358,14 +332,6 @@
         dashboardBtn.addEventListener('click', function() {
           // Instead of just toggling content, navigate to the dashboard page
           window.location.href = "{{ route('dashboard') }}";
-        });
-      }
-      
-      // Show verification on button click
-      if (verificationBtn) {
-        verificationBtn.addEventListener('click', function() {
-          // Redirect to verification page
-          window.location.href = "{{ route('verification.index') }}";
         });
       }
       
@@ -523,31 +489,12 @@
   >
     <div class="p-4">
       <div class="flex flex-col space-y-6">
-        <a href="{{ route('client.dashboard') }}" @click="activeTab = 'client.dashboard'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'client.dashboard' ? 'bg-blue-900' : ''">
+        <a href="{{ route('client.dashboard') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('dashboard') || request()->routeIs('client.dashboard') ? 'bg-blue-900' : '' }}">
           <i class="fas fa-home mr-3"></i>
           <span>Dashboard</span>
         </a>
         
-        @if(auth()->user()->verification_status === 'approved')
-          <!-- Full menu for verified contractors -->
-          <a href="{{ route('client.permits.create') }}" @click="activeTab = 'client.permits.create'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'client.permits.create' ? 'bg-blue-900' : ''">
-            <i class="fas fa-file-upload mr-3"></i>
-            <span>Submit Permit</span>
-          </a>
-          <a href="{{ route('client.messages.index') }}" @click="activeTab = 'client.messages.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'client.messages.index' ? 'bg-blue-900' : ''">
-            <i class="fas fa-comment mr-3"></i>
-            <span>Messages</span>
-            <span id="message-badge-mobile" class="ml-auto bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() > 0 ? '' : 'hidden' }}">
-              {{ auth()->user()->receivedMessages()->whereNull('read_at')->count() }}
-            </span>
-          </a>
-          <a href="{{ route('client.documents.index') }}" @click="activeTab = 'client.documents.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'client.documents.index' ? 'bg-blue-900' : ''">
-            <i class="fas fa-folder mr-3"></i>
-            <span>Documents</span>
-          </a>
-        @endif
-        
-        <a href="{{ route('projects.index') }}" @click="activeTab = 'projects.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'projects.index' ? 'bg-blue-900' : ''">
+        <a href="{{ route('projects.index') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('projects.*') ? 'bg-blue-900' : '' }}">
           <i class="fas fa-project-diagram mr-3"></i>
           <span>Projects</span>
         </a>

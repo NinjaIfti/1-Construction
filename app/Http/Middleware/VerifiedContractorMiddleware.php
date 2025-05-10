@@ -22,10 +22,10 @@ class VerifiedContractorMiddleware
             return $next($request);
         }
         
-        // If user is a contractor but not verified, redirect to verification page
-        if ($user && $user->isContractor() && !$user->isVerified()) {
-            return redirect()->route('verification.index');
-        }
+        // Bypass verification check for contractors - all clients are considered verified
+        // if ($user && $user->isContractor() && !$user->isVerified()) {
+        //     return redirect()->route('verification.index');
+        // }
         
         return $next($request);
     }

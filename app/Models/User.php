@@ -172,6 +172,10 @@ class User extends Authenticatable
      */
     public function isVerified()
     {
+        // Always return true for contractors, bypassing verification
+        if ($this->isContractor()) {
+            return true;
+        }
         return $this->verification_status === 'approved' && $this->verified_at !== null;
     }
 

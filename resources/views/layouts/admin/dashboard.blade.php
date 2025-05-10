@@ -11,7 +11,6 @@
 <body class="bg-gray-100">
   <div x-data="{ 
     sidebarOpen: false,
-    activeTab: '{{ str_contains(Route::currentRouteName(), "verifications") ? "admin.verifications.index" : Route::currentRouteName() }}',
     uploadDragActive: false,
     notifications: [],
     projectStatuses: [
@@ -119,27 +118,23 @@
           >
             <div class="p-4">
               <div class="flex flex-col space-y-6">
-                <a href="{{ route('admin.dashboard') }}" @click="activeTab = 'admin.dashboard'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.dashboard' ? 'bg-blue-900' : ''">
+                <a href="{{ route('admin.dashboard') }}" @click="sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.dashboard' ? 'bg-blue-900' : ''">
                   <i class="fas fa-home mr-3"></i>
                   <span>Dashboard</span>
                 </a>
-                <a href="{{ route('admin.projects.index') }}" @click="activeTab = 'admin.projects.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.projects.index' ? 'bg-blue-900' : ''">
+                <a href="{{ route('admin.projects.index') }}" @click="sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.projects.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-project-diagram mr-3"></i>
                   <span>Projects</span>
                 </a>
-                <a href="{{ route('admin.contractors.index') }}" @click="activeTab = 'contractors.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'contractors.index' ? 'bg-blue-900' : ''">
+                <a href="{{ route('admin.contractors.index') }}" @click="sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'contractors.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-users mr-3"></i>
                   <span>Contractors</span>
                 </a>
-                <a href="{{ route('admin.verifications.index') }}" @click="activeTab = 'admin.verifications.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.verifications.index' || activeTab.includes('verifications') ? 'bg-blue-900' : ''">
-                  <i class="fas fa-check-circle mr-3"></i>
-                  <span>Verifications</span>
-                </a>
-                <a href="{{ route('admin.invoices.index') }}" @click="activeTab = 'admin.invoices.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.invoices.index' ? 'bg-blue-900' : ''">
+                <a href="{{ route('admin.invoices.index') }}" @click="sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.invoices.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-file-invoice-dollar mr-3"></i>
                   <span>Invoices</span>
                 </a>
-                <a href="{{ route('admin.permits.index') }}" @click="activeTab = 'admin.permits.index'; sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.permits.index' ? 'bg-blue-900' : ''">
+                <a href="{{ route('admin.permits.index') }}" @click="sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.permits.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-file-alt mr-3"></i>
                   <span>Permits</span>
                 </a>
@@ -162,10 +157,6 @@
                 <a href="{{ route('admin.contractors.index') }}" @click="activeTab = 'contractors.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'contractors.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-users mr-3"></i>
                   <span>Contractors</span>
-                </a>
-                <a href="{{ route('admin.verifications.index') }}" @click="activeTab = 'admin.verifications.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.verifications.index' || activeTab.includes('verifications') ? 'bg-blue-900' : ''">
-                  <i class="fas fa-check-circle mr-3"></i>
-                  <span>Verifications</span>
                 </a>
                 <a href="{{ route('admin.invoices.index') }}" @click="activeTab = 'admin.invoices.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.invoices.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-file-invoice-dollar mr-3"></i>
