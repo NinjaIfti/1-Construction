@@ -158,8 +158,96 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     // Contractor Management
     Route::get('/contractors', [AdminContractorController::class, 'index'])->name('contractors.index');
+    Route::get('/contractors/create', [AdminContractorController::class, 'create'])->name('contractors.create');
+    Route::post('/contractors', [AdminContractorController::class, 'store'])->name('contractors.store');
     Route::get('/contractors/{contractor}', [AdminContractorController::class, 'show'])->name('contractors.show');
+    Route::get('/contractors/{contractor}/edit', [AdminContractorController::class, 'edit'])->name('contractors.edit');
+    Route::put('/contractors/{contractor}', [AdminContractorController::class, 'update'])->name('contractors.update');
     Route::delete('/contractors/{contractor}', [AdminContractorController::class, 'destroy'])->name('contractors.destroy');
+    
+    // Add a reliable backup route for contractor deletion
+    Route::delete('/contractors/{contractor}/force-delete', function(\App\Models\User $contractor) {
+        \Log::info('Force delete route accessed for contractor', ['id' => $contractor->id, 'name' => $contractor->name]);
+        try {
+            \DB::beginTransaction();
+            
+            // Clear related resources with error handling
+            try {
+                // Handle messages
+                \DB::table('messages')->where('contractor_id', $contractor->id)->update(['contractor_id' => null]);
+                \DB::table('messages')->where('sender_id', $contractor->id)->update(['sender_id' => null]);
+                \DB::table('messages')->where('recipient_id', $contractor->id)->update(['recipient_id' => null]);
+                
+                // Get permits associated with contractor through projects
+                $permitIds = \DB::table('permits')
+                    ->join('projects', 'permits.project_id', '=', 'projects.id')
+                    ->where('projects.contractor_id', $contractor->id)
+                    ->pluck('permits.id');
+                
+                // Delete related document files and records
+                $documentIds = \DB::table('documents')->whereIn('permit_id', $permitIds)->pluck('id');
+                foreach (\App\Models\Document::whereIn('id', $documentIds)->get() as $doc) {
+                    if ($doc->file_path && \Storage::disk('public')->exists($doc->file_path)) {
+                        \Storage::disk('public')->delete($doc->file_path);
+                    }
+                }
+                
+                // Delete contractor's direct documents
+                foreach ($contractor->documents as $doc) {
+                    if ($doc->file_path && \Storage::disk('public')->exists($doc->file_path)) {
+                        \Storage::disk('public')->delete($doc->file_path);
+                    }
+                }
+                
+                // Delete verification files
+                $verificationFiles = [
+                    $contractor->contractor_license_file,
+                    $contractor->drivers_license_file,
+                    $contractor->insurance_certificate_file
+                ];
+                
+                foreach ($verificationFiles as $filePath) {
+                    if (!empty($filePath) && \Storage::disk('public')->exists($filePath)) {
+                        \Storage::disk('public')->delete($filePath);
+                    }
+                }
+                
+                // Delete related records
+                \DB::table('comments')->whereIn('permit_id', $permitIds)->delete();
+                \DB::table('notifications')->whereIn('permit_id', $permitIds)->delete();
+                \DB::table('documents')->whereIn('id', $documentIds)->delete();
+                \DB::table('permits')->whereIn('id', $permitIds)->delete();
+                $contractor->documents()->delete();
+                $contractor->projects()->delete();
+                $contractor->invoices()->delete();
+                $contractor->comments()->delete();
+                $contractor->sentMessages()->delete();
+                $contractor->receivedMessages()->delete();
+                $contractor->contractorMessages()->delete();
+                $contractor->notifications()->delete();
+                
+                // Delete associated Contractor record if it exists
+                if ($contractor->contractor_id) {
+                    \App\Models\Contractor::where('id', $contractor->contractor_id)->delete();
+                }
+            } catch (\Exception $e) {
+                \Log::error('Error deleting contractor related data', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+            }
+            
+            // Finally delete the contractor
+            $contractor->delete();
+            
+            \DB::commit();
+            return redirect()->route('admin.contractors.index')
+                ->with('success', 'Contractor and all related data have been deleted successfully.');
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            \Log::error('Force delete failed for contractor', ['id' => $contractor->id, 'error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+            return redirect()->route('admin.contractors.index')
+                ->with('error', 'Failed to delete contractor: ' . $e->getMessage());
+        }
+    })->name('contractors.force-delete');
+    
     Route::get('/api/dashboard/contractors', [AdminContractorController::class, 'getDashboardContractors'])->name('api.dashboard.contractors');
     
     // Invoice Management
@@ -178,6 +266,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/verifications/{contractor}', [AdminVerificationController::class, 'show'])->name('verifications.show');
     Route::get('/verifications/{contractor}/edit', [AdminVerificationController::class, 'edit'])->name('verifications.edit');
     Route::put('/verifications/{contractor}', [AdminVerificationController::class, 'update'])->name('verifications.update');
+    Route::get('/verifications/{contractor}/documents/{documentType}/download', [AdminVerificationController::class, 'downloadDocument'])->name('verifications.documents.download');
+    Route::get('/verifications/{contractor}/documents/{documentType}/preview', [AdminVerificationController::class, 'previewDocument'])->name('verifications.documents.preview');
     
     // Permit Management
     Route::get('/permits', [App\Http\Controllers\Admin\AdminPermitController::class, 'index'])->name('permits.index');
@@ -240,5 +330,7 @@ Route::middleware(['auth'])->prefix('client/api')->name('client.api.')->group(fu
     Route::get('/dashboard/activities', [ContractorController::class, 'getDashboardActivities'])->name('dashboard.activities');
     Route::get('/dashboard/documents', [ClientDocumentController::class, 'getDashboardDocuments'])->name('dashboard.documents');
 });
+
+// Debug routes removed - functionality integrated into main application
 
 require __DIR__.'/auth.php';

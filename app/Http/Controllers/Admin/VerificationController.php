@@ -7,6 +7,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use App\Mail\VerificationStatusUpdated;
 
 /**
@@ -123,5 +124,89 @@ class VerificationController extends AdminController
 
         return redirect()->route('admin.verifications.show', $contractor)
             ->with('success', $statusMessage);
+    }
+    
+    /**
+     * Download a contractor verification document.
+     *
+     * @param User $contractor
+     * @param string $documentType
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function downloadDocument(User $contractor, $documentType)
+    {
+        // Check if user is a contractor
+        if ($contractor->role !== 'contractor') {
+            abort(404);
+        }
+        
+        $filePath = null;
+        $fileName = null;
+        
+        // Get the appropriate file path based on document type
+        switch ($documentType) {
+            case 'license':
+                $filePath = $contractor->contractor_license_file;
+                $fileName = 'contractor_license.' . pathinfo($filePath, PATHINFO_EXTENSION);
+                break;
+            case 'drivers':
+                $filePath = $contractor->drivers_license_file;
+                $fileName = 'drivers_license.' . pathinfo($filePath, PATHINFO_EXTENSION);
+                break;
+            case 'insurance':
+                $filePath = $contractor->insurance_certificate_file;
+                $fileName = 'insurance_certificate.' . pathinfo($filePath, PATHINFO_EXTENSION);
+                break;
+            default:
+                abort(404);
+        }
+        
+        // Check if file exists
+        if (!$filePath || !Storage::disk('public')->exists($filePath)) {
+            abort(404);
+        }
+        
+        // Return file for download
+        return response()->download(storage_path('app/public/' . $filePath), $fileName);
+    }
+    
+    /**
+     * Preview a contractor verification document.
+     *
+     * @param User $contractor
+     * @param string $documentType
+     * @return \Illuminate\Http\Response
+     */
+    public function previewDocument(User $contractor, $documentType)
+    {
+        // Check if user is a contractor
+        if ($contractor->role !== 'contractor') {
+            abort(404);
+        }
+        
+        $filePath = null;
+        
+        // Get the appropriate file path based on document type
+        switch ($documentType) {
+            case 'license':
+                $filePath = $contractor->contractor_license_file;
+                break;
+            case 'drivers':
+                $filePath = $contractor->drivers_license_file;
+                break;
+            case 'insurance':
+                $filePath = $contractor->insurance_certificate_file;
+                break;
+            default:
+                abort(404);
+        }
+        
+        // Check if file exists
+        if (!$filePath || !Storage::disk('public')->exists($filePath)) {
+            abort(404);
+        }
+        
+        // Return file for preview
+        return response()->file(storage_path('app/public/' . $filePath));
     }
 } 

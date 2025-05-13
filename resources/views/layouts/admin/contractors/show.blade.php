@@ -80,9 +80,20 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <label class="block text-gray-500 text-sm mb-2">Project Types</label>
-                    @if(!empty($contractor->project_types))
+                    @php
+                        $projectTypes = $contractor->project_types;
+                        if (is_string($projectTypes) && !empty($projectTypes)) {
+                            try {
+                                $projectTypes = json_decode($projectTypes, true);
+                            } catch (\Exception $e) {
+                                $projectTypes = null;
+                            }
+                        }
+                    @endphp
+                    
+                    @if(!empty($projectTypes) && is_array($projectTypes))
                         <ul class="list-disc list-inside space-y-1">
-                            @foreach($contractor->project_types as $type)
+                            @foreach($projectTypes as $type)
                                 <li>{{ ucfirst(str_replace('-', ' ', $type)) }}</li>
                             @endforeach
                         </ul>
@@ -93,9 +104,20 @@
                 
                 <div>
                     <label class="block text-gray-500 text-sm mb-2">Services Interested In</label>
-                    @if(!empty($contractor->services))
+                    @php
+                        $services = $contractor->services;
+                        if (is_string($services) && !empty($services)) {
+                            try {
+                                $services = json_decode($services, true);
+                            } catch (\Exception $e) {
+                                $services = null;
+                            }
+                        }
+                    @endphp
+                    
+                    @if(!empty($services) && is_array($services))
                         <ul class="list-disc list-inside space-y-1">
-                            @foreach($contractor->services as $service)
+                            @foreach($services as $service)
                                 <li>{{ ucfirst(str_replace('-', ' ', $service)) }}</li>
                             @endforeach
                         </ul>
@@ -123,10 +145,10 @@
             <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                 <i class="fas fa-envelope mr-2"></i> Send Email
             </button>
-            <button class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">
+            <a href="{{ route('admin.contractors.edit', $contractor->id) }}" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded font-medium flex items-center">
                 <i class="fas fa-edit mr-2"></i> Edit Profile
-            </button>
-            <form action="{{ route('admin.contractors.destroy', $contractor->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this contractor? This will delete all related data including projects, permits, documents, and invoices.');">
+            </a>
+            <form action="{{ route('admin.contractors.force-delete', $contractor->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this contractor? This will delete all related data including projects, permits, documents, and invoices.');">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">

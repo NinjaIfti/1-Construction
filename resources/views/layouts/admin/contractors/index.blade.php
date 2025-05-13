@@ -5,7 +5,7 @@
     <h2 class="text-xl md:text-2xl font-bold mb-6">Contractors</h2>
     <div class="bg-white rounded-lg shadow p-4">
         <div class="flex flex-wrap gap-4 mb-6">
-            <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onclick="window.location.href='{{ route('get-started') }}'">
+            <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onclick="window.location.href='{{ route('admin.contractors.create') }}'">
                 <i class="fas fa-user-plus mr-2"></i> Add Contractor
             </button>
             <div class="flex-grow"></div>
@@ -52,7 +52,7 @@
                                 <a href="{{ route('admin.contractors.show', $contractor->id) }}" class="bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-1 rounded text-sm mr-2">
                                     <i class="fas fa-eye mr-1"></i> View
                                 </a>
-                                <form action="{{ route('admin.contractors.destroy', $contractor->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this contractor? This will delete all related data including projects, permits, documents, and invoices.');">
+                                <form action="{{ route('admin.contractors.force-delete', $contractor->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this contractor? This will delete all related data including projects, permits, documents, and invoices.');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1 rounded text-sm">
