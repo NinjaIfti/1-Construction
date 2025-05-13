@@ -199,7 +199,7 @@
             @yield('content')
             
             <!-- Dashboard Content -->
-            <div id="dashboard-content" class="hidden">
+            <div id="dashboard-content" class="block {{ request()->routeIs('client.messages.*') ? 'hidden' : '' }}">
               <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
               
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -217,18 +217,61 @@
                 </div>
               </div>
               
-              <div class="bg-white rounded-lg shadow p-4 mb-6">
-                <h3 class="font-bold mb-2">Recent Activity</h3>
-                <ul class="divide-y">
-                  <template x-for="activity in notifications" :key="activity.id">
-                    <li class="py-2">
-                      <span x-text="activity.message"></span> - <span x-text="activity.date"></span>
-                    </li>
-                  </template>
-                  <template x-if="notifications.length === 0">
-                    <li class="py-2 text-gray-500">No recent activities</li>
-                  </template>
-                </ul>
+              <!-- Recent Messages -->
+              <div class="mb-6">
+                <div class="border rounded-lg overflow-hidden">
+                  <div class="bg-gray-50 p-4 border-b">
+                    <h3 class="font-bold">
+                      Recent Messages
+                      <a href="{{ route('client.messages.index') }}" class="text-sm text-blue-500 hover:underline ml-2">View All</a>
+                    </h3>
+                  </div>
+                  
+                  <div class="divide-y">
+                    @if(isset($recentActivities) && count($recentActivities) > 0)
+                      @php
+                        // Filter activities to only show messages
+                        $messageActivities = array_filter($recentActivities, function($activity) {
+                          return $activity['type'] === 'message' || $activity['type'] === 'unread_message';
+                        });
+                        // Take only the first 5 message activities
+                        $messageActivities = array_slice($messageActivities, 0, 5);
+                      @endphp
+                      
+                      @if(count($messageActivities) > 0)
+                        @foreach($messageActivities as $activity)
+                          <div class="p-4 hover:bg-gray-50">
+                            <a href="{{ route('client.messages.show', $activity['messageId'] ?? 0) }}" class="block">
+                              <div class="flex justify-between">
+                                <span class="font-medium {{ $activity['type'] === 'unread_message' ? 'text-blue-600 font-bold' : 'text-gray-800' }}">
+                                  @if($activity['type'] === 'unread_message')
+                                    <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-white bg-red-500 rounded-full">New</span>
+                                  @endif
+                                  {{ str_replace('[UNREAD] Message: ', '', $activity['message']) }}
+                                </span>
+                                <span class="text-sm text-gray-500">{{ $activity['date'] }}</span>
+                              </div>
+                            </a>
+                          </div>
+                        @endforeach
+                      @else
+                        <div class="p-4 text-center text-gray-500">
+                          No recent messages
+                        </div>
+                      @endif
+                    @else
+                      <div class="p-4 text-center text-gray-500">
+                        No recent messages
+                      </div>
+                    @endif
+                  </div>
+                  
+                  <div class="bg-gray-50 p-3 border-t text-center">
+                    <a href="{{ route('client.messages.create') }}" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                      <i class="fas fa-plus-circle mr-1"></i> New Message
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -403,67 +446,30 @@
   </script>
 
   <script>
-    // Fetch unread message count every 30 seconds for notification badge update
-    function updateUnreadCount() {
-        fetch("{{ route('api.messages.unread') }}")
-            .then(response => response.json())
-            .then(data => {
-                const badge = document.getElementById('message-badge');
-                if (badge) {
-                    if (data.count > 0) {
-                        badge.textContent = data.count;
-                        badge.classList.remove('hidden');
-                    } else {
-                        badge.classList.add('hidden');
-                    }
-                }
-            });
-    }
-    
-    // Initial update
-    updateUnreadCount();
-    
-    // Set interval for updates
-    setInterval(updateUnreadCount, 30000);
-  </script>
-
-  <script>
     document.addEventListener('alpine:init', () => {
       Alpine.data('dashboardData', () => ({
         notifications: [],
-        unreadNotifications: 0,
         activeTab: 'dashboard',
         
         init() {
-          this.loadNotifications();
+          console.log('Alpine.js dashboard data initialized');
           this.updateStats();
           
           // Set active tab from backend data
           @if(isset($activeSection) && $activeSection)
           this.activeTab = '{{ $activeSection }}';
           @endif
-        },
-        
-        loadNotifications() {
-          fetch('/api/notifications/recent')
-            .then(response => response.json())
-            .then(data => {
-              this.notifications = data;
-            })
-            .catch(error => {
-              console.error('Error loading notifications:', error);
-              this.notifications = [];
-            });
-            
-          fetch('/api/notifications/unread')
-            .then(response => response.json())
-            .then(data => {
-              this.unreadNotifications = data.length;
-            })
-            .catch(error => {
-              console.error('Error loading unread notifications:', error);
-              this.unreadNotifications = 0;
-            });
+          
+          // Force dashboard to be visible only if not on messages pages
+          setTimeout(() => {
+            const dashboardContent = document.getElementById('dashboard-content');
+            if (dashboardContent && !window.location.pathname.includes('/client/messages')) {
+              console.log('Making dashboard visible');
+              dashboardContent.style.display = 'block';
+              dashboardContent.classList.remove('hidden');
+              dashboardContent.classList.add('block');
+            }
+          }, 500);
         },
         
         updateStats() {
@@ -497,6 +503,21 @@
         <a href="{{ route('projects.index') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('projects.*') ? 'bg-blue-900' : '' }}">
           <i class="fas fa-project-diagram mr-3"></i>
           <span>Projects</span>
+        </a>
+        
+        <a href="{{ route('client.documents.index') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('client.documents.*') ? 'bg-blue-900' : '' }}">
+          <i class="fas fa-folder mr-3"></i>
+          <span>Documents</span>
+        </a>
+        
+        <a href="{{ route('client.permits.create') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('client.permits.*') ? 'bg-blue-900' : '' }}">
+          <i class="fas fa-file-upload mr-3"></i>
+          <span>Submit Permit</span>
+        </a>
+        
+        <a href="{{ route('client.messages.index') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('client.messages.*') ? 'bg-blue-900' : '' }}">
+          <i class="fas fa-comment mr-3"></i>
+          <span>Messages</span>
         </a>
       </div>
     </div>

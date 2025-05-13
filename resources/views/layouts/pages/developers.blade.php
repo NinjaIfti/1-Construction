@@ -115,7 +115,7 @@
                     <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Keep every project on schedule, everywhere you build</h1>
                     <p class="text-lg mb-8">Eliminate permitting delays so you can close out construction on time and start generating revenue</p>
                     
-                    <a href="/talk-to-expert" class="btn-primary inline-block">
+                    <a href="/get-started" class="btn-primary inline-block">
                         Talk to an Expert
                     </a>
                 </div>

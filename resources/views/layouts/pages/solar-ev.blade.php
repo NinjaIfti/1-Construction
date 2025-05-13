@@ -89,7 +89,7 @@
                     <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Fast-track renewable energy project permitting</h1>
                     <p class="text-lg mb-8">Simplify solar installations and EV charging infrastructure projects with automated permitting solutions</p>
                     
-                    <a href="/talk-to-expert" class="btn-green inline-block">
+                    <a href="/get-started" class="btn-green inline-block">
                         Schedule a Demo
                     </a>
                 </div>
@@ -124,7 +124,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">Residential Solar</h3>
                         <p class="text-gray-600 mb-4">Streamline permits for home solar installations with automated documentation and faster approvals.</p>
-                        <a href="/residential-solar" class="text-green-600 font-medium hover:text-green-800 transition-colors">Learn more <i class="bi bi-arrow-right"></i></a>
+                        
                     </div>
                 </div>
                 
@@ -136,7 +136,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">Commercial Solar</h3>
                         <p class="text-gray-600 mb-4">Manage complex permitting for large-scale solar projects, from rooftop to ground-mounted arrays.</p>
-                        <a href="/commercial-solar" class="text-green-600 font-medium hover:text-green-800 transition-colors">Learn more <i class="bi bi-arrow-right"></i></a>
+                        
                     </div>
                 </div>
                 
@@ -148,7 +148,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">EV Charging Infrastructure</h3>
                         <p class="text-gray-600 mb-4">Navigate electrical, zoning, and utility requirements for EV charging station installations.</p>
-                        <a href="/ev-charging" class="text-green-600 font-medium hover:text-green-800 transition-colors">Learn more <i class="bi bi-arrow-right"></i></a>
+                        
                     </div>
                 </div>
             </div>
@@ -266,10 +266,10 @@
             <h2 class="text-3xl font-bold mb-6" data-aos="fade-up">Power up your permitting process</h2>
             <p class="text-lg mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Join the renewable energy companies that are accelerating clean energy adoption with streamlined permitting.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="200">
-                <a href="/schedule-demo" class="btn-green text-lg">
+                <a href="/get-started" class="btn-green text-lg">
                     Schedule a Demo
                 </a>
-                <a href="/pricing" class="border-2 border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-green-700 transition-colors font-medium">
+                <a href="/get-started" class="border-2 border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-green-700 transition-colors font-medium">
                     View Pricing
                 </a>
             </div>
@@ -400,11 +400,7 @@
                 </div>
             </div>
             
-            <div class="text-center mt-10" data-aos="fade-up" data-aos-delay="500">
-                <a href="/faq" class="text-green-600 font-medium hover:text-green-800 transition-colors">
-                    View all FAQs <i class="bi bi-arrow-right"></i>
-                </a>
-            </div>
+            
         </div>
     </section>
     

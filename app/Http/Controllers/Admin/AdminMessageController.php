@@ -200,4 +200,34 @@ class AdminMessageController extends Controller
             
         return response()->json(['count' => $count]);
     }
+
+    /**
+     * Get recent messages for admin dashboard.
+     */
+    public function recentMessages()
+    {
+        $user = Auth::user();
+        
+        $messages = Message::where(function ($query) use ($user) {
+                $query->where('recipient_id', $user->id)
+                    ->orWhere('sender_id', $user->id);
+            })
+            ->with(['sender', 'recipient'])
+            ->orderBy('created_at', 'desc')
+            ->take(10)
+            ->get()
+            ->map(function ($message) {
+                return [
+                    'id' => $message->id,
+                    'subject' => $message->subject,
+                    'sender_name' => $message->sender->name,
+                    'recipient_name' => $message->recipient->name,
+                    'date' => $message->created_at->format('M d'),
+                    'read_at' => $message->read_at,
+                    'has_attachment' => $message->has_attachment
+                ];
+            });
+        
+        return response()->json($messages);
+    }
 } 

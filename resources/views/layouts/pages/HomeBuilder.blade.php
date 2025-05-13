@@ -312,11 +312,11 @@
                     <p class="text-lg md:text-xl text-gray-300 mb-8">Leading national home builders trust 1 Construction to reduce permit delays by up to 60%, increase efficiency, and deliver projects on time and under budget.</p>
                     
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="/talk-to-expert" class="btn-red inline-block text-center">
+                        <a href="/get-started" class="btn-red inline-block text-center">
                             Schedule a Consultation
                         </a>
-                        <a href="/case-studies" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-navy transition-all inline-block text-center font-medium">
-                            View Case Studies
+                        <a href="/resourcess" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition-all inline-block text-center font-medium">
+                            Resources
                         </a>
                     </div>
                     
@@ -605,10 +605,10 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">Ready to Accelerate Your Permitting Process?</h2>
                 <p class="text-lg mb-8 text-gray-300" data-aos="fade-up" data-aos-delay="100">Join the top home builders who are getting permits 60% faster and keeping projects on schedule with our industry-leading platform.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="200">
-                    <a href="/schedule-demo" class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-medium transition-colors text-lg inline-flex items-center justify-center">
+                    <a href="/get-started" class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-medium transition-colors text-lg inline-flex items-center justify-center">
                         <i class="bi bi-calendar-check mr-2"></i> Schedule a Demo
                     </a>
-                    <a href="/pricing" class="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-navy transition-colors font-medium inline-flex items-center justify-center">
+                    <a href="/get-started" class="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-navy transition-colors font-medium inline-flex items-center justify-center">
                         <i class="bi bi-tag mr-2"></i> View Pricing
                     </a>
                 </div>
@@ -770,11 +770,7 @@
                 </div>
             </div>
             
-            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="700">
-                <a href="/faq" class="text-red-600 font-medium hover:text-red-800 transition-colors inline-flex items-center">
-                    View all FAQs <i class="bi bi-arrow-right ml-2"></i>
-                </a>
-            </div>
+           
         </div>
     </section>
     
@@ -809,7 +805,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-navy" data-aos="fade-up">Start Building Faster Today</h2>
                 <p class="text-lg text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="100">Join the leading home builders who are revolutionizing their permitting process and accelerating construction timelines.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="200">
-                    <a href="/schedule-demo" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-medium transition-colors text-lg shadow-lg hover:shadow-xl">
+                    <a href="/get-started" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-medium transition-colors text-lg shadow-lg hover:shadow-xl">
                         Schedule Your Free Consultation
                     </a>
                 </div>

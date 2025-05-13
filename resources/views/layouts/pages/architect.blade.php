@@ -415,11 +415,7 @@
                 </div>
             </div>
             
-            <div class="text-center mt-10" data-aos="fade-up" data-aos-delay="500">
-                <a href="/faq" class="text-blue-700 font-medium hover:text-blue-900 transition-colors">
-                    View all FAQs <i class="bi bi-arrow-right"></i>
-                </a>
-            </div>
+            
         </div>
     </section>
     

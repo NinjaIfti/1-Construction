@@ -26,6 +26,58 @@
                 </div>
 
                 <div>
+                    <label for="contractor_id" class="block text-sm font-medium text-gray-700 mb-1">Contractor</label>
+                    <select name="contractor_id" id="contractor_id" required class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <option value="">Select a Contractor</option>
+                        @foreach($contractors as $contractor)
+                            <option value="{{ $contractor->id }}" {{ old('contractor_id', $project->contractor_id) == $contractor->id ? 'selected' : '' }}>
+                                {{ $contractor->company_name }} ({{ $contractor->name }})
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('contractor_id')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Address Fields -->
+                <div>
+                    <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                    <input type="text" name="address" id="address" value="{{ old('address', $project->address) }}" required
+                           class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    @error('address')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="city" class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                    <input type="text" name="city" id="city" value="{{ old('city', $project->city) }}" required
+                           class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    @error('city')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="state" class="block text-sm font-medium text-gray-700 mb-1">State</label>
+                    <input type="text" name="state" id="state" value="{{ old('state', $project->state) }}" required
+                           class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    @error('state')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="zip_code" class="block text-sm font-medium text-gray-700 mb-1">Zip Code</label>
+                    <input type="text" name="zip_code" id="zip_code" value="{{ old('zip_code', $project->zip_code) }}" required
+                           class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    @error('zip_code')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
                     <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
                     <select name="status" id="status" required class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         <option value="pending" {{ old('status', $project->status) == 'pending' ? 'selected' : '' }}>Pending</option>

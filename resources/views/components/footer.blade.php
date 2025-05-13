@@ -46,11 +46,11 @@
                 <div>
                     <h3 class="text-[#E31B23] font-bold mb-4">Services</h3>
                     <ul class="space-y-2">
-                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">Permit Research</a></li>
-                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">Permit Preparation</a></li>
-                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">Permit Submission</a></li>
-                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">Permit Tracking</a></li>
-                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">Expediting</a></li>
+                        <li><a href="/product" class="text-white hover:text-gray-300 transition duration-300">Permit Research</a></li>
+                        <li><a href="/product" class="text-white hover:text-gray-300 transition duration-300">Permit Preparation</a></li>
+                        <li><a href="/product" class="text-white hover:text-gray-300 transition duration-300">Permit Submission</a></li>
+                        <li><a href="/product" class="text-white hover:text-gray-300 transition duration-300">Permit Tracking</a></li>
+                        <li><a href="/product" class="text-white hover:text-gray-300 transition duration-300">Expediting</a></li>
                     </ul>
                 </div>
                 
@@ -58,11 +58,11 @@
                 <div>
                     <h3 class="text-[#E31B23] font-bold mb-4">Solutions</h3>
                     <ul class="space-y-2">
-                        <li><a href="/solutions" class="text-white hover:text-gray-300 transition duration-300">Home Builders</a></li>
-                        <li><a href="/solutions" class="text-white hover:text-gray-300 transition duration-300">Developers</a></li>
-                        <li><a href="/solutions" class="text-white hover:text-gray-300 transition duration-300">General Contractors</a></li>
-                        <li><a href="/solutions" class="text-white hover:text-gray-300 transition duration-300">Subcontractors</a></li>
-                        <li><a href="/solutions" class="text-white hover:text-gray-300 transition duration-300">Architects</a></li>
+                        <li><a href="/who-we-serve/home-builder" class="text-white hover:text-gray-300 transition duration-300">Home Builders</a></li>
+                        <li><a href="/who-we-serve/developers" class="text-white hover:text-gray-300 transition duration-300">Developers</a></li>
+                        <li><a href="/who-we-serve/GeneralContractor" class="text-white hover:text-gray-300 transition duration-300">General Contractors</a></li>
+                        <li><a href="/who-we-serve/sub-contractor" class="text-white hover:text-gray-300 transition duration-300">Subcontractors</a></li>
+                        <li><a href="/who-we-serve/architect" class="text-white hover:text-gray-300 transition duration-300">Architects</a></li>
                     </ul>
                 </div>
                 
@@ -70,9 +70,9 @@
                 <div>
                     <h3 class="text-[#E31B23] font-bold mb-4">Resources</h3>
                     <ul class="space-y-2">
-                        <li><a href="/blog" class="text-white hover:text-gray-300 transition duration-300">Blog</a></li>
-                        <li><a href="/guides" class="text-white hover:text-gray-300 transition duration-300">Guides</a></li>
-                        <li><a href="/faq" class="text-white hover:text-gray-300 transition duration-300">FAQ</a></li>
+                        <li><a href="/resourcess" class="text-white hover:text-gray-300 transition duration-300">Blog</a></li>
+                        <li><a href="/resourcess" class="text-white hover:text-gray-300 transition duration-300">Guides</a></li>
+                        <li><a href="/resourcess" class="text-white hover:text-gray-300 transition duration-300">FAQ</a></li>
                     </ul>
                 </div>
                 
@@ -80,9 +80,9 @@
                 <div>
                     <h3 class="text-[#E31B23] font-bold mb-4">Company</h3>
                     <ul class="space-y-2">
-                        <li><a href="/about" class="text-white hover:text-gray-300 transition duration-300">About Us</a></li>
-                        <li><a href="/contact" class="text-white hover:text-gray-300 transition duration-300">Contact</a></li>
-                        <li><a href="/careers" class="text-white hover:text-gray-300 transition duration-300">Careers</a></li>
+                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">About Us</a></li>
+                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">Contact</a></li>
+                        <li><a href="/get-started" class="text-white hover:text-gray-300 transition duration-300">Careers</a></li>
                     </ul>
                 </div>
             </div>

@@ -61,7 +61,7 @@
                     </div>
                     <div>
                         <h4 class="text-[#0A2240] text-xl font-bold mb-2" style="color: #0A2240;">Proven Track Record</h4>
-                        <p class="text-gray-600 mb-0">Over 500 successful projects completed across residential, commercial, and industrial sectors nationwide.</p>
+                        <p class="text-gray-600 mb-0">Over Thousands of successful projects completed across residential, commercial, and industrial sectors nationwide.</p>
                     </div>
                 </div>
                 

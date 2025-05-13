@@ -3,9 +3,9 @@
     <div class="container mx-auto px-6 relative z-10">
         <div class="flex flex-col lg:flex-row items-center">
             <!-- Left content column -->
-            <div class="w-full lg:w-1/2 text-white mb-10 lg:mb-0 transform transition-all duration-700 translate-y-0 opacity-100" 
+            <div class="w-full lg:w-1/2 text-white mb-10 lg:mb-0 transform transition-all duration-700 translate-y-0 opacity-100 flex flex-col items-start" 
                  style="animation: fadeInUp 1s ease-out;">
-                <div class="inline-block bg-gradient-to-r from-[#E31B23] to-[#ff4b52] px-4 py-2 rounded-full text-white text-sm font-semibold mb-6 shadow-md transform hover:scale-105 transition-transform duration-300">
+                <div class="bg-gradient-to-r from-[#E31B23] to-[#ff4b52] px-4 py-2 rounded-full text-white text-sm font-semibold mb-6 shadow-md transform hover:scale-105 transition-transform duration-300">
                     Premier Permit Solutions
                 </div>
                 <h1 class="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight mb-6 tracking-tight text-white">
@@ -50,41 +50,83 @@
                 
                 <!-- Enhanced CTA Buttons -->
                 <div class="flex flex-wrap">
-                    <a href="/schedule-demo" class="px-8 py-4 bg-gradient-to-r from-[#E31B23] to-[#ff4b52] text-white font-semibold rounded-lg shadow-xl hover:shadow-2xl transition duration-300 mr-5 mb-3 md:mb-0 transform hover:-translate-y-1 hover:scale-105 focus:ring-4 focus:ring-red-500 focus:ring-opacity-50 focus:outline-none">
+                    <a href="/get-started" class="px-8 py-4 bg-gradient-to-r from-[#E31B23] to-[#ff4b52] text-white font-semibold rounded-lg shadow-xl hover:shadow-2xl transition duration-300 mr-5 mb-3 md:mb-0 transform hover:-translate-y-1 hover:scale-105 hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 focus:ring-4 focus:ring-red-500 focus:ring-opacity-50 focus:outline-none">
                         Get Started
                     </a>
-                    <a href="/pricing" class="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-[#0A2240] transition duration-300 transform hover:-translate-y-1 hover:scale-105 focus:ring-4 focus:ring-white focus:ring-opacity-50 focus:outline-none">
-                        View Pricing
+                    <a href="/get-started" class="px-8 py-4 bg-red-600 text-white font-semibold rounded-lg shadow-xl hover:shadow-2xl transition duration-300 mr-5 mb-3 md:mb-0 transform hover:-translate-y-1 hover:scale-105 hover:bg-white hover:text-black focus:ring-4 focus:ring-red-500 focus:ring-opacity-50 focus:outline-none">
+                       View Pricing
                     </a>
                 </div>
             </div>
             
-            <!-- Right image column with animation -->
+            <!-- Right image column with enhanced professional styling -->
             <div class="w-full lg:w-1/2 flex justify-center items-center transform transition-all duration-700 translate-y-0 opacity-100"
                  style="animation: fadeInRight 1s ease-out;">
-                <!-- Enhanced image container with animated border -->
-                <div class="relative w-full max-w-lg overflow-hidden rounded-lg hover:shadow-2xl transition-shadow duration-500">
-                    <!-- Animated red border effect -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-[#E31B23] to-[#ff4b52] rounded-lg transform translate-x-3 translate-y-3 transition-transform duration-500 hover:translate-x-4 hover:translate-y-4"></div>
-                    
-                    <!-- Enhanced image display with subtle hover zoom -->
-                    <div class="relative bg-white rounded-lg overflow-hidden shadow-xl">
-                        <div class="overflow-hidden">
-                            <img src="/images/team.jpg" alt="Permit Processing Team" class="w-full h-auto transition-transform duration-700 hover:scale-105" style="min-height: 300px;">
+                <!-- Professional dashboard display with enhanced styling -->
+                <div class="relative w-full max-w-lg perspective-1000">
+                    <!-- Floating elements to indicate interactive dashboard -->
+                    <div class="absolute -top-4 -right-4 bg-white rounded-lg p-2 shadow-lg transform rotate-3 z-10 animate-float-slow opacity-90">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span class="text-xs font-medium text-gray-700">15 Projects Active</span>
                         </div>
                     </div>
                     
-                    <!-- Enhanced Stats card with animation -->
-                    <div class="absolute bottom-6 -left-[110px] bg-white p-6 rounded-lg shadow-2xl z-30 max-w-[220px] transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
-                        <div class="flex items-center mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 animate-pulse">
-                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                            </svg>
-                            <h4 class="text-[#0A2240] font-bold text-2xl m-0">95%</h4>
+                    <div class="absolute -bottom-6 -left-4 bg-white rounded-lg p-2 shadow-lg transform -rotate-3 z-10 animate-float-reverse-slow opacity-90">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+                            <span class="text-xs font-medium text-gray-700">93% Approval Rate</span>
                         </div>
-                        <p class="text-gray-600 font-medium text-sm m-0">Faster permit approval compared to industry average</p>
+                    </div>
+                    
+                    <!-- Main dashboard container -->
+                    <div class="relative">
+                        <!-- Shadow and glow effects -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#E31B23] to-[#ff4b52] rounded-xl transform translate-x-3 translate-y-3 transition-transform duration-500 hover:translate-x-4 hover:translate-y-4 opacity-90"></div>
+                        
+                        <!-- Professional looking border and frame -->
+                        <div class="relative bg-gradient-to-b from-[#0c2d5a] to-[#0A2240] rounded-xl overflow-hidden shadow-2xl border border-gray-700">
+                            <!-- Dashboard image with professional overlay -->
+                            <div class="relative overflow-hidden group rounded-t-xl">
+                                <!-- Subtle overlay grid pattern for professional UI look -->
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-900/10 to-transparent z-10 pointer-events-none opacity-70 rounded-t-xl"></div>
+                                <div class="absolute inset-0 bg-grid-pattern opacity-10 z-20 pointer-events-none rounded-t-xl"></div>
+                                
+                                <!-- Dashboard image with enhanced hover effects -->
+                                <img 
+                                    src="/images/dashboard.jpg" 
+                                    alt="Construction Management Dashboard" 
+                                    class="w-full h-auto transition-all duration-700 group-hover:scale-105 shadow-inner relative z-0 rounded-t-xl" 
+                                    style="min-height: 300px;"
+                                >
+                                
+                                <!-- Glass morphism UI elements suggesting interactivity -->
+                                <div class="absolute bottom-4 right-4 bg-black backdrop-blur-sm rounded-xl p-3 shadow-lg border border-white/20 z-30 transform transition-transform duration-300 group-hover:scale-110">
+                                    <div class="flex items-center space-x-2 ">
+                                        <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                                        <span class="text-xs font-medium text-white">Live Dashboard</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Hover reveal info panel -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0A2240]/90 to-transparent flex items-end justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-40 rounded-t-xl">
+                                    <div class="text-black text-center">
+                                        <p class="text-sm font-medium">Interactive project management</p>
+                                        <p class="text-xs opacity-80 mt-1">Real-time analytics & insights</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Dashboard UI status bar -->
+                            <div class="bg-[#0A2240] border-t border-gray-700 p-3 flex justify-between items-center rounded-b-xl">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                                    <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="text-xs text-black-400">Enterprise Dashboard v2.5</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -108,6 +150,17 @@
 
     <!-- CSS Animation Keyframes -->
     <style>
+        /* Grid pattern for dashboard UI */
+        .bg-grid-pattern {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), 
+                            linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+    
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -148,6 +201,14 @@
         
         .animate-float-reverse {
             animation: floatReverse 20s ease-in-out infinite;
+        }
+        
+        .animate-float-slow {
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .animate-float-reverse-slow {
+            animation: floatReverse 12s ease-in-out infinite;
         }
         
         .animate-pulse {

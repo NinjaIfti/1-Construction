@@ -71,7 +71,7 @@
                     <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Build better with faster permits and less hassle</h1>
                     <p class="text-lg mb-8">Slash permitting timelines, reduce overhead, and keep your projects on schedule</p>
                     
-                    <a href="/talk-to-expert" class="btn-primary inline-block">
+                    <a href="/get-started" class="btn-primary inline-block">
                         Talk to an Expert
                     </a>
                 </div>
@@ -212,7 +212,7 @@
                     </div>
                     <h3 class="text-xl font-bold">Stop permitting headaches today</h3>
                 </div>
-                <a href="/talk-to-expert" style="background-color: #E31B23;" class="hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full">Talk to an Expert</a>
+                <a href="/get-started" style="background-color: #E31B23;" class="hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full">Talk to an Expert</a>
             </div>
         </div>
     </section>

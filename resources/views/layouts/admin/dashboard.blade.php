@@ -14,9 +14,7 @@
     sidebarOpen: false,
     activeTab: '{{ Route::currentRouteName() }}',
     uploadDragActive: false,
-    notifications: [],
     projectStatuses: [
-      { name: 'New notifications', date: 'Apr 12', status: '' },
       { name: 'Site-Development', date: 'Apr 23', status: '' },
       { name: 'Electrical Work', date: '', status: 'awaiting' },
       { name: 'Plumbing Installation', date: '', status: 'approved' },
@@ -30,40 +28,41 @@
       recent: []
     },
     loadContractors() {
-      fetch('/admin/api/dashboard/contractors')
-        .then(response => response.json())
-        .then(data => {
-          this.contractors = data.recent || [];
-        })
-        .catch(error => {
-          console.error('Error loading contractors:', error);
-          this.contractors = [];
-        });
+      if (!this.isMessagePage()) {
+        fetch('/admin/api/dashboard/contractors')
+          .then(response => response.json())
+          .then(data => {
+            this.contractors = data.recent || [];
+          })
+          .catch(error => {
+            console.error('Error loading contractors:', error);
+            this.contractors = [];
+          });
+      }
     },
     loadProjects() {
-      fetch('/admin/api/dashboard/projects')
-        .then(response => response.json())
-        .then(data => {
-          this.projects.counts = data.counts || { pending: 0, in_progress: 0, completed: 0, total: 0 };
-          this.projects.recent = data.recent || [];
-        })
-        .catch(error => {
-          console.error('Error loading projects:', error);
-        });
+      if (!this.isMessagePage()) {
+        fetch('/admin/api/dashboard/projects')
+          .then(response => response.json())
+          .then(data => {
+            this.projects.counts = data.counts || { pending: 0, in_progress: 0, completed: 0, total: 0 };
+            this.projects.recent = data.recent || [];
+          })
+          .catch(error => {
+            console.error('Error loading projects:', error);
+          });
+      }
     },
-    loadNotifications() {
-      fetch('/api/notifications/recent')
-        .then(response => response.json())
-        .then(data => {
-          this.notifications = data;
-        })
-        .catch(error => {
-          console.error('Error loading notifications:', error);
-          this.notifications = [];
-        });
+    isMessagePage() {
+      // Check for any admin message routes
+      return this.activeTab === 'admin.messages.index' || 
+             this.activeTab === 'admin.messages.show' || 
+             this.activeTab === 'admin.messages.create' || 
+             this.activeTab === 'admin.messages.reply' || 
+             this.activeTab === 'admin.messages.contractor';
     }
   }" 
-  x-init="loadContractors(); loadProjects(); loadNotifications()" 
+  x-init="loadContractors(); loadProjects();" 
   class="min-h-screen">
     <div class="flex flex-col lg:flex-row gap-6 p-4 md:p-6">
       <!-- Admin Dashboard Panel -->
@@ -140,6 +139,10 @@
                   <i class="fas fa-file-alt mr-3"></i>
                   <span>Permits</span>
                 </a>
+                <a href="{{ route('admin.messages.index') }}" @click="sidebarOpen = false" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.messages.index' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-envelope mr-3"></i>
+                  <span>Messages</span>
+                </a>
               </div>
             </div>
           </div>
@@ -167,6 +170,10 @@
                 <a href="{{ route('admin.permits.index') }}" @click="activeTab = 'admin.permits.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.permits.index' ? 'bg-blue-900' : ''">
                   <i class="fas fa-file-alt mr-3"></i>
                   <span>Permits</span>
+                </a>
+                <a href="{{ route('admin.messages.index') }}" @click="activeTab = 'admin.messages.index'" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition" :class="activeTab === 'admin.messages.index' ? 'bg-blue-900' : ''">
+                  <i class="fas fa-envelope mr-3"></i>
+                  <span>Messages</span>
                 </a>
               </div>
             </div>
@@ -269,17 +276,54 @@
                 </div>
               </div>
               
-              <!-- Notifications Section -->
+              <!-- Recent Messages -->
               <div class="mb-6">
-                <div class="border rounded-lg p-4">
-                  <h3 class="font-bold mb-4">Notifications</h3>
-                  <div class="space-y-2">
-                    <template x-for="notification in notifications" :key="notification.text">
-                      <div class="flex justify-between hover:bg-gray-50 p-2 rounded cursor-pointer" @click="alert('Viewing notification: ' + notification.text)">
-                        <div x-text="notification.text"></div>
-                        <div class="text-xs md:text-sm text-gray-600" x-text="notification.date"></div>
+                <div class="border rounded-lg overflow-hidden">
+                  <div class="bg-gray-50 p-4 border-b">
+                    <h3 class="font-bold">
+                      Recent Messages
+                      <a href="{{ route('admin.messages.index') }}" class="text-sm text-blue-500 hover:underline ml-2">View All</a>
+                    </h3>
+                  </div>
+                  
+                  <div class="divide-y" x-data="{ messages: [] }" x-init="
+                    fetch('/admin/api/messages/recent')
+                    .then(response => response.json())
+                    .then(data => {
+                      messages = data.slice(0, 5);
+                    })
+                    .catch(error => {
+                      console.error('Error loading recent messages:', error);
+                    })
+                  ">
+                    <template x-for="message in messages" :key="message.id">
+                      <div class="p-4 hover:bg-gray-50">
+                        <a :href="'/admin/messages/' + message.id" class="block">
+                          <div class="flex justify-between">
+                            <div>
+                              <span class="font-medium" :class="{'text-blue-600 font-bold': !message.read_at}">
+                                <span x-show="!message.read_at" class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-white bg-red-500 rounded-full">New</span>
+                                <span x-text="message.subject"></span>
+                              </span>
+                              <div class="text-xs text-gray-500 mt-1">
+                                From: <span x-text="message.sender_name"></span>
+                              </div>
+                            </div>
+                            <span class="text-sm text-gray-500" x-text="message.date"></span>
+                          </div>
+                        </a>
                       </div>
                     </template>
+                    
+                    <div x-show="messages.length === 0" class="p-4 text-center text-gray-500">
+                      No recent messages
+                    </div>
+                  </div>
+                  
+                  <div class="bg-gray-50 p-3 border-t text-center">
+                    <a href="{{ route('admin.messages.create') }}" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                      <i class="fas fa-plus-circle mr-1"></i> New Message
+                    </a>
                   </div>
                 </div>
               </div>

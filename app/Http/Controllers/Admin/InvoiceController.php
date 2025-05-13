@@ -18,22 +18,41 @@ class InvoiceController extends Controller
      */
     public function index(Request $request)
     {
+        // Start with base query
         $query = Invoice::with('contractor');
 
-        // Filter by status
-        if ($request->has('status') && $request->status !== '') {
+        // Apply filters only if they are set
+        if ($request->filled('status')) {
             $query->where('status', $request->status);
         }
 
-        // Filter by contractor
-        if ($request->has('contractor_id') && $request->contractor_id !== '') {
+        if ($request->filled('contractor_id')) {
             $query->where('contractor_id', $request->contractor_id);
         }
 
-        $invoices = $query->latest()->paginate(10);
-        $contractors = Contractor::orderBy('company_name')->get();
+        // For debugging - log the SQL query
+        $sql = $query->toSql();
+        $bindings = $query->getBindings();
+        Log::debug('Invoice query', ['sql' => $sql, 'bindings' => $bindings]);
 
-        return view('layouts.admin.invoices.index', compact('invoices', 'contractors'));
+        // Get invoices with pagination
+        $invoices = $query->latest()->paginate(10);
+        
+        // Log the count
+        Log::debug('Invoice count: ' . $invoices->total());
+        
+        // Preserve the query parameters in pagination links
+        if ($request->has('status') || $request->has('contractor_id')) {
+            $invoices->appends($request->only(['status', 'contractor_id']));
+        }
+        
+        // Get all contractors for the filter dropdown
+        $contractors = Contractor::orderBy('company_name')->get();
+        
+        // Check if we have any active filters
+        $hasFilters = $request->filled('status') || $request->filled('contractor_id');
+
+        return view('layouts.admin.invoices.index', compact('invoices', 'contractors', 'hasFilters'));
     }
 
     /**
@@ -62,8 +81,13 @@ class InvoiceController extends Controller
         try {
             DB::beginTransaction();
 
+            // Add user_id to the validated data
+            $validated['user_id'] = auth()->id();
+            
             $invoice = Invoice::create($validated);
 
+            // Notification code commented out temporarily
+            /*
             // Create notification for contractor
             $invoice->contractor->notifications()->create([
                 'title' => 'New Invoice',
@@ -71,6 +95,7 @@ class InvoiceController extends Controller
                 'type' => 'invoice',
                 'data' => ['invoice_id' => $invoice->id],
             ]);
+            */
 
             DB::commit();
 
@@ -126,6 +151,8 @@ class InvoiceController extends Controller
                 $invoice->update(['paid_at' => now()]);
             }
 
+            // Notification code commented out temporarily
+            /*
             // Create notification for contractor if status changed
             if ($oldStatus !== $validated['status']) {
                 $invoice->contractor->notifications()->create([
@@ -135,6 +162,7 @@ class InvoiceController extends Controller
                     'data' => ['invoice_id' => $invoice->id],
                 ]);
             }
+            */
 
             DB::commit();
 
@@ -161,6 +189,8 @@ class InvoiceController extends Controller
                 'paid_at' => now(),
             ]);
 
+            // Notification code commented out temporarily
+            /*
             // Create notification for contractor
             $invoice->contractor->notifications()->create([
                 'title' => 'Invoice Paid',
@@ -168,6 +198,7 @@ class InvoiceController extends Controller
                 'type' => 'invoice',
                 'data' => ['invoice_id' => $invoice->id],
             ]);
+            */
 
             DB::commit();
 
@@ -189,6 +220,8 @@ class InvoiceController extends Controller
         try {
             DB::beginTransaction();
 
+            // Notification code commented out temporarily
+            /*
             // Create notification for contractor
             $invoice->contractor->notifications()->create([
                 'title' => 'Invoice Deleted',
@@ -196,6 +229,7 @@ class InvoiceController extends Controller
                 'type' => 'invoice',
                 'data' => ['invoice_id' => $invoice->id],
             ]);
+            */
 
             $invoice->delete();
 

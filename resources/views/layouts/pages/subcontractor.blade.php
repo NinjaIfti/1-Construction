@@ -75,8 +75,8 @@
                     <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Streamline your specialty trade permitting process</h1>
                     <p class="text-lg mb-8">Fast-track permits, coordinate with general contractors, and manage inspections all in one place</p>
                     
-                    <a href="/talk-to-expert" class="btn-primary inline-block">
-                        Schedule a Demo
+                    <a href="/get-started" class="btn-primary inline-block">
+                        Get Started
                     </a>
                 </div>
                 <div class="lg:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
@@ -139,12 +139,6 @@
                 </div>
             </div>
             
-            <!-- Additional Trades Button -->
-            <div class="text-center mt-10" data-aos="fade-up" data-aos-delay="400">
-                <a href="/all-trades" class="btn-primary">
-                    View All Trades
-                </a>
-            </div>
         </div>
     </section>
     
@@ -260,10 +254,10 @@
             <h2 class="text-3xl font-bold mb-6" data-aos="fade-up">Ready to simplify your permitting process?</h2>
             <p class="text-lg mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Join thousands of specialty contractors who are saving time and reducing headaches with 1 Construction.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="200">
-                <a href="/schedule-demo" class="btn-primary text-lg">
+                <a href="/get-started" class="btn-primary text-lg">
                     Schedule a Demo
                 </a>
-                <a href="/pricing" class="border-2 border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-navy transition-colors font-medium">
+                <a href="/get-started" class="border-2 border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-navy transition-colors font-medium">
                     View Pricing
                 </a>
             </div>
@@ -394,11 +388,6 @@
                 </div>
             </div>
             
-            <div class="text-center mt-10" data-aos="fade-up" data-aos-delay="500">
-                <a href="/faq" class="text-red-600 font-medium hover:text-red-800 transition-colors">
-                    View all FAQs <i class="bi bi-arrow-right"></i>
-                </a>
-            </div>
         </div>
     </section>
     

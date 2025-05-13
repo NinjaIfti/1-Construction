@@ -51,6 +51,36 @@
             font-weight: 700;
             color: #0A2240;
         }
+        
+        /* Dashboard grid pattern */
+        .bg-grid-pattern {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), 
+                            linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        /* Animation keyframes */
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-15px, 15px) rotate(5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        
+        @keyframes floatReverse {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(15px, -15px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
         @media (max-width: 640px) {
             .stat-counter {
                 font-size: 2rem;
@@ -107,14 +137,45 @@
                     </div>
                 </div>
                 <div class="w-full lg:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
-                    <div class="relative">
-                        <div class="absolute bg-[#E31B23] rounded-lg w-full sm:w-4/5 h-full sm:h-4/5 right-0 top-0 z-0 opacity-90"></div>
-                        <div class="relative rounded-lg shadow-xl overflow-hidden z-10 mt-5 ml-5 transform hover:scale-105 transition-all duration-500">
-                            <img src="https://cdn.prod.website-files.com/6388a088c0a35a9c812b566a/6388a089c0a35aa4752b56cc_bildingwork.webp" alt="Permit Dashboard" class="w-full">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0A2240] to-transparent opacity-60"></div>
-                            <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white">
-                                <p class="text-base sm:text-xl font-semibold">Permit Management Dashboard</p>
-                                <p class="text-sm opacity-80">Real-time tracking and updates</p>
+                    <div class="relative max-w-lg mx-auto">
+                        <div class="absolute bg-[#E31B23] rounded-xl w-full sm:w-4/5 h-full sm:h-4/5 right-0 top-0 z-0 opacity-90 transform transition-transform duration-500 hover:translate-x-2 hover:translate-y-2"></div>
+                        <div class="relative rounded-xl shadow-xl overflow-hidden z-10 mt-5 ml-5 transform hover:scale-105 transition-all duration-500">
+                            <!-- Professional looking border and frame -->
+                            <div class="relative bg-gradient-to-b from-[#0c2d5a] to-[#0A2240] rounded-xl overflow-hidden border border-gray-700">
+                                <!-- Dashboard image with professional overlay -->
+                                <div class="relative overflow-hidden group rounded-t-xl">
+                                    <!-- Subtle overlay grid pattern for professional UI look -->
+                                    <div class="absolute inset-0 bg-gradient-to-br from-blue-900/10 to-transparent z-10 pointer-events-none opacity-70 rounded-t-xl"></div>
+                                    <div class="absolute inset-0 bg-grid-pattern opacity-10 z-20 pointer-events-none rounded-t-xl"></div>
+                                    
+                                    <img src="/images/dashboard.jpg" alt="Permit Management Dashboard" class="w-full h-auto rounded-t-xl" style="min-height: 300px;">
+                                    
+                                    <!-- Glass morphism UI elements suggesting interactivity -->
+                                    <div class="absolute bottom-4 right-4 bg-black backdrop-blur-sm rounded-xl p-3 shadow-lg border border-white/20 z-30 transform transition-transform duration-300 group-hover:scale-110">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                                            <span class="text-xs font-medium text-white">Live Dashboard</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Hover reveal info panel -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0A2240]/90 to-transparent flex items-end justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-40 rounded-t-xl">
+                                        <div class="text-black text-center">
+                                            <p class="text-sm font-medium">Interactive project management</p>
+                                            <p class="text-xs opacity-80 mt-1">Real-time analytics & insights</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dashboard UI status bar -->
+                                <div class="bg-[#0A2240] border-t border-gray-700 p-3 flex justify-between items-center rounded-b-xl">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                                        <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                                        <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Enterprise Dashboard v2.5</div>
+                                </div>
                             </div>
                         </div>
                     </div>

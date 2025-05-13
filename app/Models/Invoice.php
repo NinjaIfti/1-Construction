@@ -17,6 +17,7 @@ class Invoice extends Model
     protected $fillable = [
         'invoice_number',
         'user_id',
+        'contractor_id',
         'amount',
         'description',
         'status',
@@ -34,6 +35,14 @@ class Invoice extends Model
         'due_date' => 'date',
         'paid_at' => 'datetime',
     ];
+
+    /**
+     * Get the contractor that owns the invoice.
+     */
+    public function contractor()
+    {
+        return $this->belongsTo(Contractor::class);
+    }
 
     /**
      * Get the contractor that owns the invoice.

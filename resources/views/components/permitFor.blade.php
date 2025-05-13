@@ -33,7 +33,7 @@
                             <p class="mb-6 text-lg opacity-90">
                                 We're here to help whether you're working on a single community or a nationwide rollout. We combine local expertise and software to ensure you have predictability and transparency on requirements, costs, and timelines. We permit faster so you can build faster.
                             </p>
-                            <a href="#contact" class="inline-block px-6 py-3 bg-[#E31B23] text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors duration-300 mt-4">
+                            <a href="/get-started" class="inline-block px-6 py-3 bg-[#E31B23] text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors duration-300 mt-4">
                                 <span class="flex items-center">
                                     Talk to an Expert
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
@@ -59,7 +59,7 @@
                             <p class="mb-6 text-lg opacity-90">
                                 Focus on the project at hand and provide your customers a streamlined experience. We take permit paperwork and submittals off your hands and offer tools to get customer information easily while keeping them updated on permit progress.
                             </p>
-                            <a href="#contact" class="inline-block px-6 py-3 bg-[#E31B23] text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors duration-300 mt-4">
+                            <a href="/get-started" class="inline-block px-6 py-3 bg-[#E31B23] text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors duration-300 mt-4">
                                 <span class="flex items-center">
                                     Talk to an Expert
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
@@ -85,7 +85,7 @@
                             <p class="mb-6 text-lg opacity-90">
                                 Free up your time and leave permit research and applications to us. Submit and track permits while receiving and responding to municipal comments all in one place. Triage and address plan comments in a single platform for faster resubmittals.
                             </p>
-                            <a href="#contact" class="inline-block px-6 py-3 bg-[#E31B23] text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors duration-300 mt-4">
+                            <a href="/get-started" class="inline-block px-6 py-3 bg-[#E31B23] text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors duration-300 mt-4">
                                 <span class="flex items-center">
                                     Talk to an Expert
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
@@ -111,7 +111,7 @@
                             <p class="mb-6 text-lg opacity-90">
                                 Digitize and automate your day to day permit operations to reduce duplicative and manual work. We offer dedicated workflows to support your business, while providing project management features to manage stakeholders, documents, and action items.
                             </p>
-                            <a href="#contact" class="inline-block px-6 py-3 bg-[#E31B23] text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors duration-300 mt-4">
+                            <a href="/get-started" class="inline-block px-6 py-3 bg-[#E31B23] text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors duration-300 mt-4">
                                 <span class="flex items-center">
                                     Talk to an Expert
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
@@ -154,15 +154,39 @@
                 // Remove active class from all tabs and contents
                 tabs.forEach(tab => tab.classList.remove('active', 'border-[#E31B23]'));
                 tabs.forEach(tab => tab.classList.add('border-transparent'));
-                contents.forEach(content => content.classList.add('hidden'));
+                
+                // Hide all contents with fade effect
+                contents.forEach(content => {
+                    if (content.classList.contains('active')) {
+                        content.style.opacity = '0';
+                        setTimeout(() => {
+                            content.classList.add('hidden');
+                            content.classList.remove('active');
+                        }, 300);
+                    } else {
+                        content.classList.add('hidden');
+                        content.classList.remove('active');
+                    }
+                });
+                
                 indicators.forEach(indicator => indicator.classList.remove('active', 'bg-[#E31B23]'));
                 indicators.forEach(indicator => indicator.classList.add('bg-gray-600'));
                 
-                // Add active class to selected tab and content
+                // Add active class to selected tab
                 tabs[index].classList.add('active', 'border-[#E31B23]');
                 tabs[index].classList.remove('border-transparent');
-                contents[index].classList.remove('hidden');
-                contents[index].classList.add('active');
+                
+                // Show selected content with fade effect
+                setTimeout(() => {
+                    contents[index].classList.remove('hidden');
+                    contents[index].classList.add('active');
+                    contents[index].style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        contents[index].style.opacity = '1';
+                    }, 50);
+                }, 300);
+                
                 indicators[index].classList.add('active', 'bg-[#E31B23]');
                 indicators[index].classList.remove('bg-gray-600');
             }
@@ -170,13 +194,14 @@
             // Add click event to tabs
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
-                    setActive(this.getAttribute('data-index'));
+                    setActive(parseInt(this.getAttribute('data-index')));
                 });
             });
             
             // Auto-rotate tabs (optional)
             let currentIndex = 0;
-            const intervalTime = 5000; // 5 seconds
+            const intervalTime = 8000; // 8 seconds (slower rotation)
+            let interval;
             
             function autoRotate() {
                 currentIndex = (currentIndex + 1) % tabs.length;
@@ -184,7 +209,7 @@
             }
             
             // Start auto-rotation
-            const interval = setInterval(autoRotate, intervalTime);
+            interval = setInterval(autoRotate, intervalTime);
             
             // Pause auto-rotation when user interacts with tabs
             tabs.forEach(tab => {
@@ -194,9 +219,16 @@
                     setTimeout(() => {
                         currentIndex = parseInt(this.getAttribute('data-index'));
                         interval = setInterval(autoRotate, intervalTime);
-                    }, 10000); // 10 second pause
+                    }, 15000); // 15 second pause (longer pause)
                 });
             });
         });
     </script>
+    
+    <style>
+        /* Add smooth transitions */
+        .audience-content {
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
 </section>

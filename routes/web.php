@@ -249,6 +249,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     })->name('contractors.force-delete');
     
     Route::get('/api/dashboard/contractors', [AdminContractorController::class, 'getDashboardContractors'])->name('api.dashboard.contractors');
+    Route::get('/api/dashboard/projects', [App\Http\Controllers\Admin\ProjectController::class, 'getDashboardProjects'])->name('api.dashboard.projects');
     
     // Invoice Management
     Route::get('/invoices', [AdminInvoiceController::class, 'index'])->name('invoices.index');
@@ -301,6 +302,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/messages/{message}/reply', [AdminMessageController::class, 'storeReply'])->name('messages.store-reply');
     Route::get('/messages/contractor/{contractor}', [AdminMessageController::class, 'contractorMessages'])->name('messages.contractor');
     Route::get('/api/messages/unread', [AdminMessageController::class, 'unreadCount'])->name('api.messages.unread');
+    Route::get('/api/messages/recent', [AdminMessageController::class, 'recentMessages'])->name('api.messages.recent');
 
     // Admin Project Routes
     Route::get('/projects', [App\Http\Controllers\Admin\ProjectController::class, 'index'])->name('projects.index');

@@ -11,19 +11,20 @@
 
     <!-- Invoice Filters -->
     <div class="bg-white shadow rounded-lg mb-6 p-4">
-        <form action="{{ route('admin.invoices.index') }}" method="GET" class="flex flex-wrap gap-4">
+        <form action="{{ route('admin.invoices.index') }}" method="GET" class="flex flex-wrap gap-4" id="invoice-filter-form">
             <div class="flex-1 min-w-[200px]">
                 <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                <select name="status" id="status" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                <select name="status" id="status" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" onchange="this.form.submit()">
                     <option value="">All Statuses</option>
                     <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
                     <option value="paid" {{ request('status') == 'paid' ? 'selected' : '' }}>Paid</option>
                     <option value="overdue" {{ request('status') == 'overdue' ? 'selected' : '' }}>Overdue</option>
+                    <option value="cancelled" {{ request('status') == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
                 </select>
             </div>
             <div class="flex-1 min-w-[200px]">
-                <label for="contractor" class="block text-sm font-medium text-gray-700 mb-1">Contractor</label>
-                <select name="contractor_id" id="contractor" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                <label for="contractor_id" class="block text-sm font-medium text-gray-700 mb-1">Contractor</label>
+                <select name="contractor_id" id="contractor_id" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" onchange="this.form.submit()">
                     <option value="">All Contractors</option>
                     @foreach($contractors as $contractor)
                         <option value="{{ $contractor->id }}" {{ request('contractor_id') == $contractor->id ? 'selected' : '' }}>
@@ -32,10 +33,10 @@
                     @endforeach
                 </select>
             </div>
-            <div class="flex items-end">
-                <button type="submit" class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded">
-                    <i class="fas fa-filter mr-2"></i>Filter
-                </button>
+            <div class="flex items-end space-x-2">
+                <a href="{{ route('admin.invoices.index') }}" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded">
+                    <i class="fas fa-times mr-2"></i>Clear
+                </a>
             </div>
         </form>
     </div>

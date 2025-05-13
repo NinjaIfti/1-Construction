@@ -6,7 +6,7 @@
                 <h2 class="text-4xl font-bold mb-4 text-[#0A2240]" style="color: #0A2240;">Our Comprehensive Services</h2>
                 <div class="h-1 w-20 bg-[#E31B23] mx-auto mb-8" style="background-color: #E31B23;"></div>
                 <p class="text-gray-600 text-lg mb-5 mx-auto">
-                    We offer end-to-end permitting solutions tailored to your construction project needs
+                We offer start to finish, all inclusive permitting solutions tailored to your construction project needs.
                 </p>
             </div>
         </div>
@@ -79,28 +79,30 @@
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span class="text-gray-600 leading-relaxed">Building Permits</span>
+                            <span class="text-gray-600 leading-relaxed">All Building Permits
+                            </span>
                         </li>
                         <li class="flex items-start">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span class="text-gray-600 leading-relaxed">Electrical Permits</span>
+                            <span class="text-gray-600 leading-relaxed">All Trade Permits
+                            </span>
                         </li>
                         <li class="flex items-start">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span class="text-gray-600 leading-relaxed">Plumbing Permits</span>
+                            <span class="text-gray-600 leading-relaxed">MEP Permits                             </span>
                         </li>
                         <li class="flex items-start">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
                                 <polyline points="9 11 12 14 22 4"></polyline>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                             </svg>
-                            <span class="text-gray-600 leading-relaxed">Mechanical Permits</span>
+                            <span class="text-gray-600 leading-relaxed">Roofing Permits                    </span>
                         </li>
                         <li class="flex items-start">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E31B23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="min-w-[24px] mr-4 mt-1">
