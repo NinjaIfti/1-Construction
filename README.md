@@ -1,61 +1,116 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 1 Construction Solutions - Project Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Overview
 
-## About Laravel
+1 Construction Solutions is a comprehensive web application designed to streamline the management of construction projects, permits, and documentation. Built on Laravel, it provides a dual-interface system for both administrators and contractors/clients, facilitating efficient communication and project oversight.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### For Administrators
+- **Dashboard**: Get a quick overview of projects, permits, and contractor activity
+- **Contractor Management**: Easily view, add, and manage contractors
+- **Permit Oversight**: Review, approve, or reject permit applications
+- **Document Management**: Organize, approve, and manage project documentation
+- **Messaging System**: Direct communication with contractors
+- **Invoice Management**: Create and track invoices for projects
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### For Contractors/Clients
+- **Project Creation**: Submit and manage construction projects
+- **Permit Applications**: Apply for construction permits with document attachments
+- **Dashboard View**: Monitor project status, pending approvals, and recent activities
+- **Document Management**: Upload and organize project-related documents
+- **Communication**: Direct messaging with administrators
+- **Invoice Management**: View and process payments for invoices
 
-## Learning Laravel
+## Technical Architecture
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Backend**: Laravel PHP framework
+- **Frontend**: Blade templates with Tailwind CSS and Alpine.js
+- **Database**: MySQL for data persistence
+- **Authentication**: Laravel's built-in authentication with role-based access control
+- **File Storage**: Local storage with Laravel's file system abstraction
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Key Components
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Dual Interface**: Separate but integrated admin and client panels
+- **Polymorphic Relationships**: Flexible data relationships for comments and notifications
+- **Real-Time Updates**: Dashboard statistics and notifications
+- **Document Preview**: Built-in previewing for PDFs and images
 
-## Laravel Sponsors
+## Getting Started
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Prerequisites
+- PHP 8.0 or higher
+- Composer
+- MySQL or compatible database
+- Node.js and NPM (for frontend assets)
 
-### Premium Partners
+### Installation
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+1. Clone the repository
+   ```
+   git clone https://github.com/yourusername/1-construction.git
+   cd 1-construction
+   ```
 
-## Contributing
+2. Install dependencies
+   ```
+   composer install
+   npm install
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. Set up environment variables
+   ```
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-## Code of Conduct
+4. Configure your database in the `.env` file
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. Run migrations and seeders
+   ```
+   php artisan migrate --seed
+   ```
 
-## Security Vulnerabilities
+6. Compile assets
+   ```
+   npm run dev
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+7. Create symbolic link for storage
+   ```
+   php artisan storage:link
+   ```
+
+8. Start the development server
+   ```
+   php artisan serve
+   ```
+
+## Usage
+
+### Admin Login
+- Access `/login` and enter admin credentials
+- Default admin: admin@example.com (customize in seeder)
+
+### Contractor/Client Login
+- Access `/login` and enter contractor credentials
+- New contractors can register at `/register`
+
+## Future Enhancements
+
+- Integration with mapping services for project locations
+- Mobile application for on-site permit verification
+- Advanced reporting and analytics
+- Calendar integration for project timelines
+- Electronic signature for permit approvals
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgements
+
+- [Laravel Framework](https://laravel.com)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Alpine.js](https://alpinejs.dev)

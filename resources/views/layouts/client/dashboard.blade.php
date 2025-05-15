@@ -168,9 +168,9 @@
                   <span>Documents</span>
                 </a>
                 
-                <a href="{{ route('client.permits.create') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('client.permits.*') ? 'bg-blue-900' : '' }}">
-                  <i class="fas fa-file-upload mr-3"></i>
-                  <span>Submit Permit</span>
+                <a href="{{ route('client.permits.index') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('client.permits.*') ? 'bg-blue-900' : '' }}">
+                  <i class="fas fa-file-alt mr-3"></i>
+                  <span>Permits</span>
                 </a>
                 
                 <a href="{{ route('client.messages.index') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('client.messages.*') ? 'bg-blue-900' : '' }}">
@@ -196,135 +196,11 @@
               </div>
             @endif
             
-            @yield('content')
-            
-            <!-- Dashboard Content -->
-            <div id="dashboard-content" class="block {{ request()->routeIs('client.messages.*') ? 'hidden' : '' }}">
-              <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
-              
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div class="bg-blue-100 p-4 rounded shadow">
-                  <div id="active-projects-count" class="text-xl font-bold">{{ $activeProjects ?? 0 }}</div>
-                  <div class="text-sm text-gray-600">Active Projects</div>
-                </div>
-                <div class="bg-green-100 p-4 rounded shadow">
-                  <div id="completed-projects-count" class="text-xl font-bold">{{ $completedProjects ?? 0 }}</div>
-                  <div class="text-sm text-gray-600">Completed Projects</div>
-                </div>
-                <div class="bg-yellow-100 p-4 rounded shadow">
-                  <div id="pending-approvals-count" class="text-xl font-bold">{{ $pendingApprovals ?? 0 }}</div>
-                  <div class="text-sm text-gray-600">Pending Approvals</div>
-                </div>
-              </div>
-              
-              <!-- Recent Messages -->
-              <div class="mb-6">
-                <div class="border rounded-lg overflow-hidden">
-                  <div class="bg-gray-50 p-4 border-b">
-                    <h3 class="font-bold">
-                      Recent Messages
-                      <a href="{{ route('client.messages.index') }}" class="text-sm text-blue-500 hover:underline ml-2">View All</a>
-                    </h3>
-                  </div>
-                  
-                  <div class="divide-y">
-                    @if(isset($recentActivities) && count($recentActivities) > 0)
-                      @php
-                        // Filter activities to only show messages
-                        $messageActivities = array_filter($recentActivities, function($activity) {
-                          return $activity['type'] === 'message' || $activity['type'] === 'unread_message';
-                        });
-                        // Take only the first 5 message activities
-                        $messageActivities = array_slice($messageActivities, 0, 5);
-                      @endphp
-                      
-                      @if(count($messageActivities) > 0)
-                        @foreach($messageActivities as $activity)
-                          <div class="p-4 hover:bg-gray-50">
-                            <a href="{{ route('client.messages.show', $activity['messageId'] ?? 0) }}" class="block">
-                              <div class="flex justify-between">
-                                <span class="font-medium {{ $activity['type'] === 'unread_message' ? 'text-blue-600 font-bold' : 'text-gray-800' }}">
-                                  @if($activity['type'] === 'unread_message')
-                                    <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-white bg-red-500 rounded-full">New</span>
-                                  @endif
-                                  {{ str_replace('[UNREAD] Message: ', '', $activity['message']) }}
-                                </span>
-                                <span class="text-sm text-gray-500">{{ $activity['date'] }}</span>
-                              </div>
-                            </a>
-                          </div>
-                        @endforeach
-                      @else
-                        <div class="p-4 text-center text-gray-500">
-                          No recent messages
-                        </div>
-                      @endif
-                    @else
-                      <div class="p-4 text-center text-gray-500">
-                        No recent messages
-                      </div>
-                    @endif
-                  </div>
-                  
-                  <div class="bg-gray-50 p-3 border-t text-center">
-                    <a href="{{ route('client.messages.create') }}" class="inline-flex items-center text-blue-600 hover:text-blue-800">
-                      <i class="fas fa-plus-circle mr-1"></i> New Message
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Messages Content -->
-            <div id="messages-content" class="hidden">
-              <h2 class="text-2xl font-bold mb-4">Messages</h2>
-              
-              <div class="flex mb-4">
-                <input type="text" class="flex-grow border rounded-l p-2" placeholder="Search messages..." />
-                <button class="bg-blue-500 text-white px-4 rounded-r">Search</button>
-              </div>
-              
-              <div class="bg-white rounded-lg shadow overflow-hidden">
-                <div class="border-b p-4 hover:bg-gray-50 cursor-pointer">
-                  <div class="flex justify-between">
-                    <span class="font-bold">City Inspector</span>
-                    <span class="text-sm text-gray-500">Apr 22</span>
-                  </div>
-                  <p class="text-gray-600">Please provide the site plan for your roofing project.</p>
-                </div>
-                
-                <div class="border-b p-4 hover:bg-gray-50 cursor-pointer">
-                  <div class="flex justify-between">
-                    <span class="font-bold">Permit Office</span>
-                    <span class="text-sm text-gray-500">Apr 21</span>
-                  </div>
-                  <p class="text-gray-600">Your permit application has been received. Please allow 3-5 business days for processing.</p>
-                </div>
-                
-                <div class="border-b p-4 hover:bg-gray-50 cursor-pointer">
-                  <div class="flex justify-between">
-                    <span class="font-bold">Project Manager</span>
-                    <span class="text-sm text-gray-500">Apr 20</span>
-                  </div>
-                  <p class="text-gray-600">The contractors will arrive on site tomorrow morning at 8:00 AM.</p>
-                </div>
-                
-                <div class="p-4 hover:bg-gray-50 cursor-pointer">
-                  <div class="flex justify-between">
-                    <span class="font-bold">Account Manager</span>
-                    <span class="text-sm text-gray-500">Apr 19</span>
-                  </div>
-                  <p class="text-gray-600">Welcome to Contractor Solutions! Let us know if you have any questions.</p>
-                </div>
-              </div>
-              
-              <div class="mt-4 flex">
-                <textarea class="flex-grow border rounded-l p-2" placeholder="Type a new message..."></textarea>
-                <button class="bg-blue-500 text-white px-4 rounded-r">Send</button>
-              </div>
-            </div>
-
-          
+            @if(request()->routeIs('client.dashboard'))
+              @include('layouts.client._dashboard_content')
+            @else
+              @yield('content')
+            @endif
           </div>
         </div>
       </div>
@@ -333,115 +209,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Cache DOM elements
-      const dashboardBtn = document.getElementById('dashboard-btn');
-      const dashboardContent = document.getElementById('dashboard-content');
-      let messagesBtn, messagesContent, documentsBtn, documentsContent;
-      
-      // Get elements based on verification status
-      if (document.getElementById('messages-btn')) {
-        messagesBtn = document.getElementById('messages-btn');
-        messagesContent = document.getElementById('messages-content');
-      }
-      
-      if (document.getElementById('documents-btn')) {
-        documentsBtn = document.getElementById('documents-btn');
-        documentsContent = document.getElementById('documents-content');
-      }
-      
-      // Helper function to hide all content sections
-      function hideAllContent() {
-        // Use Array.from to convert NodeList to Array for forEach
-        Array.from(document.querySelectorAll('.w-full.md\\:w-3\\/4.p-6 > div')).forEach(section => {
-          if (!section.classList.contains('hidden') && !section.hasAttribute('id')) {
-            section.classList.add('hidden');
-          }
-        });
-        
-        if (dashboardContent) dashboardContent.classList.add('hidden');
-        if (messagesContent) messagesContent.classList.add('hidden');
-        if (documentsContent) documentsContent.classList.add('hidden');
-      }
-      
-      // Helper function to remove active class from all buttons
-      function removeActiveFromButtons() {
-        if (dashboardBtn) dashboardBtn.classList.remove('bg-blue-900');
-        if (messagesBtn) messagesBtn.classList.remove('bg-blue-900');
-        if (documentsBtn) documentsBtn.classList.remove('bg-blue-900');
-      }
-      
-      // Show dashboard on button click
-      if (dashboardBtn) {
-        dashboardBtn.addEventListener('click', function() {
-          // Instead of just toggling content, navigate to the dashboard page
-          window.location.href = "{{ route('dashboard') }}";
-        });
-      }
-      
-      // Show messages on button click
-      if (messagesBtn) {
-        messagesBtn.addEventListener('click', function() {
-          hideAllContent();
-          removeActiveFromButtons();
-          messagesContent.classList.remove('hidden');
-          messagesBtn.classList.add('bg-blue-900');
-        });
-      }
-      
-      // Show documents on button click - MODIFIED TO USE LINK INSTEAD
-      if (documentsBtn) {
-        documentsBtn.removeAttribute('onclick'); // Remove the onclick handler
-        documentsBtn.addEventListener('click', function(e) {
-          e.preventDefault(); // Prevent default action
-          window.location.href = "{{ route('client.documents.index') }}";
-        });
-      }
-      
-      // Show default content on page load
-      let contentLoaded = false;
-      
-      // Check if we're on a specific page using the route segment
-      const currentPath = window.location.pathname;
-      
-      if (currentPath.includes('/client/documents')) {
-        // This is a documents page, handled by the documents views
-        contentLoaded = true;
-        // Don't hide content rendered by the documents views
-        removeActiveFromButtons();
-        if (documentsBtn) documentsBtn.classList.add('bg-blue-900');
-      } else if (currentPath.includes('/client/permits/create')) {
-        // This is the submit permit page
-        contentLoaded = true;
-        removeActiveFromButtons();
-        const submitPermitBtn = document.querySelector('a[href*="client.permits.create"]');
-        if (submitPermitBtn) submitPermitBtn.classList.add('bg-blue-900');
-      } else if (currentPath.includes('/client/permits')) {
-        // This is a permits page
-        contentLoaded = true;
-        // Don't hide content rendered by the permits views
-        removeActiveFromButtons();
-        const permitsBtn = document.querySelector('a[href*="client.permits.index"]');
-        if (permitsBtn) permitsBtn.classList.add('bg-blue-900');
-      } else if (currentPath.includes('/client/messages')) {
-        // This is a messages page
-        contentLoaded = true;
-        removeActiveFromButtons();
-        if (messagesBtn) messagesBtn.classList.add('bg-blue-900');
-      } else if (currentPath.includes('verification')) {
-        // Do nothing, the verification page will handle its own content
-        contentLoaded = true;
-      } else if (currentPath.includes('profile')) {
-        // Do nothing, the profile page will handle its own content
-        contentLoaded = true;
-      } else {
-        // Default to dashboard
-        hideAllContent();
-        removeActiveFromButtons();
-        if (dashboardContent) {
-          dashboardContent.classList.remove('hidden');
-          if (dashboardBtn) dashboardBtn.classList.add('bg-blue-900');
-        }
-      }
+      // Add any JavaScript functionality for the layout here
     });
   </script>
 
@@ -510,9 +278,9 @@
           <span>Documents</span>
         </a>
         
-        <a href="{{ route('client.permits.create') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('client.permits.*') ? 'bg-blue-900' : '' }}">
-          <i class="fas fa-file-upload mr-3"></i>
-          <span>Submit Permit</span>
+        <a href="{{ route('client.permits.index') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('client.permits.*') ? 'bg-blue-900' : '' }}">
+          <i class="fas fa-file-alt mr-3"></i>
+          <span>Permits</span>
         </a>
         
         <a href="{{ route('client.messages.index') }}" class="flex items-center hover:bg-gray-800 p-2 rounded-md transition {{ request()->routeIs('client.messages.*') ? 'bg-blue-900' : '' }}">

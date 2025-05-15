@@ -276,6 +276,68 @@
                 </div>
               </div>
               
+              <!-- Recent Permits -->
+              <div class="mb-6">
+                <div class="border rounded-lg overflow-hidden">
+                  <div class="bg-gray-50 p-4 border-b">
+                    <h3 class="font-bold">
+                      Recent Permits
+                      <a href="{{ route('admin.permits.index') }}" class="text-sm text-blue-500 hover:underline ml-2">View All</a>
+                    </h3>
+                  </div>
+                  
+                  <div class="divide-y" x-data="{ permits: [] }" x-init="
+                    fetch('/admin/api/dashboard/permits')
+                    .then(response => response.json())
+                    .then(data => {
+                      permits = data;
+                    })
+                    .catch(error => {
+                      console.error('Error loading recent permits:', error);
+                    })
+                  ">
+                    <template x-for="permit in permits" :key="permit.id">
+                      <div class="p-4 hover:bg-gray-50">
+                        <a :href="'/admin/permits/' + permit.id" class="block">
+                          <div class="flex justify-between">
+                            <div>
+                              <span class="font-medium text-gray-800" x-text="permit.permit_number"></span>
+                              <span class="ml-2 text-sm text-gray-600" x-text="permit.type"></span>
+                            </div>
+                            <div class="flex items-center">
+                              <span 
+                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full mr-2"
+                                :class="{
+                                  'bg-yellow-100 text-yellow-800': permit.status === 'Pending',
+                                  'bg-blue-100 text-blue-800': permit.status === 'In Review',
+                                  'bg-green-100 text-green-800': permit.status === 'Approved',
+                                  'bg-red-100 text-red-800': permit.status === 'Rejected'
+                                }"
+                                x-text="permit.status"
+                              ></span>
+                              <span class="text-sm text-gray-500" x-text="permit.submission_date"></span>
+                            </div>
+                          </div>
+                          <div class="mt-1">
+                            <span class="text-sm text-gray-600" x-text="permit.contractor_name"></span>
+                          </div>
+                        </a>
+                      </div>
+                    </template>
+                    
+                    <div x-show="permits.length === 0" class="p-4 text-center text-gray-500">
+                      No recent permits
+                    </div>
+                  </div>
+                  
+                  <div class="bg-gray-50 p-3 border-t text-center">
+                    <a href="{{ route('admin.permits.index') }}" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                      <i class="fas fa-file-alt mr-1"></i> View All Permits
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
               <!-- Recent Messages -->
               <div class="mb-6">
                 <div class="border rounded-lg overflow-hidden">

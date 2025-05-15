@@ -22,7 +22,6 @@ class Permit extends Model
         'permit_type',
         'status',
         'submission_date',
-        'approval_date',
         'approved_date',
         'expiration_date',
         'permit_number',
@@ -39,7 +38,6 @@ class Permit extends Model
      */
     protected $casts = [
         'submission_date' => 'date',
-        'approval_date' => 'date',
         'approved_date' => 'date',
         'expiration_date' => 'date',
     ];
@@ -97,24 +95,25 @@ class Permit extends Model
     }
 
     /**
-     * Get the approval date (handles both column names)
+     * Get the approval date attribute accessor.
+     * This provides compatibility for code that still uses approval_date.
      *
      * @return \Carbon\Carbon|null
      */
     public function getApprovalDateAttribute()
     {
-        return $this->approved_date ?? $this->approval_date;
+        return $this->approved_date;
     }
 
     /**
-     * Set the approval date (updates both columns)
+     * Set the approval date attribute mutator.
+     * This provides compatibility for code that still uses approval_date.
      *
      * @param mixed $value
      * @return void
      */
     public function setApprovalDateAttribute($value)
     {
-        $this->attributes['approval_date'] = $value;
         $this->attributes['approved_date'] = $value;
     }
 } 

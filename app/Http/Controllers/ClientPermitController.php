@@ -6,6 +6,7 @@ use App\Models\Permit;
 use App\Models\Project;
 use App\Models\Notification;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -136,10 +137,14 @@ class ClientPermitController extends Controller
             'content' => 'required|string',
         ]);
         
-        $comment = $permit->comments()->create([
+        $comment = new Comment([
             'user_id' => Auth::id(),
             'content' => $validated['content'],
+            'is_admin_comment' => false,
+            'permit_id' => $permit->id, // For backward compatibility
         ]);
+        
+        $permit->comments()->save($comment);
         
         // Create notification for admin users
         $admins = User::where('role', 'admin')->get();
@@ -155,5 +160,57 @@ class ClientPermitController extends Controller
         
         return redirect()->route('client.permits.show', $permit)
             ->with('success', 'Comment added successfully.');
+    }
+
+    /**
+     * Delete the specified permit.
+     *
+     * @param  \App\Models\Permit  $permit
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Permit $permit)
+    {
+        // Check if user owns the project associated with the permit
+        if ($permit->project->user_id !== Auth::id()) {
+            return redirect()->route('client.permits.index')
+                ->with('error', 'You are not authorized to delete this permit.');
+        }
+        
+        // Check if permit is approved (optional, remove if clients should be able to delete approved permits)
+        if ($permit->status === 'Approved') {
+            return redirect()->route('client.permits.show', $permit)
+                ->with('error', 'You cannot delete an approved permit. Please contact an administrator.');
+        }
+        
+        // Store info for notification/redirect
+        $permitNumber = $permit->permit_number;
+        
+        // Delete associated documents' files
+        foreach ($permit->documents as $document) {
+            if ($document->file_path && Storage::disk('public')->exists($document->file_path)) {
+                Storage::disk('public')->delete($document->file_path);
+            }
+        }
+        
+        // Delete associated comments and notifications
+        $permit->comments()->delete();
+        Notification::where('permit_id', $permit->id)->delete();
+        
+        // Delete the permit
+        $permit->delete();
+        
+        // Create notification for admin users
+        $admins = User::where('role', 'admin')->get();
+        foreach ($admins as $admin) {
+            Notification::create([
+                'user_id' => $admin->id,
+                'title' => 'Permit Deleted by Client',
+                'message' => "Permit #{$permitNumber} has been deleted by " . Auth::user()->name,
+                'type' => 'permit_deleted',
+            ]);
+        }
+        
+        return redirect()->route('client.permits.index')
+            ->with('success', "Permit #{$permitNumber} has been deleted successfully.");
     }
 } 

@@ -2,7 +2,12 @@
 
 @section('content')
 <div>
-    <h2 class="text-2xl font-bold mb-4">Permit Management</h2>
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold">Permit Management</h2>
+        <a href="{{ route('permits.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+            <i class="fas fa-plus mr-2"></i> Create Permit
+        </a>
+    </div>
     
     @if(session('success'))
         <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">

@@ -122,6 +122,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/', [ClientPermitController::class, 'store'])->name('store');
         Route::get('/{permit}', [ClientPermitController::class, 'show'])->name('show');
         Route::post('/{permit}/comments', [ClientPermitController::class, 'addComment'])->name('comments.store');
+        Route::delete('/{permit}', [App\Http\Controllers\ClientPermitController::class, 'destroy'])->name('permits.destroy');
     });
 
     // Client Invoice Management
@@ -272,10 +273,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     // Permit Management
     Route::get('/permits', [App\Http\Controllers\Admin\AdminPermitController::class, 'index'])->name('permits.index');
+    Route::get('/permits/create', [App\Http\Controllers\PermitController::class, 'create'])->name('permits.create');
+    Route::post('/permits', [App\Http\Controllers\PermitController::class, 'store'])->name('permits.store');
     Route::get('/permits/contractor/{contractor}', [App\Http\Controllers\Admin\AdminPermitController::class, 'contractorPermits'])->name('permits.contractor');
     Route::get('/permits/{permit}', [App\Http\Controllers\Admin\AdminPermitController::class, 'show'])->name('permits.show');
     Route::patch('/permits/{permit}/status', [App\Http\Controllers\Admin\AdminPermitController::class, 'updateStatus'])->name('permits.update-status');
     Route::post('/permits/{permit}/comments', [App\Http\Controllers\Admin\AdminPermitController::class, 'addComment'])->name('permits.comments.store');
+    Route::delete('/permits/{permit}', [App\Http\Controllers\Admin\AdminPermitController::class, 'destroy'])->name('permits.destroy');
     Route::get('/api/dashboard/permits', [App\Http\Controllers\Admin\AdminPermitController::class, 'getDashboardPermits'])->name('api.dashboard.permits');
     
     // Document Management

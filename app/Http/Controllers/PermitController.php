@@ -43,7 +43,9 @@ class PermitController extends Controller
                 : Auth::user()->projects;
         }
         
-        return view('permits.create', compact('project', 'projects'));
+        return Auth::user()->isAdmin() 
+            ? view('layouts.admin.permits.create', compact('project', 'projects'))
+            : view('layouts.client.permits.create', compact('project', 'projects'));
     }
 
     /**
@@ -94,7 +96,7 @@ class PermitController extends Controller
             'type' => 'status_change',
         ]);
         
-        return redirect()->route('permits.show', $permit)
+        return redirect()->route(Auth::user()->isAdmin() ? 'admin.permits.show' : 'client.permits.show', $permit)
             ->with('success', 'Permit created successfully.');
     }
 
@@ -107,7 +109,9 @@ class PermitController extends Controller
         
         $permit->load(['project.user', 'documents', 'comments.user']);
         
-        return view('permits.show', compact('permit'));
+        return Auth::user()->isAdmin() 
+            ? view('layouts.admin.permits.show', compact('permit'))
+            : view('layouts.client.permits.show', compact('permit'));
     }
 
     /**
@@ -117,7 +121,9 @@ class PermitController extends Controller
     {
         $this->authorize('update', $permit);
         
-        return view('permits.edit', compact('permit'));
+        return Auth::user()->isAdmin() 
+            ? view('layouts.admin.permits.edit', compact('permit'))
+            : view('layouts.client.permits.edit', compact('permit'));
     }
 
     /**
@@ -132,7 +138,7 @@ class PermitController extends Controller
             'description' => 'nullable|string',
             'status' => 'required|in:Pending,In Review,Approved,Rejected',
             'submission_date' => 'required|date',
-            'approval_date' => 'nullable|date|after_or_equal:submission_date',
+            'approved_date' => 'nullable|date|after_or_equal:submission_date',
             'expiration_date' => 'nullable|date|after:submission_date',
             'fee_amount' => 'nullable|numeric',
             'fee_paid' => 'boolean',
@@ -169,10 +175,10 @@ class PermitController extends Controller
         
         // Add approval date if status changed to Approved
         if ($validated['status'] === 'Approved' && $oldStatus !== 'Approved') {
-            $permit->update(['approval_date' => now()]);
+            $permit->update(['approved_date' => now()]);
         }
         
-        return redirect()->route('permits.show', $permit)
+        return redirect()->route(Auth::user()->isAdmin() ? 'admin.permits.show' : 'client.permits.show', $permit)
             ->with('success', 'Permit updated successfully.');
     }
 
@@ -190,7 +196,7 @@ class PermitController extends Controller
         
         $permit->delete();
         
-        return redirect()->route('permits.index')
+        return redirect()->route(Auth::user()->isAdmin() ? 'admin.permits.index' : 'client.permits.index')
             ->with('success', 'Permit deleted successfully.');
     }
     
@@ -205,11 +211,14 @@ class PermitController extends Controller
             'content' => 'required|string',
         ]);
         
-        $comment = $permit->comments()->create([
+        $comment = new Comment([
             'user_id' => Auth::id(),
             'content' => $validated['content'],
             'is_admin_comment' => Auth::user()->isAdmin(),
+            'permit_id' => $permit->id, // For backward compatibility
         ]);
+        
+        $permit->comments()->save($comment);
         
         // Create notification for comment
         if ($permit->project->user_id !== Auth::id()) {
@@ -222,7 +231,7 @@ class PermitController extends Controller
             ]);
         }
         
-        return redirect()->route('permits.show', $permit)
+        return redirect()->route(Auth::user()->isAdmin() ? 'admin.permits.show' : 'client.permits.show', $permit)
             ->with('success', 'Comment added successfully.');
     }
     
@@ -237,7 +246,7 @@ class PermitController extends Controller
         Storage::disk('public')->delete($document->file_path);
         $document->delete();
         
-        return redirect()->route('permits.show', $permit)
+        return redirect()->route(Auth::user()->isAdmin() ? 'admin.permits.show' : 'client.permits.show', $permit)
             ->with('success', 'Document deleted successfully.');
     }
     
@@ -268,7 +277,7 @@ class PermitController extends Controller
         
         // Add approval date if status changed to Approved
         if ($validated['status'] === 'Approved' && $oldStatus !== 'Approved') {
-            $permit->update(['approval_date' => now()]);
+            $permit->update(['approved_date' => now()]);
         }
         
         // Create notification for status change
@@ -280,7 +289,7 @@ class PermitController extends Controller
             'type' => 'status_change',
         ]);
         
-        return redirect()->route('permits.show', $permit)
+        return redirect()->route(Auth::user()->isAdmin() ? 'admin.permits.show' : 'client.permits.show', $permit)
             ->with('success', 'Permit status updated successfully.');
     }
 } 

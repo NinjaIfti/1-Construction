@@ -68,11 +68,21 @@ class ContractorController extends Controller
         // Get recent activities
         $recentActivities = $this->getRecentActivities($user->id);
         
-        return view('layouts.client.dashboard', compact(
+        // Get recent permits
+        $recentPermits = Permit::whereHas('project', function($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })
+            ->with('project')
+            ->latest()
+            ->take(5)
+            ->get();
+        
+        return view('client.dashboard', compact(
             'activeProjects', 
             'completedProjects', 
             'pendingApprovals',
-            'recentActivities'
+            'recentActivities',
+            'recentPermits'
         ));
     }
     
@@ -165,20 +175,8 @@ class ContractorController extends Controller
      */
     public function documents()
     {
-        $user = Auth::user();
-        
-        // Dashboard statistics for sidebar
-        $activeProjects = $user->projects()->where('status', 'active')->count();
-        $completedProjects = $user->projects()->where('status', 'completed')->count();
-        $pendingApprovals = $user->projects()->where('status', 'pending')->count();
-        
-        // Get recent activities
-        $recentActivities = $this->getRecentActivities($user->id);
-        
-        // Define the active section for the dashboard
-        $activeSection = 'documents';
-        
-        return view('layouts.client.dashboard', compact('activeProjects', 'completedProjects', 'pendingApprovals', 'recentActivities', 'activeSection'));
+        // Redirect to documents index instead of using activeSection
+        return redirect()->route('client.documents.index');
     }
 
     /**

@@ -36,9 +36,14 @@
                 <h3 class="text-lg leading-6 font-medium text-gray-900">
                     Permit Information
                 </h3>
-                <button onclick="document.getElementById('status-modal').classList.remove('hidden')" class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                    Update Status
-                </button>
+                <div class="flex space-x-2">
+                    <button onclick="document.getElementById('status-modal').classList.remove('hidden')" class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Update Status
+                    </button>
+                    <button onclick="document.getElementById('delete-modal').classList.remove('hidden')" class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        <i class="fas fa-trash-alt mr-1"></i> Delete
+                    </button>
+                </div>
             </div>
             <div class="border-t border-gray-200">
                 <dl>
@@ -308,55 +313,63 @@
     </div>
     
     <!-- Status Update Modal -->
-    <div id="status-modal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
-        <div class="bg-white rounded-lg max-w-md w-full p-6">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-lg font-semibold text-gray-900">Update Permit Status</h3>
-                <button onclick="document.getElementById('status-modal').classList.add('hidden'); return false;" class="text-gray-400 hover:text-gray-500 focus:outline-none">
-                    <i class="fas fa-times"></i>
-                </button>
+    <div id="status-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Update Permit Status</h3>
+                <form method="POST" action="{{ route('admin.permits.update-status', $permit) }}">
+                    @csrf
+                    @method('PATCH')
+                    <div class="mt-4">
+                        <label for="status" class="block text-left text-sm font-medium text-gray-700">Status</label>
+                        <select id="status" name="status" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option value="Approved" {{ $permit->status == 'Approved' ? 'selected' : '' }}>Approved</option>
+                            <option value="Rejected" {{ $permit->status == 'Rejected' ? 'selected' : '' }}>Rejected</option>
+                        </select>
+                    </div>
+                    <div class="mt-4">
+                        <label for="admin_notes" class="block text-left text-sm font-medium text-gray-700">Admin Notes</label>
+                        <textarea id="admin_notes" name="admin_notes" rows="3" class="mt-1 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Add any notes about this decision...">{{ $permit->admin_notes }}</textarea>
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <button type="button" onclick="document.getElementById('status-modal').classList.add('hidden')" class="mr-2 inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Cancel
+                        </button>
+                        <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Update
+                        </button>
+                    </div>
+                </form>
             </div>
-            
-            <form action="{{ route('admin.permits.update-status', $permit) }}" method="POST">
-                @csrf
-                @method('PATCH')
-                
-                <div class="space-y-6">
-                    <div>
-                        <label class="text-sm font-medium text-gray-700 mb-2 block">Status</label>
-                        <div class="grid grid-cols-2 gap-4">
-                            <label class="relative flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
-                                <input type="radio" name="status" value="Approved" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" {{ $permit->status == 'Approved' ? 'checked' : '' }}>
-                                <span class="ml-3">
-                                    <span class="block text-sm font-medium text-gray-900">Approve</span>
-                                    <span class="block text-sm text-gray-500">Permit will be approved for one year</span>
-                                </span>
-                            </label>
-                            <label class="relative flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
-                                <input type="radio" name="status" value="Rejected" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" {{ $permit->status == 'Rejected' ? 'checked' : '' }}>
-                                <span class="ml-3">
-                                    <span class="block text-sm font-medium text-gray-900">Reject</span>
-                                    <span class="block text-sm text-gray-500">Permit will be rejected</span>
-                                </span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label for="admin_notes" class="block text-sm font-medium text-gray-700 mb-2">Admin Notes (Optional)</label>
-                        <textarea id="admin_notes" name="admin_notes" rows="3" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="Add any notes about this decision...">{{ $permit->admin_notes }}</textarea>
-                    </div>
+        </div>
+    </div>
+    
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                    <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
                 </div>
-                
-                <div class="mt-6 flex justify-end space-x-3">
-                    <button type="button" onclick="document.getElementById('status-modal').classList.add('hidden'); return false;" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <h3 class="text-lg leading-6 font-medium text-gray-900 mt-2">Delete Permit</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">
+                        Are you sure you want to delete this permit? This action cannot be undone and will delete all associated documents and comments.
+                    </p>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button type="button" onclick="document.getElementById('delete-modal').classList.add('hidden')" class="mr-2 inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         Cancel
                     </button>
-                    <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        Update Status
-                    </button>
+                    <form method="POST" action="{{ route('admin.permits.destroy', $permit) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            Delete
+                        </button>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
     

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
+use App\Models\Comment;
 
 class AdminPermitController extends Controller
 {
@@ -88,7 +89,7 @@ class AdminPermitController extends Controller
         $permit->update([
             'status' => $request->status,
             'admin_notes' => $request->admin_notes,
-            'approval_date' => $request->status === 'Approved' ? now() : null,
+            'approved_date' => $request->status === 'Approved' ? now() : null,
         ]);
 
         // Create notification for the client
@@ -113,10 +114,14 @@ class AdminPermitController extends Controller
             'content' => 'required|string',
         ]);
         
-        $comment = $permit->comments()->create([
+        $comment = new Comment([
             'user_id' => Auth::id(),
             'content' => $validated['content'],
+            'is_admin_comment' => true,
+            'permit_id' => $permit->id, // For backward compatibility
         ]);
+        
+        $permit->comments()->save($comment);
         
         // Create notification for the contractor
         Notification::create([
@@ -136,11 +141,6 @@ class AdminPermitController extends Controller
      */
     public function getDashboardPermits()
     {
-        $pendingCount = Permit::where('status', 'Pending')->count();
-        $inReviewCount = Permit::where('status', 'In Review')->count();
-        $approvedCount = Permit::where('status', 'Approved')->count();
-        $rejectedCount = Permit::where('status', 'Rejected')->count();
-        
         $recentPermits = Permit::with('project.user')
             ->latest()
             ->take(5)
@@ -156,15 +156,45 @@ class AdminPermitController extends Controller
                 ];
             });
         
-        return response()->json([
-            'counts' => [
-                'pending' => $pendingCount,
-                'in_review' => $inReviewCount,
-                'approved' => $approvedCount,
-                'rejected' => $rejectedCount,
-                'total' => $pendingCount + $inReviewCount + $approvedCount + $rejectedCount
-            ],
-            'recent' => $recentPermits
+        return response()->json($recentPermits);
+    }
+
+    /**
+     * Delete the specified permit.
+     *
+     * @param  \App\Models\Permit  $permit
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Permit $permit)
+    {
+        // Store info for notification/redirect
+        $permitNumber = $permit->permit_number;
+        $projectId = $permit->project_id;
+        $userId = $permit->project->user_id;
+        
+        // Delete associated documents' files
+        foreach ($permit->documents as $document) {
+            if ($document->file_path && Storage::disk('public')->exists($document->file_path)) {
+                Storage::disk('public')->delete($document->file_path);
+            }
+        }
+        
+        // Delete associated comments and notifications
+        $permit->comments()->delete();
+        Notification::where('permit_id', $permit->id)->delete();
+        
+        // Delete the permit
+        $permit->delete();
+        
+        // Create notification for contractor
+        Notification::create([
+            'user_id' => $userId,
+            'title' => 'Permit Deleted',
+            'message' => "Your permit #{$permitNumber} has been deleted by an administrator.",
+            'type' => 'permit_deleted',
         ]);
+        
+        return redirect()->route('admin.permits.index')
+            ->with('success', "Permit #{$permitNumber} has been deleted successfully.");
     }
 } 

@@ -25,13 +25,20 @@
     @endif
 
     <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
-        <div class="px-4 py-5 sm:px-6 bg-gray-50">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Permit Information
-            </h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                Details and status of your permit application.
-            </p>
+        <div class="px-4 py-5 sm:px-6 bg-gray-50 flex justify-between items-center">
+            <div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                    Permit Information
+                </h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                    Details and status of your permit application.
+                </p>
+            </div>
+            @if($permit->status != 'Approved')
+                <button onclick="document.getElementById('delete-modal').classList.remove('hidden')" class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    <i class="fas fa-trash-alt mr-1"></i> Delete
+                </button>
+            @endif
         </div>
         <div class="border-t border-gray-200">
             <dl>
@@ -233,6 +240,35 @@
                     </button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="delete-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div class="mt-3 text-center">
+            <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+            </div>
+            <h3 class="text-lg leading-6 font-medium text-gray-900 mt-2">Delete Permit</h3>
+            <div class="mt-2 px-7 py-3">
+                <p class="text-sm text-gray-500">
+                    Are you sure you want to delete this permit? This action cannot be undone and will delete all associated documents and comments.
+                </p>
+            </div>
+            <div class="flex justify-end mt-4">
+                <button type="button" onclick="document.getElementById('delete-modal').classList.add('hidden')" class="mr-2 inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Cancel
+                </button>
+                <form method="POST" action="{{ route('client.permits.destroy', $permit) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        Delete
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

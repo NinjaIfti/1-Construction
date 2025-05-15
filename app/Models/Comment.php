@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Comment extends Model
 {
@@ -20,6 +21,8 @@ class Comment extends Model
         'user_id',
         'content',
         'is_admin_comment',
+        'commentable_id',
+        'commentable_type'
     ];
 
     /**
@@ -30,6 +33,14 @@ class Comment extends Model
     protected $casts = [
         'is_admin_comment' => 'boolean',
     ];
+
+    /**
+     * Get the parent commentable model.
+     */
+    public function commentable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 
     /**
      * Get the permit that owns the comment.
