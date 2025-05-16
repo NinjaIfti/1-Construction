@@ -341,7 +341,7 @@
                 </div>
                 <div class="lg:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                     <div class="relative overflow-hidden rounded-lg shadow-2xl">
-                        <img src="{{ asset('images/home.png') }}" alt="Home construction site" class="w-full object-cover rounded-lg">
+                        <img src="public/images/home.png" alt="Home construction site" class="w-full object-cover rounded-lg">
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy to-transparent p-6">
                             <div class="flex items-center justify-between">
                                 <div>

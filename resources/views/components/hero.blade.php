@@ -94,7 +94,7 @@
                                 
                                 <!-- Dashboard image with enhanced hover effects -->
                                 <img 
-                                    src="/images/dashboard.jpg" 
+                                    src="public/images/dashboard.jpg" 
                                     alt="Construction Management Dashboard" 
                                     class="w-full h-auto transition-all duration-700 group-hover:scale-105 shadow-inner relative z-0 rounded-t-xl" 
                                     style="min-height: 300px;"
