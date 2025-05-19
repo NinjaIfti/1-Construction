@@ -140,6 +140,131 @@
             </div>
         </div>
         
+        <!-- Projects Summary -->
+        <div class="mt-8">
+            <div class="flex justify-between items-center">
+                <h3 class="text-lg font-semibold text-navy border-b pb-2 mb-4">Projects</h3>
+                <a href="{{ route('admin.projects.index', ['contractor_id' => $contractor->id]) }}" class="text-blue-500 hover:underline text-sm">
+                    <i class="fas fa-external-link-alt mr-1"></i> View All Projects
+                </a>
+            </div>
+            
+            <div class="bg-white shadow overflow-hidden rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start Date</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Budget</th>
+                            <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @forelse($contractor->projects ?? [] as $project)
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">{{ $project->name }}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                        {{ $project->status === 'completed' ? 'bg-green-100 text-green-800' : 
+                                           ($project->status === 'in_progress' ? 'bg-blue-100 text-blue-800' : 
+                                            'bg-yellow-100 text-yellow-800') }}">
+                                        {{ ucfirst(str_replace('_', ' ', $project->status)) }}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">{{ $project->start_date ? $project->start_date->format('M d, Y') : 'N/A' }}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    ${{ number_format($project->budget ?? 0, 2) }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="{{ route('admin.projects.show', $project) }}" class="text-blue-600 hover:text-blue-900">
+                                        View
+                                    </a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="px-6 py-4 whitespace-nowrap text-center text-gray-500">
+                                    No projects found for this contractor.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Permits Summary -->
+        <div class="mt-8">
+            <div class="flex justify-between items-center">
+                <h3 class="text-lg font-semibold text-navy border-b pb-2 mb-4">Permits</h3>
+                <a href="{{ route('admin.permits.contractor', $contractor) }}" class="text-blue-500 hover:underline text-sm">
+                    <i class="fas fa-external-link-alt mr-1"></i> View All Permits
+                </a>
+            </div>
+            
+            <div class="bg-white shadow overflow-hidden rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Permit #</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Submission Date</th>
+                            <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @php
+                            $permits = collect();
+                            foreach(($contractor->projects ?? []) as $project) {
+                                $permits = $permits->merge($project->permits ?? []);
+                            }
+                            $permits = $permits->sortByDesc('submission_date')->take(5);
+                        @endphp
+                        
+                        @forelse($permits as $permit)
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">{{ $permit->permit_number }}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">{{ $permit->type }}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
+                                        {{ $permit->status == 'Approved' ? 'bg-green-100 text-green-800' : 
+                                           ($permit->status == 'In Review' ? 'bg-blue-100 text-blue-800' : 
+                                            ($permit->status == 'Rejected' ? 'bg-red-100 text-red-800' : 
+                                             'bg-yellow-100 text-yellow-800')) }}">
+                                        {{ $permit->status }}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">{{ $permit->submission_date ? $permit->submission_date->format('M d, Y') : 'N/A' }}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="{{ route('admin.permits.show', $permit) }}" class="text-blue-600 hover:text-blue-900">
+                                        View
+                                    </a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="px-6 py-4 whitespace-nowrap text-center text-gray-500">
+                                    No permits found for this contractor.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
         <!-- Action Buttons -->
         <div class="mt-8 flex gap-4">
             <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
